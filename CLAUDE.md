@@ -56,7 +56,7 @@ Título com a palavra-chave no começo e um motivo para clicar (+ 2 alternativas
 Script base: `projetos/deep-influencer/edicao/cortes_sociais.py` (um corte por capítulo do YouTube).
 - 9:16, 1080×1920, recorte central do 4K (sem as inserções do 16:9, refeitas para o vertical).
 - **Área segura:** topo 250 px, base 480 px, direita 140 px livres; texto centrado em x ≈ 510, largura útil 820 px.
-- **Gancho** no topo nos primeiros 3 s (serif branca + Inter Black amarela); **legendas** palavra a palavra (Inter ExtraBold 70, branco, y = 1330), escondidas enquanto há inserção; inserções entre y ≈ 1000 e 1420.
+- **Gancho** no topo nos primeiros ~3,5 s: título em Playfair Display (caixa normal), **todo amarelo #FCEDC0, com efeito olho de peixe** (`titulo_olho_peixe.py`), na faixa acima da cabeça (y ≈ 175–515); **legendas** palavra a palavra (Inter ExtraBold 70, branco, y = 1330), escondidas enquanto há inserção; inserções entre y ≈ 1000 e 1420.
 - Fim: "EPISÓDIO COMPLETO / NO YOUTUBE" no canto superior esquerdo, com barra amarela.
 - Trechos com texto da editora gravado na imagem: mostrar o quadro 16:9 inteiro sobre fundo desfocado.
 - Cada corte fica com menos de 30 MB (2 passes, bitrate calculado pela duração) e vai com sugestão de texto de post e hashtags.

@@ -9,6 +9,7 @@ import sys
 
 with contextlib.redirect_stdout(io.StringIO()):
     import insercoes as I  # reaproveita INS, achar(), mapa(), palavras
+from titulo_olho_peixe import titulo as titulo_olho_peixe
 
 W, H = 1080, 1920
 # área segura (Reels/TikTok/Shorts): topo 250, base 480, direita 140, esquerda 60
@@ -19,15 +20,15 @@ FIX = {"nixo": "nicho", "gane": "ganha", "criators": "creators"}
 
 CORTES = [
     ("01_sonho_vs_realidade", ("primeiro quando as pessoas", 30), ("mas por que tanta", 132), None,
-     ("como ser influencer:", "O SONHO VS. A REALIDADE")),
+     ("Como ser influencer:", "o sonho vs. a realidade")),
     ("02_por_que_todo_mundo_quer_entrar", ("mas por que tanta", 132), ("e as marcas", 201), None,
-     ("por que todo mundo", "QUER SER INFLUENCER?")),
+     ("Por que todo mundo", "quer ser influencer?")),
     ("03_o_que_o_mercado_compra_hoje", ("e as marcas", 201), ("então qual é a diferença", 284), None,
-     ("o que as marcas", "COMPRAM HOJE")),
+     ("O que as marcas", "compram hoje")),
     ("04_quem_sobrevive_x_quem_constroi", ("então qual é a diferença", 284), ("e eu diria mais", 448), None,
-     ("quem sobrevive x quem constrói:", "3 COISAS")),
+     ("Quem sobrevive", "x quem constrói")),
     ("05_o_que_voce_esta_construindo", ("e eu diria mais", 448), None, ("você quer ser mais um", 500),
-     ("a pergunta que", "VALE FAZER HOJE")),
+     ("A pergunta que", "vale fazer hoje")),
 ]
 TEXTO_ORIGINAL = (65.8, 67.8)  # texto da editora gravado na imagem: mostrar o quadro 16:9 inteiro
 
@@ -119,14 +120,6 @@ class Clip:
         self.add(2, a + 0.4, b, "Serif", rf"{{\an5\move({CX},1400,{CX},1385,0,300)\fs46\fad(250,200)}}{serif}")
         self.ocupado.append((a, b))
 
-    def gancho(self, serif, bold):
-        a, b = self.ini, self.ini + 3.2
-        txt, n = quebra(bold, 14)
-        fs = fs_bold(n, 104)
-        self.add(2, a, b, "Serif", rf"{{\an5\move({CX},290,{CX},275,0,300)\fs54\fad(200,250)}}{serif}")
-        self.add(2, a + 0.1, b, "Bold", rf"{{\an8\pos({CX},318)\fs{fs}\fscx112\fscy112\alpha&HFF&"
-                                        r"\t(0,240,\fscx100\fscy100\alpha&H00&)\fad(0,250)}" + txt)
-
     def cta(self):
         a, b = self.fim - 3.2, self.fim
         self.add(1, a, b, "Label", rf"{{\an7\pos(70,270)\fad(300,300)\1c{AMARELO}\bord0\shad0\p1}}m 0 0 l 8 0 8 112 0 112{{\p0}}")
@@ -198,7 +191,8 @@ def main():
                 c.citacao(a, b, d["serif"], d["bold"])
             elif tipo == "grafico":
                 c.grafico(a, b, d["serif"], d["bold"])
-        c.gancho(h1, h2)
+        png_titulo = f"social/titulo_{nome}.png"
+        titulo_olho_peixe([h1, h2], png_titulo)  # gancho com efeito olho de peixe
         c.cta()
         c.legendas()
         ass = f"social/{nome}.ass"
@@ -220,7 +214,11 @@ def main():
             vf += ";[2:v]scale=780:-1,format=rgba[gr];[base][gr]overlay=90:840:eof_action=pass[base2]"
         else:
             vf += ";[base]null[base2]"
-        vf += (f";[base2]ass={ass}:fontsdir=fonts,fade=t=in:st=0:d=0.25,fade=t=out:st={dur - 0.5:.2f}:d=0.5[v];"
+        n_tit = 3 if "grafico/%04d.png" in entradas else 2
+        entradas += ["-loop", "1", "-t", "3.6", "-framerate", "25", "-i", png_titulo]
+        vf += (f";[{n_tit}:v]format=rgba,fade=t=in:st=0:d=0.3:alpha=1,fade=t=out:st=3.2:d=0.35:alpha=1[tit];"
+               "[base2][tit]overlay=(W-w)/2-30:175:eof_action=pass[base3]")
+        vf += (f";[base3]ass={ass}:fontsdir=fonts,fade=t=in:st=0:d=0.25,fade=t=out:st={dur - 0.5:.2f}:d=0.5[v];"
                f"[1:a]volume=-2.1dB,alimiter=limit=0.84:attack=3:release=80:level=disabled,"
                f"afade=t=in:st=0:d=0.15,afade=t=out:st={dur - 0.5:.2f}:d=0.5[a]")
         # cabe no limite de 30 MB do chat
