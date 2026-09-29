@@ -52,6 +52,15 @@ Ferramentas: FFmpeg via `pip install imageio-ffmpeg` (link para `/usr/local/bin/
 ## Textos do YouTube
 Título com a palavra-chave no começo e um motivo para clicar (+ 2 alternativas para teste A/B); descrição com gancho nas 2 primeiras linhas, resumo, **capítulos com os tempos reais do vídeo final**, CTA, chamada do próximo episódio, 3 hashtags; tags; comentário fixado com pergunta. Usar só números que ela fala no vídeo e sugerir colocar a fonte.
 
+## Cortes para redes (Reels / TikTok / Shorts)
+Script base: `projetos/deep-influencer/edicao/cortes_sociais.py` (um corte por capítulo do YouTube).
+- 9:16, 1080×1920, recorte central do 4K (sem as inserções do 16:9, refeitas para o vertical).
+- **Área segura:** topo 250 px, base 480 px, direita 140 px livres; texto centrado em x ≈ 510, largura útil 820 px.
+- **Gancho** no topo nos primeiros 3 s (serif branca + Inter Black amarela); **legendas** palavra a palavra (Inter ExtraBold 70, branco, y = 1330), escondidas enquanto há inserção; inserções entre y ≈ 1000 e 1420.
+- Fim: "EPISÓDIO COMPLETO / NO YOUTUBE" no canto superior esquerdo, com barra amarela.
+- Trechos com texto da editora gravado na imagem: mostrar o quadro 16:9 inteiro sobre fundo desfocado.
+- Cada corte fica com menos de 30 MB (2 passes, bitrate calculado pela duração) e vai com sugestão de texto de post e hashtags.
+
 ## Entrega
 - Limite de envio no chat: **30 MB por arquivo**. A conexão com o Drive não sobe vídeo grande, e o envio para sites de transferência é bloqueado pelas permissões.
 - **4K:** dividir em partes de 29 MB (`split -b 29000000 -d -a 2 --numeric-suffixes=1 arquivo.mp4 NOME.mp4.part`) + `juntar.bat` (copy /b + checagem SHA256 com certutil). Enviar em lotes de 8 pelo chat. Ela junta no PC e sobe no Drive (pasta `claude`).
