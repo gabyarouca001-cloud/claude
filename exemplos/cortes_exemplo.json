@@ -1,0 +1,10 @@
+{
+  "sequencia": "Reels 01 - corte IA",
+  "video": "C:/Videos/Projeto/entrevista.mp4",
+  "cortes": [
+    {"inicio": "00:03:12,400", "fim": "00:03:18,900", "nota": "GANCHO - frase forte"},
+    {"inicio": "00:00:45,000", "fim": "00:01:02,300", "nota": "contexto"},
+    {"inicio": "00:07:30,000", "fim": "00:07:51,700", "nota": "virada"},
+    {"arquivo": "C:/Videos/Projeto/take2.mp4", "inicio": "12.5", "fim": "19", "nota": "CTA final"}
+  ]
+}
