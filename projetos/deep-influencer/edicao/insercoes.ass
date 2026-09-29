@@ -8,84 +8,81 @@ ScaledBorderAndShadow: yes
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
 Style: Serif,Playfair Display,92,&H00FFFFFF,&H00FFFFFF,&H00000000,&HB4000000,0,-1,0,0,100,100,0,0,1,0,1.5,5,0,0,0,1
-Style: Bold,Inter Black,190,&H00FFFFFF,&H00FFFFFF,&H00000000,&HB4000000,0,0,0,0,100,100,-3,0,1,0,2,5,0,0,0,1
+Style: Bold,Inter Black,190,&H00C0EDFC,&H00FFFFFF,&H00000000,&HB4000000,0,0,0,0,100,100,-3,0,1,0,2,5,0,0,0,1
 Style: Eco,Inter Black,640,&H00FFFFFF,&H00FFFFFF,&H00000000,&H00000000,0,0,0,0,100,100,-10,0,1,0,0,5,0,0,0,1
 Style: Label,Inter Medium,30,&H00FFFFFF,&H00FFFFFF,&H00000000,&HB4000000,0,0,0,0,100,100,6,0,1,0,2,1,0,0,0,1
 Style: Lista,Inter ExtraBold,62,&H00FFFFFF,&H00FFFFFF,&H00000000,&HB4000000,0,0,0,0,100,100,0,0,1,0,1.5,4,0,0,0,1
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
-Dialogue: 0,0:01:13.91,0:01:17.31,Eco,,0,0,0,,{\an5\pos(960,700)\alpha&HC4&\fad(250,300)\fscx96\fscy96\t(0,3400,\fscx106\fscy106)}30%
-Dialogue: 2,0:01:13.91,0:01:17.31,Serif,,0,0,0,,{\an5\move(960,622,960,600,0,300)\fad(220,200)}dos criadores ainda não monetizam
-Dialogue: 2,0:01:13.99,0:01:17.31,Bold,,0,0,0,,{\an5\pos(960,750)\fs190\fscx118\fscy118\blur10\alpha&HFF&\t(0,240,\fscx100\fscy100\blur0\alpha&H00&)\fad(0,200)}30%
-Dialogue: 2,0:01:37.81,0:01:39.46,Serif,,0,0,0,,{\an5\move(960,622,960,600,0,300)\fad(220,200)}a maioria que vive de publi
+Dialogue: 2,0:01:13.91,0:01:17.31,Serif,,0,0,0,,{\an5\move(960,658,960,636,0,300)\fad(220,200)}30% dos criadores
+Dialogue: 2,0:01:13.99,0:01:17.31,Bold,,0,0,0,,{\an5\pos(960,750)\fs190\fscx118\fscy118\blur10\alpha&HFF&\t(0,240,\fscx100\fscy100\blur0\alpha&H00&)\fad(0,200)}NÃO MONETIZAM
+Dialogue: 2,0:01:37.81,0:01:39.46,Serif,,0,0,0,,{\an5\move(960,658,960,636,0,300)\fad(220,200)}a maioria que vive de publi
 Dialogue: 2,0:01:37.89,0:01:39.46,Bold,,0,0,0,,{\an5\pos(960,750)\fs166\fscx118\fscy118\blur10\alpha&HFF&\t(0,240,\fscx100\fscy100\blur0\alpha&H00&)\fad(0,200)}NÃO TEM NEGÓCIO
 Dialogue: 0,0:01:39.49,0:01:42.29,Eco,,0,0,0,,{\an5\pos(960,700)\alpha&HC4&\fad(250,300)\fscx96\fscy96\t(0,2799,\fscx106\fscy106)}CACHÊ
-Dialogue: 2,0:01:39.49,0:01:42.29,Serif,,0,0,0,,{\an5\move(960,622,960,600,0,300)\fad(220,200)}tem
+Dialogue: 2,0:01:39.49,0:01:42.29,Serif,,0,0,0,,{\an5\move(960,658,960,636,0,300)\fad(220,200)}tem
 Dialogue: 2,0:01:39.57,0:01:42.29,Bold,,0,0,0,,{\an5\pos(960,750)\fs190\fscx118\fscy118\blur10\alpha&HFF&\t(0,240,\fscx100\fscy100\blur0\alpha&H00&)\fad(0,200)}CACHÊ
 Dialogue: 2,0:01:55.53,0:02:03.46,Serif,,0,0,0,,{\an4\move(100,400,120,400,0,300)\fad(250,250)\fs54}o cachê acaba quando…
-Dialogue: 2,0:01:55.53,0:02:03.46,Lista,,0,0,0,,{\an4\move(100,490,120,490,0,250)\fad(200,250)}{\1c&H00E6E622&}— {\1c&H00FFFFFF&}o algoritmo muda
-Dialogue: 2,0:01:57.31,0:02:03.46,Lista,,0,0,0,,{\an4\move(100,585,120,585,0,250)\fad(200,250)}{\1c&H00E6E622&}— {\1c&H00FFFFFF&}a marca muda de estratégia
-Dialogue: 2,0:02:00.29,0:02:03.46,Lista,,0,0,0,,{\an4\move(100,680,120,680,0,250)\fad(200,250)}{\1c&H00E6E622&}— {\1c&H00FFFFFF&}chega alguém mais novo
-Dialogue: 2,0:02:05.29,0:02:07.49,Serif,,0,0,0,,{\an5\move(960,622,960,600,0,300)\fad(220,200)}negócio é
+Dialogue: 2,0:01:55.53,0:02:03.46,Lista,,0,0,0,,{\an4\move(100,490,120,490,0,250)\fad(200,250)}{\1c&H00C0EDFC&}— {\1c&H00FFFFFF&}o algoritmo muda
+Dialogue: 2,0:01:57.31,0:02:03.46,Lista,,0,0,0,,{\an4\move(100,585,120,585,0,250)\fad(200,250)}{\1c&H00C0EDFC&}— {\1c&H00FFFFFF&}a marca muda de estratégia
+Dialogue: 2,0:02:00.29,0:02:03.46,Lista,,0,0,0,,{\an4\move(100,680,120,680,0,250)\fad(200,250)}{\1c&H00C0EDFC&}— {\1c&H00FFFFFF&}chega alguém mais novo
+Dialogue: 2,0:02:05.29,0:02:07.49,Serif,,0,0,0,,{\an5\move(960,658,960,636,0,300)\fad(220,200)}negócio é
 Dialogue: 2,0:02:05.37,0:02:07.49,Bold,,0,0,0,,{\an5\pos(960,750)\fs190\fscx118\fscy118\blur10\alpha&HFF&\t(0,240,\fscx100\fscy100\blur0\alpha&H00&)\fad(0,200)}OUTRA COISA
-Dialogue: 1,0:02:12.45,0:02:16.05,Label,,0,0,0,,{\an7\pos(110,915)\fad(300,300)\1c&H00E6E622&\bord0\shad0\p1}m 0 0 l 8 0 8 112 0 112{\p0}
-Dialogue: 2,0:02:12.45,0:02:16.05,Label,,0,0,0,,{\an7\move(120,915,140,915,0,350)\fad(300,300)\1c&H00E6E622&\fs32}CAPÍTULO
+Dialogue: 1,0:02:12.45,0:02:16.05,Label,,0,0,0,,{\an7\pos(110,915)\fad(300,300)\1c&H00C0EDFC&\bord0\shad0\p1}m 0 0 l 8 0 8 112 0 112{\p0}
+Dialogue: 2,0:02:12.45,0:02:16.05,Label,,0,0,0,,{\an7\move(120,915,140,915,0,350)\fad(300,300)\1c&H00C0EDFC&\fs32}CAPÍTULO
 Dialogue: 2,0:02:12.57,0:02:16.05,Label,,0,0,0,,{\an7\move(120,958,140,958,0,350)\fad(300,300)\fs60\b1\fsp3}POR QUE TODO MUNDO QUER ENTRAR
-Dialogue: 2,0:02:25.57,0:02:27.87,Serif,,0,0,0,,{\an5\move(960,622,960,600,0,300)\fad(220,200)}a gente vê o resultado,
+Dialogue: 2,0:02:25.57,0:02:27.87,Serif,,0,0,0,,{\an5\move(960,658,960,636,0,300)\fad(220,200)}a gente vê o resultado,
 Dialogue: 2,0:02:25.65,0:02:27.87,Bold,,0,0,0,,{\an5\pos(960,750)\fs178\fscx118\fscy118\blur10\alpha&HFF&\t(0,240,\fscx100\fscy100\blur0\alpha&H00&)\fad(0,200)}NÃO O PROCESSO
 Dialogue: 0,0:02:30.21,0:02:33.81,Eco,,0,0,0,,{\an5\pos(960,700)\alpha&HC4&\fad(250,300)\fscx96\fscy96\t(0,3599,\fscx106\fscy106)}18
-Dialogue: 2,0:02:30.21,0:02:33.81,Serif,,0,0,0,,{\an5\move(960,622,960,600,0,300)\fad(220,200)}postando sem retorno
+Dialogue: 2,0:02:30.21,0:02:33.81,Serif,,0,0,0,,{\an5\move(960,658,960,636,0,300)\fad(220,200)}postando sem retorno
 Dialogue: 2,0:02:30.29,0:02:33.81,Bold,,0,0,0,,{\an5\pos(960,750)\fs190\fscx118\fscy118\blur10\alpha&HFF&\t(0,240,\fscx100\fscy100\blur0\alpha&H00&)\fad(0,200)}18 MESES
 Dialogue: 0,0:02:42.97,0:02:45.57,Eco,,0,0,0,,{\an5\pos(960,700)\alpha&HC4&\fad(250,300)\fscx96\fscy96\t(0,2599,\fscx106\fscy106)}CONTROLE
-Dialogue: 2,0:02:42.97,0:02:45.57,Serif,,0,0,0,,{\an5\move(960,622,960,600,0,300)\fad(220,200)}a ilusão de
+Dialogue: 2,0:02:42.97,0:02:45.57,Serif,,0,0,0,,{\an5\move(960,658,960,636,0,300)\fad(220,200)}a ilusão de
 Dialogue: 2,0:02:43.05,0:02:45.57,Bold,,0,0,0,,{\an5\pos(960,750)\fs190\fscx118\fscy118\blur10\alpha&HFF&\t(0,240,\fscx100\fscy100\blur0\alpha&H00&)\fad(0,200)}CONTROLE
-Dialogue: 2,0:03:03.91,0:03:12.48,Bold,,0,0,0,,{\an4\pos(1260,470)\fs230\fscx118\fscy118\blur10\alpha&HFF&\t(0,260,\fscx100\fscy100\blur0\alpha&H00&)\fad(0,200)\1c&H00E6E622&}-35%
+Dialogue: 2,0:03:03.91,0:03:12.48,Bold,,0,0,0,,{\an4\pos(1260,470)\fs230\fscx118\fscy118\blur10\alpha&HFF&\t(0,260,\fscx100\fscy100\blur0\alpha&H00&)\fad(0,200)}-35%
 Dialogue: 2,0:03:04.01,0:03:12.48,Serif,,0,0,0,,{\an4\move(1270,625,1270,605,0,300)\fs56\fad(250,200)}alcance orgânico no Instagram
-Dialogue: 2,0:03:17.13,0:03:19.53,Serif,,0,0,0,,{\an5\move(960,622,960,600,0,300)\fad(220,200)}a liberdade vira
+Dialogue: 2,0:03:17.13,0:03:19.53,Serif,,0,0,0,,{\an5\move(960,658,960,636,0,300)\fad(220,200)}a liberdade vira
 Dialogue: 2,0:03:17.21,0:03:19.53,Bold,,0,0,0,,{\an5\pos(960,750)\fs147\fscx118\fscy118\blur10\alpha&HFF&\t(0,240,\fscx100\fscy100\blur0\alpha&H00&)\fad(0,200)}DEPENDÊNCIA TOTAL
-Dialogue: 1,0:03:21.85,0:03:25.45,Label,,0,0,0,,{\an7\pos(110,915)\fad(300,300)\1c&H00E6E622&\bord0\shad0\p1}m 0 0 l 8 0 8 112 0 112{\p0}
-Dialogue: 2,0:03:21.85,0:03:25.45,Label,,0,0,0,,{\an7\move(120,915,140,915,0,350)\fad(300,300)\1c&H00E6E622&\fs32}CAPÍTULO
+Dialogue: 1,0:03:21.85,0:03:25.45,Label,,0,0,0,,{\an7\pos(110,915)\fad(300,300)\1c&H00C0EDFC&\bord0\shad0\p1}m 0 0 l 8 0 8 112 0 112{\p0}
+Dialogue: 2,0:03:21.85,0:03:25.45,Label,,0,0,0,,{\an7\move(120,915,140,915,0,350)\fad(300,300)\1c&H00C0EDFC&\fs32}CAPÍTULO
 Dialogue: 2,0:03:21.97,0:03:25.45,Label,,0,0,0,,{\an7\move(120,958,140,958,0,350)\fad(300,300)\fs60\b1\fsp3}O QUE O MERCADO COMPRA HOJE
-Dialogue: 2,0:03:28.51,0:03:31.31,Serif,,0,0,0,,{\an5\move(960,622,960,600,0,300)\fad(220,200)}no mercado há quase
+Dialogue: 2,0:03:28.51,0:03:31.31,Serif,,0,0,0,,{\an5\move(960,658,960,636,0,300)\fad(220,200)}no mercado há quase
 Dialogue: 2,0:03:28.59,0:03:31.31,Bold,,0,0,0,,{\an5\pos(960,750)\fs190\fscx118\fscy118\blur10\alpha&HFF&\t(0,240,\fscx100\fscy100\blur0\alpha&H00&)\fad(0,200)}10 ANOS
-Dialogue: 2,0:03:39.77,0:03:42.77,Serif,,0,0,0,,{\an5\move(960,622,960,600,0,300)\fad(220,200)}antes, as marcas compravam
+Dialogue: 2,0:03:39.77,0:03:42.77,Serif,,0,0,0,,{\an5\move(960,658,960,636,0,300)\fad(220,200)}antes, as marcas compravam
 Dialogue: 2,0:03:39.85,0:03:42.77,Bold,,0,0,0,,{\an5\pos(960,750)\fs190\fscx118\fscy118\blur10\alpha&HFF&\t(0,240,\fscx100\fscy100\blur0\alpha&H00&)\fad(0,200)}ALCANCE
 Dialogue: 0,0:03:57.95,0:04:00.95,Eco,,0,0,0,,{\an5\pos(960,700)\alpha&HC4&\fad(250,300)\fscx96\fscy96\t(0,3000,\fscx106\fscy106)}CONFIANÇA
-Dialogue: 2,0:03:57.95,0:04:00.95,Serif,,0,0,0,,{\an5\move(960,622,960,600,0,300)\fad(220,200)}hoje, elas compram
+Dialogue: 2,0:03:57.95,0:04:00.95,Serif,,0,0,0,,{\an5\move(960,658,960,636,0,300)\fad(220,200)}hoje, elas compram
 Dialogue: 2,0:03:58.03,0:04:00.95,Bold,,0,0,0,,{\an5\pos(960,750)\fs190\fscx118\fscy118\blur10\alpha&HFF&\t(0,240,\fscx100\fscy100\blur0\alpha&H00&)\fad(0,200)}CONFIANÇA
-Dialogue: 2,0:04:22.89,0:04:29.04,Serif,,0,0,0,,{\an5\move(960,560,960,540,0,300)\fad(220,200)}vale mais do que
-Dialogue: 2,0:04:22.99,0:04:29.04,Bold,,0,0,0,,{\an6\pos(880,700)\fs170\fad(200,200)\1c&H00E6E622&}RELAÇÃO
-Dialogue: 2,0:04:22.99,0:04:29.04,Bold,,0,0,0,,{\an5\pos(960,700)\fs120\fad(200,200)}>
+Dialogue: 2,0:04:22.89,0:04:29.04,Serif,,0,0,0,,{\an5\move(960,607,960,585,0,300)\fad(220,200)}vale mais do que
+Dialogue: 2,0:04:22.99,0:04:29.04,Bold,,0,0,0,,{\an6\pos(880,700)\fs170\fad(200,200)}RELAÇÃO
+Dialogue: 2,0:04:22.99,0:04:29.04,Bold,,0,0,0,,{\an5\pos(960,700)\fs120\fad(200,200)\1c&H00FFFFFF&}>
 Dialogue: 2,0:04:23.39,0:04:29.04,Bold,,0,0,0,,{\an4\pos(1040,700)\fs170\fad(250,200)\alpha&H60&\t(0,6150,\alpha&H90&)}VITRINE
-Dialogue: 1,0:04:44.03,0:04:47.83,Label,,0,0,0,,{\an7\pos(110,915)\fad(300,300)\1c&H00E6E622&\bord0\shad0\p1}m 0 0 l 8 0 8 112 0 112{\p0}
-Dialogue: 2,0:04:44.03,0:04:47.83,Label,,0,0,0,,{\an7\move(120,915,140,915,0,350)\fad(300,300)\1c&H00E6E622&\fs32}CAPÍTULO
+Dialogue: 1,0:04:44.03,0:04:47.83,Label,,0,0,0,,{\an7\pos(110,915)\fad(300,300)\1c&H00C0EDFC&\bord0\shad0\p1}m 0 0 l 8 0 8 112 0 112{\p0}
+Dialogue: 2,0:04:44.03,0:04:47.83,Label,,0,0,0,,{\an7\move(120,915,140,915,0,350)\fad(300,300)\1c&H00C0EDFC&\fs32}CAPÍTULO
 Dialogue: 2,0:04:44.15,0:04:47.83,Label,,0,0,0,,{\an7\move(120,958,140,958,0,350)\fad(300,300)\fs60\b1\fsp3}QUEM SOBREVIVE × QUEM CONSTRÓI
 Dialogue: 0,0:05:01.43,0:05:03.43,Eco,,0,0,0,,{\an5\pos(960,700)\alpha&HC4&\fad(250,300)\fscx96\fscy96\t(0,2000,\fscx106\fscy106)}3
-Dialogue: 2,0:05:01.43,0:05:03.43,Serif,,0,0,0,,{\an5\move(960,622,960,600,0,300)\fad(220,200)}são
+Dialogue: 2,0:05:01.43,0:05:03.43,Serif,,0,0,0,,{\an5\move(960,658,960,636,0,300)\fad(220,200)}são
 Dialogue: 2,0:05:01.51,0:05:03.43,Bold,,0,0,0,,{\an5\pos(960,750)\fs190\fscx118\fscy118\blur10\alpha&HFF&\t(0,240,\fscx100\fscy100\blur0\alpha&H00&)\fad(0,200)}3 COISAS
-Dialogue: 2,0:05:03.85,0:05:05.58,Serif,,0,0,0,,{\an5\move(960,622,960,600,0,300)\fad(220,200)}1 · ter um
+Dialogue: 2,0:05:03.85,0:05:05.58,Serif,,0,0,0,,{\an5\move(960,658,960,636,0,300)\fad(220,200)}1 · ter um
 Dialogue: 2,0:05:03.93,0:05:05.58,Bold,,0,0,0,,{\an5\pos(960,750)\fs113\fscx118\fscy118\blur10\alpha&HFF&\t(0,240,\fscx100\fscy100\blur0\alpha&H00&)\fad(0,200)}PONTO DE VISTA PRÓPRIO
-Dialogue: 2,0:05:05.61,0:05:08.81,Serif,,0,0,0,,{\an5\move(960,622,960,600,0,300)\fad(220,200)}nicho é categoria. olhar é só seu.
+Dialogue: 2,0:05:05.61,0:05:08.81,Serif,,0,0,0,,{\an5\move(960,658,960,636,0,300)\fad(220,200)}nicho é categoria. olhar é só seu.
 Dialogue: 2,0:05:05.69,0:05:08.81,Bold,,0,0,0,,{\an5\pos(960,750)\fs190\fscx118\fscy118\blur10\alpha&HFF&\t(0,240,\fscx100\fscy100\blur0\alpha&H00&)\fad(0,200)}NICHO ≠ OLHAR
-Dialogue: 2,0:05:21.61,0:05:27.82,Serif,,0,0,0,,{\an5\move(960,622,960,600,0,300)\fad(220,200)}2 · não depender de
+Dialogue: 2,0:05:21.61,0:05:27.82,Serif,,0,0,0,,{\an5\move(960,658,960,636,0,300)\fad(220,200)}2 · não depender de
 Dialogue: 2,0:05:21.69,0:05:27.82,Bold,,0,0,0,,{\an5\pos(960,750)\fs124\fscx118\fscy118\blur10\alpha&HFF&\t(0,240,\fscx100\fscy100\blur0\alpha&H00&)\fad(0,200)}UMA ÚNICA PLATAFORMA
 Dialogue: 0,0:05:29.65,0:05:32.25,Eco,,0,0,0,,{\an5\pos(960,700)\alpha&HC4&\fad(250,300)\fscx96\fscy96\t(0,2600,\fscx106\fscy106)}COMUNIDADE
-Dialogue: 2,0:05:29.65,0:05:32.25,Serif,,0,0,0,,{\an5\move(960,622,960,600,0,300)\fad(220,200)}a importância de criar uma
+Dialogue: 2,0:05:29.65,0:05:32.25,Serif,,0,0,0,,{\an5\move(960,658,960,636,0,300)\fad(220,200)}a importância de criar uma
 Dialogue: 2,0:05:29.73,0:05:32.25,Bold,,0,0,0,,{\an5\pos(960,750)\fs190\fscx118\fscy118\blur10\alpha&HFF&\t(0,240,\fscx100\fscy100\blur0\alpha&H00&)\fad(0,200)}COMUNIDADE
-Dialogue: 2,0:05:55.93,0:05:59.96,Serif,,0,0,0,,{\an5\move(960,622,960,600,0,300)\fad(220,200)}uma audiência que é
+Dialogue: 2,0:05:55.93,0:05:59.96,Serif,,0,0,0,,{\an5\move(960,658,960,636,0,300)\fad(220,200)}uma audiência que é
 Dialogue: 2,0:05:56.01,0:05:59.96,Bold,,0,0,0,,{\an5\pos(960,750)\fs190\fscx118\fscy118\blur10\alpha&HFF&\t(0,240,\fscx100\fscy100\blur0\alpha&H00&)\fad(0,200)}SÓ SUA
-Dialogue: 2,0:06:04.47,0:06:09.66,Serif,,0,0,0,,{\an5\move(960,622,960,600,0,300)\fad(220,200)}3 · publi é fonte de renda,
+Dialogue: 2,0:06:04.47,0:06:09.66,Serif,,0,0,0,,{\an5\move(960,658,960,636,0,300)\fad(220,200)}3 · publi é fonte de renda,
 Dialogue: 2,0:06:04.55,0:06:09.66,Bold,,0,0,0,,{\an5\pos(960,750)\fs119\fscx118\fscy118\blur10\alpha&HFF&\t(0,240,\fscx100\fscy100\blur0\alpha&H00&)\fad(0,200)}NÃO MODELO DE NEGÓCIO
-Dialogue: 0,0:06:53.51,0:07:00.72,Label,,0,0,0,,{\an7\pos(0,0)\1c&H000000&\1a&H70&\fad(400,400)\bord0\shad0\p1}m 0 560 l 1920 560 1920 1080 0 1080{\p0}
-Dialogue: 2,0:06:53.51,0:07:00.72,Serif,,0,0,0,,{\an5\move(960,760,960,740,0,400)\fs72\fad(350,300)}o que eu estou construindo que vai continuar existindo
-Dialogue: 2,0:06:54.11,0:07:00.72,Bold,,0,0,0,,{\an5\pos(960,860)\fs69\fad(300,300)\1c&H00E6E622&}INDEPENDENTE DO ALGORITMO DE AMANHÃ?
+Dialogue: 2,0:06:53.51,0:07:00.72,Serif,,0,0,0,,{\an5\move(960,790,960,770,0,400)\fs72\fad(350,300)}o que eu estou construindo que vai continuar existindo
+Dialogue: 2,0:06:54.11,0:07:00.72,Bold,,0,0,0,,{\an5\pos(960,845)\fs69\fad(300,300)}INDEPENDENTE DO ALGORITMO DE AMANHÃ?
 Dialogue: 0,0:07:02.25,0:07:07.16,Eco,,0,0,0,,{\an5\pos(960,700)\alpha&HC4&\fad(250,300)\fscx96\fscy96\t(0,4910,\fscx106\fscy106)}4 MILHÕES
-Dialogue: 2,0:07:02.25,0:07:07.16,Serif,,0,0,0,,{\an5\move(960,622,960,600,0,300)\fad(220,200)}quase
+Dialogue: 2,0:07:02.25,0:07:07.16,Serif,,0,0,0,,{\an5\move(960,658,960,636,0,300)\fad(220,200)}quase
 Dialogue: 2,0:07:02.33,0:07:07.16,Bold,,0,0,0,,{\an5\pos(960,750)\fs190\fscx118\fscy118\blur10\alpha&HFF&\t(0,240,\fscx100\fscy100\blur0\alpha&H00&)\fad(0,200)}4 MILHÕES
-Dialogue: 2,0:07:02.55,0:07:07.16,Serif,,0,0,0,,{\an5\pos(960,875)\fs62\fad(250,200)}de criadores, só no Instagram
-Dialogue: 2,0:07:07.19,0:07:08.03,Serif,,0,0,0,,{\an5\move(960,622,960,600,0,300)\fad(220,200)}você quer ser
+Dialogue: 2,0:07:02.55,0:07:07.16,Serif,,0,0,0,,{\an5\pos(960,855)\fs62\fad(250,200)}de criadores, só no Instagram
+Dialogue: 2,0:07:07.19,0:07:08.03,Serif,,0,0,0,,{\an5\move(960,658,960,636,0,300)\fad(220,200)}você quer ser
 Dialogue: 2,0:07:07.27,0:07:08.03,Bold,,0,0,0,,{\an5\pos(960,750)\fs190\fscx118\fscy118\blur10\alpha&HFF&\t(0,240,\fscx100\fscy100\blur0\alpha&H00&)\fad(0,200)}MAIS UM?
-Dialogue: 2,0:07:10.53,0:07:14.32,Label,,0,0,0,,{\an5\pos(960,500)\fad(300,300)\1c&H00E6E622&\fs36\fsp6}PRÓXIMO EPISÓDIO
-Dialogue: 2,0:07:10.73,0:07:14.32,Serif,,0,0,0,,{\an5\move(960,662,960,640,0,300)\fad(220,200)}o que você fatura
-Dialogue: 2,0:07:10.81,0:07:14.32,Bold,,0,0,0,,{\an5\pos(960,750)\fs119\fscx118\fscy118\blur10\alpha&HFF&\t(0,240,\fscx100\fscy100\blur0\alpha&H00&)\fad(0,200)}× O QUE VOCÊ CONSTRÓI
+Dialogue: 1,0:07:10.53,0:07:14.32,Label,,0,0,0,,{\an7\pos(110,100)\fad(300,300)\1c&H00C0EDFC&\bord0\shad0\p1}m 0 0 l 8 0 8 66 0 66{\p0}
+Dialogue: 2,0:07:10.53,0:07:14.32,Label,,0,0,0,,{\an7\move(120,104,140,104,0,350)\fad(300,300)\1c&H00C0EDFC&\fs56\b1\fsp6}PRÓXIMO EPISÓDIO

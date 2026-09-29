@@ -48,7 +48,7 @@ def mapa(t):
 # ----------------------------------------------------------------------------- inserções
 # tipo, frase-âncora, procurar depois de, duração (ou frase final), conteúdo
 INS = [
-    ("titulo", "30", 72, 3.4, dict(serif="dos criadores ainda não monetizam", bold="30%", eco="30%")),
+    ("titulo", "30", 72, 3.4, dict(serif="30% dos criadores", bold="NÃO MONETIZAM")),
     ("titulo", "não tem negócio", 96, "tem um cachê", dict(serif="a maioria que vive de publi", bold="NÃO TEM NEGÓCIO")),
     ("titulo", "tem um cachê", 99, 2.8, dict(serif="tem", bold="CACHÊ", eco="CACHÊ")),
     ("lista", "algoritmo mudar", 111, "agora negócio", dict(titulo="o cachê acaba quando…", itens=[
@@ -86,7 +86,7 @@ INS = [
 ]
 
 # ----------------------------------------------------------------------------- ASS
-BRANCO, CIANO = "&H00FFFFFF&", "&H00E6E622&"
+BRANCO, DESTAQUE = "&H00FFFFFF&", "&H00C0EDFC&"  # amarelo manteiga #FCEDC0 (o mesmo do "MAS")
 CAB = """[Script Info]
 ScriptType: v4.00+
 PlayResX: 1920
@@ -97,7 +97,7 @@ ScaledBorderAndShadow: yes
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
 Style: Serif,Playfair Display,92,&H00FFFFFF,&H00FFFFFF,&H00000000,&HB4000000,0,-1,0,0,100,100,0,0,1,0,1.5,5,0,0,0,1
-Style: Bold,Inter Black,190,&H00FFFFFF,&H00FFFFFF,&H00000000,&HB4000000,0,0,0,0,100,100,-3,0,1,0,2,5,0,0,0,1
+Style: Bold,Inter Black,190,&H00C0EDFC,&H00FFFFFF,&H00000000,&HB4000000,0,0,0,0,100,100,-3,0,1,0,2,5,0,0,0,1
 Style: Eco,Inter Black,640,&H00FFFFFF,&H00FFFFFF,&H00000000,&H00000000,0,0,0,0,100,100,-10,0,1,0,0,5,0,0,0,1
 Style: Label,Inter Medium,30,&H00FFFFFF,&H00FFFFFF,&H00000000,&HB4000000,0,0,0,0,100,100,6,0,1,0,2,1,0,0,0,1
 Style: Lista,Inter ExtraBold,62,&H00FFFFFF,&H00FFFFFF,&H00000000,&HB4000000,0,0,0,0,100,100,0,0,1,0,1.5,4,0,0,0,1
@@ -127,7 +127,7 @@ def tamanho_bold(texto, base=190, largura=1700):
     return min(base, int(largura / (0.68 * max(len(texto), 1))))
 
 
-def titulo(a, b, serif, bold, eco=None, extra=None, y_serif=600, y_bold=750):
+def titulo(a, b, serif, bold, eco=None, extra=None, y_serif=636, y_bold=750):
     d = int((b - a) * 1000)
     if eco:
         ev(0, a, b, "Eco", r"{\an5\pos(960,700)\alpha&HC4&\fad(250,300)\fscx96\fscy96"
@@ -137,13 +137,13 @@ def titulo(a, b, serif, bold, eco=None, extra=None, y_serif=600, y_bold=750):
     ev(2, a + 0.08, b, "Bold", rf"{{\an5\pos(960,{y_bold})\fs{fs}\fscx118\fscy118\blur10\alpha&HFF&"
                                r"\t(0,240,\fscx100\fscy100\blur0\alpha&H00&)\fad(0,200)}" + bold)
     if extra:
-        ev(2, a + 0.3, b, "Serif", rf"{{\an5\pos(960,{y_bold + 125})\fs62\fad(250,200)}}{extra}")
+        ev(2, a + 0.3, b, "Serif", rf"{{\an5\pos(960,{y_bold + 105})\fs62\fad(250,200)}}{extra}")
     sfx.append((a, "whoosh"))
 
 
 def capitulo(a, b, texto):
-    ev(1, a, b, "Label", r"{\an7\pos(110,915)\fad(300,300)\1c" + CIANO + r"\bord0\shad0\p1}m 0 0 l 8 0 8 112 0 112{\p0}")
-    ev(2, a, b, "Label", r"{\an7\move(120,915,140,915,0,350)\fad(300,300)\1c" + CIANO + r"\fs32}CAPÍTULO")
+    ev(1, a, b, "Label", r"{\an7\pos(110,915)\fad(300,300)\1c" + DESTAQUE + r"\bord0\shad0\p1}m 0 0 l 8 0 8 112 0 112{\p0}")
+    ev(2, a, b, "Label", r"{\an7\move(120,915,140,915,0,350)\fad(300,300)\1c" + DESTAQUE + r"\fs32}CAPÍTULO")
     ev(2, a + 0.12, b, "Label", r"{\an7\move(120,958,140,958,0,350)\fad(300,300)\fs60\b1\fsp3}" + texto)
     sfx.append((a, "chime"))
 
@@ -152,30 +152,30 @@ def lista(a, b, titulo_txt, itens):
     ev(2, a, b, "Serif", rf"{{\an4\move(100,400,120,400,0,300)\fad(250,250)\fs54}}{titulo_txt}")
     for n, (t, texto) in enumerate(itens):
         y = 490 + n * 95
-        ev(2, t, b, "Lista", rf"{{\an4\move(100,{y},120,{y},0,250)\fad(200,250)}}{{\1c{CIANO}}}— {{\1c{BRANCO}}}{texto}")
+        ev(2, t, b, "Lista", rf"{{\an4\move(100,{y},120,{y},0,250)\fad(200,250)}}{{\1c{DESTAQUE}}}— {{\1c{BRANCO}}}{texto}")
         sfx.append((t, "tick"))
 
 
 def versus(a, b):
     d = int((b - a) * 1000)
-    ev(2, a, b, "Serif", r"{\an5\move(960,560,960,540,0,300)\fad(220,200)}vale mais do que")
-    ev(2, a + 0.1, b, "Bold", r"{\an6\pos(880,700)\fs170\fad(200,200)\1c" + CIANO + "}RELAÇÃO")
-    ev(2, a + 0.1, b, "Bold", r"{\an5\pos(960,700)\fs120\fad(200,200)}>")
+    ev(2, a, b, "Serif", r"{\an5\move(960,607,960,585,0,300)\fad(220,200)}vale mais do que")
+    ev(2, a + 0.1, b, "Bold", r"{\an6\pos(880,700)\fs170\fad(200,200)}RELAÇÃO")
+    ev(2, a + 0.1, b, "Bold", r"{\an5\pos(960,700)\fs120\fad(200,200)\1c" + BRANCO + "}>")
     ev(2, a + 0.5, b, "Bold", r"{\an4\pos(1040,700)\fs170\fad(250,200)\alpha&H60&" + rf"\t(0,{d},\alpha&H90&)" + "}VITRINE")
     sfx.append((a, "whoosh"))
     sfx.append((a + 0.5, "tick"))
 
 
 def citacao(a, b, serif, bold):
-    ev(0, a, b, "Label", r"{\an7\pos(0,0)\1c&H000000&\1a&H70&\fad(400,400)\bord0\shad0\p1}m 0 560 l 1920 560 1920 1080 0 1080{\p0}")
-    ev(2, a, b, "Serif", rf"{{\an5\move(960,760,960,740,0,400)\fs72\fad(350,300)}}{serif}")
-    ev(2, a + 0.6, b, "Bold", rf"{{\an5\pos(960,860)\fs{tamanho_bold(bold, 84)}\fad(300,300)\1c{CIANO}}}{bold}")
+    ev(2, a, b, "Serif", rf"{{\an5\move(960,790,960,770,0,400)\fs72\fad(350,300)}}{serif}")
+    ev(2, a + 0.6, b, "Bold", rf"{{\an5\pos(960,845)\fs{tamanho_bold(bold, 84)}\fad(300,300)}}{bold}")
     sfx.append((a, "chime"))
 
 
-def proximo(a, b, serif, bold):
-    ev(2, a, b, "Label", r"{\an5\pos(960,500)\fad(300,300)\1c" + CIANO + r"\fs36\fsp6}PRÓXIMO EPISÓDIO")
-    titulo(a + 0.2, b, serif, bold, y_serif=640, y_bold=750)
+def proximo(a, b):
+    ev(1, a, b, "Label", r"{\an7\pos(110,100)\fad(300,300)\1c" + DESTAQUE + r"\bord0\shad0\p1}m 0 0 l 8 0 8 66 0 66{\p0}")
+    ev(2, a, b, "Label", r"{\an7\move(120,104,140,104,0,350)\fad(300,300)\1c" + DESTAQUE + r"\fs56\b1\fsp6}PRÓXIMO EPISÓDIO")
+    sfx.append((a, "chime"))
 
 
 # gráfico: sequência de PNGs com a linha desenhando
@@ -206,11 +206,11 @@ def grafico(frames_total, pasta="grafico"):
                     caminho.append((x0 + (x1 - x0) * fr, y0 + (y1 - y0) * fr))
                 break
         brilho = Image.new("RGBA", (W, H), (0, 0, 0, 0))
-        ImageDraw.Draw(brilho).line(caminho, fill=(34, 230, 230, 180), width=22, joint="curve")
+        ImageDraw.Draw(brilho).line(caminho, fill=(252, 237, 192, 150), width=22, joint="curve")
         brilho = brilho.filter(ImageFilter.GaussianBlur(12))
         img = Image.alpha_composite(img, brilho)
         dr = ImageDraw.Draw(img)
-        dr.line(caminho, fill=(34, 230, 230, 255), width=8, joint="curve")
+        dr.line(caminho, fill=(252, 237, 192, 255), width=8, joint="curve")
         for p in pts[: int(alvo) + 1]:
             dr.ellipse([p[0] - 9, p[1] - 9, p[0] + 9, p[1] + 9], fill=(255, 255, 255, 255))
         if alpha < 1:
@@ -240,11 +240,11 @@ for tipo, frase, depois, dur, c in INS:
     elif tipo == "citacao":
         citacao(a, b, c["serif"], c["bold"])
     elif tipo == "proximo":
-        proximo(a, b, c["serif"], c["bold"])
+        proximo(a, b)
     elif tipo == "grafico":
         # gráfico à esquerda, número à direita
         ev(2, a + 0.3, b, "Bold", r"{\an4\pos(1260,470)\fs230\fscx118\fscy118\blur10\alpha&HFF&"
-                                  r"\t(0,260,\fscx100\fscy100\blur0\alpha&H00&)\fad(0,200)\1c" + CIANO + "}" + c["bold"])
+                                  r"\t(0,260,\fscx100\fscy100\blur0\alpha&H00&)\fad(0,200)}" + c["bold"])
         ev(2, a + 0.4, b, "Serif", r"{\an4\move(1270,625,1270,605,0,300)\fs56\fad(250,200)}" + c["serif"])
         n = int(round((b - a) * FPS))
         grafico(n)
