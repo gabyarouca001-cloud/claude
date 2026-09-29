@@ -25,8 +25,10 @@ SIL_MIN = 0.30
 PAD_ANTES = 0.10   # mantém depois da palavra anterior
 PAD_DEPOIS = 0.08  # mantém antes da próxima palavra
 
+
 def snap(t):
     return round(t * FPS) / FPS
+
 
 def carregar_audio():
     bruto = subprocess.run(
@@ -34,15 +36,18 @@ def carregar_audio():
         capture_output=True, check=True).stdout
     return np.frombuffer(bruto, np.float32)
 
+
 def rms_db(x, passo=0.01):
     n = int(SR * passo)
     q = x[: len(x) // n * n].reshape(-1, n)
     return 20 * np.log10(np.sqrt((q ** 2).mean(1)) + 1e-9)
 
+
 def vale(db, t, janela=0.12, passo=0.01):
     """Ponto de menor energia perto de t (para cortar entre palavras coladas)."""
     a, b = int((t - janela) / passo), int((t + janela) / passo)
     return (a + int(np.argmin(db[a:b]))) * passo
+
 
 def main():
     x = carregar_audio()
@@ -109,6 +114,7 @@ def main():
           f"silêncios {sum(b-a for a,b,t in fundidos if t=='silencio'):.1f}s) | "
           f"duração final {FIM - removido:.1f}s")
     json.dump({"segmentos": segmentos, "removidos": fundidos}, open("plano.json", "w"), indent=1)
+
 
 if __name__ == "__main__":
     main()
