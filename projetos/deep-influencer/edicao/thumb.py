@@ -4,8 +4,8 @@ from PIL import Image, ImageDraw, ImageEnhance, ImageFilter, ImageFont
 S = sys.argv[1]
 W, H = 1280, 720
 AMARELO = (252, 237, 192)
-img = Image.open(f"{S}/base.png").convert("RGB")
-x0, y0, cw = 250, 150, 2380
+img = Image.open(sys.argv[2]).convert("RGB")
+x0, y0, cw = (int(v) for v in sys.argv[3].split(","))
 img = img.crop((x0, y0, x0 + cw, y0 + int(cw * 9 / 16))).resize((W, H), Image.LANCZOS)
 img = ImageEnhance.Contrast(img).enhance(1.10)
 img = ImageEnhance.Color(img).enhance(1.08)
