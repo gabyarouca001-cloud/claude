@@ -7,13 +7,8 @@ ScaledBorderAndShadow: yes
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: Grande,Oswald Medium,230,&H00A0D9F1,&H00FFFFFF,&H00000000,&H8C000000,0,0,0,0,100,100,6,0,1,0,3,5,0,0,0,1
-Style: Fina,Oswald Light,76,&H00FFFFFF,&H00FFFFFF,&H00000000,&H8C000000,0,0,0,0,100,100,22,0,1,0,2,5,0,0,0,1
+Style: Fina,Oswald Light,58,&H00FFFFFF,&H00FFFFFF,&H00000000,&H8C000000,0,0,0,0,100,100,22,0,1,0,2,5,0,0,0,1
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
-Dialogue: 1,0:00:00.35,0:00:01.95,Fina,,0,0,0,,{\pos(540,800)\fad(150,120)}UNLEASH
-Dialogue: 1,0:00:00.45,0:00:01.95,Grande,,0,0,0,,{\pos(540,960)\fscx110\fscy110\t(0,300,\fscx100\fscy100)\fad(80,120)}YOUR WILD
-Dialogue: 1,0:00:02.05,0:00:03.90,Fina,,0,0,0,,{\pos(540,800)\fad(150,150)}IGNITE
-Dialogue: 1,0:00:02.15,0:00:03.90,Grande,,0,0,0,,{\pos(540,960)\fscx110\fscy110\t(0,300,\fscx100\fscy100)\fad(80,150)}YOUR GLAM
-Dialogue: 1,0:00:12.10,0:00:14.60,Fina,,0,0,0,,{\pos(540,380)\fad(300,300)\fs58}THE COLLECTION
+Dialogue: 1,0:00:16.10,0:00:18.60,Fina,,0,0,0,,{\pos(540,380)\fad(300,300)}THE COLLECTION
