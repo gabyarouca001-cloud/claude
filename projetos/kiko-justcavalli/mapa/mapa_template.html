@@ -1,0 +1,197 @@
+<title>Mapa de cenas KIKO × Just Cavalli</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=Barlow:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap">
+<style>
+/* Mesa de luz noturna: folha de contato em fundo quente e escuro; dourado da colab para ações, magenta para trocas. Tema único escuro, por escolha. */
+:root {
+  color-scheme: dark;
+  --bg: #151012;
+  --surface: #1f181b;
+  --surface-2: #2a2125;
+  --line: #3a2e33;
+  --fg: #f4ede6;
+  --muted: #ab9d95;
+  --gold: #d9b36b;
+  --magenta: #d6397f;
+  --ok: #86b894;
+  --red: #e2654f;
+  --display: "Oswald", "Arial Narrow", Impact, sans-serif;
+  --body: "Barlow", "Segoe UI", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 15px; line-height: 1.5; padding: 28px 16px 64px; }
+.wrap { max-width: 1240px; margin: 0 auto; display: grid; gap: 36px; }
+header { display: grid; gap: 14px; }
+.eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); }
+h1 { font-family: var(--display); font-weight: 600; font-size: clamp(34px, 6vw, 60px); line-height: 1; letter-spacing: .01em; margin: 0; text-transform: uppercase; text-wrap: balance; }
+.intro { color: var(--muted); max-width: 64ch; margin: 0; }
+.resumo { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { font-family: var(--mono); font-size: 12px; padding: 5px 10px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); font-variant-numeric: tabular-nums; }
+.chip b { color: var(--fg); font-weight: 400; }
+.chip[data-s="ajustar"] { border-color: var(--gold); }
+.chip[data-s="trocar"] { border-color: var(--magenta); }
+.chip[data-s="remover"] { border-color: var(--red); }
+.aviso { border: 1px solid var(--gold); color: var(--fg); padding: 10px 14px; border-radius: 6px; font-size: 14px; }
+.geral { display: grid; gap: 8px; }
+.geral label { font-family: var(--display); font-size: 18px; text-transform: uppercase; letter-spacing: .04em; }
+section { display: grid; gap: 16px; }
+.sec-head { display: flex; align-items: baseline; gap: 14px; border-bottom: 1px solid var(--line); padding-bottom: 8px; flex-wrap: wrap; }
+.sec-head h2 { font-family: var(--display); font-weight: 400; font-size: 26px; text-transform: uppercase; letter-spacing: .03em; margin: 0; }
+.sec-head span { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 18px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; display: grid; grid-template-rows: auto 1fr; min-width: 0; }
+.card[data-s="ajustar"] { border-color: var(--gold); }
+.card[data-s="trocar"] { border-color: var(--magenta); }
+.card[data-s="remover"] { border-color: var(--red); }
+.card[data-s="remover"] .strip { opacity: .45; }
+.strip { display: block; width: 100%; height: auto; background: #000; }
+.body { padding: 12px 14px 14px; display: grid; gap: 10px; align-content: start; }
+.topo { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+.num { font-family: var(--display); font-size: 22px; font-weight: 600; letter-spacing: .02em; }
+.tc { font-family: var(--mono); font-size: 12.5px; color: var(--gold); font-variant-numeric: tabular-nums; }
+.meta { font-size: 13px; color: var(--muted); margin: 0; }
+.meta code { font-family: var(--mono); font-size: 12px; color: var(--fg); }
+.status { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
+.status button { font: 500 12.5px var(--body); color: var(--muted); background: var(--surface-2); border: 1px solid var(--line); border-radius: 5px; padding: 6px 2px; cursor: pointer; }
+.status button:hover { color: var(--fg); }
+.status button:focus-visible, textarea:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.status button[aria-pressed="true"][data-v="manter"] { background: var(--ok); color: #10180f; border-color: var(--ok); }
+.status button[aria-pressed="true"][data-v="ajustar"] { background: var(--gold); color: #1d1406; border-color: var(--gold); }
+.status button[aria-pressed="true"][data-v="trocar"] { background: var(--magenta); color: #fff; border-color: var(--magenta); }
+.status button[aria-pressed="true"][data-v="remover"] { background: var(--red); color: #1c0906; border-color: var(--red); }
+textarea { width: 100%; min-height: 64px; resize: vertical; font: 14px/1.45 var(--body); color: var(--fg); background: var(--bg); border: 1px solid var(--line); border-radius: 5px; padding: 8px 10px; }
+textarea::placeholder { color: #7d7069; }
+.salvo { font-family: var(--mono); font-size: 11px; color: var(--muted); min-height: 1em; }
+@media (prefers-reduced-motion: no-preference) { .card { transition: border-color .15s; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Stories · Just Cavalli × KIKO Milano · 37 s · 1080×1920</div>
+    <h1>Mapa de cenas</h1>
+    <p class="intro">Cada cartão é uma cena do vídeo, com três quadros (início, meio e fim). Marque o que fazer e escreva o que mudar: um take tremido, um enquadramento ruim da Samara, outro momento do mesmo vídeo. Tudo é salvo sozinho, e eu leio daqui.</p>
+    <div class="resumo" id="resumo"></div>
+    <div class="aviso" id="aviso" hidden>As anotações não estão sendo salvas nesta visualização. Abra a página logada no claude.ai, ou me mande as alterações por mensagem com o número da cena.</div>
+  </header>
+
+  <div class="geral">
+    <label for="nota-geral">Observações gerais</label>
+    <textarea id="nota-geral" placeholder="Ex.: menos cortes de ambiente, mais produto; trocar a música; deixar mais curto…"></textarea>
+    <div class="salvo" id="salvo-geral"></div>
+  </div>
+
+  <div id="secoes"></div>
+</div>
+
+<script>
+const CENAS = /*CENAS*/[];
+const STATUS = [["manter", "Manter"], ["ajustar", "Ajustar"], ["trocar", "Trocar take"], ["remover", "Remover"]];
+const estado = {};           // id -> {status, nota}
+const fila = {};             // id -> promessa da última escrita (uma por vez)
+let db = null;
+
+const fmt = (t) => { const m = Math.floor(t / 60), s = (t - m * 60).toFixed(1).padStart(4, "0"); return `${m}:${s}`; };
+const idDe = (n) => "c" + String(n).padStart(2, "0");
+
+function render() {
+  const raiz = document.getElementById("secoes");
+  const ordem = [...new Set(CENAS.map(c => c.secao))];
+  raiz.innerHTML = "";
+  for (const sec of ordem) {
+    const cs = CENAS.filter(c => c.secao === sec);
+    const el = document.createElement("section");
+    el.innerHTML = `<div class="sec-head"><h2>${sec}</h2><span>${fmt(cs[0].ini)} – ${fmt(cs[cs.length - 1].fim)} · ${cs.length} cena${cs.length > 1 ? "s" : ""}</span></div><div class="grid"></div>`;
+    const grid = el.querySelector(".grid");
+    for (const c of cs) {
+      const id = idDe(c.n);
+      const card = document.createElement("article");
+      card.className = "card"; card.id = id;
+      card.innerHTML = `
+        <img class="strip" src="${c.img}" alt="Três quadros da cena ${c.n}" width="458" height="267">
+        <div class="body">
+          <div class="topo"><span class="num">Cena ${String(c.n).padStart(2, "0")}</span><span class="tc">${fmt(c.ini)} – ${fmt(c.fim)}</span></div>
+          <p class="meta"><code>${c.arquivo}</code> a partir de ${c.fonte} · ${c.efeito}</p>
+          <div class="status" role="group" aria-label="O que fazer com a cena ${c.n}">
+            ${STATUS.map(([v, r]) => `<button type="button" data-v="${v}" aria-pressed="false">${r}</button>`).join("")}
+          </div>
+          <textarea id="nota-${id}" aria-label="O que alterar na cena ${c.n}" placeholder="O que alterar nesta cena?"></textarea>
+          <div class="salvo"></div>
+        </div>`;
+      card.querySelectorAll(".status button").forEach(b => b.addEventListener("click", () => {
+        const atual = estado[id]?.status;
+        definir(id, { status: atual === b.dataset.v ? "" : b.dataset.v });
+      }));
+      const ta = card.querySelector("textarea");
+      let timer;
+      ta.addEventListener("input", () => { clearTimeout(timer); timer = setTimeout(() => definir(id, { nota: ta.value }), 900); });
+      ta.addEventListener("blur", () => { clearTimeout(timer); if ((estado[id]?.nota || "") !== ta.value) definir(id, { nota: ta.value }); });
+      grid.appendChild(card);
+    }
+    raiz.appendChild(el);
+  }
+}
+
+function pintar(id) {
+  const card = document.getElementById(id);
+  if (!card) return;
+  const s = estado[id] || {};
+  card.dataset.s = s.status || "";
+  card.querySelectorAll(".status button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.v === s.status)));
+  const ta = card.querySelector("textarea");
+  if (document.activeElement !== ta && ta.value !== (s.nota || "")) ta.value = s.nota || "";
+}
+
+function resumo() {
+  const cont = { manter: 0, ajustar: 0, trocar: 0, remover: 0 };
+  let notas = 0;
+  for (const c of CENAS) { const s = estado[idDe(c.n)] || {}; if (s.status) cont[s.status]++; if (s.nota) notas++; }
+  const semMarca = CENAS.length - Object.values(cont).reduce((a, b) => a + b, 0);
+  document.getElementById("resumo").innerHTML =
+    STATUS.map(([v, r]) => `<span class="chip" data-s="${v}">${r} <b>${cont[v]}</b></span>`).join("") +
+    `<span class="chip">Sem marcação <b>${semMarca}</b></span><span class="chip">Com anotação <b>${notas}</b></span>`;
+}
+
+async function definir(id, parcial) {
+  estado[id] = { ...(estado[id] || {}), ...parcial };
+  pintar(id); resumo();
+  const card = document.getElementById(id);
+  const aviso = card ? card.querySelector(".salvo") : document.getElementById("salvo-geral");
+  if (!db) { guardarLocal(); if (aviso) aviso.textContent = "salvo só neste navegador"; return; }
+  const corpo = { status: estado[id].status || "", nota: estado[id].nota || "", atualizado: new Date().toISOString() };
+  const anterior = fila[id] || Promise.resolve();
+  fila[id] = anterior.then(async () => {
+    if (aviso) aviso.textContent = "salvando…";
+    try { await db.collection("cenas").doc(id).set(corpo); if (aviso) aviso.textContent = "salvo"; }
+    catch (e) { if (aviso) aviso.textContent = "não foi possível salvar (" + (e.code || "erro") + ")"; }
+  });
+}
+
+function guardarLocal() { try { localStorage.setItem("mapa-kiko", JSON.stringify(estado)); } catch (_) {} }
+function lerLocal() { try { Object.assign(estado, JSON.parse(localStorage.getItem("mapa-kiko") || "{}")); } catch (_) {} }
+
+render(); resumo();
+
+const geral = document.getElementById("nota-geral");
+let tGeral;
+geral.addEventListener("input", () => { clearTimeout(tGeral); tGeral = setTimeout(() => definir("geral", { nota: geral.value }), 900); });
+
+(async () => {
+  db = window.claude ? await window.claude.use("db") : null;
+  if (!db) {
+    document.getElementById("aviso").hidden = false;
+    lerLocal(); CENAS.forEach(c => pintar(idDe(c.n))); resumo();
+    if (estado.geral?.nota) geral.value = estado.geral.nota;
+    return;
+  }
+  db.collection("cenas").onSnapshot((snap) => {
+    for (const d of snap.docs) {
+      const v = d.data() || {};
+      estado[d.id] = { status: v.status || "", nota: v.nota || "" };
+      if (d.id === "geral") { if (document.activeElement !== geral) geral.value = v.nota || ""; }
+      else pintar(d.id);
+    }
+    resumo();
+  }, () => { document.getElementById("aviso").hidden = false; });
+})();
+</script>
