@@ -81,3 +81,9 @@ Só takes + trilha, 9:16 4K 30 fps, ~37 s. O que ela manteve e o que mudou na mi
 - **Não repetir o mesmo enquadramento** em sequência; variar plano aberto / close / produto.
 - Lavados (fade branco) só como transição curta, não abrindo seções.
 - Áudio: **nunca deixar vazar voz/ambiente** por baixo da trilha (só música + SFX). Mandar a trilha separada na minutagem exata quando pedir.
+
+## Legendas de Reels "Posso pesar o clima" (padrão da editora, aprovado)
+Script: `projetos/closet-obvio/legendas/legendas.py` + `sfx.py`. Não legendar o "Posso pesar o clima?" do início (ela já faz).
+- **Base:** Rubik SemiBold branca, 2–3 palavras, ~64% da altura (CapCut: tamanho 8, Y −493), sombra preta esfumada. Todas as palavras faladas que não estão num destaque.
+- **Destaques** (variar a fonte): Rubik Black amarelo manteiga palavra a palavra; Playfair Display itálico branco + ouro `#F1CE0B` palavra a palavra; Amatic SC branca letra a letra. **Linhas quase encostando**, sem invadir. Nunca sobre o rosto.
+- **SFX discretos por estilo:** pop por palavra (Rubik), sininho por palavra (Playfair), cliques de digitação por letra (Amatic) + som de saída (whoosh reverso / brilho descendo / swipe de papel) com fade curto.
