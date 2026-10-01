@@ -29,12 +29,13 @@ def achar(frase, perto=0):
 
 # destaques: (frase falada, tipo, linhas/partes)
 DESTAQUES = [
-    ("e muito menos postar sobre todas elas", "rubik", [["E", "MUITO", "MENOS"], ["POSTAR"]], 3.4),
+    ("e muito menos postar", "rubik", [["E", "MUITO"], ["MENOS POSTAR"]], 3.4),
     ("é muito bom falar eu não sei", "playfair", [[("é muito bom falar,", BRANCO)], [("eu", BRANCO), ("não sei", OURO)]], 13.8),
-    ("aliás eu considero um ato de coragem", "rubik", [["UM ATO"], ["DE CORAGEM"]], 34.6),
+    ("um ato de coragem", "rubik", [["UM ATO"], ["DE CORAGEM"]], 36.3),
     ("nem toda situação ruim tem um lado bom", "amatic", ["NEM TODA SITUAÇÃO", "RUIM TEM", "UM LADO BOM"], 50.0),
     ("o óbvio precisa ser dito", "playfair", [[("O", BRANCO), ("óbvio", OURO)], [("precisa", OURO), ("ser dito", BRANCO)]], 61.8),
 ]
+SFX = []   # (tempo, tipo, variação)
 
 CAB = f"""[Script Info]
 ScriptType: v4.00+
@@ -78,14 +79,17 @@ ocupado = []
 for frase, tipo, partes, perto in DESTAQUES:
     i0, i1 = achar(frase, perto)
     a = PAL[i0]["s"] - 0.05
-    b = PAL[i1]["e"] + 0.45
-    ocupado.append((a, b))
+    b = PAL[i1]["e"] + 0.5
+    if i1 + 1 < len(PAL):
+        b = min(b, PAL[i1 + 1]["s"] - 0.06)
+    ocupado.append((i0, i1))
+    SFX.append((b - 0.12, "saida_" + tipo, len(SFX)))
     if tipo == "rubik":
         # palavra a palavra, com leve "pop"
         palavras_fala = iter(range(i0, i1 + 1))
-        y0 = 1020 - (len(partes) - 1) * 66
+        y0 = 1020 - (len(partes) - 1) * 54
         for n, linha in enumerate(partes):
-            y = y0 + n * 132
+            y = y0 + n * 108
             texto_linha = " ".join(linha)
             # posição de cada palavra: reserva a linha inteira com as palavras ainda invisíveis
             for k, palavra in enumerate(linha):
@@ -95,13 +99,16 @@ for frase, tipo, partes, perto in DESTAQUES:
                 inv = " ".join(linha[k + 1:])
                 txt = vis + (r"{\alpha&HFF&} " + inv if inv else "")
                 fim = b if k == len(linha) - 1 else max(t + 0.05, PAL[min(j + 1, i1)]["s"] - 0.04)
-                com_sombra(t, fim, "Rubik", (540, y), txt, blur=12, alfa="&H60&", desl=6)
+                ultimo = n == len(partes) - 1 and k == len(linha) - 1
+                com_sombra(t, fim, "Rubik", (540, y), txt, blur=12, alfa="&H60&", desl=6,
+                           extra=r"\fad(0,140)" if k == len(linha) - 1 else "")
+                SFX.append((t, "pop", n * 3 + k))
     elif tipo == "playfair":
-        y0 = 1000 - (len(partes) - 1) * 72
+        y0 = 1000 - (len(partes) - 1) * 62
         ordem = list(range(i0, i1 + 1))
         pos = 0
         for n, linha in enumerate(partes):
-            y = y0 + n * 144
+            y = y0 + n * 124
             for k in range(len(linha)):
                 # quando aparece este pedaço: no início da sua primeira palavra
                 npal = len(linha[k][0].split())
@@ -112,25 +119,40 @@ for frase, tipo, partes, perto in DESTAQUES:
                 txt = vis + (r"{\alpha&HFF&} " + inv if inv else "")
                 fim = b if k == len(linha) - 1 else PAL[ordem[min(pos, len(ordem) - 1)]]["s"] - 0.04
                 com_sombra(t, max(fim, t + 0.05), "Playfair", (540, y), txt, blur=14, alfa="&H38&", desl=5,
-                           extra=r"\fad(120,0)")
+                           extra=r"\fad(120,140)" if k == len(linha) - 1 else r"\fad(120,0)")
+                SFX.append((t, "brilho", n * 2 + k))
     elif tipo == "amatic":
-        # letra a letra, distribuído ao longo da fala
-        texto = "\\N".join(partes)
-        letras = [c for c in texto.replace("\\N", "\n")]
-        n_vis = [k for k, c in enumerate(letras) if c not in " \n"]
+        # letra a letra, uma linha por evento (controle do espaçamento), distribuído ao longo da fala
+        passo = 128
+        y0 = 1180 - (len(partes) - 1) * passo / 2
+        total = sum(len(l.replace(" ", "")) for l in partes)
         dur = PAL[i1]["e"] - PAL[i0]["s"]
-        for m, k in enumerate(n_vis):
-            t = a + dur * m / len(n_vis)
-            t2 = a + dur * (m + 1) / len(n_vis) if m + 1 < len(n_vis) else b
-            vis = "".join(letras[:k + 1]).replace("\n", "\\N")
-            inv = "".join(letras[k + 1:]).replace("\n", "\\N")
-            txt = vis + (r"{\alpha&HFF&}" + inv if inv else "")
-            com_sombra(t, t2, "Amatic", (540, 1180), txt, blur=14, alfa="&H48&", desl=6)
+        m = 0
+        for n, linha in enumerate(partes):
+            y = y0 + n * passo
+            visiveis = [k for k, c in enumerate(linha) if c != " "]
+            for q, k in enumerate(visiveis):
+                t = a + dur * m / total
+                m += 1
+                prox = a + dur * m / total if m < total else b
+                ultimo_da_linha = q == len(visiveis) - 1
+                fim = b if ultimo_da_linha else prox
+                vis, inv = linha[:k + 1], linha[k + 1:]
+                txt = vis + (r"{\alpha&HFF&}" + inv if inv else "")
+                com_sombra(t, fim, "Amatic", (540, int(y)), txt, blur=14, alfa="&H48&", desl=6,
+                           extra=r"\fad(0,140)" if ultimo_da_linha else "")
+                SFX.append((t, "tecla", m))
 
 # ------------------------------------------------------------------ legenda base
 inicio = achar("posso pesar o clima")[1] + 1          # nada sobre "Posso pesar o clima?"
 blocos, atual = [], []
+dentro = {i for i0, i1 in ocupado for i in range(i0, i1 + 1)}
 for i in range(inicio, len(PAL)):
+    if i in dentro:
+        if atual:
+            blocos.append(atual)
+            atual = []
+        continue
     w = PAL[i]["w"].strip()
     atual.append(i)
     chars = sum(len(PAL[k]["w"].strip()) + 1 for k in atual)
@@ -148,11 +170,13 @@ for n, bl in enumerate(blocos):
     if n + 1 < len(blocos):
         prox = PAL[blocos[n + 1][0]]["s"] - 0.03
         b = min(max(b, prox), PAL[bl[-1]]["e"] + 0.6, prox)
-    if any(a < y and b > x for x, y in ocupado):        # some enquanto há destaque
-        continue
+    if n + 1 < len(blocos) and blocos[n + 1][0] - bl[-1] > 1:   # destaque logo depois: sai antes dele
+        b = min(b, PAL[blocos[n + 1][0]]["s"] - 0.03, PAL[bl[-1] + 1]["s"] - 0.08)
+    elif bl[-1] + 1 < len(PAL) and (bl[-1] + 1) in dentro:
+        b = min(b, PAL[bl[-1] + 1]["s"] - 0.08)
     txt = " ".join(PAL[k]["w"].strip() for k in bl)
-    txt = txt[0].lower() + txt[1:] if txt[:1].isupper() and txt.split()[0] not in ("Você", "Eu", "E", "O") else txt
     com_sombra(a, b, "Base", (540, BASE_Y), txt, blur=7, alfa="&H5A&", desl=3)
 
 open("legendas.ass", "w", encoding="utf-8").write(CAB + "\n".join(EV) + "\n")
+json.dump(sorted(SFX), open("sfx.json", "w"))
 print(len(blocos), "blocos de legenda,", len(DESTAQUES), "destaques")
