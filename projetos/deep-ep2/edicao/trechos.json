@@ -1,0 +1,587 @@
+[
+ {
+  "n": 0,
+  "fonte": "lado_inicio",
+  "ini": 5.6,
+  "fim": 10.133333333333333,
+  "yt": false,
+  "texto": "Se o Instagram acabasse amanhã, de quem você sentiria falta?",
+  "conf": 1.0
+ },
+ {
+  "n": 1,
+  "fonte": "take1",
+  "ini": 10.7,
+  "fim": 13.033333333333333,
+  "yt": false,
+  "texto": "Quem você procuraria em outro lugar?",
+  "conf": 1.0
+ },
+ {
+  "n": 2,
+  "fonte": "take1",
+  "ini": 13.766666666666667,
+  "fim": 14.566666666666666,
+  "yt": false,
+  "texto": "Vamos, gente?",
+  "conf": 0.5
+ },
+ {
+  "n": 3,
+  "fonte": "take1",
+  "ini": 14.9,
+  "fim": 19.3,
+  "yt": false,
+  "texto": "Você pensou em alguém? Então guarda esse nome!",
+  "conf": 1.0
+ },
+ {
+  "n": 4,
+  "fonte": "take1",
+  "ini": 23.466666666666665,
+  "fim": 28.666666666666668,
+  "yt": false,
+  "texto": "eu comecei a pensar isso a partir de uma mudança que aconteceu em mim.",
+  "conf": 1.0
+ },
+ {
+  "n": 5,
+  "fonte": "take1",
+  "ini": 29.033333333333335,
+  "fim": 36.7,
+  "yt": false,
+  "texto": "porque eu comecei a procurar em outros lugares, outras redes sociais, por exemplo, substeques, podcasts.",
+  "conf": 1.0
+ },
+ {
+  "n": 6,
+  "fonte": "take1",
+  "ini": 40.0,
+  "fim": 62.96666666666667,
+  "yt": false,
+  "texto": "um tipo de conversa que eu estava sentindo falta de encontrar aqui, porque eu queria ter tempo para acompanhar uma ideia, para entender melhor o raciocínio de alguém, para terminar um conteúdo sentindo que alguma coisa tinha ficado.",
+  "conf": 1.0
+ },
+ {
+  "n": 7,
+  "fonte": "take1",
+  "ini": 76.63333333333334,
+  "fim": 83.83333333333333,
+  "yt": false,
+  "texto": "E essa busca me fez pensar também no que eu realmente queria produzir,",
+  "conf": 1.0
+ },
+ {
+  "n": 8,
+  "fonte": "take1",
+  "ini": 84.26666666666667,
+  "fim": 120.6,
+  "yt": false,
+  "texto": "porque eu trabalho com internet, mas eu também estou aqui do outro lado, consumindo um pouco de tudo isso. E foi aí que eu comecei a perceber que algumas pessoas apareciam muito para mim, até por conta do que eu consumo, do tipo de conteúdo que eu consumo, e outras eu fazia realmente questão de procurar, porque eu queria ouvir mais aquela pessoa, saber do que ela estava falando, acompanhar uma conversa até o final.",
+  "conf": 1.0
+ },
+ {
+  "n": 9,
+  "fonte": "take1",
+  "ini": 148.4,
+  "fim": 184.23333333333332,
+  "yt": false,
+  "texto": "E conversando com amigas, eu pude perceber que essa busca vai além de algo que eu estou sentindo, porque tem muita gente também procurando mais espaço para aprender, para acompanhar um conteúdo com profundidade, para encontrar referências, para realmente se abastecer. E tem criador buscando mais espaço para desenvolver o próprio trabalho e uma relação mais direta com quem o acompanha.",
+  "conf": 1.0
+ },
+ {
+  "n": 10,
+  "fonte": "take1",
+  "ini": 183.26666666666668,
+  "fim": 210.16666666666666,
+  "yt": false,
+  "texto": "E a minha leitura disso é que essas duas vontades, elas estão se encontrando, porque você pode descobrir alguém num vídeo curto, por exemplo, e querer continuar aquela conversa num podcast, num texto, numa comunidade, mas os diferentes formatos que existem hoje passaram a cumprir papéis diferentes.",
+  "conf": 1.0
+ },
+ {
+  "n": 11,
+  "fonte": "take1",
+  "ini": 218.86666666666667,
+  "fim": 226.6,
+  "yt": false,
+  "texto": "Então, um pode despertar o interesse, o outro pode dar espaço para desenvolver uma ideia, por exemplo,",
+  "conf": 1.0
+ },
+ {
+  "n": 12,
+  "fonte": "take1",
+  "ini": 226.96666666666667,
+  "fim": 232.8,
+  "yt": false,
+  "texto": "e isso ajuda a explicar essa busca por outros lugares,",
+  "conf": 1.0
+ },
+ {
+  "n": 13,
+  "fonte": "take1",
+  "ini": 265.1,
+  "fim": 274.3666666666667,
+  "yt": false,
+  "texto": "A gente também quer poder escolher em que assuntos ficar e com quem se aprofundar sobre isso.",
+  "conf": 1.0
+ },
+ {
+  "n": 14,
+  "fonte": "take1",
+  "ini": 278.5,
+  "fim": 304.7,
+  "yt": true,
+  "texto": "E tem uma diferença importantíssima entre descobrir um assunto e conseguir compreendê -lo. Porque você pode passar por 10 vídeos sobre o mesmo tema e terminar conhecendo 10 opiniões diferentes e ainda não entender como aquelas pessoas chegaram às conclusões.",
+  "conf": 1.0
+ },
+ {
+  "n": 15,
+  "fonte": "take1",
+  "ini": 305.3333333333333,
+  "fim": 309.96666666666664,
+  "yt": true,
+  "texto": "Porque às vezes, acho que muitas vezes, o que falta é contexto.",
+  "conf": 1.0
+ },
+ {
+  "n": 16,
+  "fonte": "take1",
+  "ini": 310.6333333333333,
+  "fim": 325.8,
+  "yt": true,
+  "texto": "O que aconteceu antes? Quais são as dúvidas que surgiram no caminho? Onde aquela explicação deixou, por exemplo, de funcionar? E aí eu fui atrás de pesquisas até para entender melhor, para dividir aqui,",
+  "conf": 1.0
+ },
+ {
+  "n": 17,
+  "fonte": "take1",
+  "ini": 371.1,
+  "fim": 400.23333333333335,
+  "yt": true,
+  "texto": "E eu encontrei uma sobre podcasts, mais especificamente de notícias, que encontraram justamente essa busca por mais profundidade, por aprendizado, compreensão entre as principais motivações de quem acompanha esse tipo de formato. Mas isso não significa que um conteúdo precisa ser longo para ser bom.",
+  "conf": 1.0
+ },
+ {
+  "n": 18,
+  "fonte": "take1",
+  "ini": 416.2,
+  "fim": 426.96666666666664,
+  "yt": true,
+  "texto": "significa que algumas conversas precisam de espaço para mostrar o caminho, inclusive as possíveis contradições.",
+  "conf": 1.0
+ },
+ {
+  "n": 19,
+  "fonte": "take1",
+  "ini": 426.0,
+  "fim": 479.76666666666665,
+  "yt": true,
+  "texto": "Para quem cria, também existe uma escolha. Como desenvolver uma ideia quando o formato pede que você chegue muito rápido ao ponto final? Um corte pode apresentar uma conclusão. Uma conversa completa pode mostrar o raciocínio que levou até ela e a mesma pessoa pode querer as duas experiências em momentos diferentes. Por isso, gente, eu entendo essa busca como uma ampliação do que a gente quer encontrar na internet. Tem hora de descobrir, hora de se divertir e hora de permanecer por mais tempo num assunto.",
+  "conf": 1.0
+ },
+ {
+  "n": 20,
+  "fonte": "take2",
+  "ini": 0.0,
+  "fim": 6.666666666666667,
+  "yt": false,
+  "texto": "E foi dessa vontade de fazer algo diferente que nasceu o Deep",
+  "conf": 1.0
+ },
+ {
+  "n": 21,
+  "fonte": "take2",
+  "ini": 18.0,
+  "fim": 38.733333333333334,
+  "yt": false,
+  "texto": "e isso tem tudo a ver com a pergunta que eu deixei no primeiro episódio, qual é a diferença entre o que você fatura e o que você constrói. Lembra que no primeiro episódio eu falei dos mais de 4 milhões de criadores de conteúdo só aqui no Instagram?",
+  "conf": 1.0
+ },
+ {
+  "n": 22,
+  "fonte": "take2",
+  "ini": 39.43333333333333,
+  "fim": 52.93333333333333,
+  "yt": false,
+  "texto": "Para quem entra nesse mercado, conseguir ganhar dinheiro, digamos assim, pode ser a primeira grande conquista, com a primeira campanha que vem, com o primeiro contrato,",
+  "conf": 1.0
+ },
+ {
+  "n": 23,
+  "fonte": "take2",
+  "ini": 74.46666666666667,
+  "fim": 101.66666666666667,
+  "yt": false,
+  "texto": "mas depois aparece outra pergunta. Como fazer esse trabalho continuar? Porque o faturamento de hoje não garante necessariamente o próximo mês. E com tanta gente produzindo e tantas possibilidades de conteúdo, o que faz alguém continuar escolhendo acompanhar você?",
+  "conf": 1.0
+ },
+ {
+  "n": 24,
+  "fonte": "take2",
+  "ini": 102.4,
+  "fim": 119.06666666666666,
+  "yt": false,
+  "texto": "E é aí que a conversa sobre construção ganha realmente importância, porque envolve o trabalho que você desenvolve, a relação que você cria com quem te acompanha.",
+  "conf": 1.0
+ },
+ {
+  "n": 25,
+  "fonte": "take2",
+  "ini": 124.6,
+  "fim": 130.8,
+  "yt": false,
+  "texto": "e o motivo que você dá para as pessoas quererem voltar para te assistir.",
+  "conf": 1.0
+ },
+ {
+  "n": 26,
+  "fonte": "take2",
+  "ini": 146.26666666666668,
+  "fim": 174.63333333333333,
+  "yt": false,
+  "texto": "Lembrando que uma campanha envolve muito trabalho, entrega, prazo de pagamento e, sim, com certeza, isso pode sustentar uma empresa e fazer parte de uma carreira. Mas, entre uma campanha e outra, O que faz alguém continuar interessado no que você faz?",
+  "conf": 1.0
+ },
+ {
+  "n": 27,
+  "fonte": "take2",
+  "ini": 175.43333333333334,
+  "fim": 180.96666666666667,
+  "yt": false,
+  "texto": "Essa pergunta começou a ganhar uma importância tão grande para mim",
+  "conf": 1.0
+ },
+ {
+  "n": 28,
+  "fonte": "take2",
+  "ini": 208.9,
+  "fim": 222.66666666666666,
+  "yt": false,
+  "texto": "o que eu quero desenvolver ao longo do tempo, que tipo de conversa eu quero ter, porque alguém escolheria voltar ou procurar o meu conteúdo.",
+  "conf": 1.0
+ },
+ {
+  "n": 29,
+  "fonte": "take2",
+  "ini": 230.7,
+  "fim": 233.36666666666667,
+  "yt": false,
+  "texto": "hoje, existem",
+  "conf": 1.0
+ },
+ {
+  "n": 30,
+  "fonte": "take2",
+  "ini": 238.6,
+  "fim": 256.43333333333334,
+  "yt": false,
+  "texto": "mais caminhos para transformar conteúdo em trabalho, como programas, produtos, assinaturas, comunidades. As plataformas também criam ferramentas para vender, receber comissões e fechar parcerias.",
+  "conf": 1.0
+ },
+ {
+  "n": 31,
+  "fonte": "take2",
+  "ini": 256.93333333333334,
+  "fim": 257.46666666666664,
+  "yt": false,
+  "texto": "só que",
+  "conf": 1.0
+ },
+ {
+  "n": 32,
+  "fonte": "take2",
+  "ini": 269.3333333333333,
+  "fim": 285.06666666666666,
+  "yt": false,
+  "texto": "ter mais possibilidades de receita dentro de um aplicativo não elimina a sua dependência dele, porque você continua sujeito às mudanças na distribuição.",
+  "conf": 1.0
+ },
+ {
+  "n": 33,
+  "fonte": "take2",
+  "ini": 293.3666666666667,
+  "fim": 296.8,
+  "yt": false,
+  "texto": "nos formatos, nas regras que você tem que seguir",
+  "conf": 1.0
+ },
+ {
+  "n": 34,
+  "fonte": "take2",
+  "ini": 296.3333333333333,
+  "fim": 307.3666666666667,
+  "yt": false,
+  "texto": "e eu realmente não queria que toda a possibilidade de encontrar o meu conteúdo dependesse dele aparecer no feed de alguém,",
+  "conf": 1.0
+ },
+ {
+  "n": 35,
+  "fonte": "take2",
+  "ini": 325.6,
+  "fim": 333.46666666666664,
+  "yt": false,
+  "texto": "Foi dessa vontade que, além do Deep, eu também criei uma newsletter, eu criei um guia,",
+  "conf": 1.0
+ },
+ {
+  "n": 36,
+  "fonte": "take2",
+  "ini": 347.1,
+  "fim": 359.0,
+  "yt": false,
+  "texto": "E estou tentando cada vez mais abrir outros caminhos para continuar a conversa que a gente tem por aqui.",
+  "conf": 1.0
+ },
+ {
+  "n": 37,
+  "fonte": "take2",
+  "ini": 359.73333333333335,
+  "fim": 379.56666666666666,
+  "yt": false,
+  "texto": "Só que, vamos lá, mudar de lugar sozinho também não resolve, porque até no e -mail nos dias de hoje existe uma disputa por atenção. Num podcast, você também pode parar de escutar pela metade uma assinatura, ela pode ser cancelada,",
+  "conf": 1.0
+ },
+ {
+  "n": 38,
+  "fonte": "take2",
+  "ini": 380.1666666666667,
+  "fim": 382.93333333333334,
+  "yt": true,
+  "texto": "e estar em vários lugares",
+  "conf": 1.0
+ },
+ {
+  "n": 39,
+  "fonte": "take2",
+  "ini": 387.73333333333335,
+  "fim": 389.3666666666667,
+  "yt": true,
+  "texto": "também tem um gosto.",
+  "conf": 0.67
+ },
+ {
+  "n": 40,
+  "fonte": "take2",
+  "ini": 393.6666666666667,
+  "fim": 412.1666666666667,
+  "yt": true,
+  "texto": "Imagina que cada canal novo exige produzir mais, responder mais, manter uma frequência e eu posso acabar criando uma rotina com tudo isso que eu mesma não vou conseguir sustentar, tá?",
+  "conf": 1.0
+ },
+ {
+  "n": 41,
+  "fonte": "take2",
+  "ini": 455.4,
+  "fim": 469.6,
+  "yt": true,
+  "texto": "Então, antes de abrir outro espaço, tem uma pergunta. O que a pessoa vai encontrar ali que justifique acompanhar também por aquele caminho?",
+  "conf": 1.0
+ },
+ {
+  "n": 42,
+  "fonte": "take2",
+  "ini": 468.3333333333333,
+  "fim": 503.96666666666664,
+  "yt": true,
+  "texto": "um podcast pode dar espaço a uma conversa mais completa, uma newsletter pode reunir referências, organizar uma ideia e permitir que o leitor volte a ela. Enfim, cada formato precisa ter uma função dentro do trabalho e ainda existe outra diferença. Ter um perfil em outro aplicativo e desenvolver um canal de contato com quem escolheu receber seu conteúdo, não são a mesma coisa, tá?",
+  "conf": 1.0
+ },
+ {
+  "n": 43,
+  "fonte": "take2",
+  "ini": 507.3,
+  "fim": 509.8333333333333,
+  "yt": true,
+  "texto": "Uma lista de e -mails, por exemplo,",
+  "conf": 1.0
+ },
+ {
+  "n": 44,
+  "fonte": "take2",
+  "ini": 517.0,
+  "fim": 534.9,
+  "yt": true,
+  "texto": "pode permitir continuar esse contato mesmo que você troque a ferramenta de envio, respeitando, obviamente, a escolha de quem se inscreveu, mas ela não garante que alguém vá abrir a mensagem.",
+  "conf": 1.0
+ },
+ {
+  "n": 45,
+  "fonte": "take3",
+  "ini": 0.0,
+  "fim": 20.466666666666665,
+  "yt": true,
+  "texto": "Você ganha uma possibilidade de contato. A atenção continua sendo escolha da outra pessoa. Por isso, diversificar envolve pensar tanto na continuidade do trabalho, quanto na experiência de quem a acompanha.",
+  "conf": 0.67
+ },
+ {
+  "n": 46,
+  "fonte": "take3",
+  "ini": 21.9,
+  "fim": 34.93333333333333,
+  "yt": false,
+  "texto": "A pessoa precisa encontrar um motivo para continuar, por isso, quando eu penso no DIP, a pergunta vai além de onde publicar.",
+  "conf": 1.0
+ },
+ {
+  "n": 47,
+  "fonte": "take3",
+  "ini": 40.5,
+  "fim": 48.56666666666667,
+  "yt": false,
+  "texto": "A pergunta é, o que eu estou entregando que merece fazer parte da rotina de alguém?",
+  "conf": 1.0
+ },
+ {
+  "n": 48,
+  "fonte": "take3",
+  "ini": 78.3,
+  "fim": 87.73333333333333,
+  "yt": false,
+  "texto": "para mim é aí que construir começa a ficar mais concreto",
+  "conf": 1.0
+ },
+ {
+  "n": 49,
+  "fonte": "take3",
+  "ini": 87.6,
+  "fim": 108.26666666666667,
+  "yt": false,
+  "texto": "porque é desenvolver um trabalho que tem uma proposta reconhecível e conseguir sustentá -la nas próximas entregas. É a pessoa saber porque quer acompanhar você, mesmo quando o formato muda.",
+  "conf": 1.0
+ },
+ {
+  "n": 50,
+  "fonte": "take3",
+  "ini": 108.4,
+  "fim": 118.26666666666667,
+  "yt": false,
+  "texto": "Olha, eu ainda tô construindo isso, sabe? A newsletter, digamos que é uma escolha dentre muitas outras.",
+  "conf": 0.75
+ },
+ {
+  "n": 51,
+  "fonte": "take3",
+  "ini": 121.7,
+  "fim": 125.53333333333333,
+  "yt": false,
+  "texto": "que faz parte desse processo.",
+  "conf": 1.0
+ },
+ {
+  "n": 52,
+  "fonte": "take3",
+  "ini": 124.73333333333333,
+  "fim": 131.8,
+  "yt": false,
+  "texto": "e com certeza ela vem e ela traz um compromisso com a próxima edição.",
+  "conf": 1.0
+ },
+ {
+  "n": 53,
+  "fonte": "take3",
+  "ini": 136.1,
+  "fim": 142.93333333333334,
+  "yt": false,
+  "texto": "Então, lembra do nome que você pensou no começo do episódio?",
+  "conf": 1.0
+ },
+ {
+  "n": 54,
+  "fonte": "take3",
+  "ini": 157.33333333333334,
+  "fim": 166.7,
+  "yt": false,
+  "texto": "Talvez você procure essa pessoa pelo conhecimento, pelo humor, pelo jeito que ela tem de contar uma história.",
+  "conf": 1.0
+ },
+ {
+  "n": 55,
+  "fonte": "take3",
+  "ini": 177.86666666666667,
+  "fim": 188.23333333333332,
+  "yt": false,
+  "texto": "existe um motivo pelo qual você iria atrás dela em outro lugar. E é esse motivo que eu estou tentando construir também.",
+  "conf": 1.0
+ },
+ {
+  "n": 56,
+  "fonte": "take3",
+  "ini": 188.86666666666667,
+  "fim": 205.46666666666667,
+  "yt": false,
+  "texto": "Porque, gente, o faturamento mostra, obviamente, quanto entrou. Mas o que você constrói aparece também no trabalho que consegue sustentar, na reputação que forma,",
+  "conf": 1.0
+ },
+ {
+  "n": 57,
+  "fonte": "take3",
+  "ini": 215.46666666666667,
+  "fim": 220.9,
+  "yt": false,
+  "texto": "e nos motivos que você dá para alguém continuar voltando.",
+  "conf": 1.0
+ },
+ {
+  "n": 58,
+  "fonte": "take3",
+  "ini": 221.46666666666667,
+  "fim": 228.13333333333333,
+  "yt": false,
+  "texto": "só que essa relação ela está entrando numa fase digamos que mais complexa",
+  "conf": 1.0
+ },
+ {
+  "n": 59,
+  "fonte": "take3",
+  "ini": 234.2,
+  "fim": 237.16666666666666,
+  "yt": false,
+  "texto": "porque com mais ferramentas para produzir conteúdo,",
+  "conf": 1.0
+ },
+ {
+  "n": 60,
+  "fonte": "take3",
+  "ini": 237.4,
+  "fim": 244.63333333333333,
+  "yt": false,
+  "texto": "mais facilidade para vender e mais gente disputando a nossa atenção.",
+  "conf": 1.0
+ },
+ {
+  "n": 61,
+  "fonte": "take3",
+  "ini": 246.8,
+  "fim": 254.03333333333333,
+  "yt": false,
+  "texto": "E aí, como nós vamos conseguir",
+  "conf": 1.0
+ },
+ {
+  "n": 62,
+  "fonte": "take3",
+  "ini": 261.93333333333334,
+  "fim": 264.9,
+  "yt": false,
+  "texto": "decidir em quem confiar?",
+  "conf": 1.0
+ },
+ {
+  "n": 63,
+  "fonte": "take3",
+  "ini": 265.6,
+  "fim": 269.6666666666667,
+  "yt": false,
+  "texto": "E é sobre isso que a gente vai conversar no último episódio.",
+  "conf": 1.0
+ },
+ {
+  "n": 64,
+  "fonte": "take3",
+  "ini": 270.7,
+  "fim": 271.2,
+  "yt": false,
+  "texto": "Tchau!",
+  "conf": 1.0
+ }
+]
