@@ -12,3 +12,15 @@ Observações:
 - Linha 4: usados os takes centralizados (os primeiros ela estava na borda do quadro).
 - Linha 4 e 7 ficaram com as palavras gravadas ("Esse é um peso que eu tenho tentado tirar das minhas costas",
   "…sobre aquilo que você não quer ou sobre quem você não quer mais").
+
+## v2 (revisão da editora)
+Pedidos: tirar a voz da editora (ela lê o roteiro durante a gravação), cortes mais limpos, áudio sem estourar,
+cor real (a v1 estava laranja), início só com "Posso pesar o clima?".
+- **Voz da editora:** identificada por pitch (voz masculina ~105–135 Hz × Samara ~160–240 Hz, `falantes.py`) +
+  embeddings ECAPA (speechbrain, `takes_spk.py`/`linha_tempo.py`) + nível (ela está longe do celular: −30 a −45 dB).
+  A linha 2 da v1 (38,7 s) era a editora lendo; trocada pelo take dela em 89,7 s. "Posso, né?" também era a editora.
+- **Linha 4:** take contínuo 303,2–313,2 s ("Até porque… Aliás, esse é um peso…").
+- **Bordas** checadas por envelope de energia (sem respiro/fala antes ou depois); pausas internas só ≥ 0,55 s.
+- **Cor:** HLG decodificado com npl=300, tonemap mobius sem saturar, balanço de branco R×0,95 / B×1,08.
+- **Áudio:** nível igualado entre takes (±6 dB), passa-alta, afftdn leve, −2 dB em 250 Hz, +1 dB em 3 kHz,
+  compressão 2:1 sem ganho extra, −16 LUFS / −2 dBTP.
