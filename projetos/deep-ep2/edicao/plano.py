@@ -16,7 +16,8 @@ VINHETA_DUR = 1.56
 AJUSTES = {
     28: (208.45, None),   # não cortar o "O" de "O que eu quero desenvolver"
     48: (81.00, None),    # tirar o "Cacilda" antes de "Para mim, é aí que construir"
-    53: (138.45, None),   # tirar "uma responsabilidade também" antes de "Então, lembra do nome"
+    53: (138.15, None),   # (antes cortava o começo do "Então")
+    58: (None, 227.93),   # termina em "mais complexa", sem o "tá"   # tirar "uma responsabilidade também" antes de "Então, lembra do nome"
 }
 
 AUD = {}
@@ -88,13 +89,16 @@ def plano(versao):
         a, b = AJUSTES.get(t["n"], (None, None))
         t["ini"] = a if a is not None else t["ini"]
         t["fim"] = b if b is not None else t["fim"]
-    if versao == "instagram":
+    if versao in ("instagram", "reels"):
         tre = [t for t in tre if not t["yt"]]
+    if versao == "reels":                       # abertura + vinheta montadas pela editora
+        tre = [t for t in tre if t["n"] > VINHETA_APOS]
     segs, zoom, t = [], 1.0, 0.0
     for b in blocos(tre):
         fs = falas(b)
         if segs:
             zoom = 1.12 if zoom == 1.0 else 1.0      # corte de retake: alterna o enquadramento
+        fs = [(a, z) for a, z in fs if z - a >= 0.2]   # descarta fragmentos (cliques/respiros soltos)
         for i, (a, z) in enumerate(fs):
             segs.append(dict(fonte=b["fonte"], ini=a, fim=z, zoom=zoom, t=round(t, 3), ns=b["ns"], yt=b["yt"]))
             t += z - a
@@ -113,7 +117,7 @@ def plano(versao):
 
 
 if __name__ == "__main__":
-    for v in ("youtube", "instagram"):
+    for v in ("youtube", "instagram", "reels"):
         segs, total = plano(v)
         json.dump(dict(segmentos=segs, duracao=total), open(f"plano_{v}.json", "w"), indent=1)
         print(f"{v}: {len(segs)} segmentos, {total:.1f}s ({int(total // 60)}:{total % 60:04.1f})")
