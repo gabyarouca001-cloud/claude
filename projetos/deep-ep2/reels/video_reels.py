@@ -3,11 +3,23 @@ import json
 import os
 import subprocess
 
-from audio import FONTES
+# material vertical centralizado pela editora (9:16, 2160x3840); take 1 começa 16,0 s depois do original
+FONTES = {"take1": "ig/take1.mp4", "take2": "ig/take2.mp4", "take3": "ig/take3.mp4"}
+DESLOC = {"take1": -16.0, "take2": 0.0, "take3": 0.0}
 
 os.makedirs("seg_reels", exist_ok=True)
+for f in os.listdir("seg_reels"):
+    if f.endswith(".mp4"):
+        os.remove(os.path.join("seg_reels", f))
 plano = json.load(open("plano_reels.json"))["segmentos"]
 cx = json.load(open("centros_reels.json"))["segmentos"]
+
+
+def crop_vertical(z):
+    if z == 1.0:
+        return "scale=1080:1920:flags=lanczos,setsar=1"
+    return (f"crop=trunc(iw/{z}/2)*2:trunc(ih/{z}/2)*2:(iw-ow)/2:(ih-oh)*0.35,"
+            "scale=1080:1920:flags=lanczos,setsar=1")
 
 
 def crop(z, c):
@@ -25,8 +37,8 @@ for i, s in enumerate(plano):
     if os.path.exists(saida):
         continue
     dur = s["fim"] - s["ini"]
-    subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", f"{s['ini']:.3f}", "-i", FONTES[s["fonte"]], "-t", f"{dur:.3f}",
-                    "-an", "-vf", "fps=30," + crop(s["zoom"], cx[str(i)]), "-frames:v", str(round(dur * 30)),
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", f"{s['ini'] + DESLOC[s['fonte']]:.3f}", "-i", FONTES[s["fonte"]],
+                    "-t", f"{dur:.3f}", "-an", "-vf", "fps=30," + crop_vertical(s["zoom"]), "-frames:v", str(round(dur * 30)),
                     "-c:v", "libx264", "-preset", "veryfast", "-crf", "16", "-pix_fmt", "yuv420p",
                     saida + ".tmp.mp4"], check=True)
     os.replace(saida + ".tmp.mp4", saida)
@@ -34,16 +46,4 @@ for i, s in enumerate(plano):
         print(i, "/", len(plano), flush=True)
 open("seg_reels/lista.txt", "w").write("\n".join(lista) + "\n")
 
-# abertura da editora: recorte nela; "Vamo de Deep?" (7,00–8,03 s) com o quadro 16:9 inteiro sobre fundo desfocado
-ab = json.load(open("centros_reels.json"))["abertura"]
-c0 = ab["0"]
-fc = (f"[0:v]split=3[a][b][c];"
-      f"[a]trim=0:7.0,setpts=PTS-STARTPTS,{crop(1.0, c0)}[p1];"
-      f"[b]trim=7.0:8.0333,setpts=PTS-STARTPTS,split[b1][b2];"
-      f"[b1]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,gblur=sigma=40,eq=brightness=-0.06[fundo];"
-      f"[b2]scale=1080:-2[frente];[fundo][frente]overlay=0:(H-h)/2,setsar=1[p2];"
-      f"[c]trim=8.0333,setpts=PTS-STARTPTS,{crop(1.0, 0.5)}[p3];"
-      f"[p1][p2][p3]concat=n=3:v=1:a=0,fps=30[v]")
-subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", "inicio_editora.mp4", "-filter_complex", fc, "-map", "[v]",
-                "-c:v", "libx264", "-preset", "veryfast", "-crf", "16", "-pix_fmt", "yuv420p", "abertura_reels.mp4"], check=True)
 print("FIM")
