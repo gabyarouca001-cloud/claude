@@ -28,8 +28,7 @@ TAKES = [
     (469.82, 472.32, 6, "E isso vai além da aparência, tá?"),
     (521.84, 524.32, 7, "Nem toda situação ruim tem um lado bom."),
     (597.74, 607.03, 7, "Mas até ela pode te ensinar algo muito valioso ... quem você não quer mais."),
-    (717.76, 720.30, 8, "O óbvio precisa ser dito, né?"),
-    (721.24, 722.05, 8, "Tchau!"),
+    (717.76, 722.05, 8, "O óbvio precisa ser dito, né? ... Tchau! [sem cortes: respiro natural antes do tchau]"),
 ]
 PAD_INI, PAD_FIM = 0.10, 0.18
 SIL_DB, SIL_MIN = -36.0, 0.55          # pausas internas longas também saem
@@ -68,6 +67,8 @@ def plano(db):
         # pausas internas longas
         i0, i1 = int(a / 0.01), int(b / 0.01)
         mudo = db[i0:i1] < SIL_DB
+        if "[sem cortes" in txt:
+            mudo[:] = False
         cortes, k = [], 0
         while k < len(mudo):
             if mudo[k]:
@@ -117,19 +118,21 @@ def montar_audio(x, segs):
 
 
 def montar_video(segs, saida):
-    """Um segmento por vez (18 decodificadores 4K HEVC juntos estouram a memória)."""
-    os.makedirs("seg", exist_ok=True)
+    """Sem alteração de cor: mantém HLG 10 bits (BT.2020) e 60 fps do iPhone. Um segmento por vez (memória)."""
+    os.makedirs("seg_hlg", exist_ok=True)
+    x265 = "colorprim=bt2020:transfer=arib-std-b67:colormatrix=bt2020nc:range=limited:repeat-headers=1"
     for i, (a, b, _) in enumerate(segs):
-        if os.path.exists(f"seg/{i:02d}.mp4"):
+        if os.path.exists(f"seg_hlg/{i:02d}.mp4"):
             continue
         subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", f"{a - 1:.3f}", "-t", f"{b - a + 1.5:.3f}", "-i", SRC,
-                        "-vf", f"trim=start=1:duration={b - a:.4f},setpts=PTS-STARTPTS,fps={FPS},{HLG}", "-an",
-                        "-c:v", "libx264", "-preset", "faster", "-crf", "16", "-pix_fmt", "yuv420p",
-                        f"seg/{i:02d}.mp4"], check=True)
+                        "-vf", f"trim=start=1:duration={b - a:.4f},setpts=PTS-STARTPTS,fps=60,format=yuv420p10le",
+                        "-an", "-c:v", "libx265", "-preset", "fast", "-crf", "16", "-x265-params", x265,
+                        "-color_primaries", "bt2020", "-color_trc", "arib-std-b67", "-colorspace", "bt2020nc",
+                        "-tag:v", "hvc1", f"seg_hlg/{i:02d}.mp4"], check=True)
         print(f"segmento {i + 1}/{len(segs)}", flush=True)
-    open("seg/lista.txt", "w").write("".join(f"file '{i:02d}.mp4'\n" for i in range(len(segs))))
-    subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", "seg/lista.txt",
-                    "-i", "voz_final.wav", "-map", "0:v", "-map", "1:a", "-c:v", "copy",
+    open("seg_hlg/lista.txt", "w").write("".join(f"file '{i:02d}.mp4'\n" for i in range(len(segs))))
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", "seg_hlg/lista.txt",
+                    "-i", "voz_final.wav", "-map", "0:v", "-map", "1:a", "-c:v", "copy", "-tag:v", "hvc1",
                     "-c:a", "aac", "-b:a", "320k", "-shortest", "-movflags", "+faststart", saida], check=True)
 
 
@@ -145,4 +148,4 @@ if __name__ == "__main__":
     print(f"duração final: {t:.2f}s")
     if "--render" in sys.argv:
         montar_audio(x, segs)
-        montar_video(segs, "OBVIO_v2_4k.mp4")
+        montar_video(segs, "OBVIO_v3_4k_HDR.mp4")

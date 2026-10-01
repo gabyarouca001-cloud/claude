@@ -24,3 +24,8 @@ cor real (a v1 estava laranja), início só com "Posso pesar o clima?".
 - **Cor:** HLG decodificado com npl=300, tonemap mobius sem saturar, balanço de branco R×0,95 / B×1,08.
 - **Áudio:** nível igualado entre takes (±6 dB), passa-alta, afftdn leve, −2 dB em 250 Hz, +1 dB em 3 kHz,
   compressão 2:1 sem ganho extra, −16 LUFS / −2 dBTP.
+
+## v3
+- A editora reprovou a correção de cor da v2. **Padrão: não mexer na cor do bruto do iPhone.** Exportar HEVC 10 bits
+  HLG (BT.2020), 60 fps, como o original, e ela trata no CapCut.
+- Final "O óbvio precisa ser dito, né? … Tchau!" num trecho contínuo (respiro natural antes do tchau).

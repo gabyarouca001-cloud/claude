@@ -22,6 +22,7 @@ Ferramentas: FFmpeg via `pip install imageio-ffmpeg` (link para `/usr/local/bin/
 ## Edição
 - **Cortes:** retakes ("desce um pouco, Gabi", "vai", "volta"), frases repetidas/incompletas e silêncios ≥ 0,30 s (limiar −36 dBFS, mantém 0,10 s antes e 0,08 s depois). Cortes sempre no grid de frames (25 fps) e em vales de energia, sem cortar palavra.
 - **Punch-in de 12%** alternado a cada corte de retake (esconde o pulo); plano normal no fim.
+- **Cor:** não alterar a cor do bruto (iPhone HDR → manter HLG 10 bits/60 fps no arquivo para ela editar). Só mexer em cor se ela pedir.
 - Remover a **linha verde** no topo do export do CapCut (crop de 8 px nas bordas).
 - **Áudio:** trechos com volume/timbre diferente → igualar (compressão + EQ + ganho, crossfade de 30 ms em pausas). Mix final em **−14 LUFS**, pico ≤ −1,5 dBTP.
 - **Efeitos sonoros:** limpos e discretos (whoosh nas entradas de texto, tick em itens de lista, chime suave em capítulos), bem abaixo da voz.
