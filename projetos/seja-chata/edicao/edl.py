@@ -1,0 +1,16 @@
+EDL = [
+    ("IMG_1892", 81.0, 85.3, "seja chata", "mais chata", False),
+    ("IMG_1892", 207.0, 208.9, "seja chata com o seu tempo", "seu tempo", False),
+    ("IMG_1892", 300.6, 307.3, "até porque ele é", "mais valioso", False),
+    ("IMG_1892", 387.5, 390.9, "seja chata com o que você consome", "você consome", False),
+    ("IMG_1892", 414.4, 416.6, "inclusive aqui na internet", "na internet", False),
+    ("IMG_1892", 432.4, 434.7, "seja chata com o que você chama de urgente", "de urgente", False),
+    ("IMG_1892", 425.9, 427.5, "afinal nem tudo é", "tudo é", False),
+    ("IMG_1892", 468.4, 471.4, "e nem tudo precisa", "sua paz", False),
+    ("IMG_1892", 638.7, 640.9, "seja chata ao escolher suas companhias", "suas companhias", False),
+    ("IMG_1892", 668.0, 670.9, "será que você está dando atenção", "pessoas certas", False),
+    ("IMG_1892", 711.8, 719.8, "seja chata com o", "falar não", False),
+    ("IMG_1892", 788.1, 791.8, "e seja chata com", "atitudes também", False),
+    ("IMG_1892", 871.5, 876.0, "porque não adianta exigir", "a oferecer", False),
+    ("IMG_1893", 1.0, 7.0, "bom se isso é ser chata", "tchau", False),
+]
