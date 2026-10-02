@@ -8,10 +8,10 @@ import numpy as np
 import insercoes as Y
 
 SR = 48000
-OFF = 9.6667
+OFF = 9.8
 voz = np.frombuffer(subprocess.run(["ffmpeg", "-v", "error", "-i", "voz_reels.wav", "-f", "f32le", "-ac", "2", "-ar", str(SR), "-"],
                                    capture_output=True, check=True).stdout, np.float32).reshape(-1, 2)
-ab = np.frombuffer(subprocess.run(["ffmpeg", "-v", "error", "-i", "inicio_editora.mp4", "-vn", "-f", "f32le", "-ac", "2", "-ar", str(SR), "-"],
+ab = np.frombuffer(subprocess.run(["ffmpeg", "-v", "error", "-i", "inicio_v2.mp4", "-vn", "-f", "f32le", "-ac", "2", "-ar", str(SR), "-"],
                                   capture_output=True, check=True).stdout, np.float32).reshape(-1, 2)[:int(OFF * SR)]
 mix = np.concatenate([ab, voz]).copy()
 cache = {}

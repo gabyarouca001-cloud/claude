@@ -8,7 +8,7 @@ import numpy as np
 
 import insercoes as Y          # reaproveita INS e os sons (whoosh, tick, chime)
 
-OFF = 9.6667                  # duração da abertura da editora (vinheta incluída)
+OFF = 9.8
 W, H = 1080, 1920
 CX = 510                      # centro levemente à esquerda (ícones do Reels à direita)
 AMARELO, BRANCO = "&H00C0EDFC&", "&H00FFFFFF&"
