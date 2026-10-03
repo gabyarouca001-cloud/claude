@@ -17,3 +17,5 @@ entregas/*.mp4
 entregas/*.mov
 entregas/*.wav
 entregas/partes*/
+entregas/*.jpg
+entregas/*.png
