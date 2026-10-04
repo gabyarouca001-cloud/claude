@@ -15,7 +15,6 @@ INSERCOES = [
     ("acompanhar uma ideia", "42741", 2.2, 0.47, 2.0),
     ("consumindo um pouco", "4919", 2.2, 0.42, 1.0),
     ("encontrar referências", "42655", 2.2, 0.55, 1.5),
-    ("vídeo curto", "4911", 1.8, 0.72, 1.0),
     ("num podcast num texto", "44049", 1.1, 0.5, 2.0),
     ("num texto", "50731", 0.7, 0.6, 3.0),
     ("numa comunidade", "41813", 1.4, 0.45, 1.0),

@@ -99,7 +99,7 @@ Material: iPhone vertical HDR, ela se trocando enquanto fala, a editora (Gabi) l
 
 ## Reels DEEP (ajustes da editora no EP2 v3)
 - **Textos sobrepostos/destaques:** sombra preta leve atrás das letras (só o suficiente para dar leitura: `\bord3\blur8`, ~50% de opacidade). **Brilho só nas palavras amarelas**; branco sem brilho.
-- Destaques menores e dentro da **área segura do Instagram**: centro x = 510, largura útil ≤ 800 px (reduz a escala se passar).
+- Destaques menores e dentro da **área segura do Instagram**: centro x = 540 (centralizado; ela achou 510 torto), largura útil ≤ 800 px (reduz a escala se passar).
 - Legenda base: Rubik SemiBold **46** (palavra-chave 52).
 - **B-roll de banco (Mixkit):** tela cheia 9:16, ~1–2,4 s, **sem áudio**, zoom lento, com **clique de câmera** leve na entrada; sequência rápida quando ela enumera ("num podcast, num texto, numa comunidade").
 - **Trilha sentimental** (piano) por todo o vídeo, bem baixa (~−33 LUFS sob a voz em −14), entra depois da abertura.

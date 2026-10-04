@@ -8,7 +8,7 @@ import unicodedata
 
 W, H = 1080, 1920
 BASE_Y = 1221                  # ~63,6% da altura (medido no reel de referência)
-CX = 510                       # centro da área segura do Instagram (direita 140 px livres)
+CX = 540                       # centro da tela (a editora prefere centralizado; largura 800 não chega nos botões)
 LARG = 800                     # largura útil dos destaques
 BRANCO, OURO, MANTEIGA = "&H00FFFFFF&", "&H000BCEF1&", "&H00C1ECFB&"
 OFF = 9.8                     # abertura da editora (vinheta incluída)
