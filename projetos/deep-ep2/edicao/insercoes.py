@@ -202,6 +202,18 @@ class Trilha:
 
     def e(self, camada, ini, fim, estilo, texto):
         self.ev.append(f"Dialogue: {camada},{ts(ini)},{ts(fim)},{estilo},,0,0,0,,{texto}")
+        if estilo != "Eco" and r"\p1" not in texto:
+            self.ev.append(f"Dialogue: {max(camada - 1, 0)},{ts(ini)},{ts(fim)},{estilo},,0,0,0,,{sombra(texto)}")
+
+
+def sombra(texto):
+    """sombra preta leve atrás das letras, só para dar leitura sobre fundo claro (pedido da editora no Reels)"""
+    t = re.sub(r"\\1c&H[0-9A-Fa-f]+&", "", texto)
+    t = t.replace(r"\alpha&H00&", r"\alpha&H78&").replace(r"\blur0", r"\blur8")
+    pre = r"\1c&H000000&\3c&H000000&\bord3\blur8"
+    if not re.match(r"\{[^}]*\\alpha", t):
+        pre += r"\alpha&H78&"
+    return "{" + pre + t[1:] if t.startswith("{") else "{" + pre + "}" + t
 
 
 def tamanho_bold(texto, base=190, largura=1700):

@@ -105,12 +105,18 @@ Material: iPhone vertical HDR, ela se trocando enquanto fala, a editora (Gabi) l
 - **Trilha** por todo o vídeo, bem baixa (~−33 LUFS sob a voz em −14), entra depois da abertura. **Tranquila: nem triste nem alegre** (aprovada: Mixkit 655 "Chillax", tom maior, lenta). Piano melancólico (714, 593) ela achou triste demais. Conferir o nome da faixa pelo card do site (ids e títulos se desencontram na listagem).
 - **Sem fade out no final:** deixar o "Tchau" completo (+~1 s de take).
 - Pode encurtar tirando frases que não mudam o sentido (8 min ficou longo; v3 ficou com ~7:34).
-- **Versão final da editora (7:23, sobre a minha v3 4K):** tirou "e fazer parte de uma carreira" (redundante) e **apertou as pausas entre frases** (0,5–1,5 s a menos em ~7 pontos: antes de "E foi aí", "Então um pode", "e o motivo", "E assim, hoje", "e eu realmente", "mais facilidade", "E aí, como"). → Nas próximas, pausas entre frases mais curtas e tirar apostos que repetem a ideia.
+- **Versão final da editora (7:23, sobre a minha v3 4K):** tirou "e fazer parte de uma carreira" (redundante) e cortou **erros de fala** que passaram (0,5–1,5 s em ~7 pontos — ver seção abaixo; não era só pausa: antes de "E foi aí", "Então um pode", "e o motivo", "E assim, hoje", "e eu realmente", "mais facilidade", "E aí, como"). → Nas próximas, pausas entre frases mais curtas e tirar apostos que repetem a ideia.
 
 ## Erros de fala — conferir SEMPRE antes de entregar (lição do Reels DEEP EP2)
 O Whisper "limpa" gaguejos e repetições na transcrição, então eles passaram e a editora teve que cortar à mão. O que ela tirou da minha v3:
 "E aí, e foi aí" (falso começo) · "acompanha, pras pessoas, e o motivo" (resto de outra frase) · "e co… e fazer parte de uma carreira" · "existem mais, existem mais" · "nos, nos formatos" · "mais facil… mais facilidade" · "conseguir decidir, conseguir decidir".
-- Retranscrever a **voz final montada** com `initial_prompt` cheio de hesitações ("Hum, é, tipo, assim, né, eh. Então, eu, eu... ela, ela tá.") e `condition_on_previous_text=False`, e procurar: palavra/dupla repetida em < 3 s, palavra truncada ("…"), sílaba solta antes de palavra igual.
+- Checagem: `projetos/deep-ep2/edicao/checar_falas.py voz_16k.wav saida.json` (pedaços curtos cortados nas pausas + confirmação em janela centrada; validado: pega os erros do Reels sem alarme falso). Transcrever em janela longa NÃO serve.
+- (antigo) Retranscrever a **voz final montada** com `initial_prompt` cheio de hesitações ("Hum, é, tipo, assim, né, eh. Então, eu, eu... ela, ela tá.") e `condition_on_previous_text=False`, e procurar: palavra/dupla repetida em < 3 s, palavra truncada ("…"), sílaba solta antes de palavra igual.
 - Em todo corte de retake, ouvir/conferir 1 s antes e depois do ponto (sobra de outra frase).
 - Ficar com a **última repetição** (a mais fluida) e cortar no vale de energia.
 - Troca de música numa versão da editora: alinhar o áudio dela com o meu (correlação), recortar minha voz+SFX sem música no mapa dela e trocar só o áudio (`-c:v copy`) → script `projetos/deep-ep2/reels/musica_versao_editora.py`.
+
+## YouTube DEEP EP2 (versão youtube2)
+- Abertura 16:9 da editora (`inicio_editora.mp4`, 9,68 s, já com a vinheta) + montagem completa (com os trechos exclusivos do YouTube), sem os encurtamentos do Reels, com os cortes de erro de fala dela + os achados pela checagem.
+- Inserções no padrão do EP1 **com sombra preta leve atrás das letras** (`\bord3\blur8`, ~50%) — sem ela o texto branco some na parede clara.
+- Sem fade no final ("Tchau" completo). Script: `final_youtube2.py previa | 4k`.

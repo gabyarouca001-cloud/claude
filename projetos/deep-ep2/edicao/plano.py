@@ -38,6 +38,10 @@ EXCLUIR_ERROS = [
     ("take2", 284.869, 285.167), ("take2", 293.367, 293.403),  # "nos, nos formatos"
     ("take3", 237.236, 238.403),                               # "mais facil… mais facilidade"
     ("take3", 254.066, 254.133), ("take3", 261.933, 263.333),  # "conseguir decidir, conseguir decidir"
+    # achados pela checagem em pedaços (checar_falas.py) nos trechos do YouTube
+    ("take1", 102.10, 102.53),                                 # "por conta do, do que eu consumo"
+    ("take2", 503.65, 504.07),                                 # "não são a mesma coisa, tá."
+    ("take2", 509.40, 509.93), ("take2", 517.0, 518.04),       # "por exemplo, pode, e-mails, por exemplo, pode"
 ]
 TCHAU_EXTRA = 1.1                # deixa o "Tchau!" terminar (sem fade no fim)
 
