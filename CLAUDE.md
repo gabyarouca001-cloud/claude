@@ -96,3 +96,12 @@ Material: iPhone vertical HDR, ela se trocando enquanto fala, a editora (Gabi) l
 - Tirar muletas no começo de frase quando não fazem falta (ex.: "Bom," antes de "se isso é ser chata").
 - **Final:** depois do "Tchau", manter o take correndo até ela **sair do quadro** (aceno + saída), sem cortar.
 - Cor original (HLG 10 bits, 60 fps); prévia para o chat sempre em H.264 (HEVC/HDR não abre no chat).
+
+## Reels DEEP (ajustes da editora no EP2 v3)
+- **Textos sobrepostos/destaques:** sombra preta leve atrás das letras (só o suficiente para dar leitura: `\bord3\blur8`, ~50% de opacidade). **Brilho só nas palavras amarelas**; branco sem brilho.
+- Destaques menores e dentro da **área segura do Instagram**: centro x = 510, largura útil ≤ 800 px (reduz a escala se passar).
+- Legenda base: Rubik SemiBold **46** (palavra-chave 52).
+- **B-roll de banco (Mixkit):** tela cheia 9:16, ~1–2,4 s, **sem áudio**, zoom lento, com **clique de câmera** leve na entrada; sequência rápida quando ela enumera ("num podcast, num texto, numa comunidade").
+- **Trilha sentimental** (piano) por todo o vídeo, bem baixa (~−33 LUFS sob a voz em −14), entra depois da abertura.
+- **Sem fade out no final:** deixar o "Tchau" completo (+~1 s de take).
+- Pode encurtar tirando frases que não mudam o sentido (8 min ficou longo; v3 ficou com ~7:34).

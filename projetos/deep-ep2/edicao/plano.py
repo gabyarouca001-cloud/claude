@@ -20,6 +20,15 @@ AJUSTES = {
     58: (None, 227.93),   # termina em "mais complexa", sem o "tá"   # tirar "uma responsabilidade também" antes de "Então, lembra do nome"
 }
 
+# Reels v3: trechos tirados para encurtar (fonte, início, fim no tempo do take), em vales de energia
+EXCLUIR_REELS = [
+    ("take1", 101.13, 106.98),   # "até por conta do que eu consumo, do tipo de conteúdo que eu consumo"
+    ("take1", 226.80, 265.92),   # "e isso ajuda a explicar essa busca por outros lugares"
+    ("take2", 175.38, 230.66),   # "Essa pergunta começou a ganhar... procurar o meu conteúdo?"
+    ("take3", 108.05, 138.48),   # "Olha, eu ainda tô construindo isso... compromisso com a próxima edição"
+]
+TCHAU_EXTRA = 1.1                # deixa o "Tchau!" terminar (sem fade no fim)
+
 AUD = {}
 
 
@@ -113,7 +122,51 @@ def plano(versao):
         if s["ns"] != segs[-1]["ns"]:
             break
         s["zoom"] = 1.0
+    if versao == "reels":
+        segs, t = encurtar(segs)
     return segs, t
+
+
+def encurtar(segs):
+    """tira os trechos de EXCLUIR_REELS, alterna o punch-in a cada corte e alonga o tchau"""
+    out = []
+    for s in segs:
+        pedacos = [(s["ini"], s["fim"])]
+        cortou = False
+        for f, a, b in EXCLUIR_REELS:
+            if f != s["fonte"]:
+                continue
+            novos = []
+            for x, y in pedacos:
+                if b <= x or a >= y:
+                    novos.append((x, y))
+                    continue
+                cortou = True
+                if a - x >= 0.2:
+                    novos.append((x, snap(a)))
+                if y - b >= 0.2:
+                    novos.append((snap(b), y))
+            pedacos = novos
+        for k, (x, y) in enumerate(pedacos):
+            out.append(dict(s, ini=x, fim=y, corte=cortou and (k > 0 or x != s["ini"])))
+        if cortou and out and (not pedacos or pedacos[-1][1] != s["fim"]):
+            out[-1]["corte_depois"] = True
+    # grupos: novo grupo a cada troca de trecho (retake) ou corte de encurtamento
+    g, prev = 0, None
+    for s in out:
+        if prev is not None and (s["ns"] != prev["ns"] or s.get("corte") or prev.get("corte_depois")):
+            g += 1
+        s["g"] = g
+        prev = s
+    out[-1]["fim"] += TCHAU_EXTRA
+    t = 0.0
+    for s in out:
+        s["zoom"] = 1.0 if (g - s["g"]) % 2 == 0 else 1.12
+        s["t"] = round(t, 3)
+        t += s["fim"] - s["ini"]
+        for k in ("corte", "corte_depois", "g"):
+            s.pop(k, None)
+    return out, t
 
 
 if __name__ == "__main__":
