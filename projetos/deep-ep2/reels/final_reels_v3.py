@@ -15,6 +15,8 @@ OFF = 9.8
 TRILHA = "/home/user/work/broll/mus_714.mp3"      # Mixkit "Piano Reflections" (licença livre)
 CLIQUE = "/home/user/work/broll/shutter.mp3"      # Mixkit "Camera shutter click"
 TRILHA_LUFS = -33                                 # quase imperceptível debaixo da voz (-14)
+K4 = os.environ.get("K4") == "1"                  # versão final em 4K (2160x3840)
+SEG, ABERT, BROLL = ("seg_reels_4k", "abertura_reels_4k.mp4", "broll_v3_4k") if K4 else ("seg_reels", "abertura_reels.mp4", "broll_v3")
 
 
 def ler(arq, *extra):
@@ -43,7 +45,7 @@ cache = {}
 eventos = [(t, tipo, None) for t, tipo in json.load(open("sfx_reels.json"))] + [tuple(e) for e in json.load(open("sfx_deep.json"))]
 clique = ler(CLIQUE)[:, 0]
 clique = clique / np.abs(clique).max()
-broll = json.load(open("broll_v3.json"))
+broll = json.load(open(BROLL + ".json"))
 for k, b in enumerate(broll):
     emendado = k and abs(b["t"] - broll[k - 1]["fim"]) < 0.05
     eventos.append((b["t"] - 0.03, "clique", 0.10 if emendado else 0.14))
@@ -80,8 +82,8 @@ subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "f32le", "-ar", str(SR), "-
 
 if os.environ.get("SO_AUDIO"):
     raise SystemExit(f"áudio pronto ({dur:.1f}s)")
-open("lista_reels_total.txt", "w").write("file 'abertura_reels.mp4'\n" + "".join(
-    f"file 'seg_reels/{l.split(chr(39))[1]}'\n" for l in open("seg_reels/lista.txt") if l.strip()))
+open("lista_reels_total.txt", "w").write(f"file '{ABERT}'\n" + "".join(
+    f"file '{SEG}/{l.split(chr(39))[1]}'\n" for l in open(f"{SEG}/lista.txt") if l.strip()))
 
 # vídeo: base + B-roll por cima (some no fim de cada clipe) + inserções/legendas por cima de tudo
 entradas, filtros, ult = [], [], "0:v"
@@ -92,7 +94,7 @@ for k, b in enumerate(broll):
 filtros.append(f"[{ult}]ass=insercoes_reels.ass:fontsdir=fonts,ass=legendas_deep.ass:fontsdir=fonts[v]")
 subprocess.run(["ffmpeg", "-v", "error", "-stats", "-y", "-f", "concat", "-safe", "0", "-i", "lista_reels_total.txt",
                 "-i", "final_reels_v3.wav", *entradas, "-filter_complex", ";".join(filtros),
-                "-map", "[v]", "-map", "1:a", "-t", f"{dur:.3f}", "-c:v", "libx264", "-preset", "medium", "-crf", "18",
+                "-map", "[v]", "-map", "1:a", "-t", f"{dur:.3f}", "-c:v", "libx264", "-preset", "faster" if K4 else "medium", "-crf", "19" if K4 else "18",
                 "-pix_fmt", "yuv420p", "-color_primaries", "bt709", "-color_trc", "bt709", "-colorspace", "bt709",
-                "-c:a", "aac", "-b:a", "256k", "-movflags", "+faststart", "DEEP_EP2_Reels_v3_1080x1920.mp4"], check=True)
+                "-c:a", "aac", "-b:a", "256k", "-movflags", "+faststart", "DEEP_EP2_Reels_v3_4K_2160x3840.mp4" if K4 else "DEEP_EP2_Reels_v3_1080x1920.mp4"], check=True)
 print("OK", dur)

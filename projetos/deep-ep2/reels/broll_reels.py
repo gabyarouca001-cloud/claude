@@ -7,6 +7,9 @@ import subprocess
 import unicodedata
 
 OFF = 9.8
+K4 = os.environ.get("K4") == "1"
+LW, LH = (2160, 3840) if K4 else (1080, 1920)
+PASTA = "broll_v3_4k" if K4 else "broll_v3"
 BROLL = "/home/user/work/broll"
 # (frase falada, vídeo, duração, centro horizontal do recorte 0-1, início no clipe)
 INSERCOES = [
@@ -41,20 +44,20 @@ def achar(frase):
     return [W[i]["s"] for i in range(len(W)) if T[i:i + len(a)] == a][0]
 
 
-os.makedirs("broll_v3", exist_ok=True)
+os.makedirs(PASTA, exist_ok=True)
 lista = []
 for n, (frase, vid, dur, cx, ss) in enumerate(INSERCOES):
     t = round((OFF + achar(frase) - 0.08) * 30) / 30
     if lista and t < lista[-1]["fim"]:            # sequência rápida: emenda no anterior
         t = lista[-1]["fim"]
-    lista.append(dict(t=t, fim=round(t + dur, 3), vid=vid, arq=f"broll_v3/{n:02d}.mp4"))
-    vf = (f"scale=-2:1920:flags=lanczos,crop=1080:1920:'min(max(iw*{cx}-540,0),iw-1080)':0,"
-          f"scale=w='1080*(1+0.05*t/{dur})':h=-2:eval=frame:flags=bicubic,crop=1080:1920,fps=30,setsar=1")
+    lista.append(dict(t=t, fim=round(t + dur, 3), vid=vid, arq=f"{PASTA}/{n:02d}.mp4"))
+    vf = (f"scale=-2:{LH}:flags=lanczos,crop={LW}:{LH}:'min(max(iw*{cx}-{LW // 2},0),iw-{LW})':0,"
+          f"scale=w='{LW}*(1+0.05*t/{dur})':h=-2:eval=frame:flags=bicubic,crop={LW}:{LH},fps=30,setsar=1")
     if vid == "4950":                               # já é vertical
-        vf = (f"scale=1080:1920:flags=lanczos,scale=w='1080*(1+0.05*t/{dur})':h=-2:eval=frame:flags=bicubic,"
-              "crop=1080:1920,fps=30,setsar=1")
+        vf = (f"scale={LW}:{LH}:flags=lanczos,scale=w='{LW}*(1+0.05*t/{dur})':h=-2:eval=frame:flags=bicubic,"
+              f"crop={LW}:{LH},fps=30,setsar=1")
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", str(ss), "-i", f"{BROLL}/v_{vid}.mp4", "-t", str(dur), "-an",
                     "-vf", vf, "-frames:v", str(round(dur * 30)), "-c:v", "libx264", "-preset", "veryfast", "-crf", "16",
                     "-pix_fmt", "yuv420p", lista[-1]["arq"]], check=True)
     print(f"{t:7.2f}  {frase:24s} {vid}")
-json.dump(lista, open("broll_v3.json", "w"), indent=1)
+json.dump(lista, open(PASTA + ".json", "w"), indent=1)
