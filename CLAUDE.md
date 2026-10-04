@@ -102,7 +102,7 @@ Material: iPhone vertical HDR, ela se trocando enquanto fala, a editora (Gabi) l
 - Destaques menores e dentro da **área segura do Instagram**: centro x = 540 (centralizado; ela achou 510 torto), largura útil ≤ 800 px (reduz a escala se passar).
 - Legenda base: Rubik SemiBold **46** (palavra-chave 52).
 - **B-roll de banco (Mixkit):** tela cheia 9:16, ~1–2,4 s, **sem áudio**, zoom lento, com **clique de câmera** leve na entrada; sequência rápida quando ela enumera ("num podcast, num texto, numa comunidade").
-- **Trilha sentimental** (piano) por todo o vídeo, bem baixa (~−33 LUFS sob a voz em −14), entra depois da abertura.
+- **Trilha** por todo o vídeo, bem baixa (~−33 LUFS sob a voz em −14), entra depois da abertura. **Tranquila: nem triste nem alegre** (aprovada: Mixkit 655 "Chillax", tom maior, lenta). Piano melancólico (714, 593) ela achou triste demais. Conferir o nome da faixa pelo card do site (ids e títulos se desencontram na listagem).
 - **Sem fade out no final:** deixar o "Tchau" completo (+~1 s de take).
 - Pode encurtar tirando frases que não mudam o sentido (8 min ficou longo; v3 ficou com ~7:34).
 - **Versão final da editora (7:23, sobre a minha v3 4K):** tirou "e fazer parte de uma carreira" (redundante) e **apertou as pausas entre frases** (0,5–1,5 s a menos em ~7 pontos: antes de "E foi aí", "Então um pode", "e o motivo", "E assim, hoje", "e eu realmente", "mais facilidade", "E aí, como"). → Nas próximas, pausas entre frases mais curtas e tirar apostos que repetem a ideia.

@@ -9,7 +9,7 @@ import numpy as np
 
 SR = 48000
 EP2 = "/home/user/work/ep2"
-TRILHA = sys.argv[1] if len(sys.argv) > 1 else "/home/user/work/broll/mus_593.mp3"   # Mixkit "Finding Myself"
+TRILHA = sys.argv[1] if len(sys.argv) > 1 else "/home/user/work/broll/mus_655.mp3"   # Mixkit "Chillax" (tranquila, tom maior)
 SAIDA = sys.argv[2] if len(sys.argv) > 2 else "DEEP_EP2_Reels_editora_musica_nova.mp4"
 TRILHA_LUFS = -33
 INICIO = 9.7          # fim da abertura na versão dela
@@ -42,7 +42,10 @@ for a, b, o in zip(fronteiras, fronteiras[1:], offs):
     out[i:j] = p
 
 # trilha nova: loudnorm em -20 e desce para -33 LUFS; entra depois da abertura, some nos últimos 3 s
-copias = 3
+dur_trilha = float(subprocess.run(["ffmpeg", "-i", TRILHA], capture_output=True, text=True).stderr
+                   .split("Duration: ")[1].split(",")[0].split(":")[-1]) + 60 * int(subprocess.run(
+                       ["ffmpeg", "-i", TRILHA], capture_output=True, text=True).stderr.split("Duration: ")[1].split(":")[1])
+copias = max(2, int(np.ceil(dur / (dur_trilha - 4))) + 1)
 subprocess.run(["ffmpeg", "-v", "error", "-y", *sum([["-i", TRILHA] for _ in range(copias)], []), "-filter_complex",
                 ";".join(["[0:a][1:a]acrossfade=d=4[x1]"] + [f"[x{k}][{k + 1}:a]acrossfade=d=4[x{k + 1}]"
                                                              for k in range(1, copias - 1)]
