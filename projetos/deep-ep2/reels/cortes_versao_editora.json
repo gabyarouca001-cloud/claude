@@ -1,0 +1,74 @@
+[
+ {
+  "minha": [
+   9.73,
+   9.86
+  ],
+  "tirado": 0.13,
+  "texto_minha": "Você(9.31) pensou(9.99) em(10.33) alguém?(10.45)",
+  "texto_dela": "Cê(9.43) pensou(9.95) em(10.21) alguém?(10.33)"
+ },
+ {
+  "minha": [
+   61.36,
+   62.33
+  ],
+  "tirado": 0.97,
+  "texto_minha": "de(60.16) tudo(60.60) isso.(60.94) E(61.86) aí,(61.86) e(62.54) foi(62.54) aí(62.68) que(62.96) eu(63.12) comecei...(63.18)",
+  "texto_dela": "E(60.05) foi(61.27) aí(61.59) que(61.89) eu(62.09) comecei(62.11) a...(62.43)"
+ },
+ {
+  "minha": [
+   230.58,
+   231.81
+  ],
+  "tirado": 1.23,
+  "texto_minha": "Com(229.38) quem(229.64) te(229.84) acompanha,(230.22) pras(230.94) pessoas,(231.26) e(232.00) o(232.14) motivo(232.24) que(232.68) você...(232.88)",
+  "texto_dela": "Com(228.30) quem(228.56) te(228.76) acompanha(229.14) e(229.60) o(229.80) motivo(229.94) que(230.38) você...(230.58)"
+ },
+ {
+  "minha": [
+   249.06,
+   252.58
+  ],
+  "tirado": 3.27,
+  "texto_minha": "Uma(247.86) empresa(248.26) e(249.02) co...(249.44) e(249.74) fazer(250.04) parte(250.26) de(250.84) uma(251.28) carreira,(251.68) mas(252.56) entre...(253.28)",
+  "texto_dela": "Uma(245.55) empresa,(245.97) uma...(246.95)"
+ },
+ {
+  "minha": [
+   261.33,
+   263.11
+  ],
+  "tirado": 1.53,
+  "texto_minha": "E(260.13) assim,(260.49) hoje,(261.27) existem(262.11) mais,(262.27) existem(263.05) mais...(263.69)",
+  "texto_dela": "E(254.55) assim,(254.93) hoje,(255.89) existem(256.45) mais...(256.59)"
+ },
+ {
+  "minha": [
+   294.11,
+   294.69
+  ],
+  "tirado": 0.33,
+  "texto_minha": "Na(292.91) distribuição,(293.15) nos,(294.59) nos(294.79) formatos.(295.05)",
+  "texto_dela": "Na(285.80) distribuição,(286.06) nos(287.46) formatos...(287.56)"
+ },
+ {
+  "minha": [
+   433.94,
+   435.11
+  ],
+  "tirado": 1.17,
+  "texto_minha": "traduzir(432.74) conteúdo(433.28) mais(434.10) facil,(434.60) mais(435.28) facilidade.(435.74)",
+  "texto_dela": "traduzir(425.30) conteúdo(425.86) mais(426.54) facilidade.(427.08)"
+ },
+ {
+  "minha": [
+   445.36,
+   446.83
+  ],
+  "tirado": 1.47,
+  "texto_minha": "Consegui(444.16) decidir,(444.68) consegui(445.48) decidir(446.14) em(446.90) quem(447.22) confiar.(447.48)",
+  "texto_dela": "Em(435.55) seguida,(435.55) eu(436.47) decidi(436.49) em(436.79) quem(437.13) confiar.(437.39)"
+ }
+]
