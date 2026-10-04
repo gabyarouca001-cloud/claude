@@ -27,6 +27,18 @@ EXCLUIR_REELS = [
     ("take2", 175.38, 230.66),   # "Essa pergunta começou a ganhar... procurar o meu conteúdo?"
     ("take3", 108.05, 138.48),   # "Olha, eu ainda tô construindo isso... compromisso com a próxima edição"
 ]
+# erros de fala que a editora cortou na versão final do Reels (falsos começos, repetições, sobras),
+# mapeados para o tempo dos takes; valem para todas as versões
+EXCLUIR_ERROS = [
+    ("take1", 93.166, 93.267), ("take1", 93.6, 94.467),        # "E aí, e foi aí"
+    ("take2", 119.035, 119.167), ("take2", 124.6, 125.703),    # "acompanha, pras pessoas, e o motivo"
+    ("take2", 159.8, 160.267), ("take2", 163.333, 166.033),    # "e co… e fazer parte de uma carreira"
+    ("take2", 166.4, 166.5),
+    ("take2", 231.969, 233.467), ("take2", 238.6, 238.636),    # "existem mais, existem mais"
+    ("take2", 284.869, 285.167), ("take2", 293.367, 293.403),  # "nos, nos formatos"
+    ("take3", 237.236, 238.403),                               # "mais facil… mais facilidade"
+    ("take3", 254.066, 254.133), ("take3", 261.933, 263.333),  # "conseguir decidir, conseguir decidir"
+]
 TCHAU_EXTRA = 1.1                # deixa o "Tchau!" terminar (sem fade no fim)
 
 AUD = {}
@@ -100,7 +112,7 @@ def plano(versao):
         t["fim"] = b if b is not None else t["fim"]
     if versao in ("instagram", "reels"):
         tre = [t for t in tre if not t["yt"]]
-    if versao == "reels":                       # abertura + vinheta montadas pela editora
+    if versao in ("reels", "youtube2"):         # abertura + vinheta montadas pela editora
         tre = [t for t in tre if t["n"] > VINHETA_APOS]
     segs, zoom, t = [], 1.0, 0.0
     for b in blocos(tre):
@@ -123,17 +135,19 @@ def plano(versao):
             break
         s["zoom"] = 1.0
     if versao == "reels":
-        segs, t = encurtar(segs)
+        segs, t = encurtar(segs, EXCLUIR_REELS)
+    if versao == "youtube2":                    # YouTube completo (sem os encurtamentos do Reels)
+        segs, t = encurtar(segs, EXCLUIR_ERROS)
     return segs, t
 
 
-def encurtar(segs):
-    """tira os trechos de EXCLUIR_REELS, alterna o punch-in a cada corte e alonga o tchau"""
+def encurtar(segs, excluir):
+    """tira os trechos excluídos, alterna o punch-in a cada corte e alonga o tchau"""
     out = []
     for s in segs:
         pedacos = [(s["ini"], s["fim"])]
         cortou = False
-        for f, a, b in EXCLUIR_REELS:
+        for f, a, b in excluir:
             if f != s["fonte"]:
                 continue
             novos = []
@@ -170,7 +184,7 @@ def encurtar(segs):
 
 
 if __name__ == "__main__":
-    for v in ("youtube", "instagram", "reels"):
+    for v in ("youtube", "instagram", "reels", "youtube2"):
         segs, total = plano(v)
         json.dump(dict(segmentos=segs, duracao=total), open(f"plano_{v}.json", "w"), indent=1)
         print(f"{v}: {len(segs)} segmentos, {total:.1f}s ({int(total // 60)}:{total % 60:04.1f})")

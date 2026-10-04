@@ -1,7 +1,9 @@
 """EP2 — textos (ASS), efeitos sonoros e mix, no padrão aprovado do EP1. Âncoras nas palavras da montagem
 final do YouTube (final_youtube.json); a versão Instagram recebe as mesmas inserções remapeadas (as que caem
 em trecho exclusivo do YouTube saem)."""
+import difflib
 import json
+import os
 import re
 import subprocess
 import sys
@@ -10,7 +12,14 @@ import unicodedata
 import numpy as np
 
 SR = 48000
-PAL = [w for s in json.load(open("final_youtube.json")) for w in s["words"]]
+# BASE=youtube2: versão final do YouTube com a abertura da editora (inicio_editora.mp4) e os cortes de erro de fala;
+# âncoras na retranscrição dessa montagem e tempos "perto" convertidos da montagem antiga do YouTube
+BASE = os.environ.get("BASE", "youtube")
+OFF = 9.68 if BASE == "youtube2" else 0.0
+if BASE == "youtube2":
+    PAL = json.load(open("checar_youtube2.json"))
+else:
+    PAL = [w for s in json.load(open("final_youtube.json")) for w in s["words"]]
 
 
 def norm(t):
@@ -21,18 +30,47 @@ def norm(t):
 TOK = [norm(w["w"]) for w in PAL]
 
 
+SINONIMOS = {"para": "pra", "estou": "to", "esta": "ta", "substeques": "substacks", "substack": "substacks", "dip": "deep"}
+
+
+def parecido(a, b):
+    """tokens iguais, com grafias equivalentes ou quase iguais (o Whisper varia "pra/para", "substeques"...)"""
+    if len(a) != len(b):
+        return False
+    for x, y in zip(a, b):
+        x, y = SINONIMOS.get(x, x), SINONIMOS.get(y, y)
+        if x != y and not (min(len(x), len(y)) >= 5 and difflib.SequenceMatcher(None, x, y).ratio() >= 0.8):
+            return False
+    return True
+
+
+def antigo_para_novo(t):
+    """tempo da montagem antiga do YouTube -> montagem youtube2 (pela fonte; usa o segmento mais próximo)"""
+    if BASE != "youtube2":
+        return t
+    velho = json.load(open("plano_youtube.json"))["segmentos"]
+    novo = json.load(open("plano_youtube2.json"))["segmentos"]
+    s = min(velho, key=lambda s: 0 if s["t"] <= t <= s["t"] + s["fim"] - s["ini"] else min(abs(t - s["t"]), abs(t - s["t"] - s["fim"] + s["ini"])))
+    src = s["ini"] + min(max(t - s["t"], 0), s["fim"] - s["ini"])
+    q = min((q for q in novo if q["fonte"] == s["fonte"]),
+            key=lambda q: 0 if q["ini"] <= src <= q["fim"] else min(abs(src - q["ini"]), abs(src - q["fim"])))
+    return q["t"] + min(max(src - q["ini"], 0), q["fim"] - q["ini"])
+
+
 def achar(frase, perto, apos=None):
     """ocorrência da frase mais próxima de `perto` (s); com `apos`, só depois desse instante"""
+    if apos is None:
+        perto = antigo_para_novo(perto)
     alvo = [norm(p) for p in frase.split()]
     occ = [(w["s"], PAL[i + len(alvo) - 1]["e"]) for i, w in enumerate(PAL)
-           if TOK[i:i + len(alvo)] == alvo and (apos is None or w["s"] > apos)]
+           if parecido(TOK[i:i + len(alvo)], alvo) and (apos is None or w["s"] > apos)]
     if not occ:
         raise ValueError(f"não achei {frase!r} perto de {perto}")
     return min(occ, key=lambda o: abs(o[0] - perto)) if apos is None else min(occ)
 
 
 # ------------------------------------------------------------------ mapa YouTube -> Instagram
-PY = json.load(open("plano_youtube.json"))["segmentos"]
+PY = json.load(open(f"plano_{BASE}.json"))["segmentos"]
 PI = json.load(open("plano_instagram.json"))["segmentos"]
 
 
@@ -223,14 +261,14 @@ def proximo(T, a, b):
 
 
 def gerar(versao):
-    dur = json.load(open(f"plano_{versao}.json"))["duracao"]
-    mp = (lambda t: t) if versao == "youtube" else para_ig
+    dur = json.load(open(f"plano_{versao}.json"))["duracao"] + OFF
+    mp = (lambda t: t + OFF) if versao in ("youtube", "youtube2") else para_ig
     T = Trilha()
     for tipo, frase, depois, fim, c in INS:
         s0, e0 = achar(frase, depois)
         a_y = s0 - 0.05
         if fim == "fim":
-            b_y = PY[-1]["t"] + PY[-1]["fim"] - PY[-1]["ini"] - 0.7
+            b_y = PY[-1]["t"] + PY[-1]["fim"] - PY[-1]["ini"] - (0.0 if BASE == "youtube2" else 0.7)
         elif isinstance(fim, str):
             b_y = achar(fim, s0, apos=s0 + 0.1)[0] - 0.08
         else:
@@ -242,7 +280,7 @@ def gerar(versao):
         b = mp(b_y)
         if b is None or b <= a:
             b = a + (b_y - a_y)
-        b = min(b, dur - 0.65)
+        b = min(b, dur - (0.05 if BASE == "youtube2" else 0.65))
         if tipo == "titulo":
             titulo(T, a, b, c["serif"], c["bold"], c.get("eco"), c.get("extra"))
         elif tipo == "capitulo":
@@ -302,6 +340,11 @@ CACHE = {}
 def mixar(versao, sfx):
     voz = np.frombuffer(subprocess.run(["ffmpeg", "-v", "error", "-i", f"voz_{versao}.wav", "-f", "f32le", "-"],
                                        capture_output=True, check=True).stdout, np.float32).reshape(-1, 2).copy()
+    if OFF:   # áudio da abertura da editora na frente
+        ab = np.frombuffer(subprocess.run(["ffmpeg", "-v", "error", "-i", "inicio_editora.mp4", "-vn", "-f", "f32le",
+                                           "-ac", "2", "-ar", str(SR), "-"], capture_output=True, check=True).stdout,
+                           np.float32).reshape(-1, 2)[:int(OFF * SR)]
+        voz = np.concatenate([ab, voz])
     for t, tipo in sfx:
         if tipo not in CACHE:
             CACHE[tipo] = som(tipo).astype(np.float32)
