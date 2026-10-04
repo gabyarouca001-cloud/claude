@@ -105,3 +105,4 @@ Material: iPhone vertical HDR, ela se trocando enquanto fala, a editora (Gabi) l
 - **Trilha sentimental** (piano) por todo o vídeo, bem baixa (~−33 LUFS sob a voz em −14), entra depois da abertura.
 - **Sem fade out no final:** deixar o "Tchau" completo (+~1 s de take).
 - Pode encurtar tirando frases que não mudam o sentido (8 min ficou longo; v3 ficou com ~7:34).
+- **Versão final da editora (7:23, sobre a minha v3 4K):** tirou "e fazer parte de uma carreira" (redundante) e **apertou as pausas entre frases** (0,5–1,5 s a menos em ~7 pontos: antes de "E foi aí", "Então um pode", "e o motivo", "E assim, hoje", "e eu realmente", "mais facilidade", "E aí, como"). → Nas próximas, pausas entre frases mais curtas e tirar apostos que repetem a ideia.
