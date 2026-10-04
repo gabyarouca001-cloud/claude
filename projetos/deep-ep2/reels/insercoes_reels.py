@@ -1,6 +1,7 @@
 """Reels 9:16 do EP2: legendas palavra a palavra + inserções do padrão DEEP adaptadas ao vertical, com
 espaçamento entre linhas e entre letras o mais curto possível. Âncoras nas palavras da montagem do Reels."""
 import json
+import os
 import re
 import unicodedata
 
@@ -171,6 +172,8 @@ for tipo, frase, depois, fim, c in Y.INS:
         b = a + fim
     a += OFF
     b = min(b + OFF, dur - 0.5)
+    if os.environ.get("SO_TOPO") == "1" and tipo not in ("capitulo", "proximo"):
+        continue
     if tipo == "titulo":
         titulo(a, b, c["serif"], c["bold"], c.get("extra"))
     elif tipo == "capitulo":
@@ -211,7 +214,7 @@ def limpa(p):
     return p.replace(base, novo) if novo else p
 
 
-for n, bl in enumerate(blocos):
+for n, bl in enumerate(blocos if os.environ.get("SO_TOPO") != "1" else []):
     a = PAL[bl[0]]["s"] - 0.03 + OFF
     b = PAL[bl[-1]]["e"] + 0.15 + OFF
     if n + 1 < len(blocos):
