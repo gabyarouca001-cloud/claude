@@ -25,10 +25,7 @@ def render(s):
     z = s["zoom"]
     vf = "fps=30,"
     if s.get("zexpr"):
-        # zoom animado (dinamica.py) sempre centrado no rosto: rosto no meio na horizontal e a 45% da altura (sem cortar a cabeça)
-        fx, fy = s["rosto"]
-        vf += (f"zoompan=z='{s['zexpr']}':x='max(0,min(iw-iw/zoom,{fx:.4f}*iw-iw/zoom/2))':"
-               f"y='max(0,min(ih-ih/zoom,{fy:.4f}*ih-0.45*ih/zoom))':d=1:s={LARG}x{ALT}:fps=30,setsar=1")
+        vf += s["zexpr"]
     elif z != 1.0:
         # punch-in levemente acima do centro (mantém o rosto no terço superior)
         vf += f"crop=trunc(iw/{z}/2)*2:trunc(ih/{z}/2)*2:(iw-ow)/2:(ih-oh)*0.35,"
@@ -47,10 +44,20 @@ def render(s):
 for versao in sys.argv[1:] or ["youtube", "instagram"]:
     segs = json.load(open(f"plano_{versao}.json"))["segmentos"]
     if os.path.exists(f"dinamica_{versao}.json") and os.path.exists(f"rosto_{versao}.json"):
-        from dinamica import expr_zoom
-        evs = json.load(open(f"dinamica_{versao}.json"))
-        for s, r in zip(segs, json.load(open(f"rosto_{versao}.json"))):
-            s["zexpr"], s["rosto"] = expr_zoom(s["t"], s["fim"] - s["ini"], s["zoom"], evs), r
+        from dinamica import filtro
+        import numpy as np
+        din = json.load(open(f"dinamica_{versao}.json"))
+        rost = json.load(open(f"rosto_{versao}.json"))
+        fy_take = {f: float(np.median([r[1] for s, r in zip(segs, rost) if s["fonte"] == f]))
+                   for f in {s["fonte"] for s in segs}}
+        camb = []
+        for a, b in din["camb"]:
+            rs = [r for s, r in zip(segs, rost) if s["t"] < b and s["t"] + s["fim"] - s["ini"] > a]
+            camb.append((a, b, float(np.mean([r[0] for r in rs])), float(np.mean([r[1] for r in rs]))))
+        din["camb"] = camb
+        for s in segs:
+            r = (0.5, fy_take[s["fonte"]])
+            s["zexpr"], s["rosto"] = filtro(s, r, din, LARG, ALT), r
     lista = []
     for i, s in enumerate(segs):
         lista.append(f"file '{os.path.basename(render(s))}'")

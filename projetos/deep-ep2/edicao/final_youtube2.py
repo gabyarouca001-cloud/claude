@@ -2,12 +2,15 @@
 (cortes de erro de fala aplicados) + inserções no padrão do EP1 + mix -14 LUFS. Sem fade no fim: o "Tchau" termina inteiro.
 Uso: python3 final_youtube2.py previa | 4k"""
 import json
+import math
 import os
 import re
 import subprocess
 import sys
 
 V = "youtube2"
+TRILHA = "/home/user/work/broll/mus_655.mp3"     # Mixkit "Chillax" — a mesma trilha aprovada no Reels
+TRILHA_LUFS = -33                                # bem baixa, debaixo da voz em -14
 OFF = 9.68
 DUR = json.load(open(f"plano_{V}.json"))["duracao"] + OFF
 
@@ -20,8 +23,21 @@ def audio_final():
     j = json.loads(re.search(r"\{[^{}]*\"input_i\"[^{}]*\}", med, re.S).group(0))
     ln = (f"loudnorm=I=-14:TP=-1.5:LRA=9:measured_I={j['input_i']}:measured_TP={j['input_tp']}:"
           f"measured_LRA={j['input_lra']}:measured_thresh={j['input_thresh']}:offset={j['target_offset']}:linear=true")
-    subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", f"mix_{V}.wav", "-af", f"{pre},{ln},alimiter=limit=0.84:level=disabled",
-                    "-ar", "48000", "-c:a", "pcm_s16le", f"final_{V}.wav"], check=True)
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", f"mix_{V}.wav", "-af", f"{pre},{ln}",
+                    "-ar", "48000", "-c:a", "pcm_f32le", f"voz_norm_{V}.wav"], check=True)
+    # trilha: loop com crossfade, -33 LUFS, entra depois da abertura (fade 2,5 s) e some nos últimos 3 s
+    dt = float(re.search(r"Duration: (\d+):(\d+):([\d.]+)", subprocess.run(["ffmpeg", "-i", TRILHA], capture_output=True,
+                         text=True).stderr).group(3)) + 60 * int(re.search(r"Duration: \d+:(\d+)", subprocess.run(
+                             ["ffmpeg", "-i", TRILHA], capture_output=True, text=True).stderr).group(1))
+    n = max(2, math.ceil((DUR - OFF) / (dt - 4)) + 1)
+    cadeia = ";".join(["[0:a][1:a]acrossfade=d=4[x1]"] + [f"[x{k}][{k + 1}:a]acrossfade=d=4[x{k + 1}]" for k in range(1, n - 1)]
+                      + [f"[x{n - 1}]lowpass=f=9000,loudnorm=I=-20:TP=-1.5:LRA=9,volume={TRILHA_LUFS + 20}dB,"
+                         f"atrim=0:{DUR - OFF:.3f},afade=t=in:d=2.5,afade=t=out:st={DUR - OFF - 3:.3f}:d=3,"
+                         f"adelay={int(OFF * 1000)}|{int(OFF * 1000)}[m]"])
+    subprocess.run(["ffmpeg", "-v", "error", "-y", *sum([["-i", TRILHA] for _ in range(n)], []), "-i", f"voz_norm_{V}.wav",
+                    "-filter_complex", cadeia + f";[{n}:a][m]amix=inputs=2:normalize=0:duration=first,"
+                    "alimiter=limit=0.84:level=disabled[o]", "-map", "[o]", "-ar", "48000", "-c:a", "pcm_s16le",
+                    f"final_{V}.wav"], check=True)
 
 
 def abertura(pasta, w, h):

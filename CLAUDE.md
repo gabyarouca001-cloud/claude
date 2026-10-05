@@ -120,5 +120,9 @@ O Whisper "limpa" gaguejos e repetições na transcrição, então eles passaram
 - Abertura 16:9 da editora (`inicio_editora.mp4`, 9,68 s, já com a vinheta) + montagem completa (com os trechos exclusivos do YouTube), sem os encurtamentos do Reels, com os cortes de erro de fala dela + os achados pela checagem.
 - Inserções no padrão do EP1 **com sombra preta leve atrás das letras** (`\bord3\blur8`, ~50%) — sem ela o texto branco some na parede clara.
 - Sem fade no final ("Tchau" completo). Script: `final_youtube2.py previa | 4k`.
-- **Dinamismo (pedido da editora no YouTube EP2):** zooms estratégicos sempre centrados no rosto (`rosto.py` acha o rosto por segmento; `dinamica.py` define punch/escada/push; `video.py` aplica via zoompan). Punch +0,2–0,25 em frases de impacto (sobe 0,22 s, volta 0,4 s), "escada" em perguntas seguidas, push lento em falas reflexivas. Whoosh curto e abafado na entrada/saída dos zooms (push sem som). Rosto a 45% da altura (não cortar a cabeça).
+- **Câmera (2ª rodada, feedback da editora — a 1ª com 27 zooms "incomodou", reposicionava várias vezes na mesma frase):**
+  - **Enquadramento padrão fixo por take:** cortar a margem de parede da direita usando a **cabeceira da cama** como referência (janela com a largura da cabeceira, centrada nela; bordas medidas em `dinamica.py` CABECEIRA). Sem trocar enquadramento a cada corte (nem o punch-in alternado de retake).
+  - **Só zooms estratégicos** (~10, frases de impacto), +0,20, com whoosh na entrada e na saída. Nada de push lento nem escada.
+  - **"Câmera B" nos gráficos/listas à esquerda:** corte seco para plano mais fechado (1,38×) com a Samara do **lado direito** (rosto a 64% da largura), lado esquerdo livre para as informações; volta no fim. Gráficos colados viram um trecho só.
+  - Trilha igual ao Reels ("Chillax", −33 LUFS) também no YouTube.
 - **Motion graphics explicativos** (ASS vetorial, à esquerda, sem cobrir o rosto): cadeia de formatos com ícones, contador animado de números, caixa "dentro do aplicativo" só com contorno (vira amarela na virada), tijolos amarelos empilhando (texto escuro, sem sombra) com som de encaixe.

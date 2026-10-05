@@ -199,7 +199,7 @@ def ts(t):
 
 class Trilha:
     def __init__(self):
-        self.ev, self.sfx = [], []
+        self.ev, self.sfx, self.esquerda = [], [], []
 
     def e(self, camada, ini, fim, estilo, texto):
         self.ev.append(f"Dialogue: {camada},{ts(ini)},{ts(fim)},{estilo},,0,0,0,,{texto}")
@@ -408,10 +408,14 @@ def gerar(versao):
             citacao(T, a, b, c["serif"], c["bold"])
         elif tipo == "proximo":
             proximo(T, a, b)
+        if tipo in ("lista", "pesquisa", "formatos", "app", "tijolos"):
+            T.esquerda.append((round(a, 3), round(b, 3)))
         print(f"{versao[:2]} {tipo:9} {ts(a)} -> {ts(b)}  {c.get('bold') or c.get('texto') or c.get('titulo') or ''}")
     if versao == "youtube2" and os.path.exists("dinamica_youtube2.json"):
         from dinamica import sons
-        T.sfx += [(t + OFF, tipo) for t, tipo in sons(json.load(open("dinamica_youtube2.json")))]
+        T.sfx += [(t + OFF, tipo) for t, tipo in sons(json.load(open("dinamica_youtube2.json")))] \
+            if isinstance(json.load(open("dinamica_youtube2.json")), dict) else []
+    json.dump(T.esquerda, open(f"esquerda_{versao}.json", "w"))
     open(f"insercoes_{versao}.ass", "w", encoding="utf-8").write(CAB + "\n".join(T.ev) + "\n")
     mixar(versao, T.sfx)
 
