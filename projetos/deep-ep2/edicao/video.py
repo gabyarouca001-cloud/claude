@@ -34,7 +34,7 @@ def render(s):
     dur = s["fim"] - s["ini"]
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", f"{s['ini']:.3f}", "-i", FONTES[s["fonte"]],
                     "-t", f"{dur:.3f}", "-an", "-vf", vf, "-frames:v", str(round(dur * 30)),
-                    "-c:v", "libx264", "-preset", "veryfast", "-crf", "18" if PREVIA else "16", "-pix_fmt", "yuv420p", "-g", "60",
+                    "-c:v", "libx264", "-preset", "veryfast", "-crf", "18", "-pix_fmt", "yuv420p", "-g", "60",
                     "-color_primaries", "bt709", "-color_trc", "bt709", "-colorspace", "bt709",
                     saida + ".tmp.mp4"], check=True)
     os.replace(saida + ".tmp.mp4", saida)
