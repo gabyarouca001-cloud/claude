@@ -1,7 +1,11 @@
 # DEEP — EP2 "O mercado mudou. O que você está construindo?" · textos para o YouTube
 
-Thumb: `thumb_DEEP_EP2_1280x720.jpg` — "pensou em alguém? / GUARDA ESSE / NOME." (quadro do take 1, 18,2 s).
-A thumb provoca (guarda esse nome) e o título dá o contexto da pergunta.
+Thumb principal: `thumb_DEEP_EP2_1280x720.jpg` — opção B: "o algoritmo te mostra muita gente. / MAS QUEM VOCÊ / PROCURA?"
+(quadro do take 1, 18,2 s, pele suavizada). A thumb provoca (quem você procura?) e o título dá o contexto.
+
+Teste A/B no YouTube Studio ("Testar e comparar", até 3 thumbs): subir B (principal), A ("se o Instagram acabasse
+amanhã, / QUEM VOCÊ IA / PROCURAR?") e C ("você fatura. mas / O QUE VOCÊ ESTÁ / CONSTRUINDO?") e deixar o YouTube
+escolher pelo tempo assistido.
 
 ## Título (recomendado)
 Se o Instagram acabasse amanhã, de quem você sentiria falta? | DEEP
