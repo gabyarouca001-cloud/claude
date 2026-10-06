@@ -62,11 +62,28 @@ def texto(xy, t, fonte, cor, sombra=6):
     ImageDraw.Draw(img).text(xy, t, font=fonte, fill=cor)
 
 
+LARG = 590                       # o texto não passa da mão dela
+
+
+def caber(caminho, tam, t):
+    f = ImageFont.truetype(caminho, tam)
+    while f.getlength(t) > LARG and tam > 20:
+        tam -= 2
+        f = ImageFont.truetype(caminho, tam)
+    return f
+
+
 L1, L2, L3 = (sys.argv[5:8] + ["pensou em alguém?", "GUARDA ESSE", "NOME."][len(sys.argv[5:8]):])[:3]
 x = 64
-texto((x, 318), L1, serif, (255, 255, 255))
-texto((x, 390), L2, bold, (255, 255, 255))
-texto((x, 462), L3, grande, AMARELO)
+f1 = caber(FONTES + "PlayfairItalic.ttf", 54, L1)
+f2 = caber(FONTES + "InterBlack.ttf", 84, L2)
+f3 = caber(FONTES + "InterBlack.ttf", 128, L3)
+y3 = 600 - f3.size * 1.05
+y2 = y3 - f2.size * 1.02
+y1 = y2 - f1.size * 1.25
+texto((x, y1), L1, f1, (255, 255, 255))
+texto((x, y2), L2, f2, (255, 255, 255))
+texto((x, y3), L3, f3, AMARELO)
 ImageDraw.Draw(img).rectangle([x, 70, x + 5, 102], fill=AMARELO)
 texto((x + 18, 72), "D E E P   ·   S A M A R A   C H E C O N", marca, (255, 255, 255), sombra=3)
 img.save(saida, quality=92)
