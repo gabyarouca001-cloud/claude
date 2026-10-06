@@ -33,7 +33,49 @@ PECAS = [
 # imagem por cima (sem o som dela): puxando o filtro, durante "trocar o filtro nos modelos que têm"
 INSERT = (257.0, 259.85, 129.10)          # (início no original, fim, momento no original da peça de áudio)
 
+def main_4k():
+    """4K trecho a trecho (o filtro único com 9 trims estoura a memória em 4K) + concat sem reencodar"""
+    import os
+    os.makedirs("pecas4k", exist_ok=True)
+    PECAS[:] = [(round(a * 30) / 30, round(b * 30) / 30) for a, b in PECAS]   # grade de quadros: vídeo = áudio
+    lista, t = [], 0.0
+    for k, (a, b) in enumerate(PECAS):
+        saida = f"pecas4k/{k:02d}.mp4"
+        d = b - a
+        filtro = (f"[0:a]afade=t=in:d=0.012,afade=t=out:st={d - 0.012:.3f}:d=0.012[a]")
+        entradas = ["-ss", f"{a:.3f}", "-t", f"{d:.3f}", "-i", "video.mp4"]
+        vmap = "0:v"
+        if a <= INSERT[2] <= b:
+            entradas += ["-ss", f"{INSERT[0]}", "-t", f"{INSERT[1] - INSERT[0]:.3f}", "-i", "video.mp4"]
+            filtro += f";[1:v]setpts=PTS-STARTPTS+{INSERT[2] - a:.3f}/TB[i];[0:v][i]overlay=eof_action=pass[v]"
+            vmap = "[v]"
+        filtro = filtro.split(";", 1)[1] if ";" in filtro else "[0:v]null[v]"
+        vmap = "[v]"
+        subprocess.run(["ffmpeg", "-v", "error", "-y", *entradas, "-filter_complex", filtro, "-map", vmap, "-an",
+                        "-frames:v", str(round(d * 30)), "-c:v", "libx264", "-preset", "faster", "-crf", "17",
+                        "-pix_fmt", "yuv420p", "-r", "30", "-color_primaries", "bt709", "-color_trc", "bt709",
+                        "-colorspace", "bt709", saida], check=True)
+        lista.append(f"file '{k:02d}.mp4'")
+        t += d
+        print(k, round(d, 2), flush=True)
+    open("pecas4k/lista.txt", "w").write("\n".join(lista) + "\n")
+    # áudio numa faixa contínua só (juntar pedaços AAC acumula atraso de ~21 ms por corte)
+    fa = []
+    for k, (a, b) in enumerate(PECAS):
+        fa.append(f"[0:a]atrim={a:.3f}:{b:.3f},asetpts=PTS-STARTPTS,afade=t=in:d=0.012,"
+                  f"afade=t=out:st={b - a - 0.012:.3f}:d=0.012[a{k}]")
+    fa.append("".join(f"[a{k}]" for k in range(len(PECAS))) + f"concat=n={len(PECAS)}:v=0:a=1[aud]")
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", "video.mp4", "-filter_complex", ";".join(fa), "-map", "[aud]",
+                    "-ar", "48000", "-c:a", "pcm_s16le", "pecas4k/audio.wav"], check=True)
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", "pecas4k/lista.txt", "-i", "pecas4k/audio.wav",
+                    "-map", "0:v", "-map", "1:a", "-c:v", "copy", "-c:a", "aac", "-b:a", "320k", "-shortest",
+                    "-movflags", "+faststart", "Garrafa_inteligente_4K.mp4"], check=True)
+    print("OK 4K", round(t, 2))
+
+
 def main(modo):
+    if modo == "4k":
+        return main_4k()
     larg, alt = (720, 1280) if modo == "previa" else (2160, 3840)
     f, v_in, a_in, t = [], [], [], 0.0
     ins_t = None
