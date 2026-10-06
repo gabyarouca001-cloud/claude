@@ -1,11 +1,14 @@
 # DEEP — EP2 "O mercado mudou. O que você está construindo?" · textos para o YouTube
 
+Thumb: `thumb_DEEP_EP2_1280x720.jpg` — "pensou em alguém? / GUARDA ESSE / NOME." (quadro do take 1, 18,2 s).
+A thumb provoca (guarda esse nome) e o título dá o contexto da pergunta.
+
 ## Título (recomendado)
-Se o Instagram acabasse amanhã, quem você procuraria? | DEEP
+Se o Instagram acabasse amanhã, de quem você sentiria falta? | DEEP
 
 Alternativas para teste A/B:
-- O que você está construindo além do que fatura? | DEEP
 - Faturar não é construir: o que faz alguém voltar pra você | DEEP
+- Por que algumas pessoas a gente vai procurar em outro lugar? | DEEP
 
 ## Descrição
 
@@ -15,11 +18,11 @@ Neste episódio do DEEP, eu falo sobre a busca por conteúdos com mais profundid
 
 ⏱️ Capítulos
 0:00 Se o Instagram acabasse amanhã…
-0:12 O que a gente está procurando
-2:44 Descobrir × compreender
-4:47 Faturar × construir
-6:51 Mais caminhos, a mesma dependência
-9:54 O que é construir
+0:13 O que a gente está procurando
+2:43 Descobrir × compreender
+4:46 Faturar × construir
+6:46 Mais caminhos, a mesma dependência
+9:45 O que é construir
 
 📚 Fonte citada: Reuters Institute (pesquisa sobre podcasts de notícias e as motivações de quem acompanha o formato).
 
