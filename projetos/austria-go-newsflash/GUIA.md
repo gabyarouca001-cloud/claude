@@ -1,6 +1,6 @@
 # GO! Newsflash — guia de edição (aprendido do "Bentley 01" da editora)
 
-Cliente na Áustria (pubbles). Formato: notícia curta de carro, **locução em alemão (VOX) + música + às vezes
+Cliente na Áustria. Formato: notícia curta de carro, **locução em alemão (VOX) + música + às vezes
 efeitos/atmo**, só imagens do material de imprensa da marca. Referência analisada: `GO NEWSFLASH BENTLEY 01`
 (1:29, 81 planos). Tabela completa plano a plano: `analise_bentley01_planos.md`.
 
