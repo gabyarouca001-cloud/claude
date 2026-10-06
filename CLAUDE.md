@@ -126,3 +126,11 @@ O Whisper "limpa" gaguejos e repetições na transcrição, então eles passaram
   - **"Câmera B" nos gráficos/listas à esquerda:** corte seco para plano mais fechado (1,38×) com a Samara do **lado direito** (rosto a 64% da largura), lado esquerdo livre para as informações; volta no fim. Gráficos colados viram um trecho só.
   - Trilha igual ao Reels ("Chillax", −33 LUFS) também no YouTube.
 - **Motion graphics explicativos** (ASS vetorial, à esquerda, sem cobrir o rosto): cadeia de formatos com ícones, contador animado de números, caixa "dentro do aplicativo" só com contorno (vira amarela na virada), tijolos amarelos empilhando (texto escuro, sem sombra) com som de encaixe.
+
+## GO! Newsflash (cliente na Áustria — propagandas/notícias de carros em alemão)
+Guia completo em `projetos/austria-go-newsflash/GUIA.md` (aprendido do "Bentley 01" da editora; tabela plano a plano em
+`analise_bentley01_planos.md`). Resumo: locução alemã manda, pausas enxugadas para 0,05–0,4 s; imagem do assunto entra
+0,2–0,6 s antes da palavra-chave; planos de ~1 s (longos nos números, rajadas de 0,25 s nas enumerações); cortes secos,
+sem cor/textos; exterior numa cor só; nada de entrevistas/cartelas/logos/pretos; abertura ~3,8 s só música, música
+−22 dB sob a voz (−6 sem voz); mix ~−17 LUFS; entregar stems separados. Senha da biblioteca de música fica só no
+documento do cliente — nunca no repositório.
