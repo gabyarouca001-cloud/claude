@@ -24,7 +24,7 @@ BROLL = [
     ("46635", 1.0, 1.9, 0.5, 114.20, 0.10, "IA / tecnologia"),
     ("50610", 1.0, 2.0, 0.5, 234.55, 0.00, "edição de vídeo"),
     ("42136", 1.5, 2.3, 0.5, 324.70, 0.00, "compra pelo celular (vertical)"),
-    ("21364", 3.0, 1.1, 0.5, 435.34, 0.08, "feed"),
+    ("21364", 3.0, 1.1, 0.68, 435.34, 0.08, "feed"),
     ("2948", 2.0, 1.4, 0.5, None, 0.0, "podcast"),
     ("49381", 2.0, 1.7, 0.4, None, 0.0, "loja"),
     ("13231", 3.0, 1.5, 0.5, 397.30, 0.00, "equipe"),
@@ -99,9 +99,9 @@ fi, fo = int(2.5 * SR), int(3.0 * SR)
 env[:fi] = np.linspace(0, 1, fi); env[-fo:] = np.linspace(1, 0, fo)
 final = ler(f"{W}/voz_norm.wav")[:len(voz)].copy()
 final[int(OFF * SR):int(OFF * SR) + len(tri)] += tri * env[:, None]
-sh(["ffmpeg", "-y", "-loglevel", "error", "-f", "f32le", "-ar", str(SR), "-ac", "2", "-i", "-", "-af", "alimiter=limit=0.84:level=disabled",
+sh(["ffmpeg", "-y", "-loglevel", "error", "-f", "f32le", "-ar", str(SR), "-ac", "2", "-i", "-", "-af", "alimiter=limit=0.76:level=disabled",
     "-c:a", "pcm_s16le", f"{W}/audio_pronto.wav"]) if False else None
-p = subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "f32le", "-ar", str(SR), "-ac", "2", "-i", "-", "-af", "alimiter=limit=0.84:level=disabled",
+p = subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "f32le", "-ar", str(SR), "-ac", "2", "-i", "-", "-af", "alimiter=limit=0.76:level=disabled",
                     "-c:a", "pcm_s16le", f"{W}/audio_pronto.wav"], input=final.astype(np.float32).tobytes())
 assert p.returncode == 0
 
