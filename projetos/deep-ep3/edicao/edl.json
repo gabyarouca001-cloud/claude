@@ -9,900 +9,804 @@
   },
   {
    "ini": 11.5333,
-   "fim": 13.8667,
+   "fim": 13.9333,
    "rot": "Abertura: 'Talvez você tenha pensado…' (1º take, completo)",
    "junta": "retake"
   },
   {
-   "ini": 14.4667,
-   "fim": 17.2,
+   "ini": 14.4,
+   "fim": 17.2333,
    "rot": "Abertura: 'Talvez você tenha pensado…' (1º take, completo)",
    "junta": "pausa"
   },
   {
-   "ini": 17.5333,
-   "fim": 19.4333,
+   "ini": 17.5,
+   "fim": 19.4667,
    "rot": "Abertura: 'Talvez você tenha pensado…' (1º take, completo)",
    "junta": "pausa"
   },
   {
-   "ini": 20.2,
-   "fim": 23.5333,
+   "ini": 20.1667,
+   "fim": 23.5667,
    "rot": "Abertura: 'Talvez você tenha pensado…' (1º take, completo)",
    "junta": "pausa"
   },
   {
-   "ini": 23.7333,
-   "fim": 25.0667,
+   "ini": 23.7,
+   "fim": 25.1,
    "rot": "Abertura: 'Talvez você tenha pensado…' (1º take, completo)",
    "junta": "pausa"
   },
   {
-   "ini": 25.4333,
-   "fim": 27.8333,
+   "ini": 25.4,
+   "fim": 29.6,
    "rot": "Abertura: 'Talvez você tenha pensado…' (1º take, completo)",
    "junta": "pausa"
   },
   {
-   "ini": 28.0,
-   "fim": 29.5667,
-   "rot": "Abertura: 'Talvez você tenha pensado…' (1º take, completo)",
-   "junta": "pausa"
-  },
-  {
-   "ini": 68.5,
-   "fim": 76.3333,
+   "ini": 68.4667,
+   "fim": 76.3667,
    "rot": "Ligação com o episódio anterior + 'caminho entre assistir, acreditar e comprar'",
    "junta": "retake"
   },
   {
-   "ini": 76.6,
-   "fim": 77.8667,
+   "ini": 76.5667,
+   "fim": 77.9,
    "rot": "Ligação com o episódio anterior + 'caminho entre assistir, acreditar e comprar'",
    "junta": "pausa"
   },
   {
-   "ini": 78.1333,
-   "fim": 79.2667,
+   "ini": 78.1,
+   "fim": 79.3,
    "rot": "Ligação com o episódio anterior + 'caminho entre assistir, acreditar e comprar'",
    "junta": "pausa"
   },
   {
-   "ini": 79.7,
-   "fim": 80.6667,
+   "ini": 79.6667,
+   "fim": 80.7333,
    "rot": "Ligação com o episódio anterior + 'caminho entre assistir, acreditar e comprar'",
    "junta": "pausa"
   },
   {
-   "ini": 80.9667,
-   "fim": 82.6333,
+   "ini": 80.9333,
+   "fim": 82.6667,
    "rot": "Ligação com o episódio anterior + 'caminho entre assistir, acreditar e comprar'",
    "junta": "pausa"
   },
   {
-   "ini": 83.1333,
-   "fim": 83.7,
+   "ini": 83.1,
+   "fim": 83.7333,
    "rot": "Ligação com o episódio anterior + 'caminho entre assistir, acreditar e comprar'",
    "junta": "pausa"
   },
   {
-   "ini": 83.9,
-   "fim": 86.1,
+   "ini": 83.8667,
+   "fim": 89.2,
    "rot": "Ligação com o episódio anterior + 'caminho entre assistir, acreditar e comprar'",
    "junta": "pausa"
   },
   {
-   "ini": 86.2333,
-   "fim": 87.6,
+   "ini": 89.3333,
+   "fim": 90.0667,
    "rot": "Ligação com o episódio anterior + 'caminho entre assistir, acreditar e comprar'",
    "junta": "pausa"
   },
   {
-   "ini": 87.7667,
-   "fim": 89.1667,
+   "ini": 90.3,
+   "fim": 91.3667,
    "rot": "Ligação com o episódio anterior + 'caminho entre assistir, acreditar e comprar'",
    "junta": "pausa"
   },
   {
-   "ini": 89.4,
-   "fim": 90.0333,
+   "ini": 91.6667,
+   "fim": 94.3667,
    "rot": "Ligação com o episódio anterior + 'caminho entre assistir, acreditar e comprar'",
    "junta": "pausa"
   },
   {
-   "ini": 90.3333,
-   "fim": 91.3333,
+   "ini": 94.7667,
+   "fim": 98.0667,
    "rot": "Ligação com o episódio anterior + 'caminho entre assistir, acreditar e comprar'",
    "junta": "pausa"
   },
   {
-   "ini": 91.7,
-   "fim": 94.3333,
+   "ini": 98.3667,
+   "fim": 101.3333,
    "rot": "Ligação com o episódio anterior + 'caminho entre assistir, acreditar e comprar'",
    "junta": "pausa"
   },
   {
-   "ini": 94.8,
-   "fim": 98.0333,
+   "ini": 101.5333,
+   "fim": 103.6,
    "rot": "Ligação com o episódio anterior + 'caminho entre assistir, acreditar e comprar'",
    "junta": "pausa"
   },
   {
-   "ini": 98.4,
-   "fim": 101.3,
-   "rot": "Ligação com o episódio anterior + 'caminho entre assistir, acreditar e comprar'",
-   "junta": "pausa"
-  },
-  {
-   "ini": 101.5667,
-   "fim": 103.5667,
-   "rot": "Ligação com o episódio anterior + 'caminho entre assistir, acreditar e comprar'",
-   "junta": "pausa"
-  },
-  {
-   "ini": 104.7,
-   "fim": 105.5667,
+   "ini": 104.6333,
+   "fim": 105.6,
    "rot": "Produção: 'primeira mudança… ajudam a escrever,'",
    "junta": "retake"
   },
   {
-   "ini": 105.7667,
-   "fim": 107.2667,
+   "ini": 105.7333,
+   "fim": 107.3333,
    "rot": "Produção: 'primeira mudança… ajudam a escrever,'",
    "junta": "pausa"
   },
   {
-   "ini": 107.7333,
-   "fim": 109.2333,
+   "ini": 107.7,
+   "fim": 109.2667,
    "rot": "Produção: 'primeira mudança… ajudam a escrever,'",
    "junta": "pausa"
   },
   {
-   "ini": 109.7,
-   "fim": 115.7333,
+   "ini": 109.6667,
+   "fim": 116.3333,
    "rot": "Produção: 'primeira mudança… ajudam a escrever,'",
    "junta": "pausa"
   },
   {
-   "ini": 115.8667,
-   "fim": 116.3,
-   "rot": "Produção: 'primeira mudança… ajudam a escrever,'",
-   "junta": "pausa"
-  },
-  {
-   "ini": 116.4667,
+   "ini": 116.4333,
    "fim": 118.4333,
    "rot": "Produção: 'primeira mudança… ajudam a escrever,'",
    "junta": "pausa"
   },
   {
-   "ini": 125.9,
-   "fim": 129.0,
+   "ini": 125.8667,
+   "fim": 129.0667,
    "rot": "Produção: 'editar, criar imagens e vídeos' (take 2)",
    "junta": "retake"
   },
   {
-   "ini": 141.9667,
-   "fim": 144.8333,
+   "ini": 141.9333,
+   "fim": 144.8667,
    "rot": "Produção: 'E uma pessoa pode produzir'",
    "junta": "retake"
   },
   {
-   "ini": 153.8,
-   "fim": 154.3667,
+   "ini": 153.7667,
+   "fim": 154.4,
    "rot": "Produção: 'com recursos que antes exigiam uma estrutura muito maior.'",
    "junta": "retake"
   },
   {
-   "ini": 154.7667,
-   "fim": 156.2,
+   "ini": 154.7333,
+   "fim": 156.2333,
    "rot": "Produção: 'com recursos que antes exigiam uma estrutura muito maior.'",
    "junta": "pausa"
   },
   {
-   "ini": 156.7,
-   "fim": 159.3667,
+   "ini": 156.6667,
+   "fim": 159.4333,
    "rot": "Produção: 'com recursos que antes exigiam uma estrutura muito maior.'",
    "junta": "pausa"
   },
   {
-   "ini": 159.8667,
-   "fim": 160.8667,
+   "ini": 159.8333,
+   "fim": 160.9333,
    "rot": "Produção: 'com recursos que antes exigiam uma estrutura muito maior.'",
    "junta": "pausa"
   },
   {
-   "ini": 197.6,
+   "ini": 197.5333,
    "fim": 200.0667,
    "rot": "Produção: 'Isso abre espaço para boas ideias.'",
    "junta": "retake"
   },
   {
-   "ini": 202.7667,
-   "fim": 206.1,
+   "ini": 202.7333,
+   "fim": 206.1333,
    "rot": "Produção: 'Também facilita apresentar… sem ter conhecimento suficiente' (sem o 'também facilita' repetido)",
    "junta": "retake"
   },
   {
-   "ini": 206.4333,
-   "fim": 208.0333,
+   "ini": 206.4,
+   "fim": 208.0667,
    "rot": "Produção: 'Também facilita apresentar… sem ter conhecimento suficiente' (sem o 'também facilita' repetido)",
    "junta": "pausa"
   },
   {
-   "ini": 208.3,
-   "fim": 209.5333,
+   "ini": 208.2667,
+   "fim": 209.5667,
    "rot": "Produção: 'Também facilita apresentar… sem ter conhecimento suficiente' (sem o 'também facilita' repetido)",
    "junta": "pausa"
   },
   {
-   "ini": 209.7667,
-   "fim": 213.9667,
+   "ini": 209.7333,
+   "fim": 214.0,
    "rot": "Produção: 'Também facilita apresentar… sem ter conhecimento suficiente' (sem o 'também facilita' repetido)",
    "junta": "pausa"
   },
   {
-   "ini": 214.2667,
-   "fim": 215.9667,
+   "ini": 214.2333,
+   "fim": 216.0333,
    "rot": "Produção: 'Também facilita apresentar… sem ter conhecimento suficiente' (sem o 'também facilita' repetido)",
    "junta": "pausa"
   },
   {
-   "ini": 226.0333,
-   "fim": 233.4667,
+   "ini": 225.9667,
+   "fim": 233.5,
    "rot": "Produção: 'a qualidade da apresentação… aquele produto,' (sem 'Vale dizer que')",
    "junta": "retake"
   },
   {
-   "ini": 233.8667,
-   "fim": 235.6,
+   "ini": 233.8333,
+   "fim": 235.6333,
    "rot": "Produção: 'a qualidade da apresentação… aquele produto,' (sem 'Vale dizer que')",
    "junta": "pausa"
   },
   {
-   "ini": 236.0667,
-   "fim": 237.2667,
+   "ini": 236.0333,
+   "fim": 237.3333,
    "rot": "Produção: 'a qualidade da apresentação… aquele produto,' (sem 'Vale dizer que')",
    "junta": "pausa"
   },
   {
-   "ini": 237.6,
-   "fim": 238.5333,
+   "ini": 237.5667,
+   "fim": 238.5667,
    "rot": "Produção: 'a qualidade da apresentação… aquele produto,' (sem 'Vale dizer que')",
    "junta": "pausa"
   },
   {
-   "ini": 238.8,
+   "ini": 238.7667,
    "fim": 241.2,
    "rot": "Produção: 'a qualidade da apresentação… aquele produto,' (sem 'Vale dizer que')",
    "junta": "pausa"
   },
   {
-   "ini": 243.9667,
-   "fim": 246.2333,
+   "ini": 243.9333,
+   "fim": 248.3,
    "rot": "Produção: 'ou apenas tá repetindo uma descrição comercial.' (sem 'ou apenas tá, ou')",
    "junta": "retake"
-  },
-  {
-   "ini": 246.3667,
-   "fim": 248.2667,
-   "rot": "Produção: 'ou apenas tá repetindo uma descrição comercial.' (sem 'ou apenas tá, ou')",
-   "junta": "pausa"
   },
   {
    "ini": 269.3,
-   "fim": 269.4,
+   "fim": 269.4333,
    "rot": "Produção: 'Para mim, isso significa… o que sustenta' (último take)",
    "junta": "retake"
   },
   {
-   "ini": 270.1667,
-   "fim": 275.2333,
+   "ini": 270.1,
+   "fim": 275.2667,
    "rot": "Produção: 'Para mim, isso significa… o que sustenta' (último take)",
    "junta": "pausa"
   },
   {
-   "ini": 277.0,
-   "fim": 281.9667,
+   "ini": 276.9667,
+   "fim": 282.0,
    "rot": "Produção: 'Para mim, isso significa… o que sustenta' (último take)",
    "junta": "pausa"
   },
   {
-   "ini": 282.4,
-   "fim": 284.5667,
-   "rot": "Produção: 'Para mim, isso significa… o que sustenta' (último take)",
-   "junta": "pausa"
-  },
-  {
-   "ini": 284.7333,
+   "ini": 282.3667,
    "fim": 287.7333,
    "rot": "Produção: 'Para mim, isso significa… o que sustenta' (último take)",
    "junta": "pausa"
   },
   {
-   "ini": 289.0333,
-   "fim": 290.4667,
+   "ini": 288.9667,
+   "fim": 290.5,
    "rot": "Produção: 'uma recomendação.' (sem 'uma recomend…')",
    "junta": "retake"
   },
   {
-   "ini": 291.2667,
-   "fim": 292.8333,
+   "ini": 291.2333,
+   "fim": 292.8667,
    "rot": "Compra: 'A segunda mudança está na compra.'",
    "junta": "retake"
   },
   {
-   "ini": 293.1667,
-   "fim": 293.8333,
+   "ini": 293.1,
+   "fim": 294.3667,
    "rot": "Compra: 'A segunda mudança está na compra.'",
    "junta": "pausa"
   },
   {
-   "ini": 293.9667,
-   "fim": 294.3333,
+   "ini": 294.5667,
+   "fim": 295.3,
    "rot": "Compra: 'A segunda mudança está na compra.'",
    "junta": "pausa"
   },
   {
-   "ini": 294.6333,
-   "fim": 295.2667,
-   "rot": "Compra: 'A segunda mudança está na compra.'",
-   "junta": "pausa"
-  },
-  {
-   "ini": 296.6,
-   "fim": 297.3333,
+   "ini": 296.5667,
+   "fim": 297.3667,
    "rot": "Compra: 'Porque você entra para se distrair… na mesma hora.'",
    "junta": "retake"
   },
   {
-   "ini": 297.6333,
-   "fim": 298.6333,
+   "ini": 297.5667,
+   "fim": 298.6667,
    "rot": "Compra: 'Porque você entra para se distrair… na mesma hora.'",
    "junta": "pausa"
   },
   {
-   "ini": 298.9,
-   "fim": 300.6667,
+   "ini": 298.8667,
+   "fim": 300.7333,
    "rot": "Compra: 'Porque você entra para se distrair… na mesma hora.'",
    "junta": "pausa"
   },
   {
-   "ini": 301.1667,
-   "fim": 304.0333,
+   "ini": 301.1333,
+   "fim": 304.0667,
    "rot": "Compra: 'Porque você entra para se distrair… na mesma hora.'",
    "junta": "pausa"
   },
   {
-   "ini": 304.3667,
-   "fim": 308.4,
+   "ini": 304.3333,
+   "fim": 308.4333,
    "rot": "Compra: 'Porque você entra para se distrair… na mesma hora.'",
    "junta": "pausa"
   },
   {
-   "ini": 322.9667,
-   "fim": 327.8667,
+   "ini": 322.9,
+   "fim": 327.9,
    "rot": "Compra: 'E também explica o sucesso de ferramentas como o TikTok Shop.'",
    "junta": "retake"
   },
   {
-   "ini": 342.9333,
-   "fim": 344.7,
+   "ini": 342.9,
+   "fim": 346.9333,
    "rot": "Compra: 'E transforma o conteúdo num verdadeiro ponto de venda, né?'",
    "junta": "retake"
   },
   {
-   "ini": 344.8667,
-   "fim": 346.9,
+   "ini": 347.0333,
+   "fim": 348.9333,
    "rot": "Compra: 'E transforma o conteúdo num verdadeiro ponto de venda, né?'",
    "junta": "pausa"
   },
   {
-   "ini": 347.0667,
-   "fim": 348.9,
-   "rot": "Compra: 'E transforma o conteúdo num verdadeiro ponto de venda, né?'",
-   "junta": "pausa"
-  },
-  {
-   "ini": 365.4333,
-   "fim": 368.1667,
+   "ini": 365.3667,
+   "fim": 368.2,
    "rot": "Compra: 'um vídeo… pode divertir, ensinar… comissão… interesse comercial… do outro lado.'",
    "junta": "retake"
   },
   {
-   "ini": 368.6667,
-   "fim": 369.5333,
+   "ini": 368.6,
+   "fim": 369.5667,
    "rot": "Compra: 'um vídeo… pode divertir, ensinar… comissão… interesse comercial… do outro lado.'",
    "junta": "pausa"
   },
   {
-   "ini": 369.7,
-   "fim": 370.6667,
+   "ini": 369.6667,
+   "fim": 370.7,
    "rot": "Compra: 'um vídeo… pode divertir, ensinar… comissão… interesse comercial… do outro lado.'",
    "junta": "pausa"
   },
   {
-   "ini": 370.9333,
-   "fim": 373.9,
+   "ini": 370.9,
+   "fim": 373.9333,
    "rot": "Compra: 'um vídeo… pode divertir, ensinar… comissão… interesse comercial… do outro lado.'",
    "junta": "pausa"
   },
   {
-   "ini": 374.0667,
-   "fim": 376.1667,
+   "ini": 374.0333,
+   "fim": 376.2333,
    "rot": "Compra: 'um vídeo… pode divertir, ensinar… comissão… interesse comercial… do outro lado.'",
    "junta": "pausa"
   },
   {
-   "ini": 376.5667,
-   "fim": 381.6667,
+   "ini": 376.5333,
+   "fim": 381.7,
    "rot": "Compra: 'um vídeo… pode divertir, ensinar… comissão… interesse comercial… do outro lado.'",
    "junta": "pausa"
   },
   {
-   "ini": 381.8333,
-   "fim": 382.6,
+   "ini": 381.8,
+   "fim": 382.6333,
    "rot": "Compra: 'um vídeo… pode divertir, ensinar… comissão… interesse comercial… do outro lado.'",
    "junta": "pausa"
   },
   {
-   "ini": 382.9,
-   "fim": 384.6333,
+   "ini": 382.8667,
+   "fim": 384.6667,
    "rot": "Compra: 'um vídeo… pode divertir, ensinar… comissão… interesse comercial… do outro lado.'",
    "junta": "pausa"
   },
   {
-   "ini": 384.8667,
-   "fim": 386.1667,
+   "ini": 384.8333,
+   "fim": 389.4333,
    "rot": "Compra: 'um vídeo… pode divertir, ensinar… comissão… interesse comercial… do outro lado.'",
    "junta": "pausa"
   },
   {
-   "ini": 386.3333,
-   "fim": 389.3667,
-   "rot": "Compra: 'um vídeo… pode divertir, ensinar… comissão… interesse comercial… do outro lado.'",
-   "junta": "pausa"
-  },
-  {
-   "ini": 389.9,
-   "fim": 392.3333,
+   "ini": 389.8667,
+   "fim": 392.3667,
    "rot": "Negócio: 'terceira mudança… produzir programas, lançar produtos, oferecer assinaturas.'",
    "junta": "retake"
   },
   {
-   "ini": 392.7,
-   "fim": 396.7333,
+   "ini": 392.6667,
+   "fim": 396.7667,
    "rot": "Negócio: 'terceira mudança… produzir programas, lançar produtos, oferecer assinaturas.'",
    "junta": "pausa"
   },
   {
-   "ini": 397.1333,
-   "fim": 401.7333,
+   "ini": 397.1,
+   "fim": 405.1667,
    "rot": "Negócio: 'terceira mudança… produzir programas, lançar produtos, oferecer assinaturas.'",
    "junta": "pausa"
   },
   {
-   "ini": 401.8667,
-   "fim": 405.1,
-   "rot": "Negócio: 'terceira mudança… produzir programas, lançar produtos, oferecer assinaturas.'",
-   "junta": "pausa"
-  },
-  {
-   "ini": 419.0,
-   "fim": 421.5333,
+   "ini": 418.9333,
+   "fim": 421.6,
    "rot": "Negócio: 'E parte deles está construindo empresas enormes… O que você faz questão de acompanhar?'",
    "junta": "retake"
   },
   {
-   "ini": 421.8667,
-   "fim": 422.8,
+   "ini": 421.8,
+   "fim": 422.8333,
    "rot": "Negócio: 'E parte deles está construindo empresas enormes… O que você faz questão de acompanhar?'",
    "junta": "pausa"
   },
   {
-   "ini": 423.1667,
-   "fim": 424.0333,
+   "ini": 423.1333,
+   "fim": 427.3,
    "rot": "Negócio: 'E parte deles está construindo empresas enormes… O que você faz questão de acompanhar?'",
    "junta": "pausa"
   },
   {
-   "ini": 424.1667,
-   "fim": 427.2667,
+   "ini": 427.6333,
+   "fim": 432.8333,
    "rot": "Negócio: 'E parte deles está construindo empresas enormes… O que você faz questão de acompanhar?'",
    "junta": "pausa"
   },
   {
-   "ini": 427.6667,
-   "fim": 432.7667,
+   "ini": 432.9333,
+   "fim": 434.3,
    "rot": "Negócio: 'E parte deles está construindo empresas enormes… O que você faz questão de acompanhar?'",
    "junta": "pausa"
   },
   {
-   "ini": 432.9667,
-   "fim": 434.2667,
+   "ini": 434.6333,
+   "fim": 439.1333,
    "rot": "Negócio: 'E parte deles está construindo empresas enormes… O que você faz questão de acompanhar?'",
    "junta": "pausa"
   },
   {
-   "ini": 434.6667,
-   "fim": 439.0667,
+   "ini": 439.5333,
+   "fim": 443.4333,
    "rot": "Negócio: 'E parte deles está construindo empresas enormes… O que você faz questão de acompanhar?'",
    "junta": "pausa"
   },
   {
-   "ini": 439.5667,
-   "fim": 443.4,
+   "ini": 443.5333,
+   "fim": 447.5333,
    "rot": "Negócio: 'E parte deles está construindo empresas enormes… O que você faz questão de acompanhar?'",
    "junta": "pausa"
   },
   {
-   "ini": 443.6,
-   "fim": 447.5,
+   "ini": 447.9,
+   "fim": 449.4667,
    "rot": "Negócio: 'E parte deles está construindo empresas enormes… O que você faz questão de acompanhar?'",
    "junta": "pausa"
   },
   {
-   "ini": 447.9333,
-   "fim": 449.4333,
+   "ini": 449.7,
+   "fim": 452.6,
    "rot": "Negócio: 'E parte deles está construindo empresas enormes… O que você faz questão de acompanhar?'",
    "junta": "pausa"
   },
   {
-   "ini": 449.7333,
-   "fim": 452.5667,
-   "rot": "Negócio: 'E parte deles está construindo empresas enormes… O que você faz questão de acompanhar?'",
-   "junta": "pausa"
-  },
-  {
-   "ini": 460.6667,
-   "fim": 461.2,
+   "ini": 460.6333,
+   "fim": 461.2667,
    "rot": "Negócio: 'E o que vale a pena pagar? … expectativa de entrega.'",
    "junta": "retake"
   },
   {
-   "ini": 461.4333,
-   "fim": 463.8333,
+   "ini": 461.3667,
+   "fim": 463.8667,
    "rot": "Negócio: 'E o que vale a pena pagar? … expectativa de entrega.'",
    "junta": "pausa"
   },
   {
-   "ini": 464.3667,
-   "fim": 465.1,
+   "ini": 464.3333,
+   "fim": 465.1333,
    "rot": "Negócio: 'E o que vale a pena pagar? … expectativa de entrega.'",
    "junta": "pausa"
   },
   {
-   "ini": 465.3333,
-   "fim": 466.5,
+   "ini": 465.2667,
+   "fim": 466.5333,
    "rot": "Negócio: 'E o que vale a pena pagar? … expectativa de entrega.'",
    "junta": "pausa"
   },
   {
-   "ini": 466.8667,
-   "fim": 467.5,
+   "ini": 466.8333,
+   "fim": 469.1333,
    "rot": "Negócio: 'E o que vale a pena pagar? … expectativa de entrega.'",
    "junta": "pausa"
   },
   {
-   "ini": 467.6667,
-   "fim": 469.1,
+   "ini": 469.3333,
+   "fim": 470.4667,
    "rot": "Negócio: 'E o que vale a pena pagar? … expectativa de entrega.'",
    "junta": "pausa"
   },
   {
-   "ini": 469.3667,
-   "fim": 470.4,
-   "rot": "Negócio: 'E o que vale a pena pagar? … expectativa de entrega.'",
-   "junta": "pausa"
-  },
-  {
-   "ini": 470.9667,
-   "fim": 474.3333,
+   "ini": 470.9333,
+   "fim": 474.3667,
    "rot": "Confiança: 'E é por isso que eu vejo a confiança… transformar' (take corrido)",
    "junta": "retake"
   },
   {
-   "ini": 474.7333,
-   "fim": 476.2667,
+   "ini": 474.7,
+   "fim": 476.3333,
    "rot": "Confiança: 'E é por isso que eu vejo a confiança… transformar' (take corrido)",
    "junta": "pausa"
   },
   {
-   "ini": 476.5,
-   "fim": 477.4,
+   "ini": 476.4667,
+   "fim": 477.4667,
    "rot": "Confiança: 'E é por isso que eu vejo a confiança… transformar' (take corrido)",
    "junta": "pausa"
   },
   {
-   "ini": 477.9,
-   "fim": 480.3667,
+   "ini": 477.8667,
+   "fim": 480.4,
    "rot": "Confiança: 'E é por isso que eu vejo a confiança… transformar' (take corrido)",
    "junta": "pausa"
   },
   {
-   "ini": 480.8667,
-   "fim": 484.3667,
+   "ini": 480.8,
+   "fim": 484.4,
    "rot": "Confiança: 'E é por isso que eu vejo a confiança… transformar' (take corrido)",
    "junta": "pausa"
   },
   {
-   "ini": 484.6,
+   "ini": 484.5667,
    "fim": 487.6,
    "rot": "Confiança: 'E é por isso que eu vejo a confiança… transformar' (take corrido)",
    "junta": "pausa"
   },
   {
-   "ini": 488.7333,
-   "fim": 490.4667,
+   "ini": 488.7,
+   "fim": 490.5,
    "rot": "Confiança: 'essa atração em receita… mudar de opinião.' (sem 'essa, essa')",
    "junta": "retake"
   },
   {
-   "ini": 490.8667,
-   "fim": 494.1,
+   "ini": 490.8333,
+   "fim": 494.1333,
    "rot": "Confiança: 'essa atração em receita… mudar de opinião.' (sem 'essa, essa')",
    "junta": "pausa"
   },
   {
-   "ini": 494.4667,
-   "fim": 495.2667,
+   "ini": 494.4333,
+   "fim": 497.9,
    "rot": "Confiança: 'essa atração em receita… mudar de opinião.' (sem 'essa, essa')",
    "junta": "pausa"
   },
   {
-   "ini": 495.4333,
-   "fim": 497.8667,
+   "ini": 498.5667,
+   "fim": 500.4333,
    "rot": "Confiança: 'essa atração em receita… mudar de opinião.' (sem 'essa, essa')",
    "junta": "pausa"
   },
   {
-   "ini": 498.6,
-   "fim": 500.4,
+   "ini": 500.6,
+   "fim": 502.9,
    "rot": "Confiança: 'essa atração em receita… mudar de opinião.' (sem 'essa, essa')",
    "junta": "pausa"
   },
   {
-   "ini": 500.6333,
-   "fim": 502.8667,
+   "ini": 503.4667,
+   "fim": 505.1,
    "rot": "Confiança: 'essa atração em receita… mudar de opinião.' (sem 'essa, essa')",
    "junta": "pausa"
   },
   {
-   "ini": 503.5,
-   "fim": 505.0667,
+   "ini": 505.4667,
+   "fim": 506.8333,
    "rot": "Confiança: 'essa atração em receita… mudar de opinião.' (sem 'essa, essa')",
    "junta": "pausa"
   },
   {
-   "ini": 505.5,
-   "fim": 506.8,
+   "ini": 507.2,
+   "fim": 509.8667,
    "rot": "Confiança: 'essa atração em receita… mudar de opinião.' (sem 'essa, essa')",
    "junta": "pausa"
   },
   {
-   "ini": 507.2667,
-   "fim": 509.0,
+   "ini": 510.2333,
+   "fim": 511.8667,
    "rot": "Confiança: 'essa atração em receita… mudar de opinião.' (sem 'essa, essa')",
    "junta": "pausa"
   },
   {
-   "ini": 509.1667,
-   "fim": 509.8,
+   "ini": 512.2,
+   "fim": 514.8333,
    "rot": "Confiança: 'essa atração em receita… mudar de opinião.' (sem 'essa, essa')",
    "junta": "pausa"
   },
   {
-   "ini": 510.2667,
-   "fim": 511.8,
+   "ini": 515.1333,
+   "fim": 518.8667,
    "rot": "Confiança: 'essa atração em receita… mudar de opinião.' (sem 'essa, essa')",
    "junta": "pausa"
   },
   {
-   "ini": 512.2333,
-   "fim": 514.8,
+   "ini": 519.3667,
+   "fim": 522.6333,
    "rot": "Confiança: 'essa atração em receita… mudar de opinião.' (sem 'essa, essa')",
    "junta": "pausa"
   },
   {
-   "ini": 515.1667,
-   "fim": 518.8,
+   "ini": 522.8333,
+   "fim": 524.0,
    "rot": "Confiança: 'essa atração em receita… mudar de opinião.' (sem 'essa, essa')",
    "junta": "pausa"
   },
   {
-   "ini": 519.4333,
-   "fim": 522.5667,
+   "ini": 524.7333,
+   "fim": 525.8667,
    "rot": "Confiança: 'essa atração em receita… mudar de opinião.' (sem 'essa, essa')",
    "junta": "pausa"
   },
   {
-   "ini": 522.8667,
-   "fim": 523.9667,
+   "ini": 526.5333,
+   "fim": 526.9333,
    "rot": "Confiança: 'essa atração em receita… mudar de opinião.' (sem 'essa, essa')",
    "junta": "pausa"
   },
   {
-   "ini": 524.7667,
-   "fim": 525.8333,
+   "ini": 529.2667,
+   "fim": 530.2,
    "rot": "Confiança: 'essa atração em receita… mudar de opinião.' (sem 'essa, essa')",
    "junta": "pausa"
   },
   {
-   "ini": 526.6,
-   "fim": 526.8667,
+   "ini": 531.2667,
+   "fim": 532.9,
    "rot": "Confiança: 'essa atração em receita… mudar de opinião.' (sem 'essa, essa')",
    "junta": "pausa"
   },
   {
-   "ini": 529.3,
-   "fim": 530.1667,
+   "ini": 533.0667,
+   "fim": 535.5,
    "rot": "Confiança: 'essa atração em receita… mudar de opinião.' (sem 'essa, essa')",
    "junta": "pausa"
   },
   {
-   "ini": 531.3,
-   "fim": 532.8667,
+   "ini": 535.8333,
+   "fim": 540.0333,
    "rot": "Confiança: 'essa atração em receita… mudar de opinião.' (sem 'essa, essa')",
    "junta": "pausa"
   },
   {
-   "ini": 533.1,
-   "fim": 535.4667,
+   "ini": 540.2,
+   "fim": 541.4667,
    "rot": "Confiança: 'essa atração em receita… mudar de opinião.' (sem 'essa, essa')",
    "junta": "pausa"
   },
   {
-   "ini": 535.8667,
-   "fim": 537.5667,
+   "ini": 541.5667,
+   "fim": 543.0,
    "rot": "Confiança: 'essa atração em receita… mudar de opinião.' (sem 'essa, essa')",
    "junta": "pausa"
   },
   {
-   "ini": 537.7333,
-   "fim": 540.0,
-   "rot": "Confiança: 'essa atração em receita… mudar de opinião.' (sem 'essa, essa')",
-   "junta": "pausa"
-  },
-  {
-   "ini": 540.2333,
-   "fim": 541.4333,
-   "rot": "Confiança: 'essa atração em receita… mudar de opinião.' (sem 'essa, essa')",
-   "junta": "pausa"
-  },
-  {
-   "ini": 541.6,
-   "fim": 542.9667,
-   "rot": "Confiança: 'essa atração em receita… mudar de opinião.' (sem 'essa, essa')",
-   "junta": "pausa"
-  },
-  {
-   "ini": 713.6667,
-   "fim": 716.8333,
+   "ini": 713.6333,
+   "fim": 716.8667,
    "rot": "Fechamento: 'Eu comecei essa série…'",
    "junta": "retake"
   },
   {
-   "ini": 717.4333,
-   "fim": 721.1,
+   "ini": 717.4,
+   "fim": 721.1333,
    "rot": "Fechamento: 'Eu comecei essa série…'",
    "junta": "pausa"
   },
   {
-   "ini": 743.4667,
-   "fim": 747.1667,
+   "ini": 743.4333,
+   "fim": 747.2,
    "rot": "Fechamento: 'E eu termino falando… nunca querer trabalhar com internet.' (último take)",
    "junta": "retake"
   },
   {
-   "ini": 747.5333,
-   "fim": 748.3333,
+   "ini": 747.5,
+   "fim": 748.3667,
    "rot": "Fechamento: 'E eu termino falando… nunca querer trabalhar com internet.' (último take)",
    "junta": "pausa"
   },
   {
-   "ini": 748.7,
-   "fim": 749.6,
+   "ini": 748.6667,
+   "fim": 749.6333,
    "rot": "Fechamento: 'E eu termino falando… nunca querer trabalhar com internet.' (último take)",
    "junta": "pausa"
   },
   {
-   "ini": 749.9333,
-   "fim": 750.4333,
+   "ini": 749.9,
+   "fim": 750.4667,
    "rot": "Fechamento: 'E eu termino falando… nunca querer trabalhar com internet.' (último take)",
    "junta": "pausa"
   },
   {
-   "ini": 750.7333,
-   "fim": 752.6333,
+   "ini": 750.7,
+   "fim": 752.6667,
    "rot": "Fechamento: 'E eu termino falando… nunca querer trabalhar com internet.' (último take)",
    "junta": "pausa"
   },
   {
-   "ini": 752.8667,
-   "fim": 755.3333,
+   "ini": 752.8,
+   "fim": 755.3667,
    "rot": "Fechamento: 'E eu termino falando… nunca querer trabalhar com internet.' (último take)",
    "junta": "pausa"
   },
   {
-   "ini": 755.6333,
-   "fim": 757.3,
+   "ini": 755.6,
+   "fim": 757.3333,
    "rot": "Fechamento: 'E eu termino falando… nunca querer trabalhar com internet.' (último take)",
    "junta": "pausa"
   },
   {
-   "ini": 757.5,
-   "fim": 759.4,
+   "ini": 757.4667,
+   "fim": 759.4667,
    "rot": "Fechamento: 'E eu termino falando… nunca querer trabalhar com internet.' (último take)",
    "junta": "pausa"
   },
   {
-   "ini": 760.1,
-   "fim": 764.1,
+   "ini": 760.0667,
+   "fim": 764.1333,
    "rot": "Fechamento: 'E eu termino falando… nunca querer trabalhar com internet.' (último take)",
    "junta": "pausa"
   },
   {
-   "ini": 765.6667,
-   "fim": 766.2667,
+   "ini": 765.6333,
+   "fim": 766.3333,
    "rot": "Fechamento: 'mas entender esse mercado… duas perguntas… Me conta! Tchau!' (sem 'Mas, mas')",
    "junta": "retake"
   },
   {
-   "ini": 766.5667,
-   "fim": 768.6,
+   "ini": 766.5333,
+   "fim": 770.3667,
    "rot": "Fechamento: 'mas entender esse mercado… duas perguntas… Me conta! Tchau!' (sem 'Mas, mas')",
    "junta": "pausa"
   },
   {
-   "ini": 768.8,
-   "fim": 770.3333,
+   "ini": 770.4667,
+   "fim": 772.9333,
    "rot": "Fechamento: 'mas entender esse mercado… duas perguntas… Me conta! Tchau!' (sem 'Mas, mas')",
    "junta": "pausa"
   },
   {
-   "ini": 770.5,
-   "fim": 772.9,
+   "ini": 773.2667,
+   "fim": 776.3333,
    "rot": "Fechamento: 'mas entender esse mercado… duas perguntas… Me conta! Tchau!' (sem 'Mas, mas')",
    "junta": "pausa"
   },
   {
-   "ini": 773.3333,
-   "fim": 776.2667,
+   "ini": 776.8667,
+   "fim": 779.5,
    "rot": "Fechamento: 'mas entender esse mercado… duas perguntas… Me conta! Tchau!' (sem 'Mas, mas')",
    "junta": "pausa"
   },
   {
-   "ini": 776.9333,
-   "fim": 779.4667,
+   "ini": 779.6667,
+   "fim": 781.2333,
    "rot": "Fechamento: 'mas entender esse mercado… duas perguntas… Me conta! Tchau!' (sem 'Mas, mas')",
    "junta": "pausa"
   },
   {
-   "ini": 779.7,
-   "fim": 781.1667,
+   "ini": 781.8333,
+   "fim": 784.9667,
    "rot": "Fechamento: 'mas entender esse mercado… duas perguntas… Me conta! Tchau!' (sem 'Mas, mas')",
    "junta": "pausa"
   },
   {
-   "ini": 781.8667,
-   "fim": 784.9333,
+   "ini": 785.8,
+   "fim": 786.6,
    "rot": "Fechamento: 'mas entender esse mercado… duas perguntas… Me conta! Tchau!' (sem 'Mas, mas')",
    "junta": "pausa"
   },
   {
-   "ini": 785.8333,
-   "fim": 786.5667,
+   "ini": 787.7,
+   "fim": 788.4333,
    "rot": "Fechamento: 'mas entender esse mercado… duas perguntas… Me conta! Tchau!' (sem 'Mas, mas')",
    "junta": "pausa"
   },
   {
-   "ini": 787.7333,
-   "fim": 788.3667,
-   "rot": "Fechamento: 'mas entender esse mercado… duas perguntas… Me conta! Tchau!' (sem 'Mas, mas')",
-   "junta": "pausa"
-  },
-  {
-   "ini": 788.6333,
+   "ini": 788.6,
    "fim": 790.57,
    "rot": "Fechamento: 'mas entender esse mercado… duas perguntas… Me conta! Tchau!' (sem 'Mas, mas')",
    "junta": "pausa"
@@ -910,512 +814,448 @@
  ],
  "pausas": [
   [
-   13.866666666666667,
-   14.466666666666667
+   13.933333333333334,
+   14.4
   ],
   [
-   17.2,
-   17.533333333333335
+   17.233333333333334,
+   17.5
   ],
   [
-   19.433333333333334,
-   20.2
+   19.466666666666665,
+   20.166666666666668
   ],
   [
-   23.533333333333335,
-   23.733333333333334
+   23.566666666666666,
+   23.7
   ],
   [
-   25.066666666666666,
-   25.433333333333334
+   25.1,
+   25.4
   ],
   [
-   27.833333333333332,
-   28.0
+   76.36666666666666,
+   76.56666666666666
   ],
   [
-   76.33333333333333,
-   76.6
+   77.9,
+   78.1
   ],
   [
-   77.86666666666666,
-   78.13333333333334
+   79.3,
+   79.66666666666667
   ],
   [
-   79.26666666666667,
-   79.7
+   80.73333333333333,
+   80.93333333333334
   ],
   [
-   80.66666666666667,
-   80.96666666666667
+   82.66666666666667,
+   83.1
   ],
   [
-   82.63333333333334,
-   83.13333333333334
+   83.73333333333333,
+   83.86666666666666
   ],
   [
-   83.7,
-   83.9
+   89.2,
+   89.33333333333333
   ],
   [
-   86.1,
-   86.23333333333333
+   90.06666666666666,
+   90.3
   ],
   [
-   87.6,
-   87.76666666666667
+   91.36666666666666,
+   91.66666666666667
   ],
   [
-   89.16666666666667,
-   89.4
+   94.36666666666666,
+   94.76666666666667
   ],
   [
-   90.03333333333333,
-   90.33333333333333
+   98.06666666666666,
+   98.36666666666666
   ],
   [
-   91.33333333333333,
-   91.7
+   101.33333333333333,
+   101.53333333333333
   ],
   [
-   94.33333333333333,
-   94.8
+   105.6,
+   105.73333333333333
   ],
   [
-   98.03333333333333,
-   98.4
+   107.33333333333333,
+   107.7
   ],
   [
-   101.3,
-   101.56666666666666
+   109.26666666666667,
+   109.66666666666667
   ],
   [
-   105.56666666666666,
-   105.76666666666667
-  ],
-  [
-   107.26666666666667,
-   107.73333333333333
-  ],
-  [
-   109.23333333333333,
-   109.7
-  ],
-  [
-   115.73333333333333,
-   115.86666666666666
-  ],
-  [
-   116.3,
-   116.46666666666667
+   116.33333333333333,
+   116.43333333333334
   ],
   [
    141.8,
-   141.96666666666667
+   141.93333333333334
   ],
   [
-   154.36666666666667,
-   154.76666666666668
+   154.4,
+   154.73333333333332
   ],
   [
-   156.2,
-   156.7
+   156.23333333333332,
+   156.66666666666666
   ],
   [
-   159.36666666666667,
-   159.86666666666667
+   159.43333333333334,
+   159.83333333333334
   ],
   [
-   206.1,
-   206.43333333333334
+   206.13333333333333,
+   206.4
   ],
   [
-   208.03333333333333,
-   208.3
+   208.06666666666666,
+   208.26666666666668
   ],
   [
-   209.53333333333333,
-   209.76666666666668
+   209.56666666666666,
+   209.73333333333332
   ],
   [
-   213.96666666666667,
-   214.26666666666668
+   214.0,
+   214.23333333333332
   ],
   [
-   233.46666666666667,
-   233.86666666666667
+   233.5,
+   233.83333333333334
   ],
   [
-   235.6,
-   236.06666666666666
+   235.63333333333333,
+   236.03333333333333
   ],
   [
-   237.26666666666668,
-   237.6
+   237.33333333333334,
+   237.56666666666666
   ],
   [
-   238.53333333333333,
-   238.8
+   238.56666666666666,
+   238.76666666666668
   ],
   [
-   246.23333333333332,
-   246.36666666666667
+   269.43333333333334,
+   270.1
   ],
   [
-   269.4,
-   270.1666666666667
+   275.26666666666665,
+   276.96666666666664
   ],
   [
-   275.23333333333335,
-   277.0
+   282.0,
+   282.3666666666667
   ],
   [
-   281.96666666666664,
-   282.4
+   292.8666666666667,
+   293.1
   ],
   [
-   284.56666666666666,
-   284.73333333333335
+   294.3666666666667,
+   294.56666666666666
   ],
   [
-   292.8333333333333,
-   293.1666666666667
+   297.3666666666667,
+   297.56666666666666
   ],
   [
-   293.8333333333333,
-   293.96666666666664
+   298.6666666666667,
+   298.8666666666667
   ],
   [
-   294.3333333333333,
-   294.6333333333333
+   300.73333333333335,
+   301.1333333333333
   ],
   [
-   297.3333333333333,
-   297.6333333333333
-  ],
-  [
-   298.6333333333333,
-   298.9
-  ],
-  [
-   300.6666666666667,
-   301.1666666666667
-  ],
-  [
-   304.03333333333336,
-   304.3666666666667
+   304.06666666666666,
+   304.3333333333333
   ],
   [
    322.76666666666665,
-   322.96666666666664
+   322.9
   ],
   [
-   344.7,
-   344.8666666666667
+   346.93333333333334,
+   347.03333333333336
   ],
   [
-   346.9,
-   347.06666666666666
+   368.2,
+   368.6
   ],
   [
-   368.1666666666667,
-   368.6666666666667
+   369.56666666666666,
+   369.6666666666667
   ],
   [
-   369.53333333333336,
-   369.7
+   370.7,
+   370.9
   ],
   [
-   370.6666666666667,
-   370.93333333333334
+   373.93333333333334,
+   374.03333333333336
   ],
   [
-   373.9,
-   374.06666666666666
+   376.23333333333335,
+   376.53333333333336
   ],
   [
-   376.1666666666667,
-   376.56666666666666
+   381.7,
+   381.8
   ],
   [
-   381.6666666666667,
-   381.8333333333333
+   382.6333333333333,
+   382.8666666666667
   ],
   [
-   382.6,
-   382.9
+   384.6666666666667,
+   384.8333333333333
   ],
   [
-   384.6333333333333,
-   384.8666666666667
+   392.3666666666667,
+   392.6666666666667
   ],
   [
-   386.1666666666667,
-   386.3333333333333
+   396.76666666666665,
+   397.1
   ],
   [
-   392.3333333333333,
-   392.7
+   421.6,
+   421.8
   ],
   [
-   396.73333333333335,
-   397.1333333333333
+   422.8333333333333,
+   423.1333333333333
   ],
   [
-   401.73333333333335,
-   401.8666666666667
+   427.3,
+   427.6333333333333
   ],
   [
-   421.53333333333336,
-   421.8666666666667
+   432.8333333333333,
+   432.93333333333334
   ],
   [
-   422.8,
-   423.1666666666667
+   434.3,
+   434.6333333333333
   ],
   [
-   424.03333333333336,
-   424.1666666666667
+   439.1333333333333,
+   439.53333333333336
   ],
   [
-   427.26666666666665,
-   427.6666666666667
+   443.43333333333334,
+   443.53333333333336
   ],
   [
-   432.76666666666665,
-   432.96666666666664
+   447.53333333333336,
+   447.9
   ],
   [
-   434.26666666666665,
-   434.6666666666667
+   449.46666666666664,
+   449.7
   ],
   [
-   439.06666666666666,
-   439.56666666666666
+   461.26666666666665,
+   461.3666666666667
   ],
   [
-   443.4,
-   443.6
+   463.8666666666667,
+   464.3333333333333
   ],
   [
-   447.5,
-   447.93333333333334
+   465.1333333333333,
+   465.26666666666665
   ],
   [
-   449.43333333333334,
-   449.73333333333335
+   466.53333333333336,
+   466.8333333333333
   ],
   [
-   461.2,
-   461.43333333333334
+   469.1333333333333,
+   469.3333333333333
   ],
   [
-   463.8333333333333,
-   464.3666666666667
+   474.3666666666667,
+   474.7
   ],
   [
-   465.1,
-   465.3333333333333
+   476.3333333333333,
+   476.46666666666664
   ],
   [
-   466.5,
-   466.8666666666667
+   477.46666666666664,
+   477.8666666666667
   ],
   [
-   467.5,
-   467.6666666666667
+   480.4,
+   480.8
   ],
   [
-   469.1,
-   469.3666666666667
+   484.4,
+   484.56666666666666
   ],
   [
-   474.3333333333333,
-   474.73333333333335
+   490.5,
+   490.8333333333333
   ],
   [
-   476.26666666666665,
-   476.5
+   494.1333333333333,
+   494.43333333333334
   ],
   [
-   477.4,
-   477.9
+   497.9,
+   498.56666666666666
   ],
   [
-   480.3666666666667,
-   480.8666666666667
+   500.43333333333334,
+   500.6
   ],
   [
-   484.3666666666667,
-   484.6
+   502.9,
+   503.46666666666664
   ],
   [
-   490.46666666666664,
-   490.8666666666667
+   505.1,
+   505.46666666666664
   ],
   [
-   494.1,
-   494.46666666666664
+   506.8333333333333,
+   507.2
   ],
   [
-   495.26666666666665,
-   495.43333333333334
+   509.8666666666667,
+   510.23333333333335
   ],
   [
-   497.8666666666667,
-   498.6
+   511.8666666666667,
+   512.2
   ],
   [
-   500.4,
-   500.6333333333333
+   514.8333333333334,
+   515.1333333333333
   ],
   [
-   502.8666666666667,
-   503.5
+   518.8666666666667,
+   519.3666666666667
   ],
   [
-   505.06666666666666,
-   505.5
+   522.6333333333333,
+   522.8333333333334
   ],
   [
-   506.8,
-   507.26666666666665
+   524.0,
+   524.7333333333333
   ],
   [
-   509.0,
-   509.1666666666667
+   525.8666666666667,
+   526.5333333333333
   ],
   [
-   509.8,
-   510.26666666666665
+   526.9333333333333,
+   529.2666666666667
   ],
   [
-   511.8,
-   512.2333333333333
+   530.2,
+   531.2666666666667
   ],
   [
-   514.8,
-   515.1666666666666
+   532.9,
+   533.0666666666667
   ],
   [
-   518.8,
-   519.4333333333333
+   535.5,
+   535.8333333333334
   ],
   [
-   522.5666666666667,
-   522.8666666666667
+   540.0333333333333,
+   540.2
   ],
   [
-   523.9666666666667,
-   524.7666666666667
+   541.4666666666667,
+   541.5666666666667
   ],
   [
-   525.8333333333334,
-   526.6
+   716.8666666666667,
+   717.4
   ],
   [
-   526.8666666666667,
-   529.3
+   747.2,
+   747.5
   ],
   [
-   530.1666666666666,
-   531.3
+   748.3666666666667,
+   748.6666666666666
   ],
   [
-   532.8666666666667,
-   533.1
+   749.6333333333333,
+   749.9
   ],
   [
-   535.4666666666667,
-   535.8666666666667
+   750.4666666666667,
+   750.7
   ],
   [
-   537.5666666666667,
-   537.7333333333333
+   752.6666666666666,
+   752.8
   ],
   [
-   540.0,
-   540.2333333333333
+   755.3666666666667,
+   755.6
   ],
   [
-   541.4333333333333,
-   541.6
+   757.3333333333334,
+   757.4666666666667
   ],
   [
-   716.8333333333334,
-   717.4333333333333
+   759.4666666666667,
+   760.0666666666667
   ],
   [
-   747.1666666666666,
-   747.5333333333333
+   766.3333333333334,
+   766.5333333333333
   ],
   [
-   748.3333333333334,
-   748.7
+   770.3666666666667,
+   770.4666666666667
   ],
   [
-   749.6,
-   749.9333333333333
+   772.9333333333333,
+   773.2666666666667
   ],
   [
-   750.4333333333333,
-   750.7333333333333
+   776.3333333333334,
+   776.8666666666667
   ],
   [
-   752.6333333333333,
-   752.8666666666667
+   779.5,
+   779.6666666666666
   ],
   [
-   755.3333333333334,
-   755.6333333333333
+   781.2333333333333,
+   781.8333333333334
   ],
   [
-   757.3,
-   757.5
+   784.9666666666667,
+   785.8
   ],
   [
-   759.4,
-   760.1
+   786.6,
+   787.7
   ],
   [
-   766.2666666666667,
-   766.5666666666667
-  ],
-  [
-   768.6,
-   768.8
-  ],
-  [
-   770.3333333333334,
-   770.5
-  ],
-  [
-   772.9,
-   773.3333333333334
-  ],
-  [
-   776.2666666666667,
-   776.9333333333333
-  ],
-  [
-   779.4666666666667,
-   779.7
-  ],
-  [
-   781.1666666666666,
-   781.8666666666667
-  ],
-  [
-   784.9333333333333,
-   785.8333333333334
-  ],
-  [
-   786.5666666666667,
-   787.7333333333333
-  ],
-  [
-   788.3666666666667,
-   788.6333333333333
+   788.4333333333333,
+   788.6
   ]
  ]
 }

@@ -5,6 +5,7 @@ Cada trecho: (rótulo, início da 1ª palavra, início da última palavra) tirad
 O fim de cada trecho é achado pela energia (último instante falado antes da próxima pausa/palavra).
 """
 import json
+import os
 import sys
 import wave
 
@@ -15,11 +16,11 @@ T_VINHETA = 346 / FPS          # primeiro frame do bruto (a vinheta acaba no fra
 DUR_TOTAL = 790.57
 WAV = "/home/user/work/ep3/voz_16k.wav"
 SR = 16000
-SIL_DB = -36.0
+SIL_DB = float(os.environ.get('SIL_DB', -36))   # ruído da sala: -50..-55
 SIL_MIN = 0.30
-PAD_ANTES = 0.10   # fica depois da palavra anterior
-PAD_DEPOIS = 0.08  # fica antes da próxima palavra
-PAD_FIM = 0.12     # respiro depois da última palavra de cada trecho
+PAD_ANTES = float(os.environ.get('PAD_A', 0.14))   # fica depois da palavra anterior
+PAD_DEPOIS = float(os.environ.get('PAD_D', 0.12))  # fica antes da próxima palavra
+PAD_FIM = 0.16     # respiro depois da última palavra de cada trecho
 
 # (rótulo, 1ª palavra, última palavra, junção)  junção = "retake" (punch-in alterna) ou "corrido"
 TRECHOS = [
@@ -120,7 +121,7 @@ def main():
                 s0, s1 = k * 0.01, j * 0.01
                 if s1 - s0 >= SIL_MIN and s1 < fim - 0.2:
                     a, b = snap(s0 + PAD_ANTES), snap(s1 - PAD_DEPOIS)
-                    if b - a >= 1 / FPS:
+                    if b - a >= 0.10:   # cortes menores que isso só picotam a palavra (ex.: 'arti|ficial')
                         segs.append([cur, a, rot])
                         pausas.append((a, b))
                         cur = b
