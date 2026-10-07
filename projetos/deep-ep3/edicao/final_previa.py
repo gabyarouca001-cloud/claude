@@ -23,7 +23,6 @@ sh = lambda c: subprocess.run(c, check=True)
 BROLL = [
     ("46635", 1.0, 1.9, 0.5, 114.20, 0.10, "IA / tecnologia"),
     ("50610", 1.0, 2.0, 0.5, 234.55, 0.00, "edição de vídeo"),
-    ("42136", 1.5, 2.3, 0.5, 324.70, 0.00, "compra pelo celular (vertical)"),
     ("21364", 0.5, 1.1, 0.80, 435.34, 0.08, "feed"),
     ("2948", 2.0, 1.4, 0.5, None, 0.0, "podcast"),
     ("49381", 2.0, 1.7, 0.4, None, 0.0, "loja"),

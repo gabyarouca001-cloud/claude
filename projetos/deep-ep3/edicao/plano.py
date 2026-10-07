@@ -20,6 +20,7 @@ SIL_DB = float(os.environ.get('SIL_DB', -36))   # ruído da sala: -50..-55
 SIL_MIN = 0.30
 PAD_ANTES = float(os.environ.get('PAD_A', 0.14))   # fica depois da palavra anterior
 PAD_DEPOIS = float(os.environ.get('PAD_D', 0.12))  # fica antes da próxima palavra
+SIL_FIM = -46.0   # fim de palavra: o rabo da sílaba final cai abaixo de -36 dB antes de acabar
 PAD_FIM = 0.16     # respiro depois da última palavra de cada trecho
 
 # (rótulo, 1ª palavra, última palavra, junção)  junção = "retake" (punch-in alterna) ou "corrido"
@@ -34,18 +35,19 @@ TRECHOS = [
     ("Produção: 'Também facilita apresentar… sem ter conhecimento suficiente' (sem o 'também facilita' repetido)", 202.80, 215.38),
     ("Produção: 'a qualidade da apresentação… aquele produto,' (sem 'Vale dizer que')", 226.22, 240.52, 0.30, 241.20),
     ("Produção: 'ou apenas tá repetindo uma descrição comercial.' (sem 'ou apenas tá, ou')", 244.05, 247.36, 0.10),
-    ("Produção: 'Para mim, isso significa… o que sustenta' (último take)", 269.36, 286.86, 0.30, 287.72, 269.30),
+    ("Produção: 'Para mim, isso significa… o que sustenta' (2º take, completo; sem o 'Ah, minha voz falhou')", 277.10, 286.86, 0.30, 287.72),
     ("Produção: 'uma recomendação.' (sem 'uma recomend…')", 289.15, 289.54, 0.20),
     ("Compra: 'A segunda mudança está na compra.'", 291.24, 294.70),
-    ("Compra: 'Porque você entra para se distrair… na mesma hora.'", 296.54, 307.52),
-    ("Compra: 'E também explica o sucesso de ferramentas como o TikTok Shop.'", 322.60, 327.26),
+    ("Compra: 'Porque você entra para se distrair… na mesma hora. Isso acontece muito, né?'", 296.54, 309.14),
+    ("Compra: 'E isso está acontecendo cada vez mais. E também explica o sucesso… TikTok Shop.'", 319.24, 327.26),
     ("Compra: 'E transforma o conteúdo num verdadeiro ponto de venda, né?'", 343.00, 348.78),
-    ("Compra: 'um vídeo… pode divertir, ensinar… comissão… interesse comercial… do outro lado.'", 365.80, 389.16),
+    ("Compra: 'Lembrando que um vídeo… pode divertir, ensinar… comissão… interesse comercial… do outro lado.'", 364.40, 389.16),
     ("Negócio: 'terceira mudança… produzir programas, lançar produtos, oferecer assinaturas.'", 389.98, 404.24),
     ("Negócio: 'E parte deles está construindo empresas enormes… O que você faz questão de acompanhar?'", 419.24, 452.04),
     ("Negócio: 'E o que vale a pena pagar? … expectativa de entrega.'", 460.74, 469.94),
     ("Confiança: 'E é por isso que eu vejo a confiança… transformar' (take corrido)", 470.98, 486.66, 0.30, 487.60),
-    ("Confiança: 'essa atração em receita… mudar de opinião.' (sem 'essa, essa')", 488.85, 542.46, 0.07),
+    ("Confiança: 'essa atração em receita… Quem publica, recomenda e vende' (sem 'essa, essa')", 488.85, 522.00, 0.07, None, 488.58),
+    ("Confiança: 'precisa ser responsável por aquilo. E quem acompanha… mudar de opinião.' (3ª tentativa, completa)", 531.40, 542.46),
     ("Fechamento: 'Eu comecei essa série…'", 713.61, 720.67),
     ("Fechamento: 'E eu termino falando… nunca querer trabalhar com internet.' (último take)", 743.59, 763.61),
     ("Fechamento: 'mas entender esse mercado… duas perguntas… Me conta! Tchau!' (sem 'Mas, mas')", 765.80, None, 0.10),
@@ -64,27 +66,47 @@ def snap(t):
     return round(t * FPS) / FPS
 
 
-def inicio_fala(db, t, atras=0.30):
-    """Primeiro instante falado a partir de t-atras; devolve o ponto de entrada (com PAD_DEPOIS antes)."""
-    i = int(max(0, t - atras) / 0.01)
-    j = int((t + 0.15) / 0.01)
-    while i < j and db[i] < SIL_DB:
-        i += 1
-    return max(0.0, i * 0.01 - PAD_DEPOIS)
+SIL_ON = -44.0   # começo de palavra: consoantes suaves ficam entre -36 e -44 dB
 
 
-def fim_fala(db, t, a_frente=0.80):
-    """Último instante falado até t+a_frente (parando na primeira pausa longa depois de t)."""
+def inicio_fala(db, t, atras=None):
+    """Entrada de um trecho cuja 1ª palavra o Whisper marca em t.  O tempo do Whisper erra ±0,5 s ('com recursos'
+    marcado em 154,18 começa de fato em 153,65), então a entrada sai da ENERGIA: acha o começo do trecho falado que
+    contém t (recuando até a pausa anterior) e entra PAD_DEPOIS antes da 1ª sílaba, dentro da pausa.
+    Sem pausa por perto (fala emendada), entra no vale de energia mais fundo ao redor de t."""
+    i = int(t / 0.01)
+    if db[i] < SIL_ON:                       # t caiu numa pausa: vai até a próxima sílaba
+        j = i
+        while j < i + 30 and db[j] < SIL_ON:
+            j += 1
+        i = j
+    k, dip = i, 0
+    while k > i - 60:                        # recua enquanto houver fala (aceita vãos < 0,06 s)
+        if db[k] < SIL_ON:
+            dip += 1
+            if dip >= 6:
+                inicio = k + dip             # 1º quadro falado depois da pausa
+                return max((k) * 0.01 + 0.03, inicio * 0.01 - PAD_DEPOIS)
+        else:
+            dip = 0
+        k -= 1
+    j0 = max(0, int((t - 0.20) / 0.01))
+    return (j0 + int(np.argmin(db[j0:int(t / 0.01) + 6]))) * 0.01
+
+
+def fim_fala(db, t, a_frente=1.6):
+    """Último instante falado da última palavra (que começa em t): para na 1ª pausa de 0,12 s depois dela.
+    (Antes parava só em 0,30 s de silêncio e, sem pausa, cortava a palavra seguinte pela metade: 'Isso acon|tece'.)"""
     i = int(t / 0.01)
     lim = int((t + a_frente) / 0.01)
     ultimo = i
     sil = 0
     while i < min(lim, len(db) - 1):
-        if db[i] >= SIL_DB:
+        if db[i] >= SIL_FIM:
             ultimo, sil = i, 0
         else:
             sil += 1
-            if sil >= 30:   # 0,30 s de silêncio: a frase acabou
+            if sil >= 12 and i * 0.01 > t + 0.15:
                 break
         i += 1
     return ultimo * 0.01 + PAD_FIM
@@ -120,7 +142,12 @@ def main():
                     j += 1
                 s0, s1 = k * 0.01, j * 0.01
                 if s1 - s0 >= SIL_MIN and s1 < fim - 0.2:
-                    a, b = snap(s0 + PAD_ANTES), snap(s1 - PAD_DEPOIS)
+                    ia, ib = int(round((s0 + PAD_ANTES) * 100)), int(round((s1 - PAD_DEPOIS) * 100))
+                    while ia < ib - 3 and db[ia - 3:ia].max() > -42:     # só corta onde já está quieto (não pega o rabo da palavra)
+                        ia += 1
+                    while ib > ia + 3 and db[ib:ib + 3].max() > -42:
+                        ib -= 1
+                    a, b = snap(ia / 100), snap(ib / 100)
                     if b - a >= 0.10:   # cortes menores que isso só picotam a palavra (ex.: 'arti|ficial')
                         segs.append([cur, a, rot])
                         pausas.append((a, b))

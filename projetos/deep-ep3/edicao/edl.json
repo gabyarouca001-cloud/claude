@@ -39,12 +39,12 @@
   },
   {
    "ini": 25.4,
-   "fim": 29.6,
+   "fim": 29.7,
    "rot": "Abertura: 'Talvez você tenha pensado…' (1º take, completo)",
    "junta": "pausa"
   },
   {
-   "ini": 68.4667,
+   "ini": 68.5667,
    "fim": 76.3667,
    "rot": "Ligação com o episódio anterior + 'caminho entre assistir, acreditar e comprar'",
    "junta": "retake"
@@ -117,12 +117,12 @@
   },
   {
    "ini": 101.5333,
-   "fim": 103.6,
+   "fim": 103.7,
    "rot": "Ligação com o episódio anterior + 'caminho entre assistir, acreditar e comprar'",
    "junta": "pausa"
   },
   {
-   "ini": 104.6333,
+   "ini": 104.8,
    "fim": 105.6,
    "rot": "Produção: 'primeira mudança… ajudam a escrever,'",
    "junta": "retake"
@@ -152,19 +152,19 @@
    "junta": "pausa"
   },
   {
-   "ini": 125.8667,
-   "fim": 129.0667,
+   "ini": 125.9,
+   "fim": 129.1333,
    "rot": "Produção: 'editar, criar imagens e vídeos' (take 2)",
    "junta": "retake"
   },
   {
-   "ini": 141.9333,
-   "fim": 144.8667,
+   "ini": 141.9,
+   "fim": 145.0667,
    "rot": "Produção: 'E uma pessoa pode produzir'",
    "junta": "retake"
   },
   {
-   "ini": 153.7667,
+   "ini": 154.2333,
    "fim": 154.4,
    "rot": "Produção: 'com recursos que antes exigiam uma estrutura muito maior.'",
    "junta": "retake"
@@ -183,18 +183,18 @@
   },
   {
    "ini": 159.8333,
-   "fim": 160.9333,
+   "fim": 161.0333,
    "rot": "Produção: 'com recursos que antes exigiam uma estrutura muito maior.'",
    "junta": "pausa"
   },
   {
-   "ini": 197.5333,
+   "ini": 197.6333,
    "fim": 200.0667,
    "rot": "Produção: 'Isso abre espaço para boas ideias.'",
    "junta": "retake"
   },
   {
-   "ini": 202.7333,
+   "ini": 202.8,
    "fim": 206.1333,
    "rot": "Produção: 'Também facilita apresentar… sem ter conhecimento suficiente' (sem o 'também facilita' repetido)",
    "junta": "retake"
@@ -218,13 +218,13 @@
    "junta": "pausa"
   },
   {
-   "ini": 214.2333,
-   "fim": 216.0333,
+   "ini": 214.2,
+   "fim": 216.1667,
    "rot": "Produção: 'Também facilita apresentar… sem ter conhecimento suficiente' (sem o 'também facilita' repetido)",
    "junta": "pausa"
   },
   {
-   "ini": 225.9667,
+   "ini": 226.0667,
    "fim": 233.5,
    "rot": "Produção: 'a qualidade da apresentação… aquele produto,' (sem 'Vale dizer que')",
    "junta": "retake"
@@ -254,43 +254,31 @@
    "junta": "pausa"
   },
   {
-   "ini": 243.9333,
-   "fim": 248.3,
+   "ini": 244.0,
+   "fim": 248.4667,
    "rot": "Produção: 'ou apenas tá repetindo uma descrição comercial.' (sem 'ou apenas tá, ou')",
    "junta": "retake"
   },
   {
-   "ini": 269.3,
-   "fim": 269.4333,
-   "rot": "Produção: 'Para mim, isso significa… o que sustenta' (último take)",
-   "junta": "retake"
-  },
-  {
-   "ini": 270.1,
-   "fim": 275.2667,
-   "rot": "Produção: 'Para mim, isso significa… o que sustenta' (último take)",
-   "junta": "pausa"
-  },
-  {
-   "ini": 276.9667,
+   "ini": 277.0333,
    "fim": 282.0,
-   "rot": "Produção: 'Para mim, isso significa… o que sustenta' (último take)",
-   "junta": "pausa"
+   "rot": "Produção: 'Para mim, isso significa… o que sustenta' (2º take, completo; sem o 'Ah, minha voz falhou')",
+   "junta": "retake"
   },
   {
    "ini": 282.3667,
    "fim": 287.7333,
-   "rot": "Produção: 'Para mim, isso significa… o que sustenta' (último take)",
+   "rot": "Produção: 'Para mim, isso significa… o que sustenta' (2º take, completo; sem o 'Ah, minha voz falhou')",
    "junta": "pausa"
   },
   {
-   "ini": 288.9667,
-   "fim": 290.5,
+   "ini": 289.0667,
+   "fim": 290.6667,
    "rot": "Produção: 'uma recomendação.' (sem 'uma recomend…')",
    "junta": "retake"
   },
   {
-   "ini": 291.2333,
+   "ini": 291.3,
    "fim": 292.8667,
    "rot": "Compra: 'A segunda mudança está na compra.'",
    "junta": "retake"
@@ -303,48 +291,54 @@
   },
   {
    "ini": 294.5667,
-   "fim": 295.3,
+   "fim": 295.4333,
    "rot": "Compra: 'A segunda mudança está na compra.'",
    "junta": "pausa"
   },
   {
-   "ini": 296.5667,
+   "ini": 296.7667,
    "fim": 297.3667,
-   "rot": "Compra: 'Porque você entra para se distrair… na mesma hora.'",
+   "rot": "Compra: 'Porque você entra para se distrair… na mesma hora. Isso acontece muito, né?'",
    "junta": "retake"
   },
   {
    "ini": 297.5667,
    "fim": 298.6667,
-   "rot": "Compra: 'Porque você entra para se distrair… na mesma hora.'",
+   "rot": "Compra: 'Porque você entra para se distrair… na mesma hora. Isso acontece muito, né?'",
    "junta": "pausa"
   },
   {
    "ini": 298.8667,
    "fim": 300.7333,
-   "rot": "Compra: 'Porque você entra para se distrair… na mesma hora.'",
+   "rot": "Compra: 'Porque você entra para se distrair… na mesma hora. Isso acontece muito, né?'",
    "junta": "pausa"
   },
   {
    "ini": 301.1333,
    "fim": 304.0667,
-   "rot": "Compra: 'Porque você entra para se distrair… na mesma hora.'",
+   "rot": "Compra: 'Porque você entra para se distrair… na mesma hora. Isso acontece muito, né?'",
    "junta": "pausa"
   },
   {
    "ini": 304.3333,
-   "fim": 308.4333,
-   "rot": "Compra: 'Porque você entra para se distrair… na mesma hora.'",
+   "fim": 309.6,
+   "rot": "Compra: 'Porque você entra para se distrair… na mesma hora. Isso acontece muito, né?'",
    "junta": "pausa"
   },
   {
-   "ini": 322.9,
-   "fim": 327.9,
-   "rot": "Compra: 'E também explica o sucesso de ferramentas como o TikTok Shop.'",
+   "ini": 319.2333,
+   "fim": 322.4667,
+   "rot": "Compra: 'E isso está acontecendo cada vez mais. E também explica o sucesso… TikTok Shop.'",
    "junta": "retake"
   },
   {
-   "ini": 342.9,
+   "ini": 322.9,
+   "fim": 327.9667,
+   "rot": "Compra: 'E isso está acontecendo cada vez mais. E também explica o sucesso… TikTok Shop.'",
+   "junta": "pausa"
+  },
+  {
+   "ini": 342.9667,
    "fim": 346.9333,
    "rot": "Compra: 'E transforma o conteúdo num verdadeiro ponto de venda, né?'",
    "junta": "retake"
@@ -356,61 +350,61 @@
    "junta": "pausa"
   },
   {
-   "ini": 365.3667,
-   "fim": 368.2,
-   "rot": "Compra: 'um vídeo… pode divertir, ensinar… comissão… interesse comercial… do outro lado.'",
+   "ini": 364.9333,
+   "fim": 368.2667,
+   "rot": "Compra: 'Lembrando que um vídeo… pode divertir, ensinar… comissão… interesse comercial… do outro lado.'",
    "junta": "retake"
   },
   {
-   "ini": 368.6,
+   "ini": 368.5667,
    "fim": 369.5667,
-   "rot": "Compra: 'um vídeo… pode divertir, ensinar… comissão… interesse comercial… do outro lado.'",
+   "rot": "Compra: 'Lembrando que um vídeo… pode divertir, ensinar… comissão… interesse comercial… do outro lado.'",
    "junta": "pausa"
   },
   {
    "ini": 369.6667,
    "fim": 370.7,
-   "rot": "Compra: 'um vídeo… pode divertir, ensinar… comissão… interesse comercial… do outro lado.'",
+   "rot": "Compra: 'Lembrando que um vídeo… pode divertir, ensinar… comissão… interesse comercial… do outro lado.'",
    "junta": "pausa"
   },
   {
    "ini": 370.9,
    "fim": 373.9333,
-   "rot": "Compra: 'um vídeo… pode divertir, ensinar… comissão… interesse comercial… do outro lado.'",
+   "rot": "Compra: 'Lembrando que um vídeo… pode divertir, ensinar… comissão… interesse comercial… do outro lado.'",
    "junta": "pausa"
   },
   {
    "ini": 374.0333,
    "fim": 376.2333,
-   "rot": "Compra: 'um vídeo… pode divertir, ensinar… comissão… interesse comercial… do outro lado.'",
+   "rot": "Compra: 'Lembrando que um vídeo… pode divertir, ensinar… comissão… interesse comercial… do outro lado.'",
    "junta": "pausa"
   },
   {
    "ini": 376.5333,
    "fim": 381.7,
-   "rot": "Compra: 'um vídeo… pode divertir, ensinar… comissão… interesse comercial… do outro lado.'",
+   "rot": "Compra: 'Lembrando que um vídeo… pode divertir, ensinar… comissão… interesse comercial… do outro lado.'",
    "junta": "pausa"
   },
   {
    "ini": 381.8,
    "fim": 382.6333,
-   "rot": "Compra: 'um vídeo… pode divertir, ensinar… comissão… interesse comercial… do outro lado.'",
+   "rot": "Compra: 'Lembrando que um vídeo… pode divertir, ensinar… comissão… interesse comercial… do outro lado.'",
    "junta": "pausa"
   },
   {
    "ini": 382.8667,
    "fim": 384.6667,
-   "rot": "Compra: 'um vídeo… pode divertir, ensinar… comissão… interesse comercial… do outro lado.'",
+   "rot": "Compra: 'Lembrando que um vídeo… pode divertir, ensinar… comissão… interesse comercial… do outro lado.'",
    "junta": "pausa"
   },
   {
    "ini": 384.8333,
-   "fim": 389.4333,
-   "rot": "Compra: 'um vídeo… pode divertir, ensinar… comissão… interesse comercial… do outro lado.'",
+   "fim": 389.6,
+   "rot": "Compra: 'Lembrando que um vídeo… pode divertir, ensinar… comissão… interesse comercial… do outro lado.'",
    "junta": "pausa"
   },
   {
-   "ini": 389.8667,
+   "ini": 389.9333,
    "fim": 392.3667,
    "rot": "Negócio: 'terceira mudança… produzir programas, lançar produtos, oferecer assinaturas.'",
    "junta": "retake"
@@ -423,12 +417,12 @@
   },
   {
    "ini": 397.1,
-   "fim": 405.1667,
+   "fim": 405.2667,
    "rot": "Negócio: 'terceira mudança… produzir programas, lançar produtos, oferecer assinaturas.'",
    "junta": "pausa"
   },
   {
-   "ini": 418.9333,
+   "ini": 419.2667,
    "fim": 421.6,
    "rot": "Negócio: 'E parte deles está construindo empresas enormes… O que você faz questão de acompanhar?'",
    "junta": "retake"
@@ -483,12 +477,12 @@
   },
   {
    "ini": 449.7,
-   "fim": 452.6,
+   "fim": 452.7,
    "rot": "Negócio: 'E parte deles está construindo empresas enormes… O que você faz questão de acompanhar?'",
    "junta": "pausa"
   },
   {
-   "ini": 460.6333,
+   "ini": 460.7,
    "fim": 461.2667,
    "rot": "Negócio: 'E o que vale a pena pagar? … expectativa de entrega.'",
    "junta": "retake"
@@ -519,12 +513,12 @@
   },
   {
    "ini": 469.3333,
-   "fim": 470.4667,
+   "fim": 470.5333,
    "rot": "Negócio: 'E o que vale a pena pagar? … expectativa de entrega.'",
    "junta": "pausa"
   },
   {
-   "ini": 470.9333,
+   "ini": 471.0,
    "fim": 474.3667,
    "rot": "Confiança: 'E é por isso que eu vejo a confiança… transformar' (take corrido)",
    "junta": "retake"
@@ -560,146 +554,122 @@
    "junta": "pausa"
   },
   {
-   "ini": 488.7,
+   "ini": 488.5667,
    "fim": 490.5,
-   "rot": "Confiança: 'essa atração em receita… mudar de opinião.' (sem 'essa, essa')",
+   "rot": "Confiança: 'essa atração em receita… Quem publica, recomenda e vende' (sem 'essa, essa')",
    "junta": "retake"
   },
   {
    "ini": 490.8333,
    "fim": 494.1333,
-   "rot": "Confiança: 'essa atração em receita… mudar de opinião.' (sem 'essa, essa')",
+   "rot": "Confiança: 'essa atração em receita… Quem publica, recomenda e vende' (sem 'essa, essa')",
    "junta": "pausa"
   },
   {
    "ini": 494.4333,
    "fim": 497.9,
-   "rot": "Confiança: 'essa atração em receita… mudar de opinião.' (sem 'essa, essa')",
+   "rot": "Confiança: 'essa atração em receita… Quem publica, recomenda e vende' (sem 'essa, essa')",
    "junta": "pausa"
   },
   {
    "ini": 498.5667,
    "fim": 500.4333,
-   "rot": "Confiança: 'essa atração em receita… mudar de opinião.' (sem 'essa, essa')",
+   "rot": "Confiança: 'essa atração em receita… Quem publica, recomenda e vende' (sem 'essa, essa')",
    "junta": "pausa"
   },
   {
    "ini": 500.6,
    "fim": 502.9,
-   "rot": "Confiança: 'essa atração em receita… mudar de opinião.' (sem 'essa, essa')",
+   "rot": "Confiança: 'essa atração em receita… Quem publica, recomenda e vende' (sem 'essa, essa')",
    "junta": "pausa"
   },
   {
    "ini": 503.4667,
    "fim": 505.1,
-   "rot": "Confiança: 'essa atração em receita… mudar de opinião.' (sem 'essa, essa')",
+   "rot": "Confiança: 'essa atração em receita… Quem publica, recomenda e vende' (sem 'essa, essa')",
    "junta": "pausa"
   },
   {
    "ini": 505.4667,
    "fim": 506.8333,
-   "rot": "Confiança: 'essa atração em receita… mudar de opinião.' (sem 'essa, essa')",
+   "rot": "Confiança: 'essa atração em receita… Quem publica, recomenda e vende' (sem 'essa, essa')",
    "junta": "pausa"
   },
   {
    "ini": 507.2,
    "fim": 509.8667,
-   "rot": "Confiança: 'essa atração em receita… mudar de opinião.' (sem 'essa, essa')",
+   "rot": "Confiança: 'essa atração em receita… Quem publica, recomenda e vende' (sem 'essa, essa')",
    "junta": "pausa"
   },
   {
    "ini": 510.2333,
    "fim": 511.8667,
-   "rot": "Confiança: 'essa atração em receita… mudar de opinião.' (sem 'essa, essa')",
+   "rot": "Confiança: 'essa atração em receita… Quem publica, recomenda e vende' (sem 'essa, essa')",
    "junta": "pausa"
   },
   {
    "ini": 512.2,
    "fim": 514.8333,
-   "rot": "Confiança: 'essa atração em receita… mudar de opinião.' (sem 'essa, essa')",
+   "rot": "Confiança: 'essa atração em receita… Quem publica, recomenda e vende' (sem 'essa, essa')",
    "junta": "pausa"
   },
   {
    "ini": 515.1333,
    "fim": 518.8667,
-   "rot": "Confiança: 'essa atração em receita… mudar de opinião.' (sem 'essa, essa')",
+   "rot": "Confiança: 'essa atração em receita… Quem publica, recomenda e vende' (sem 'essa, essa')",
    "junta": "pausa"
   },
   {
    "ini": 519.3667,
-   "fim": 522.6333,
-   "rot": "Confiança: 'essa atração em receita… mudar de opinião.' (sem 'essa, essa')",
+   "fim": 522.6667,
+   "rot": "Confiança: 'essa atração em receita… Quem publica, recomenda e vende' (sem 'essa, essa')",
    "junta": "pausa"
   },
   {
-   "ini": 522.8333,
-   "fim": 524.0,
-   "rot": "Confiança: 'essa atração em receita… mudar de opinião.' (sem 'essa, essa')",
-   "junta": "pausa"
-  },
-  {
-   "ini": 524.7333,
-   "fim": 525.8667,
-   "rot": "Confiança: 'essa atração em receita… mudar de opinião.' (sem 'essa, essa')",
-   "junta": "pausa"
-  },
-  {
-   "ini": 526.5333,
-   "fim": 526.9333,
-   "rot": "Confiança: 'essa atração em receita… mudar de opinião.' (sem 'essa, essa')",
-   "junta": "pausa"
-  },
-  {
-   "ini": 529.2667,
-   "fim": 530.2,
-   "rot": "Confiança: 'essa atração em receita… mudar de opinião.' (sem 'essa, essa')",
-   "junta": "pausa"
-  },
-  {
-   "ini": 531.2667,
+   "ini": 531.3333,
    "fim": 532.9,
-   "rot": "Confiança: 'essa atração em receita… mudar de opinião.' (sem 'essa, essa')",
-   "junta": "pausa"
+   "rot": "Confiança: 'precisa ser responsável por aquilo. E quem acompanha… mudar de opinião.' (3ª tentativa, completa)",
+   "junta": "retake"
   },
   {
    "ini": 533.0667,
    "fim": 535.5,
-   "rot": "Confiança: 'essa atração em receita… mudar de opinião.' (sem 'essa, essa')",
+   "rot": "Confiança: 'precisa ser responsável por aquilo. E quem acompanha… mudar de opinião.' (3ª tentativa, completa)",
    "junta": "pausa"
   },
   {
    "ini": 535.8333,
    "fim": 540.0333,
-   "rot": "Confiança: 'essa atração em receita… mudar de opinião.' (sem 'essa, essa')",
+   "rot": "Confiança: 'precisa ser responsável por aquilo. E quem acompanha… mudar de opinião.' (3ª tentativa, completa)",
    "junta": "pausa"
   },
   {
    "ini": 540.2,
    "fim": 541.4667,
-   "rot": "Confiança: 'essa atração em receita… mudar de opinião.' (sem 'essa, essa')",
+   "rot": "Confiança: 'precisa ser responsável por aquilo. E quem acompanha… mudar de opinião.' (3ª tentativa, completa)",
    "junta": "pausa"
   },
   {
    "ini": 541.5667,
-   "fim": 543.0,
-   "rot": "Confiança: 'essa atração em receita… mudar de opinião.' (sem 'essa, essa')",
+   "fim": 543.0333,
+   "rot": "Confiança: 'precisa ser responsável por aquilo. E quem acompanha… mudar de opinião.' (3ª tentativa, completa)",
    "junta": "pausa"
   },
   {
-   "ini": 713.6333,
+   "ini": 713.9,
    "fim": 716.8667,
    "rot": "Fechamento: 'Eu comecei essa série…'",
    "junta": "retake"
   },
   {
    "ini": 717.4,
-   "fim": 721.1333,
+   "fim": 721.3333,
    "rot": "Fechamento: 'Eu comecei essa série…'",
    "junta": "pausa"
   },
   {
-   "ini": 743.4333,
-   "fim": 747.2,
+   "ini": 743.5333,
+   "fim": 747.2667,
    "rot": "Fechamento: 'E eu termino falando… nunca querer trabalhar com internet.' (último take)",
    "junta": "retake"
   },
@@ -716,7 +686,7 @@
    "junta": "pausa"
   },
   {
-   "ini": 749.9,
+   "ini": 749.8667,
    "fim": 750.4667,
    "rot": "Fechamento: 'E eu termino falando… nunca querer trabalhar com internet.' (último take)",
    "junta": "pausa"
@@ -747,12 +717,12 @@
   },
   {
    "ini": 760.0667,
-   "fim": 764.1333,
+   "fim": 764.3333,
    "rot": "Fechamento: 'E eu termino falando… nunca querer trabalhar com internet.' (último take)",
    "junta": "pausa"
   },
   {
-   "ini": 765.6333,
+   "ini": 765.7333,
    "fim": 766.3333,
    "rot": "Fechamento: 'mas entender esse mercado… duas perguntas… Me conta! Tchau!' (sem 'Mas, mas')",
    "junta": "retake"
@@ -898,10 +868,6 @@
    116.43333333333334
   ],
   [
-   141.8,
-   141.93333333333334
-  ],
-  [
    154.4,
    154.73333333333332
   ],
@@ -927,7 +893,7 @@
   ],
   [
    214.0,
-   214.23333333333332
+   214.2
   ],
   [
    233.5,
@@ -944,14 +910,6 @@
   [
    238.56666666666666,
    238.76666666666668
-  ],
-  [
-   269.43333333333334,
-   270.1
-  ],
-  [
-   275.26666666666665,
-   276.96666666666664
   ],
   [
    282.0,
@@ -982,7 +940,7 @@
    304.3333333333333
   ],
   [
-   322.76666666666665,
+   322.46666666666664,
    322.9
   ],
   [
@@ -990,8 +948,12 @@
    347.03333333333336
   ],
   [
-   368.2,
-   368.6
+   364.8,
+   364.93333333333334
+  ],
+  [
+   368.26666666666665,
+   368.56666666666666
   ],
   [
    369.56666666666666,
@@ -1150,26 +1112,6 @@
    519.3666666666667
   ],
   [
-   522.6333333333333,
-   522.8333333333334
-  ],
-  [
-   524.0,
-   524.7333333333333
-  ],
-  [
-   525.8666666666667,
-   526.5333333333333
-  ],
-  [
-   526.9333333333333,
-   529.2666666666667
-  ],
-  [
-   530.2,
-   531.2666666666667
-  ],
-  [
    532.9,
    533.0666666666667
   ],
@@ -1190,7 +1132,7 @@
    717.4
   ],
   [
-   747.2,
+   747.2666666666667,
    747.5
   ],
   [
@@ -1199,7 +1141,7 @@
   ],
   [
    749.6333333333333,
-   749.9
+   749.8666666666667
   ],
   [
    750.4666666666667,
