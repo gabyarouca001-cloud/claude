@@ -14,7 +14,10 @@ import sfx_ep3 as D
 W = "/home/user/work/ep3"
 BR = "/home/user/work/broll3"
 SR, FPS = 48000, 30
-LW, LH = 720, 1280
+K4 = os.environ.get("K4") == "1"
+LW, LH = (2160, 3840) if K4 else (720, 1280)
+BRD = f"{W}/broll4k" if K4 else f"{W}/broll"
+LIM = os.environ.get("LIM", "0.76")
 OFF = 346 / FPS                      # a edição dela termina aqui; trilha entra depois
 TRILHA_LUFS = -33
 sh = lambda c: subprocess.run(c, check=True)
@@ -52,7 +55,7 @@ for arq, ss, dur, cx, ancora, lead, rot in BROLL:
     t = round(t * FPS) / FPS
     ant = dict(arq=arq, t=t, dur=dur, fim=round(t + dur, 3), rot=rot)
     tempos.append(ant)
-os.makedirs(f"{W}/broll", exist_ok=True)
+os.makedirs(BRD, exist_ok=True)
 for k, (b, (arq, ss, dur, cx, *_)) in enumerate(zip(tempos, BROLL)):
     src = f"{BR}/v_{arq}.mp4"
     if arq == "42136":      # já é vertical
@@ -60,9 +63,9 @@ for k, (b, (arq, ss, dur, cx, *_)) in enumerate(zip(tempos, BROLL)):
     else:
         vf = (f"scale=-2:{LH}:flags=lanczos,crop={LW}:{LH}:'min(max(iw*{cx}-{LW // 2},0),iw-{LW})':0,"
               f"scale=w='{LW}*(1+0.05*t/{dur})':h=-2:eval=frame:flags=bicubic,crop={LW}:{LH},fps={FPS},setsar=1")
-    b["arq_saida"] = f"{W}/broll/b{k}.mp4"
+    b["arq_saida"] = f"{BRD}/b{k}.mp4"
     sh(["ffmpeg", "-y", "-loglevel", "error", "-ss", str(ss), "-i", src, "-t", str(dur), "-an", "-vf", vf,
-        "-frames:v", str(round(dur * FPS)), "-c:v", "libx264", "-preset", "veryfast", "-crf", "16", "-pix_fmt", "yuv420p", b["arq_saida"]])
+        "-frames:v", str(round(dur * FPS)), "-c:v", "libx264", "-preset", "veryfast", "-crf", "14" if K4 else "16", "-pix_fmt", "yuv420p", b["arq_saida"]])
     print(f"B-roll {b['t']:7.2f}s  {b['dur']:.1f}s  {b['rot']}")
 json.dump(tempos, open(f"{W}/broll_tempos.json", "w"), indent=1)
 
@@ -98,9 +101,9 @@ fi, fo = int(2.5 * SR), int(3.0 * SR)
 env[:fi] = np.linspace(0, 1, fi); env[-fo:] = np.linspace(1, 0, fo)
 final = ler(f"{W}/voz_norm.wav")[:len(voz)].copy()
 final[int(OFF * SR):int(OFF * SR) + len(tri)] += tri * env[:, None]
-sh(["ffmpeg", "-y", "-loglevel", "error", "-f", "f32le", "-ar", str(SR), "-ac", "2", "-i", "-", "-af", "alimiter=limit=0.76:level=disabled",
+sh(["ffmpeg", "-y", "-loglevel", "error", "-f", "f32le", "-ar", str(SR), "-ac", "2", "-i", "-", "-af", f"alimiter=limit={LIM}:level=disabled",
     "-c:a", "pcm_s16le", f"{W}/audio_pronto.wav"]) if False else None
-p = subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "f32le", "-ar", str(SR), "-ac", "2", "-i", "-", "-af", "alimiter=limit=0.76:level=disabled",
+p = subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "f32le", "-ar", str(SR), "-ac", "2", "-i", "-", "-af", f"alimiter=limit={LIM}:level=disabled",
                     "-c:a", "pcm_s16le", f"{W}/audio_pronto.wav"], input=final.astype(np.float32).tobytes())
 assert p.returncode == 0
 
@@ -111,6 +114,13 @@ for k, b in enumerate(tempos):
     filtros.append(f"[{k + 2}:v]setpts=PTS-STARTPTS+{b['t']}/TB[b{k}];[{ult}][b{k}]overlay=eof_action=pass[o{k}]")
     ult = f"o{k}"
 filtros.append(f"[{ult}]ass={W}/insercoes_ep3.ass:fontsdir={W}/fonts[v]")
+if K4:   # entrega: H.264 4K 30 fps, CRF 19, preset faster, AAC 320k, +faststart
+    sh(["ffmpeg", "-y", "-loglevel", "error", "-stats", "-i", f"{W}/video_4k.mp4", "-i", f"{W}/audio_pronto.wav", *entradas,
+        "-filter_complex", ";".join(filtros), "-map", "[v]", "-map", "1:a", "-t", f"{dur_total:.3f}",
+        "-c:v", "libx264", "-preset", "faster", "-crf", "19", "-pix_fmt", "yuv420p", "-color_primaries", "bt709", "-color_trc", "bt709",
+        "-colorspace", "bt709", "-r", str(FPS), "-c:a", "aac", "-b:a", "320k", "-movflags", "+faststart", f"{W}/DEEP_EP3_4K_2160x3840.mp4"])
+    print(os.path.getsize(f"{W}/DEEP_EP3_4K_2160x3840.mp4") / 1e6, "MB 4K")
+    raise SystemExit(0)
 sh(["ffmpeg", "-y", "-loglevel", "error", "-i", f"{W}/video_720.mp4", "-i", f"{W}/audio_pronto.wav", *entradas, "-filter_complex", ";".join(filtros),
     "-map", "[v]", "-map", "1:a", "-t", f"{dur_total:.3f}", "-c:v", "libx264", "-preset", "veryfast", "-crf", "14", "-pix_fmt", "yuv420p",
     "-c:a", "aac", "-b:a", "192k", f"{W}/montado_pronto_720.mp4"])
