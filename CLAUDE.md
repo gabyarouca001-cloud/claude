@@ -143,3 +143,5 @@ Painel da editora (artifact, o chefe acompanha): https://claude.ai/artifact/KJZQ
 - Anotação do dia: `set` em `notes/AAAA-MM-DD` com `{text}` (se já existir, ler antes e juntar com o texto dela).
 - Post na agenda: `set` em `posts/<id>` com `{title, date, time:"HH:MM", net:"Instagram|TikTok|YouTube|Outra", fmt:"Reels|Carrossel|Story|Foto|Vídeo longo|Shorts", status:"ideia|pronto|postado", caption, createdAt}`. Textos e legendas que eu gerar para o post entram em `caption` com status "pronto".
 - Se a demanda já existir no painel (ela criou), usar `update` com `done:true` e `doneAt` em vez de criar outra.
+- **Só trabalho da Samara/editora.** Nada do GO! Newsflash (cliente da Áustria) entra no painel.
+- **Títulos específicos, com início e continuação:** no primeiro dia de um projeto, "Início da edição do <projeto>: <o que foi feito>"; nos dias seguintes, "Continuação do <projeto> (vN): <o que foi feito>". Ver no painel o que já existe do projeto antes de nomear.
