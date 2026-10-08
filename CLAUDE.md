@@ -134,3 +134,12 @@ Guia completo em `projetos/austria-go-newsflash/GUIA.md` (aprendido do "Bentley 
 sem cor/textos; exterior numa cor só; nada de entrevistas/cartelas/logos/pretos; abertura ~3,8 s só música, música
 −22 dB sob a voz (−6 sem voz); mix ~−17 LUFS; entregar stems separados. Senha da biblioteca de música fica só no
 documento do cliente — nunca no repositório.
+
+## Painel de Demandas (registro automático do que fizemos juntos)
+Painel da editora (artifact, o chefe acompanha): https://claude.ai/artifact/KJZQZ6azAkaisSrtWfyT3Y
+**Sempre que concluir uma entrega com ela** (corte, prévia, 4K, thumb, textos do YouTube, legendas, agenda de posts etc.), registrar no painel com a ferramenta `ArtifactData` (`url` acima), sem precisar ela pedir. Só registrar o que foi de fato concluído; nunca inventar.
+- Demanda concluída: `set` em `tasks/<id>` com `{title, scope:"dia", period:"AAAA-MM-DD", cat:"Edição|Postagem|Roteiro|Reunião|Outro", done:true, doneAt:<ISO UTC>, createdAt:<ms>}`. Título curto, em português, dizendo o que foi entregue (ex.: "Prévia 720p do EP3 aprovada").
+- Demanda da semana: `scope:"semana"`, `period` = segunda-feira (AAAA-MM-DD). Meta do mês: `scope:"mes"`, `period` = "AAAA-MM".
+- Anotação do dia: `set` em `notes/AAAA-MM-DD` com `{text}` (se já existir, ler antes e juntar com o texto dela).
+- Post na agenda: `set` em `posts/<id>` com `{title, date, time:"HH:MM", net:"Instagram|TikTok|YouTube|Outra", fmt:"Reels|Carrossel|Story|Foto|Vídeo longo|Shorts", status:"ideia|pronto|postado", caption, createdAt}`. Textos e legendas que eu gerar para o post entram em `caption` com status "pronto".
+- Se a demanda já existir no painel (ela criou), usar `update` com `done:true` e `doneAt` em vez de criar outra.
