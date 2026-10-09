@@ -98,7 +98,7 @@ def polaroid(e):
     base.alpha_composite(card, (pad, pad))
     base = base.rotate(e["ang"], resample=Image.BICUBIC, expand=True)
     x = 14 * S - pad // 2 if e["lado"] == "esq" else W - base.width + pad // 2 - 14 * S
-    y = 1185 * S - base.height + pad // 2
+    y = 900 * S - base.height + pad // 2   # mais alto: acima do peito, sem cobrir o rosto
     saida = f"{PASTA}/{e['nome']}.png"
     base.save(saida)
     return saida, x, y, base.width, base.height, card.width, card.height, bb

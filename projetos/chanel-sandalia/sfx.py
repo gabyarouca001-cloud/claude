@@ -12,7 +12,7 @@ import sfx_deep as D  # noqa: E402
 
 SR = 48000
 rng = np.random.default_rng(11)
-NIVEL = {"impacto": -13.0, "cartao": -21.0, "balao": -19.0, "foto": -16.0, "clique": -17.0}   # pico de cada efeito
+NIVEL = {"clique_leve": -26.0, "impacto": -13.0, "cartao": -21.0, "balao": -19.0, "foto": -16.0, "clique": -17.0}   # pico de cada efeito
 
 
 def banda(x, f0, f1):
@@ -86,7 +86,12 @@ def clique(v=None):
     return pico(y, NIVEL["clique"]), 0.0
 
 
-SONS = {"impacto": impacto, "cartao": cartao, "balao": balao, "foto": foto, "clique": clique}
+def clique_leve(v=None):
+    y, off = clique()
+    return pico(y, NIVEL["clique_leve"]), off
+
+
+SONS = {"clique_leve": clique_leve, "impacto": impacto, "cartao": cartao, "balao": balao, "foto": foto, "clique": clique}
 
 
 def ler(arq, *extra):

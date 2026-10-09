@@ -51,9 +51,9 @@ FULL = [
     ("f_boutique", "foto", A + "c4.jpg", "comprar um chanel", 10.7, 0.15, 0.9, (0.80, 0.42), None),
     ("f_desfile", "foto", A + "c6.jpg", "da chanel", 32.4, 0.25, 1.7, (0.5, 0.45), "Chanel · desfile de arquivo"),
     ("f_passarela", "clip", A + "m1080_52270.mp4", "o desfile aconteceu", 45.0, 0.40, 1.4, (3.0, 0.5), None),
-    ("f_biarritz", "foto", A + "c0.jpg", "biarritz que é", 47.1, 0.20, 1.5, (0.55, 0.5), "Biarritz, França"),
+    ("f_biarritz", "foto", A + "c0.jpg", "biarritz que é", 47.1, 0.20, 1.5, (0.55, 0.5), None),
     ("f_ondas", "clip", A + "m1080_44482.mp4", "cidade de praia", 48.4, 0.0, 1.9, (4.0, 0.5), None),
-    ("f_desk", "foto", A + "c3.jpg", "história da marca", 64.7, 0.25, 1.5, (0.5, 0.5), "Gabrielle Chanel, 1931"),
+    ("f_desk", "foto", A + "c3.jpg", "história da marca", 64.7, 0.25, 1.5, (0.30, 0.40), "Gabrielle Chanel, 1931"),
     ("f_liberdade", "clip", A + "m_1208.mp4", "liberdade da praia", 73.0, 0.25, 1.9, (2.0, 0.5), None),
     ("f_mulher_mar", "clip", A + "m_33021.mp4", "uma mulher saindo", 82.0, 0.25, 2.6, (3.0, 0.5), None),
     ("f_pe_nu", "clip", A + "m1080_2054.mp4", "o pé quase nu", 93.4, 0.25, 2.0, (2.0, 0.5), None),
@@ -65,7 +65,7 @@ FULL = [
 # (nome, arquivo, frase, perto, antecedência, duração, lado, ângulo, rótulo, foco)
 POLAROID = [
     ("p_gabrielle", A + "c2.jpg", "gabrielle chanel abriu", 52.9, 0.20, 2.5, "esq", -2.5, "Gabrielle Chanel", (0.5, 0.5)),
-    ("p_1957", A + "c2.jpg", "gabrielle chanel lançou", 118.5, 0.20, 2.0, "dir", 2.5, "Gabrielle Chanel", (0.5, 0.5)),
+    ("p_1957", A + "c2.jpg", "gabrielle chanel lançou", 118.5, 0.20, 2.0, "esq", 2.5, "Gabrielle Chanel", (0.5, 0.5)),
 ]
 # ----------------------------------------------------------------------------- cartões de texto (ASS): (nome, frase-início, perto, antecedência, fim, linhas)
 # linha = (texto, estilo, y, tamanho, cor)  estilos: sans (Jost Light, caixa alta) | serif (Cormorant itálico) | numero
@@ -74,6 +74,7 @@ CARTOES = [
     ("c_chanel", "um chanel pela metade", 11.0, -0.5, 13.55, [("CHANEL", "sans", 860, 150, BR), ("pela metade", "serif", 985, 108, AM)]),
     ("c_cruise", "coleção cruze", 29.9, 0.35, 32.15, [("CHANEL", "sans", 800, 64, BR), ("CRUISE", "sans", 905, 150, BR), ("26/27", "serif", 1025, 120, AM)]),
     ("c_blazy", "mathieu blasie", 34.5, 0.30, 37.9, [("MATTHIEU BLAZY", "sans", 860, 86, BR), ("diretor criativo da Chanel", "serif", 955, 70, AM)]),
+    ("c_biarritz", "biarritz que é", 47.1, 0.13, 48.37, [("BIARRITZ", "sans", 0, 140, BR), ("França", "serif", 0, 92, AM)]),
     ("c_1915", "em 1915", 55.8, 0.25, 57.7, [("1915", "numero", 900, 300, BR), ("casa de costura", "serif", 1060, 88, AM)]),
     ("c_marca", "e segundo a explicação", 74.9, 0.15, 78.9, [("SEGUNDO A MARCA", "sans", 860, 72, BR), ("divulgado pela imprensa", "serif", 945, 74, AM)]),
     ("c_1957", "em 1957", 120.4, 0.15, 123.0, [("1957", "numero", 900, 300, BR), ("o clássico bege e preto", "serif", 1060, 82, AM)]),
@@ -134,7 +135,7 @@ def resolver():
         if nome in REMOVER:
             continue
         t = T(fr, perto, lead)
-        ev["cart"].append(dict(nome=nome, t=t, fim=fim, linhas=linhas))
+        ev["cart"].append(dict(nome=nome, t=t, fim=min(fim, quadro(t + 3.0)), linhas=linhas))
     for nome, fr, perto, lead, fim, txt, x, y in BALOES:
         if nome in REMOVER:
             continue

@@ -107,6 +107,9 @@ def limpa(p):
     return p
 
 
+ev_ = edl.resolver()
+# onde entra texto na tela a legenda de base some (pedido da editora): cartões, balões e rótulos de foto
+OCULTAR = [(c["t"], c["fim"]) for c in ev_["cart"]] + [(b_["t"], b_["fim"]) for b_ in ev_["bal"]] + [(f["t"] + 0.12, f["fim"]) for f in ev_["full"] if f["rot"]]
 # ------------------------------------------------------------------------------------------------ destaques
 ocupado = []
 for frase, tipo, partes, perto in DESTAQUES:
@@ -200,6 +203,15 @@ for n, bl in enumerate(blocos):
         b = min(b, PAL[blocos[n + 1][0]]["s"] - 0.03, PAL[bl[-1] + 1]["s"] - 0.08)
     elif bl[-1] + 1 < len(PAL) and (bl[-1] + 1) in dentro:
         b = min(b, PAL[bl[-1] + 1]["s"] - 0.08)
+    ocultar = False
+    for s_, e_ in OCULTAR:
+        if s_ - 0.05 <= a < e_:
+            ocultar = True
+            break
+        if a < s_ < b:
+            b = s_
+    if ocultar or b - a < 0.08:
+        continue
     partes = []
     for k in bl:
         p = limpa(PAL[k]["w"])
@@ -211,7 +223,14 @@ for n, bl in enumerate(blocos):
 # ------------------------------------------------------------------------------------------------ cartões, balões e rótulos
 ev_ = edl.resolver()
 for c in ev_["cart"]:
+    # bloco centrado na altura da legenda padrão (y = 1221)
+    alt = [int(tam * 0.80) if est == "serif" else tam for _, est, _, tam, _ in c["linhas"]]
+    yy, acc = [], 1221 - sum(alt) / 2
+    for h_ in alt:
+        yy.append(round(acc + h_ / 2))
+        acc += h_
     for n, (txt, est, y, tam, cor) in enumerate(c["linhas"]):
+        y = yy[n]
         t = c["t"] + 0.16 * n
         texto = txt.upper() if est in ("sans",) else txt
         estilo = {"sans": "Sans", "serif": "Serif", "numero": "Numero"}[est]
@@ -229,13 +248,13 @@ for b_ in ev_["bal"]:
     fn = ImageFont.truetype("fonts/Cormorant_Garamond_ital_400.ttf", 54)
     larg = int(fn.getlength(b_["txt"]) + 12 * len(b_["txt"]) * 0.0 + 56)
     alt = 90
-    x, y = b_["x"], b_["y"]
+    x, y = b_["x"], 1176
     ev(EV2, 1, b_["t"], b_["fim"], "Balao", rf"{{\an7\pos({x},{y})\p1\bord0\shad0\1c&HFFFFFF&\fad(0,120)}}m 0 0 l {larg} 0 l {larg} {alt} l 0 {alt}{{\p0}}")
     ev(EV2, 2, b_["t"], b_["fim"], "Balao", rf"{{\an7\pos({x + 28},{y + 12})\fad(0,120)}}{b_['txt']}")
     SFX.append((b_["t"], "balao", 0))
 for f in ev_["full"]:
     if f["rot"]:
-        com_sombra(EV2, f["t"] + 0.12, f["fim"], "Rotulo", (CX, 1330), f["rot"], extra=r"\fad(80,120)", brilhar=False, forte=True)
+        com_sombra(EV2, f["t"] + 0.12, f["fim"], "Rotulo", (CX, 1221), f["rot"], extra=r"\fad(80,120)", brilhar=False, forte=True)
     SFX.append((f["t"], "clique" if f["nome"] == "f_flashes" else "impacto", f["nome"]))
 assets = json.load(open(f"ov_{S}.json")) if os.path.exists(f"ov_{S}.json") else {"pol": []}
 for p in assets["pol"]:
@@ -246,7 +265,7 @@ for p in assets["pol"]:
     cx = (p["x"] + p["w"] / 2 + rx) / S
     cy = (p["y"] + p["h"] / 2 + ry) / S
     ev(EV2, 3, p["t"] + 0.1, p["fim"], "Balao", rf"{{\an5\pos({cx:.0f},{cy:.0f})\frz{p['ang']}\fs34\fad(60,120)}}{p['rot']}")
-    SFX.append((p["t"], "foto", p["nome"]))
+    SFX.append((p["t"], "clique_leve", p["nome"]))
 
 open("legendas.ass", "w", encoding="utf-8").write(CAB + "\n".join(EV) + "\n")
 open("cartoes.ass", "w", encoding="utf-8").write(CAB + "\n".join(EV2) + "\n")
