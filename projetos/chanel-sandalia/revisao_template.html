@@ -1,0 +1,164 @@
+<title>Revisão dos Inserts</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,500;1,600&display=swap">
+<style>
+/* Layout: resumo fixo no topo, filtros, grade de cartões (miniatura do quadro + escolha). Amarelo ouro como único destaque. */
+:root{
+  --bg:#F3F4F6; --surface:#FFFFFF; --surface2:#F7F7F9; --ink:#15171C; --muted:#667085; --line:#E3E5EA;
+  --gold:#F1CE0B; --on-gold:#15171C; --butter:#FCEDC0; --butter-ink:#5C4700;
+  --ok:#1E8E5A; --danger:#C0392B; --alter:#2F6FEB;
+  --display:'Playfair Display',Georgia,serif; --body:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0F1115; --surface:#171A20; --surface2:#1D2128; --ink:#EEF0F4; --muted:#9AA1AE; --line:#2A2F38;
+  --butter:#2E2915; --butter-ink:#FCEDC0; --ok:#4CC38A; --danger:#FF7A6B; --alter:#7BA6FF; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0F1115; --surface:#171A20; --surface2:#1D2128; --ink:#EEF0F4; --muted:#9AA1AE; --line:#2A2F38;
+  --butter:#2E2915; --butter-ink:#FCEDC0; --ok:#4CC38A; --danger:#FF7A6B; --alter:#7BA6FF; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:14px/1.5 var(--body);padding-inline:16px;padding-block:20px 90px}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.wrap{max-width:1040px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+h1{font:italic 600 30px/1.1 var(--display);margin:0;text-wrap:balance}
+.sub{color:var(--muted);margin-top:4px;max-width:62ch}
+.resumo{position:sticky;top:env(safe-area-inset-top,0px);z-index:3;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:8px}
+.resumo .linha{display:flex;gap:14px;flex-wrap:wrap;align-items:center;font-size:13px;color:var(--muted)}
+.resumo b{color:var(--ink);font-variant-numeric:tabular-nums}
+.bar{height:6px;border-radius:9px;background:var(--surface2);border:1px solid var(--line);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--gold);transition:width .3s}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chips button{border:1px solid var(--line);background:var(--surface);border-radius:99px;padding:5px 12px;font-size:12px;font-weight:600;color:var(--muted)}
+.chips button[aria-pressed="true"]{background:var(--gold);color:var(--on-gold);border-color:var(--gold)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.card h2{margin:0;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,470px),1fr));gap:12px}
+.item{display:grid;grid-template-columns:108px minmax(0,1fr);gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px}
+.item.apagar{border-color:var(--danger)}
+.item.alterar{border-color:var(--alter)}
+.item.manter{border-color:var(--ok)}
+.item img{width:108px;aspect-ratio:9/16;object-fit:cover;border-radius:8px;display:block;background:var(--surface2)}
+.item.apagar img{opacity:.35;filter:grayscale(1)}
+.info{display:flex;flex-direction:column;gap:6px;min-width:0}
+.meta{display:flex;gap:6px;flex-wrap:wrap;align-items:center;font-size:11px;font-weight:600;color:var(--muted);letter-spacing:.04em}
+.pill{padding:2px 8px;border-radius:99px;background:var(--surface2);border:1px solid var(--line);text-transform:uppercase}
+.pill.t{background:var(--butter);color:var(--butter-ink);border-color:transparent;font-variant-numeric:tabular-nums}
+.titulo{font-weight:600;overflow-wrap:anywhere}
+.item.apagar .titulo{text-decoration:line-through;color:var(--muted)}
+.fala{font:italic 500 14px/1.35 var(--display);color:var(--muted)}
+.rot{font-size:12px;color:var(--muted)}
+.seg{display:flex;border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-top:auto}
+.seg button{flex:1;border:0;background:var(--surface);padding:8px 6px;font-weight:600;font-size:13px;color:var(--muted);border-left:1px solid var(--line)}
+.seg button:first-child{border-left:0}
+.seg button[aria-pressed="true"].m{background:var(--ok);color:#fff}
+.seg button[aria-pressed="true"].a{background:var(--danger);color:#fff}
+.seg button[aria-pressed="true"].c{background:var(--alter);color:#fff}
+.seg button:disabled{cursor:default;opacity:.7}
+textarea{width:100%;min-height:62px;resize:vertical;background:var(--surface2);border:1px solid var(--line);border-radius:8px;padding:8px 10px}
+.rapido{display:flex;gap:6px;flex-wrap:wrap}
+.rapido button{border:1px dashed var(--line);background:none;border-radius:99px;padding:3px 10px;font-size:12px;color:var(--muted)}
+.opcoes{display:flex;gap:8px;flex-wrap:wrap}
+.opcoes button{border:1px solid var(--line);background:var(--surface2);border-radius:10px;padding:8px 12px;font-weight:600;font-size:13px;color:var(--muted)}
+.opcoes button[aria-pressed="true"]{background:var(--gold);color:var(--on-gold);border-color:var(--gold)}
+.btn{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:6px 12px;font-weight:600;font-size:13px}
+.vazio{color:var(--muted);padding:18px 0}
+.err{background:var(--butter);color:var(--butter-ink);padding:10px 14px;border-radius:10px}
+.rodape{position:fixed;left:0;right:0;bottom:0;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));background:var(--surface);border-top:1px solid var(--line);text-align:center;font-size:13px;color:var(--muted);z-index:4}
+@media (max-width:520px){.item{grid-template-columns:84px minmax(0,1fr)}.item img{width:84px}h1{font-size:26px}}
+</style>
+<div class="wrap" id="app"><p class="vazio">Carregando…</p></div>
+<div class="rodape" id="rodape">As escolhas ficam salvas sozinhas. Quando terminar, é só me avisar no chat.</div>
+<script>
+(function(){
+const ITENS=/*DADOS*/[];
+const RAPIDO=['trocar a imagem','mudar o texto','deixar mais curto','deixar mais longo','mudar a posição','tirar o som'];
+const TIPOS=['Todos','Cena em tela cheia','Foto com moldura','Cartão de texto','Balão','Legenda em destaque'];
+const S={db:null,pode:false,dec:{},geral:{sons:'',base:'',obs:''},draft:{},filtro:'Todos',estado:'',erro:'',ok:false};
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function conta(){const c={manter:0,apagar:0,alterar:0,sem:0};ITENS.forEach(i=>{const d=(S.dec[i.id]||{}).d;if(d)c[d]++;else c.sem++});return c}
+function lista(){
+  return ITENS.filter(i=>{
+    const d=(S.dec[i.id]||{}).d||'';
+    if(S.filtro==='Todos')return true;
+    if(S.filtro==='Sem decisão')return !d;
+    if(S.filtro==='Apagar'||S.filtro==='Alterar'||S.filtro==='Manter')return d===S.filtro.toLowerCase();
+    return i.tipo===S.filtro;
+  });
+}
+function cartao(i){
+  const r=S.dec[i.id]||{},d=r.d||'';
+  const nota=S.draft[i.id]!=null?S.draft[i.id]:(r.n||'');
+  const b=(v,cls,txt)=>`<button class="${cls}" data-a="dec" data-id="${i.id}" data-v="${v}" aria-pressed="${d===v}" ${S.pode?'':'disabled'}>${txt}</button>`;
+  return `<article class="item ${d}"><img src="${i.img}" alt="Quadro de ${esc(i.titulo)}"><div class="info">
+    <div class="meta"><span class="pill t">${esc(i.tempo)}</span><span class="pill">${esc(i.tipo)}</span><span>${esc(i.dur)} s</span></div>
+    <div class="titulo">${esc(i.titulo)}</div>${i.rotulo?`<div class="rot">${esc(i.rotulo)}</div>`:''}
+    <div class="fala">“${esc(i.fala)}”</div>
+    <div class="seg" role="group" aria-label="Decisão">${b('manter','m','Manter')}${b('apagar','a','Apagar')}${b('alterar','c','Alterar')}</div>
+    ${d==='alterar'?`<textarea id="n-${i.id}" data-nota="${i.id}" placeholder="O que mudar? Ex.: trocar a imagem por outra de praia" ${S.pode?'':'disabled'}>${esc(nota)}</textarea>
+    <div class="rapido">${S.pode?RAPIDO.map(q=>`<button data-a="rap" data-id="${i.id}" data-q="${esc(q)}">${esc(q)}</button>`).join(''):''}</div>`:''}
+  </div></article>`;
+}
+function geral(){
+  const o=(k,v,t)=>`<button data-a="ger" data-k="${k}" data-v="${v}" aria-pressed="${S.geral[k]===v}" ${S.pode?'':'disabled'}>${t}</button>`;
+  return `<section class="card"><h2>No geral</h2>
+    <div><div class="sub" style="margin:0 0 6px">Efeitos sonoros das inserções (golpe, whoosh, estalos)</div>
+    <div class="opcoes">${o('sons','manter','Como está')}${o('sons','baixos','Mais baixos')}${o('sons','altos','Mais altos')}${o('sons','sem','Sem efeitos nas inserções')}</div></div>
+    <div><div class="sub" style="margin:0 0 6px">Legenda de base (todas as palavras faladas)</div>
+    <div class="opcoes">${o('base','manter','Manter')}${o('base','sem','Tirar, deixar só os destaques')}</div></div>
+    <div><div class="sub" style="margin:0 0 6px">Recado geral (ritmo, quantidade, o que você quer ver)</div>
+    <textarea id="obs" data-obs ${S.pode?'':'disabled'} placeholder="Ex.: muito poluído no começo, quero só cartões nos momentos de data e nome">${esc(S.draft._obs!=null?S.draft._obs:(S.geral.obs||''))}</textarea></div></section>`;
+}
+function render(){
+  const app=document.getElementById('app');
+  const ae=document.activeElement,fid=ae&&app.contains(ae)&&ae.id?ae.id:null,ss=fid&&ae.selectionStart!=null?[ae.selectionStart,ae.selectionEnd]:null;
+  const c=conta(),dec=ITENS.length-c.sem,L=lista();
+  const filtros=[...TIPOS,'Manter','Apagar','Alterar','Sem decisão'];
+  app.innerHTML=`<header><h1>Revisão dos Inserts</h1><div class="sub">Vídeo da sandália da Chanel. Cada cartão é uma inserção da prévia: escolha manter, apagar ou alterar. Sem marcação conta como manter.</div></header>
+  ${S.erro?`<div class="err" role="alert">${esc(S.erro)}</div>`:''}
+  ${S.ok&&!S.pode?'<div class="err">Modo leitura: só a editora marca as escolhas.</div>':''}
+  <div class="resumo"><div class="bar"><i style="width:${Math.round(dec/ITENS.length*100)}%"></i></div>
+    <div class="linha"><span><b>${dec}</b> de <b>${ITENS.length}</b> decididos</span><span style="color:var(--ok)"><b>${c.manter}</b> manter</span><span style="color:var(--danger)"><b>${c.apagar}</b> apagar</span><span style="color:var(--alter)"><b>${c.alterar}</b> alterar</span><span><b>${c.sem}</b> sem marcação</span>${S.estado?`<span>${esc(S.estado)}</span>`:''}</div></div>
+  ${geral()}
+  <div class="chips" role="group" aria-label="Filtrar">${filtros.map(f=>`<button data-a="fil" data-f="${f}" aria-pressed="${S.filtro===f}">${f}</button>`).join('')}</div>
+  ${S.pode&&S.filtro!=='Todos'&&L.length>1?`<div class="linha" style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:13px;color:var(--muted)">Marcar os ${L.length} desta lista:
+     <button class="btn" data-a="lote" data-v="manter">Manter</button><button class="btn" data-a="lote" data-v="apagar">Apagar</button></div>`:''}
+  <div class="grade">${L.length?L.map(cartao).join(''):'<p class="vazio">Nenhuma inserção neste filtro.</p>'}</div>`;
+  if(fid){const el=document.getElementById(fid);if(el){el.focus();if(ss&&el.setSelectionRange)try{el.setSelectionRange(ss[0],ss[1])}catch(e){}}}
+}
+let raf=0;const sched=()=>{if(raf)return;raf=requestAnimationFrame(()=>{raf=0;render()})};
+const fail=e=>{S.erro='Não consegui salvar agora ('+(e&&e.code||'erro')+'). Tente de novo.';sched()};
+async function grava(id,dados){
+  try{S.erro='';S.estado='salvando…';sched();await S.db.doc('revisao/'+id).set({...dados,em:Date.now()});S.estado='salvo';sched();setTimeout(()=>{S.estado='';sched()},1200)}catch(e){fail(e)}
+}
+const timers={};
+function salvaNota(id,txt){S.draft[id]=txt;clearTimeout(timers[id]);timers[id]=setTimeout(()=>{const r=S.dec[id]||{};grava(id,{d:r.d||'alterar',n:txt})},700)}
+document.addEventListener('click',async ev=>{
+  const b=ev.target.closest('[data-a]');if(!b||!S.pode)return;
+  const a=b.dataset.a,id=b.dataset.id;
+  if(a==='fil'){S.filtro=b.dataset.f;sched();return}
+  if(a==='dec'){const v=b.dataset.v,r=S.dec[id]||{};if(r.d===v){S.dec[id]={};try{await S.db.doc('revisao/'+id).delete()}catch(e){fail(e)}sched();return}
+    S.dec[id]={...r,d:v};sched();grava(id,{d:v,n:v==='alterar'?(S.draft[id]!=null?S.draft[id]:(r.n||'')):''})}
+  else if(a==='rap'){const cur=S.draft[id]!=null?S.draft[id]:((S.dec[id]||{}).n||'');const nv=(cur?cur.replace(/\s+$/,'')+'; ':'')+b.dataset.q;S.draft[id]=nv;sched();grava(id,{d:'alterar',n:nv})}
+  else if(a==='ger'){S.geral[b.dataset.k]=b.dataset.v;sched();grava('_geral',S.geral)}
+  else if(a==='lote'){const v=b.dataset.v;for(const i of lista()){S.dec[i.id]={d:v};await grava(i.id,{d:v,n:''})}}
+});
+document.addEventListener('input',ev=>{
+  const t=ev.target;if(!S.pode)return;
+  if(t.dataset&&t.dataset.nota)salvaNota(t.dataset.nota,t.value);
+  else if(t.dataset&&t.dataset.obs!==undefined){S.draft._obs=t.value;clearTimeout(timers._o);timers._o=setTimeout(()=>{S.geral.obs=t.value;grava('_geral',S.geral)},700)}
+});
+render();
+(async()=>{
+  const cl=window.claude;let db=null,user=null;
+  try{db=cl?await cl.use('db'):null;user=cl?await cl.use('user'):null}catch(e){}
+  if(!db){S.erro='Entre na sua conta do Claude para marcar e salvar as escolhas.';S.ok=true;sched();return}
+  S.db=db;
+  try{const c=user?await user.can('data.write'):null;S.pode=c!==false}catch(e){S.pode=true}
+  S.ok=true;
+  db.collection('revisao').limit(300).onSnapshot(s=>{
+    const m={};s.docs.forEach(d=>{if(d.id==='_geral'){S.geral={sons:'',base:'',obs:'',...d.data()}}else m[d.id]=d.data()});
+    S.dec=m;sched();
+  },e=>{S.erro='Não consegui carregar as escolhas ('+(e&&e.code||'erro')+').';sched()});
+})();
+})();
+</script>

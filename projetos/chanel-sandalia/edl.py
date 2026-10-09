@@ -106,6 +106,11 @@ DESTAQUES = [
     ("me conta", "rubik", [["ME CONTA"]], 274.4),
     ("sairia assim na rua", "rubik", [["SAIRIA ASSIM"], ["NA RUA?"]], 284.8),
 ]
+# ----------------------------------------------------------------------------- revisão da editora (revisao.json: {id: "apagar"})
+REMOVER = set()
+if os.path.exists("revisao.json"):
+    REMOVER = {k for k, v in json.load(open("revisao.json")).items() if v == "apagar"}
+DESTAQUES = [d for n, d in enumerate(DESTAQUES) if f"d{n}" not in REMOVER]
 CHAVE = {"chanel", "deep", "sapato", "cruise", "biarritz", "gabrielle", "lagerfeld", "blazy", "dupe", "joia", "bege", "preta",
          "pele", "viralizar", "esquisito", "polêmico", "polemico", "desfile", "colecao", "coleção"}
 
@@ -114,17 +119,25 @@ def resolver():
     """tempos absolutos de tudo (para o relatório e para a mixagem de efeitos)"""
     ev = {"full": [], "pol": [], "cart": [], "bal": []}
     for nome, tipo, arq, fr, perto, lead, dur, par, rot in FULL:
+        if nome in REMOVER:
+            continue
         if not os.path.exists(arq) or os.path.getsize(arq) < 20000:
             continue
         t = T(fr, perto, lead)
         ev["full"].append(dict(nome=nome, tipo=tipo, arq=arq, t=t, dur=dur, fim=quadro(t + dur), par=par, rot=rot))
     for nome, arq, fr, perto, lead, dur, lado, ang, rot, foco in POLAROID:
+        if nome in REMOVER:
+            continue
         t = T(fr, perto, lead)
         ev["pol"].append(dict(nome=nome, arq=arq, t=t, dur=dur, fim=quadro(t + dur), lado=lado, ang=ang, rot=rot, foco=foco))
     for nome, fr, perto, lead, fim, linhas in CARTOES:
+        if nome in REMOVER:
+            continue
         t = T(fr, perto, lead)
         ev["cart"].append(dict(nome=nome, t=t, fim=fim, linhas=linhas))
     for nome, fr, perto, lead, fim, txt, x, y in BALOES:
+        if nome in REMOVER:
+            continue
         t = T(fr, perto, lead)
         ev["bal"].append(dict(nome=nome, t=t, fim=fim, txt=txt, x=x, y=y))
     return ev
