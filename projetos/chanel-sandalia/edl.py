@@ -7,6 +7,7 @@ import re
 import unicodedata
 
 FPS = 30
+T_VINHETA = 5.6   # a vinheta DEEP da editora entra neste quadro: nada de legenda nem inserção antes dela
 PAL = [w for s in json.load(open("transcricao.json")) for w in s["words"]]
 FIX = {"cruze": "Cruise", "2627": "26/27", "blasie": "Blazy", "mathieu": "Matthieu", "chanel": "Chanel", "deep": "DEEP",
        "jóia": "joia", "gênia": "gênia"}

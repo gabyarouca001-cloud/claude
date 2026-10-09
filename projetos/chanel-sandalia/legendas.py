@@ -109,7 +109,7 @@ def limpa(p):
 
 ev_ = edl.resolver()
 # onde entra texto na tela a legenda de base some (pedido da editora): cartões, balões e rótulos de foto
-OCULTAR = [(c["t"], c["fim"]) for c in ev_["cart"]] + [(b_["t"], b_["fim"]) for b_ in ev_["bal"]] + [(f["t"] + 0.12, f["fim"]) for f in ev_["full"] if f["rot"]]
+OCULTAR = [(0.0, edl.T_VINHETA)] + [(c["t"], c["fim"]) for c in ev_["cart"]] + [(b_["t"], b_["fim"]) for b_ in ev_["bal"]] + [(f["t"] + 0.12, f["fim"]) for f in ev_["full"] if f["rot"]]
 # ------------------------------------------------------------------------------------------------ destaques
 ocupado = []
 for frase, tipo, partes, perto in DESTAQUES:
