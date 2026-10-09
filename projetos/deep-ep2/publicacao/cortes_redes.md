@@ -11,11 +11,11 @@ E tem muita gente buscando mais espaço pra aprender, acompanhar um conteúdo co
 Episódio completo do DEEP no YouTube.
 #criadordeconteudo #creatoreconomy #conteudo
 
-## 02 — Descobrir não é compreender (capítulo "Descobrir × compreender")
-Dá pra assistir 10 vídeos sobre o mesmo tema e terminar com 10 opiniões diferentes, sem entender como aquelas pessoas chegaram até ali.
-Muitas vezes, o que falta é contexto.
+## 02 — Por que você iria atrás de alguém em outro lugar? (trecho do final do episódio)
+Lembra do nome que você pensou no começo do episódio? Existe um motivo pelo qual você iria atrás dessa pessoa em outro lugar.
+E é esse motivo que eu estou tentando construir também. 💭
 Episódio completo do DEEP no YouTube.
-#podcast #conteudodigital #creatoreconomy
+#criadordeconteudo #marcapessoal #creatoreconomy
 
 ## 03 — O que você fatura × o que você constrói (capítulo "Faturar × construir")
 O faturamento de hoje não garante o próximo mês.
@@ -38,3 +38,6 @@ Episódio completo do DEEP no YouTube.
 ## Dicas de publicação
 - Ordem sugerida: 03 → 01 → 04 → 02 → 05 (o gancho "fatura × constrói" conversa com o EP1).
 - Link do episódio completo na bio / no comentário fixado; no Shorts, vincular ao vídeo completo ("Vídeo relacionado").
+
+> Nota: os cortes finais saíram da versão vertical da editora (4K, legendas e música dela na imagem), com `reels/cortar_da_versao_final.py`.
+> O capítulo "Descobrir × compreender" não existe nessa versão; o corte 02 foi trocado pelo trecho acima.
