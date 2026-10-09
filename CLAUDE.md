@@ -146,3 +146,6 @@ Painel da editora (artifact, o chefe acompanha): https://claude.ai/artifact/KJZQ
 - **Só trabalho da Samara/editora.** Nada do GO! Newsflash (cliente da Áustria) entra no painel.
 - **Títulos específicos, com início e continuação:** no primeiro dia de um projeto, "Início da edição do <projeto>: <o que foi feito>"; nos dias seguintes, "Continuação do <projeto> (vN): <o que foi feito>". Ver no painel o que já existe do projeto antes de nomear.
 - **Quadro de materiais prontos (aba "Materiais" do painel):** todo material que eu entregar (corte, Reels, thumb, vídeo final, textos) entra em `materiais/<id>` com `{title, proj:"DEEP EP3", fmt:"Reels|Story|Carrossel|Vídeo longo|Shorts|Thumb|Foto|Texto", net:"Instagram|TikTok|YouTube|Outra", link:"", status:"pronto", createdAt:<ms>, readyAt:<ms>, postedAt:null}`. Só ela marca "postado" (ou me avisa que postou: `update` com `status:"postado"` e `postedAt:<ms>`). Em edição = `status:"edicao"`.
+
+## Referências visuais da editora
+- **Curated List (Zsa Zsa / Liz Taylor / Pamela):** estilo de inserções em colagem (recortes, fotos cheias, rajadas, citações, vídeo de arquivo) com golpe + whoosh no quadro de entrada e cliques nas rajadas. Guia: `projetos/referencias/curated-list/GUIA.md`.
