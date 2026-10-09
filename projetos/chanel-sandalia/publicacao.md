@@ -18,3 +18,9 @@ Gabrielle Chanel (domínio público); Chanel boutique, Rue Cambon (CC BY 2.0); K
 - Nome do diretor criativo escrito "Matthieu Blazy" (a transcrição trouxe "Mathieu Blasie").
 - "Cruise 26/27", Biarritz, 1915 e 1957: números e fatos ditos por ela; sugerido citar a fonte (comunicado da Chanel).
 - Imagens do desfile Cruise 26/27 não incluídas (sem material livre); trocar os clipes genéricos por imagens oficiais se ela tiver.
+
+**Imagens do desfile e da atriz (v4): direitos de terceiros, conferir antes de postar**
+Achadas na web a pedido da editora; não são de licença livre. Fotos de imprensa: o crédito e o uso (comentário/notícia) ficam por conta de quem publica.
+- Looks verticais e closes do salto, Chanel Cruise 2026/27 (Biarritz, 28/04/2026): WWD (wwd.com/footwear-news/shoe-trends/chanel-cruise-2027-shoes-matthieu-blazy-1238932446/ e wwd.com/runway/resort-2027/paris/chanel/review/).
+- Margaret Qualley na estreia de The Dog Stars em Londres (20/08/2026): Ara (en.ara.cat/celebrities/margaret-qualley-half-barefoot-red-carpet-these-are-the-soleless-sandals-she-has-worn_1_5828643.html).
+- Contexto do salto ("barefoot heel cap"): Little Pink, IBTimes, NBC. A marca não confirma venda.

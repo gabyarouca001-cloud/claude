@@ -79,7 +79,8 @@ def com_sombra(lista, a, b, estilo, pos, texto, blur=9, desl=4, extra="", esc=10
     sombra = re.sub(r"\\1c&H[0-9A-Fa-f]+&", "", texto)
     sombra = sombra.replace(r"\alpha&HFF&", r"\alpha&HFF&\3a&HFF&")
     if forte:      # halo escuro maior e mais denso, só atrás das letras (sem caixa), para ler sobre a camiseta branca
-        ev(lista, 0, a, b, estilo, rf"{{\an5\pos({x:.0f},{y + 2:.0f})\1c&H000000&\3c&H000000&\bord9\blur16\1a&H60&\3a&H60&{sc}{extra}}}{sombra}")
+        al = "&H28&" if forte == 2 else "&H60&"
+        ev(lista, 0, a, b, estilo, rf"{{\an5\pos({x:.0f},{y + 2:.0f})\1c&H000000&\3c&H000000&\bord{12 if forte == 2 else 9}\blur{20 if forte == 2 else 16}\1a{al}\3a{al}{sc}{extra}}}{sombra}")
     ev(lista, 0, a, b, estilo, rf"{{\an5\pos({x + 1:.0f},{y + 3:.0f})\1c&H000000&\3c&H000000&\bord3\blur8\1a&H78&\3a&H78&{sc}{extra}}}{sombra}")
     gl = brilho(texto, estilo) if brilhar else None
     if gl:
@@ -254,7 +255,7 @@ for b_ in ev_["bal"]:
     SFX.append((b_["t"], "balao", 0))
 for f in ev_["full"]:
     if f["rot"]:
-        com_sombra(EV2, f["t"] + 0.12, f["fim"], "Rotulo", (CX, 1221), f["rot"], extra=r"\fad(80,120)", brilhar=False, forte=True)
+        com_sombra(EV2, f["t"] + 0.12, f["fim"], "Rotulo", (CX, 1221), rf"{{\1c&H00FFFFFF&}}{f['rot']}", extra=r"\fad(80,120)", brilhar=False, forte=2)
     SFX.append((f["t"], "clique" if f["nome"] == "f_flashes" else "impacto", f["nome"]))
 assets = json.load(open(f"ov_{S}.json")) if os.path.exists(f"ov_{S}.json") else {"pol": []}
 for p in assets["pol"]:

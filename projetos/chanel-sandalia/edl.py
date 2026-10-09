@@ -58,6 +58,13 @@ FULL = [
     ("f_liberdade", "clip", A + "m_1208.mp4", "liberdade da praia", 73.0, 0.25, 1.9, (2.0, 0.5), None),
     ("f_mulher_mar", "clip", A + "m_33021.mp4", "uma mulher saindo", 82.0, 0.25, 2.6, (3.0, 0.5), None),
     ("f_pe_nu", "clip", A + "m1080_2054.mp4", "o pé quase nu", 93.4, 0.25, 2.0, (2.0, 0.5), None),
+    # imagens reais do desfile Cruise 26/27 (Biarritz) e da Margaret Qualley, achadas na web (WWD, Russh, Ara)
+    ("f_look_cruise", "foto", A + "w_look_cruise.jpg", "chanel criada pelo", 32.4, 0.20, 1.6, (0.5, 0.5), "Chanel Cruise 26/27, Biarritz"),
+    ("f_look_desfile", "foto", A + "w_look_desfile.jpg", "o desfile aconteceu", 45.0, 0.40, 1.5, (0.5, 0.5), None),
+    ("f_close_pe", "foto", A + "w_close_pe.jpg", "o pé quase nu", 93.4, 0.25, 2.0, (0.55, 0.5), "Chanel Cruise 26/27"),
+    ("f_close_pele", "foto", A + "w_close_pele.jpg", "a pele aparece de verdade", 167.8, 0.25, 1.8, (0.55, 0.5), "Chanel Cruise 26/27"),
+    ("f_qualley", "foto", A + "w_qualley.jpg", "sapato em tapete vermelho", 213.9, 0.0, 1.4, (0.5, 0.5), "Margaret Qualley, em Londres"),
+    ("f_qualley_pes", "foto", A + "w_qualley_pes.jpg", "em tapete vermelho", 214.6, -0.7, 1.1, (0.5, 0.5), None),
     ("f_lagerfeld", "foto", A + "c5.jpg", "lagerfeld e agora", 150.4, 0.25, 1.9, ("contain",), "Karl Lagerfeld"),
     ("f_tapete", "clip", A + "m_23333.mp4", "em tapete vermelho", 214.6, 0.30, 2.1, (6.0, 0.5), None),
     ("f_flashes", "clip", A + "m_50641.mp4", "parar para olhar", 265.9, 0.20, 1.6, (3.0, 0.5), None),
