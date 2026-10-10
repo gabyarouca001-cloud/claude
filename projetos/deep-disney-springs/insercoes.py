@@ -227,45 +227,41 @@ def odometro(canvas, valores_pos, digitos, f, cx, cy, largura_dig, alpha=1.0, es
 
 
 def insercao_ano(ev, ano="1975", t0=14.45, t1=16.55):
-    """1975: pó de fada varre a tela, o número rola feito um contador e pousa com acorde"""
+    """1975: pó de fada varre a tela, o número rola feito um contador e pousa (acorde) junto com a fala"""
     nome = "ano_1975"
     f = fonte("PlayfairBlackItalic.ttf", 270)
     cx, cy = W / 2, 700 * S
     larg = max(f.getlength(c) for c in "0123456789")
     dur = t1 - t0
-    quadros = []
-    sw = (t0, 0.45)                      # varredura
-    rola0 = t0 + 0.28                    # início das colunas
-    # colunas: 1 e 9 já nascem certos; dezena rola 0→7; unidade rola 0→5 com um ciclo
-    alvos = [(1, 0.0), (9, 0.0), (7, 0.55), (5, 0.85)]
+    R = 0.12                              # início das colunas (s após t0)
+    DUR_ROLO = 0.55
+    alvos = [(1, 0.0, 0), (9, 0.0, 0), (7, 0.0, 0), (5, 0.20, 1)]     # (dígito, atraso, ciclos extras)
     digs = [list("0123456789")] * 4
+    pouso = t0 + R + 0.20 + DUR_ROLO + 0.04
     ev.append((t0, "varredura"))
     for k in range(7):
-        ev.append((rola0 + 0.10 + k * 0.045, "tique"))
+        ev.append((t0 + R + 0.04 + k * 0.06, "tique"))
     for k in range(14):
-        ev.append((rola0 + 0.18 + k * 0.045, "tique2"))
-    pouso = rola0 + 0.85 + 0.12
+        ev.append((t0 + R + 0.20 + 0.03 + k * 0.032, "tique2"))
     ev.append((pouso, "acorde"))
     ev.append((t1 - 0.30, "saida"))
-    poeira = Poeira(arco(60, 900, 1020, 560, -140), t0, 0.55, seed=11)
-    n = int(dur * FPS)
-    for i in range(n):
+    poeira = Poeira(arco(60, 900, 1020, 560, -140), t0, 0.5, seed=11)
+    quadros = []
+    for i in range(int(dur * FPS)):
         t = t0 + i / FPS
         c = novo()
         a = t - t0
-        fade_in = ease_out(a / 0.30)
-        fade_out = 1 - ease_io((a - (dur - 0.35)) / 0.35)
-        al = min(fade_in, fade_out)
+        al = min(ease_out(a / 0.30), 1 - ease_io((a - (dur - 0.35)) / 0.35))
         pos = []
-        for j, (alvo, atraso) in enumerate(alvos):
+        for j, (alvo, atraso, ciclos) in enumerate(alvos):
             if j < 2:
                 pos.append(float(alvo))
             else:
-                u = (a - 0.28 - atraso * 0.45) / 0.55
-                ciclos = 1 if j == 3 else 0
-                pos.append(alvo + (ciclos * 10) * 0 + (ease_out(u) - 1) * (alvo + ciclos * 10))
-        esc = 0.92 + 0.08 * ease_out(a / 0.35) + 0.05 * math.exp(-((a - (pouso - t0)) / 0.12) ** 2) * (1 if a >= pouso - t0 - 0.05 else 0)
-        veu(c, cx, cy, 980, 520, al)
+                u = (a - R - atraso) / DUR_ROLO
+                total = alvo + ciclos * 10
+                pos.append(alvo + (ease_out(u) - 1) * total)
+        esc = 0.92 + 0.08 * ease_out(a / 0.35) + 0.05 * math.exp(-((t - pouso) / 0.12) ** 2) * (1 if t >= pouso - 0.05 else 0)
+        veu(c, cx, cy, 980, 520, al * 0.3)
         odometro(c, pos, digs, f, cx, cy, larg * 1.02, al, esc)
         poeira.desenhar(c, t)
         explosao(c, cx, cy, t, pouso, seed=9)
@@ -415,7 +411,7 @@ def insercao_anos60(ev, t0, t1):
         c = novo()
         al = min(ease_out(a / 0.28), 1 - ease_io((a - (dur - 0.35)) / 0.35))
         pop = 0.55 + 0.45 * ease_out((a - 0.2) / 0.35) + 0.07 * math.exp(-((a - 0.45) / 0.12) ** 2)
-        veu(c, cx, cy, 980, 560, al)
+        veu(c, cx, cy, 980, 560, al * 0.6)
         colar_texto(c, camada_texto("anos", f_top), cx, cy - 215 * S, BRANCO, al * ease_out((a - 0.05) / 0.3), brilho=False)
         colar_texto(c, camada_texto("60", f_big), cx, cy, "gradiente", al * ease_out((a - 0.15) / 0.25), pop)
         poeira.desenhar(c, t)
@@ -432,7 +428,7 @@ def construir():
     obras.append(insercao_lista(ev, 36.90, 41.85, [(37.35, "sem", "INGRESSO"), (38.45, "sem", "PORTÃO"), (39.70, "estacionamento", "GRÁTIS")]))
     obras.append(insercao_areas(ev, 47.85, 51.15, [48.75, 49.25, 49.75, 50.25]))
     obras.append(insercao_contador(ev, "m2_4700", 57.90, 61.00, "são", None, "M² DE PRODUTOS", 4700, casas_milhar=True, y=700, tam_num=250, tam_base=64, trac=6))
-    obras.append(insercao_anos60(ev, 64.55, 66.95))
+    obras.append(insercao_anos60(ev, 64.95, 67.15))
     return obras, ev
 
 
