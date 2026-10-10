@@ -189,6 +189,18 @@ def veu(canvas, cx, cy, w, h, alpha):
     canvas.alpha_composite(l, (int(cx - m.width / 2), int(cy - m.height / 2)))
 
 
+PEDIDOS = set()
+
+
+def salvar(nome, k, img):
+    """grava o quadro já no disco (em 4K a lista inteira não cabe na memória) e devolve só o índice"""
+    if not PEDIDOS or nome in PEDIDOS:
+        pasta = f"{SAIDA}/{nome}"
+        os.makedirs(pasta, exist_ok=True)
+        img.save(f"{pasta}/{k:04d}.png", compress_level=1)
+    return k
+
+
 def novo():
     return Image.new("RGBA", (W, H), (0, 0, 0, 0))
 
@@ -265,7 +277,7 @@ def insercao_ano(ev, ano="1975", t0=14.45, t1=16.55):
         odometro(c, pos, digs, f, cx, cy, larg * 1.02, al, esc)
         poeira.desenhar(c, t)
         explosao(c, cx, cy, t, pouso, seed=9)
-        quadros.append(c)
+        quadros.append(salvar(nome, len(quadros), c))
     return nome, quadros, t0
 
 
@@ -313,7 +325,7 @@ def insercao_contador(ev, nome, t0, t1, topo, grande, base, final, prefixo="", c
                         al * ease_out((a - 0.45) / 0.3))
         poeira.desenhar(c, t)
         explosao(c, cx, cy, t, pouso, seed=3 + int(final) % 7)
-        quadros.append(c)
+        quadros.append(salvar(nome, len(quadros), c))
     return nome, quadros, t0
 
 
@@ -350,7 +362,7 @@ def insercao_lista(ev, t0, t1, itens):
             colar_texto(c, mt, x0 + 22 * S + mt.width / 2 + desl, y - 46 * S, BRANCO, al, brilho=False)
             colar_texto(c, mg, x0 + 22 * S + mg.width / 2 + desl, y + 22 * S, MANTEIGA, al)
             poeiras[k].desenhar(c, t)
-        quadros.append(c)
+        quadros.append(salvar(nome, len(quadros), c))
     return nome, quadros, t0
 
 
@@ -390,7 +402,7 @@ def insercao_areas(ev, t0, t1, tempos_pontos):
                 pulso = 1 + 0.55 * math.exp(-ba / 0.18)
                 estrela(c, x, y, 130 * S * pulso, al, ba * 40)
         poeira.desenhar(c, t)
-        quadros.append(c)
+        quadros.append(salvar(nome, len(quadros), c))
     return nome, quadros, t0
 
 
@@ -416,34 +428,33 @@ def insercao_anos60(ev, t0, t1):
         colar_texto(c, camada_texto("60", f_big), cx, cy, "gradiente", al * ease_out((a - 0.15) / 0.25), pop)
         poeira.desenhar(c, t)
         explosao(c, cx, cy, t, t0 + 0.30, seed=61, n=18, raio=300)
-        quadros.append(c)
+        quadros.append(salvar(nome, len(quadros), c))
     return nome, quadros, t0
 
 
 def construir():
+    """lista de funções (uma por inserção) + eventos de som; cada função gera os quadros só quando chamada (poupa memória em 4K)"""
     ev = []
-    obras = []
-    obras.append(insercao_ano(ev))
-    obras.append(insercao_contador(ev, "mais_150", 29.50, 32.35, "mais de", None, "LOJAS", 150, tam_num=300))
-    obras.append(insercao_lista(ev, 36.90, 41.85, [(37.35, "sem", "INGRESSO"), (38.45, "sem", "PORTÃO"), (39.70, "estacionamento", "GRÁTIS")]))
-    obras.append(insercao_areas(ev, 47.85, 51.15, [48.75, 49.25, 49.75, 50.25]))
-    obras.append(insercao_contador(ev, "m2_4700", 57.90, 61.00, "são", None, "M² DE PRODUTOS", 4700, casas_milhar=True, y=700, tam_num=250, tam_base=64, trac=6))
-    obras.append(insercao_anos60(ev, 64.95, 67.15))
+    obras = [
+        lambda: insercao_ano(ev),
+        lambda: insercao_contador(ev, "mais_150", 29.50, 32.35, "mais de", None, "LOJAS", 150, tam_num=300),
+        lambda: insercao_lista(ev, 36.90, 41.85, [(37.35, "sem", "INGRESSO"), (38.45, "sem", "PORTÃO"), (39.70, "estacionamento", "GRÁTIS")]),
+        lambda: insercao_areas(ev, 47.85, 51.15, [48.75, 49.25, 49.75, 50.25]),
+        lambda: insercao_contador(ev, "m2_4700", 57.90, 61.00, "são", None, "M² DE PRODUTOS", 4700, casas_milhar=True, y=700, tam_num=250, tam_base=64, trac=6),
+        lambda: insercao_anos60(ev, 64.95, 67.15),
+    ]
     return obras, ev
 
 
 if __name__ == "__main__":
-    pedidos = set(sys.argv[1:])
+    PEDIDOS.update(sys.argv[1:])
     os.makedirs(SAIDA, exist_ok=True)
     obras, ev = construir()
     manifesto = []
-    for nome, quadros, t0 in obras:
-        if pedidos and nome not in pedidos:
+    for fn in obras:
+        nome, quadros, t0 = fn()
+        if PEDIDOS and nome not in PEDIDOS:
             continue
-        pasta = f"{SAIDA}/{nome}"
-        os.makedirs(pasta, exist_ok=True)
-        for k, q in enumerate(quadros):
-            q.save(f"{pasta}/{k:04d}.png", compress_level=1)
         manifesto.append(dict(nome=nome, t0=t0, n=len(quadros)))
         print(nome, len(quadros), "quadros", flush=True)
     json.dump(dict(inserts=manifesto, eventos=sorted(ev)), open(f"{SAIDA}/manifesto.json", "w"), indent=1)
