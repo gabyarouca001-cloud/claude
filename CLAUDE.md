@@ -134,3 +134,17 @@ Guia completo em `projetos/austria-go-newsflash/GUIA.md` (aprendido do "Bentley 
 sem cor/textos; exterior numa cor só; nada de entrevistas/cartelas/logos/pretos; abertura ~3,8 s só música, música
 −22 dB sob a voz (−6 sem voz); mix ~−17 LUFS; entregar stems separados. Senha da biblioteca de música fica só no
 documento do cliente — nunca no repositório.
+
+## Versão da editora → legendar e tirar a música (DEEP EP3, 9:16 4K)
+Scripts em `projetos/deep-ep3/` (rodar em `/home/user/work/deep3`):
+- `mapear_insercoes.py` (OCR RapidOCR a 5 fps → intervalos + caixa de cada texto dela) e `mapear_video_inserts.py`
+  (B-roll = trechos sem o rosto dela, modelo selfie_multiclass). Blips de OCR < 0,5 s são falso positivo.
+- `ferramentas/separar_voz.py` (Demucs htdemucs_ft) → voz + "música". O stem "música" leva junto os **efeitos
+  sonoros** dela: `audio_sem_musica.py` devolve só os efeitos (transientes fortes ou na entrada das inserções/itens
+  de lista) e mantém o som original da vinheta DEEP. Mix −14 LUFS.
+- `legendas_ep3.py`: legenda tudo depois da vinheta (Rubik SemiBold 46 + chave Rubik Black 52 amarela, sombra leve).
+  Durante uma inserção a legenda **muda de altura** (abaixo ou acima do texto, folga de 50 px por causa das caixas,
+  1 s antes do OCR por causa do fade de entrada), entre o queixo (y ≥ 860) e a área segura (y ≤ 1440).
+  Ecos translúcidos o OCR não vê → lista `ECOS` manual. Conferir com folha de quadros a cada 1,5 s.
+- Texto da legenda: transcrição em janela longa (fiel) + "pra"/"tá" da transcrição em pedaços; conferir palavras
+  que a janela longa engole (ex.: "recebendo").
