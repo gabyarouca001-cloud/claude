@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,500&family=Inter:wght@900&display=swap" />
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1920px; height: 1080px; overflow: hidden; background: #3a3a3c; }
+      #root { position: relative; width: 1920px; height: 1080px; }
+      .linha { position: absolute; left: 0; width: 1920px; text-align: center; white-space: nowrap;
+        text-shadow: 0 4px 24px rgba(0,0,0,.45); }
+      #cima { top: 590px; font: italic 500 92px "Playfair Display", serif; color: #fff; }
+      #baixo { top: 690px; font: 900 150px Inter, sans-serif; color: #FCEDC0; letter-spacing: -2px; }
+      #eco { position: absolute; left: 0; width: 1920px; top: 380px; text-align: center; white-space: nowrap;
+        font: 900 420px Inter, sans-serif; color: rgba(255,255,255,.14); }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="4" data-width="1920" data-height="1080">
+      <div id="eco" class="clip" data-start="0" data-duration="4" data-track-index="0">30%</div>
+      <div id="cima" class="linha clip" data-start="0" data-duration="4" data-track-index="1">30% dos criadores</div>
+      <div id="baixo" class="linha clip" data-start="0" data-duration="4" data-track-index="2">NÃO MONETIZAM</div>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#eco", { opacity: 0, scale: 1.12 }, { opacity: 1, scale: 1, duration: 1.2, ease: "power3.out" }, 0);
+      tl.fromTo("#cima", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.15);
+      tl.fromTo("#baixo", { opacity: 0, y: 40, scale: 1.12 }, { opacity: 1, y: 0, scale: 1, duration: 0.8, ease: "expo.out" }, 0.45);
+      tl.to(["#eco","#cima","#baixo"], { opacity: 0, duration: 0.4, ease: "power2.in" }, 3.6);
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>
