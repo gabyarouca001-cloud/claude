@@ -137,11 +137,12 @@ def enquete(c, p):
 
 TIPOS = dict(titulo2=titulo2, setas=setas, lista=lista, mapa=mapa, linha_tempo=linha_tempo, enquete=enquete)
 
-CSS = f"""
+def css(S=1):
+    return f"""
 * {{ margin: 0; padding: 0; box-sizing: border-box; }}
-html, body {{ width: {W}px; height: {H}px; overflow: hidden; background: transparent; }}
-#root {{ position: relative; width: {W}px; height: {H}px; }}
-.card {{ position: absolute; left: 0; top: 0; width: {W}px; height: {H}px; }}
+html, body {{ width: {W * S}px; height: {H * S}px; overflow: hidden; background: transparent; }}
+#root {{ position: relative; width: {W * S}px; height: {H * S}px; }}
+.card {{ position: absolute; left: 0; top: 0; width: {W}px; height: {H}px; transform: scale({S}); transform-origin: 0 0; }}
 .card > * {{ position: absolute; }}
 .t-cima {{ left: 0; width: {W}px; text-align: center; white-space: nowrap; color: #fff; font: italic 500 58px/1.1 "Playfair Display", serif;
   text-shadow: 0 3px 20px rgba(0,0,0,.55); }}
@@ -160,7 +161,7 @@ html, body {{ width: {W}px; height: {H}px; overflow: hidden; background: transpa
 """
 
 
-def gerar(cartoes, saida, duracao, fps=30):
+def gerar(cartoes, saida, duracao, fps=30, S=1):
     saida = Path(saida)
     saida.mkdir(parents=True, exist_ok=True)
     blocos, js = [], []
@@ -174,13 +175,13 @@ def gerar(cartoes, saida, duracao, fps=30):
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width={W}, height={H}" />
+<meta name="viewport" content="width={W * S}, height={H * S}" />
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,500;1,700&family=Inter:wght@700;800;900&display=swap" />
-<style>{CSS}</style>
+<style>{css(S)}</style>
 </head>
 <body>
-<div id="root" data-composition-id="main" data-start="0" data-duration="{duracao}" data-width="{W}" data-height="{H}">
+<div id="root" data-composition-id="main" data-start="0" data-duration="{duracao}" data-width="{W * S}" data-height="{H * S}">
 {chr(10).join(blocos)}
 </div>
 <script>
@@ -201,7 +202,23 @@ tl.seek(0);
 
 
 if __name__ == "__main__":
-    cartoes = json.load(open(sys.argv[1]))
-    dur = max(c[2] for c in cartoes) + DUR_PAD
-    gerar(cartoes, sys.argv[2], round(dur, 3))
-    print(f"{len(cartoes)} cartões, duração {dur:.1f}s -> {sys.argv[2]}/index.html")
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("cartoes")
+    ap.add_argument("saida")
+    ap.add_argument("--escala", type=int, default=1, help="1 = 1080x1920, 2 = 2160x3840 (4K nativo)")
+    ap.add_argument("--por-cartao", action="store_true", help="uma composição curta por cartão (render em paralelo/rápido)")
+    a = ap.parse_args()
+    cartoes = json.load(open(a.cartoes))
+    if a.por_cartao:
+        man = []
+        for i, (tipo, ini, fim, p) in enumerate(cartoes):
+            d = Path(a.saida) / f"k{i:02d}"
+            gerar([[tipo, 0, round(fim - ini, 3), p]], d, round(fim - ini, 3), S=a.escala)
+            man.append(dict(dir=f"k{i:02d}", ini=ini, fim=fim))
+        json.dump(man, open(Path(a.saida) / "manifesto.json", "w"), indent=1)
+        print(f"{len(cartoes)} composições curtas em {a.saida}")
+    else:
+        dur = max(c[2] for c in cartoes) + DUR_PAD
+        gerar(cartoes, a.saida, round(dur, 3), S=a.escala)
+        print(f"{len(cartoes)} cartões, duração {dur:.1f}s -> {a.saida}/index.html")
