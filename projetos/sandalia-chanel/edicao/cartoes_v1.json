@@ -1,0 +1,16 @@
+[
+ ["titulo2", 0.3, 4.5, {"cima": "Isso é um sapato?", "baixo": "falta um pedaço", "t_b": 2.4}],
+ ["lista", 19.6, 26.4, {"y": 540, "itens": [[0.6, "um parecido"], [2.7, "a história"]], "titulo": "eu quis"}],
+ ["titulo2", 34.2, 38.3, {"cima": "diretor criativo", "baixo": "Mathieu Blazy", "t_b": 0.3}],
+ ["mapa", 58.4, 64.4, {"rotulo": "Biarritz", "sub": "1915 · casa de costura", "t_pino": 0.8, "t_sub": 1.6}],
+ ["setas", 71.8, 76.2, {"a": "elegância dos salões", "b": "liberdade da praia", "t_b": 1.4}],
+ ["titulo2", 95.3, 99.8, {"cima": "pé quase nu, com um enfeite", "baixo": "assinatura de moda", "t_b": 3.0}],
+ ["titulo2", 127.0, 131.4, {"cima": "o bege", "baixo": "alonga a perna", "t_b": 1.9}],
+ ["titulo2", 162.6, 167.3, {"cima": "antes, o bege", "baixo": "continuidade com a pele", "t_b": 2.4}],
+ ["titulo2", 169.4, 172.6, {"cima": "agora", "baixo": "a pele aparece", "t_b": 0.3}],
+ ["enquete", 170.3, 175.0, {"y": 640, "pergunta": "Muita viagem minha?", "opcoes": ["sim", "não"]}],
+ ["titulo2", 236.2, 241.8, {"cima": "o que ele já conseguiu", "baixo": "antes das lojas", "t_b": 0.8}],
+ ["titulo2", 243.6, 248.7, {"cima": "muito parecido na mão", "baixo": "um dupe", "t_b": 1.9}],
+ ["lista", 267.8, 273.8, {"y": 560, "marca": "→", "itens": [[0.7, "amar"], [2.0, "achar um absurdo"], [3.7, "falar da Chanel"]]}],
+ ["enquete", 277.9, 283.3, {"y": 620, "pergunta": "Você olha diferente agora?", "opcoes": ["sim", "não"]}]
+]

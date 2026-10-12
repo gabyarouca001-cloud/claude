@@ -23,7 +23,7 @@ while True:
     caixas = []
     for box, txt, conf in res or []:
         xs, ys = [q[0] for q in box], [q[1] for q in box]
-        if conf < 0.5 or len(txt.strip()) < 2:
+        if float(conf) < 0.5 or len(txt.strip()) < 2:
             continue
         caixas.append(dict(t=round(n / FPS, 2), x0=min(xs) / W, x1=max(xs) / W, y0=min(ys) / H, y1=max(ys) / H, txt=txt))
     quadros.append(caixas)
