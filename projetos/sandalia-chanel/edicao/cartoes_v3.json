@@ -1,0 +1,211 @@
+[
+ [
+  "titulo2",
+  0.3,
+  4.5,
+  {
+   "cima": "Isso é um sapato?",
+   "baixo": "falta um pedaço",
+   "t_b": 2.4
+  }
+ ],
+ [
+  "lista",
+  19.6,
+  26.4,
+  {
+   "y": 540,
+   "titulo": "eu quis",
+   "itens": [
+    [
+     0.6,
+     "um parecido"
+    ],
+    [
+     2.7,
+     "a história"
+    ]
+   ]
+  }
+ ],
+ [
+  "titulo2",
+  38.6,
+  41.5,
+  {
+   "cima": "pra entender",
+   "baixo": "por que ele existe",
+   "t_b": 0.9
+  }
+ ],
+ [
+  "mapa",
+  58.8,
+  64.4,
+  {
+   "rotulo": "Biarritz",
+   "sub": "lugar importante",
+   "t_pino": 0.8,
+   "t_sub": 1.8
+  }
+ ],
+ [
+  "titulo2",
+  71.8,
+  76.2,
+  {
+   "cima": "da elegância dos salões",
+   "baixo": "à liberdade da praia",
+   "t_b": 1.4
+  }
+ ],
+ [
+  "titulo2",
+  80.4,
+  86.2,
+  {
+   "cima": "a imagem",
+   "baixo": "mulher saindo do mar",
+   "t_b": 1.6
+  }
+ ],
+ [
+  "titulo2",
+  95.3,
+  99.8,
+  {
+   "cima": "pé quase nu, com um enfeite",
+   "baixo": "assinatura de moda",
+   "t_b": 3.0
+  }
+ ],
+ [
+  "titulo2",
+  123.2,
+  126.4,
+  {
+   "cima": "essas duas cores",
+   "baixo": "tinham uma função",
+   "t_b": 1.0
+  }
+ ],
+ [
+  "titulo2",
+  143.6,
+  149.8,
+  {
+   "cima": "o contraste bege e preto",
+   "baixo": "virou assinatura",
+   "t_b": 2.2
+  }
+ ],
+ [
+  "titulo2",
+  162.6,
+  166.0,
+  {
+   "cima": "antes, o bege",
+   "baixo": "continuidade com a pele",
+   "t_b": 2.1
+  }
+ ],
+ [
+  "enquete",
+  170.3,
+  175.0,
+  {
+   "y": 640,
+   "pergunta": "Muita viagem minha?",
+   "opcoes": [
+    "sim",
+    "não"
+   ]
+  }
+ ],
+ [
+  "titulo2",
+  177.0,
+  181.5,
+  {
+   "cima": "os dois lado a lado",
+   "baixo": "faz sentido?",
+   "t_b": 3.3
+  }
+ ],
+ [
+  "titulo2",
+  216.6,
+  221.6,
+  {
+   "cima": "não significa",
+   "baixo": "que vai ser vendido",
+   "t_b": 0.9
+  }
+ ],
+ [
+  "titulo2",
+  236.2,
+  241.8,
+  {
+   "cima": "o que ele já conseguiu",
+   "baixo": "antes das lojas",
+   "t_b": 0.8
+  }
+ ],
+ [
+  "titulo2",
+  243.6,
+  248.7,
+  {
+   "cima": "muito parecido na mão",
+   "baixo": "um dupe",
+   "t_b": 1.9
+  }
+ ],
+ [
+  "titulo2",
+  256.9,
+  261.6,
+  {
+   "cima": "não dá pra afirmar",
+   "baixo": "pra viralizar?",
+   "t_b": 2.4
+  }
+ ],
+ [
+  "lista",
+  267.8,
+  273.8,
+  {
+   "y": 560,
+   "marca": "→",
+   "itens": [
+    [
+     0.7,
+     "amar"
+    ],
+    [
+     2.0,
+     "achar um absurdo"
+    ],
+    [
+     3.7,
+     "falar da Chanel"
+    ]
+   ]
+  }
+ ],
+ [
+  "enquete",
+  277.9,
+  283.3,
+  {
+   "y": 620,
+   "pergunta": "Você olha diferente agora?",
+   "opcoes": [
+    "sim",
+    "não"
+   ]
+  }
+ ]
+]

@@ -93,7 +93,7 @@ def mapa(c, p):
     d = "M" + " L".join(f"{x * s:.1f} {y * s:.1f}" for x, y in pts) + " Z"
     px, py = .13 * s, .88 * s
     c.el(f'<svg id="{c.id}_m" style="position:absolute;left:{x0}px;top:{y0}px;overflow:visible" width="{s}" height="{s}" viewBox="0 0 {s} {s}">'
-         f'<path id="{c.id}_mp" d="{d}" fill="rgba(252,237,192,.10)" stroke="{AMARELO}" stroke-width="4" stroke-linejoin="round" '
+         f'<path id="{c.id}_mp" d="{d}" fill="rgba(252,237,192,.16)" stroke="{AMARELO}" stroke-width="6" stroke-linejoin="round" '
          f'pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" style="filter:drop-shadow(0 3px 10px rgba(0,0,0,.45))"/>'
          f'<circle id="{c.id}_r" cx="{px}" cy="{py}" r="22" fill="none" stroke="{AMARELO}" stroke-width="4"/>'
          f'<circle id="{c.id}_d" cx="{px}" cy="{py}" r="11" fill="{AMARELO}"/></svg>')
@@ -129,7 +129,7 @@ def enquete(c, p):
     y = p.get("y", 600)
     c.el(f'<div id="{c.id}_q" class="t-cima" style="left:56px;top:{y}px;width:460px;text-align:left;font-size:54px;line-height:64px">{p["pergunta"]}</div>')
     for i, op in enumerate(p["opcoes"]):
-        c.el(f'<div id="{c.id}_o{i}" class="pill" style="left:{56 + i * 220}px;top:{y + 150}px">{op.upper()}</div>')
+        c.el(f'<div id="{c.id}_o{i}" class="pill" style="left:{56 + i * 180}px;top:{y + 150}px">{op.upper()}</div>')
         c.tw(f'tl.fromTo("#{c.id}_o{i}", {{ opacity: 0, scale: 0.7 }}, {{ opacity: 1, scale: 1, duration: 0.5, ease: "back.out(2)", transformOrigin: "50% 50%" }}, {c.a(0.6 + i * 0.18)});')
     c.tw(f'tl.fromTo("#{c.id}_q", {{ opacity: 0, x: -40 }}, {{ opacity: 1, x: 0, duration: 0.6, ease: "power3.out" }}, {c.a(0)});')
     c.saida([f"{c.id}_q"] + [f"{c.id}_o{i}" for i in range(len(p["opcoes"]))])
@@ -156,7 +156,7 @@ html, body {{ width: {W * S}px; height: {H * S}px; overflow: hidden; background:
 .item .tx {{ color: #fff; font: 800 44px/1.1 Inter, sans-serif; text-shadow: 0 3px 18px rgba(0,0,0,.6); }}
 .ano {{ color: {AMARELO}; font: 900 58px Inter, sans-serif; text-shadow: 0 3px 16px rgba(0,0,0,.55); }}
 .ponto {{ width: 22px; height: 22px; border-radius: 50%; background: {AMARELO}; margin: 6px auto 0; box-shadow: 0 2px 10px rgba(0,0,0,.4); }}
-.pill {{ width: 190px; height: 76px; border: 4px solid {AMARELO}; border-radius: 38px; color: {AMARELO}; font: 900 34px/68px Inter, sans-serif;
+.pill {{ width: 160px; height: 72px; border: 4px solid {AMARELO}; border-radius: 38px; color: {AMARELO}; font: 900 32px/64px Inter, sans-serif;
   text-align: center; letter-spacing: 3px; text-shadow: 0 2px 12px rgba(0,0,0,.55); box-shadow: 0 3px 14px rgba(0,0,0,.3); }}
 """
 
