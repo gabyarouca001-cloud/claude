@@ -28,7 +28,7 @@ SANS_B = lambda t: F("Inter-ExtraBold", t)
 HAND = lambda t: F("Caveat-Bold", t)
 
 # índices (esq→dir, como em lib_foto.detectar) dos rostos da Samara a retocar em cada foto
-RETOQUE = {3642: [0], 4037: [0], 4138: [0], 5039: [0], 5611: [0], 6087: [2], 2554: [0], 3966: [0],
+RETOQUE = {4435: "maior", 3642: [0], 4037: [0], 4138: [0], 5039: [0], 5611: [0], 6087: [2], 2554: [0], 3966: [0],
            4123: [0], 5857: [1], 2953: [1], 6045: [0], 5471: [1], 3795: [0]}
 
 # ---------------------------------------------------------------- fotos
@@ -98,14 +98,12 @@ def pilula(img, xy, txt, f, fundo=CREAM, cor=INK, pad=(34, 18), esp=2, raio=None
     x, y = xy
     tw = largura(txt, f, esp); th = f.size
     w = int(tw + pad[0] * 2); h = int(th * 1.25 + pad[1] * 2 - th * 0.25)
+    if x is None: x = (W - w) // 2
     lay = Image.new("RGBA", img.size, (0, 0, 0, 0)); d = ImageDraw.Draw(lay)
     d.rounded_rectangle([x, y, x + w, y + h], radius=raio or h // 2, fill=tuple(fundo) + (255,))
     img.alpha_composite(lay)
     texto(img, (x + pad[0], y + pad[1] - th * 0.04), txt, f, cor, esp=esp)
     return w, h
-
-def contador(img, i, n, cor=WHITE, sombra=6):
-    texto(img, (W - 64, 58), f"{i:02d} / {n:02d}", SANS(26), cor, esp=3, sombra=sombra, anchor="r")
 
 def seta(img, cor=WHITE, sombra=6):
     texto(img, (W - 64, H - 96), "→", SANS_B(54), cor, sombra=sombra, anchor="r")
@@ -156,14 +154,13 @@ def roteiro():
         texto(im, (150, y - 16), c, SERIF(78), INK)
         texto(im, (150 + largura(c, SERIF(78)) + 26, y + 6), leg, SANS(30), (27, 35, 46), alpha=0.62)
     texto(im, (150, y0 + 6 * passo - 10), "e volta pra Tóquio no final", HAND(54), RED)
-    contador(im, 2, N, INK, 0)
     seta(im, INK, 0)
     salvar(im, pasta, 2)
     # 3..8 cidades
     cidades = [
         (3, 2457, (0.5, 0.15, 1.0), "01", "Tóquio", ["Shibuya à noite", "Asakusa e o templo Senso-ji", "Tokyo Skytree e Akihabara", "Harajuku e Meiji Jingu", "Ginza: compras e beleza"]),
         (4, 3642, (0.5, 0.25, 1.0), "02", "Hakone", ["Vale de Owakudani e o ovo preto", "Teleférico com vista", "Ryokan com jantar e yukata", "Hakone Open-Air Museum"]),
-        (5, 4037, (0.5, 0.2, 1.0), "03", "Kyoto", ["Fushimi Inari de yukata", "Floresta de bambu de Arashiyama", "Kinkaku-ji, o templo dourado", "Nishiki Market", "Gion e o pagode Yasaka"]),
+        (5, 4435, (0.5, 0.25, 1.0), "03", "Kyoto", ["Fushimi Inari de yukata", "Floresta de bambu de Arashiyama", "Kinkaku-ji, o templo dourado", "Nishiki Market", "Gion e o pagode Yasaka"]),
         (6, 4138, (0.5, 0.2, 1.0), "04", "Nara", ["Cervos soltos pelo parque", "Templo Todai-ji e o Grande Buda"]),
         (7, 5039, (0.5, 0.92, 1.0), "05", "Osaka", ["Dotonbori e o letreiro do Glico", "Castelo de Osaka e Tsutenkaku", "Universal e Super Nintendo World", "Katsuo-ji, o templo dos daruma"]),
         (8, 5611, (0.5, 0.55, 1.0), "06", "Okinawa", ["Miyakojima, a ilha das águas azuis", "Ponte Irabu Ohashi", "Dias de resort e praia", "Pôr do sol de tirar o fôlego"]),
@@ -180,7 +177,6 @@ def roteiro():
         ytit = base - len(itens) * 54 - 215
         texto(im, (72, ytit - 6), f"{idx} · DESTINO", SANS_B(24), CREAM, esp=6, sombra=5)
         texto(im, (66, ytit + 22), cid, SERIF(165), WHITE, sombra=12)
-        contador(im, n, N)
         seta(im)
         salvar(im, pasta, n)
     # 9 CTA
@@ -191,7 +187,6 @@ def roteiro():
     texto(im, (72, 1075), "Comenta a palavra e conheça o guia", SANS(36), CREAM, sombra=6)
     texto(im, (72, 1120), "completo do Japão.", SANS(36), CREAM, sombra=6)
     pilula(im, (72, H - 140), "COMENTA  GUIA", SANS_B(36), CREAM, INK, esp=4, pad=(44, 24))
-    contador(im, 9, N)
     salvar(im, pasta, 9)
 
 # ================================================================ 2) DIÁRIO DE BORDO (polaroids)
@@ -243,7 +238,6 @@ def diario():
         im = papel(20 + i)
         card = polaroid(foto(num), leg, data, 880, fx=fx, fy=fy)
         colar(im, card, (W // 2, H // 2 - 6), rot)
-        contador(im, i + 2, N, INK, 0)
         salvar(im, pasta, i + 2)
     # 9 CTA
     im = papel(40)
@@ -251,28 +245,32 @@ def diario():
     colar(im, polaroid(foto(6045), None, None, 560, fx=0.5, fy=0.3, rodape=90), (W // 2, 590), -3)
     texto(im, (W / 2, 975), "Quer ver tudo isso no", SERIF(84), INK, anchor="m")
     texto(im, (W / 2, 1062), "guia completo do Japão?", SERIF_I(84), RED, anchor="m")
-    pilula(im, (int(W / 2 - 280), 1196), "COMENTA  GUIA", SANS_B(36), INK, CREAM, esp=4, pad=(60, 24))
-    contador(im, 9, N, INK, 0)
+    pilula(im, (None, 1196), "COMENTA  GUIA", SANS_B(36), INK, CREAM, esp=4, pad=(60, 24))
     salvar(im, pasta, 9)
 
 # ================================================================ 3) JAPÃO COM CRIANÇAS (lista numerada)
-def cartao_item(im, num, titulo, legenda):
-    x0, y0, x1, y1 = 56, 985, W - 56, 1292
-    lay = Image.new("RGBA", im.size, (0, 0, 0, 0)); d = ImageDraw.Draw(lay)
+def cartao_item(im, num, cidade, titulo, info):
+    x0, x1, base = 56, W - 56, 1292
+    xt = x0 + 40 + 215; maxw = x1 - 36 - xt
+    ft = SERIF(74); fi = SANS(29)
+    lt = quebrar(titulo, ft, maxw); li = quebrar(info, fi, maxw)
+    altura = 34 + 34 + len(lt) * 78 + 12 + len(li) * 40 + 34
+    y0 = base - altura
     sh = Image.new("RGBA", im.size, (0, 0, 0, 0)); ds = ImageDraw.Draw(sh)
-    ds.rounded_rectangle([x0, y0 + 10, x1, y1 + 10], 26, fill=(0, 0, 0, 90)); sh = sh.filter(ImageFilter.GaussianBlur(18))
+    ds.rounded_rectangle([x0, y0 + 10, x1, base + 10], 26, fill=(0, 0, 0, 90)); sh = sh.filter(ImageFilter.GaussianBlur(18))
     im.alpha_composite(sh)
-    d.rounded_rectangle([x0, y0, x1, y1], 26, fill=CREAM + (250,))
+    lay = Image.new("RGBA", im.size, (0, 0, 0, 0)); d = ImageDraw.Draw(lay)
+    d.rounded_rectangle([x0, y0, x1, base], 26, fill=CREAM + (250,))
     im.alpha_composite(lay)
-    texto(im, (x0 + 40, y0 + 6), num, SERIF_I(190), RED)
-    xt = x0 + 40 + 215
-    maxw = x1 - 36 - xt
-    f = SERIF(76)
-    linhas = quebrar(titulo, f, maxw)
-    y = y0 + 36
-    for ln in linhas:
-        texto(im, (xt, y), ln, f, INK); y += 82
-    texto(im, (xt, y + 12), legenda, SANS(29), INK, alpha=0.7)
+    texto(im, (x0 + 40, y0 + 10), num, SERIF_I(190), RED)
+    y = y0 + 30
+    texto(im, (xt, y), cidade, SANS_B(22), RED, esp=5)
+    y += 34
+    for ln in lt:
+        texto(im, (xt, y), ln, ft, INK); y += 78
+    y += 12
+    for ln in li:
+        texto(im, (xt, y), ln, fi, INK, alpha=0.75); y += 40
 
 def quebrar(txt, f, maxw):
     palavras = txt.split(); linhas = []; cur = ""
@@ -296,20 +294,19 @@ def criancas():
     seta(im)
     salvar(im, pasta, 1)
     itens = [
-        (4741, (0.5, 0.45, 1.0), "01", "Super Nintendo World", "Universal Studios Japan, em Osaka"),
-        (2860, (0.5, 0.35, 1.0), "02", "Sumô de pertinho", "Show e foto com os lutadores"),
-        (2989, (0.5, 0.25, 1.0), "03", "Café com bichinhos", "Porquinhos, corujas e hamsters no colo"),
-        (4363, (0.5, 0.3, 1.0), "04", "Aula de samurai", "Espada, quimono e muita concentração"),
-        (4186, (0.5, 0.4, 1.0), "05", "Cervos de Nara", "Alimentar e passear entre eles"),
-        (3750, (0.5, 0.3, 1.0), "06", "Yukata em Fushimi Inari", "Passeio de quimono de verão"),
-        (3453, (0.5, 0.4, 1.0), "07", "Noite de ryokan", "Jantar em família, de yukata"),
+        (4762, (0.5, 0.3, 1.0), "01", "OSAKA · UNIVERSAL STUDIOS JAPAN", "Super Nintendo World", "A pulseira Power-Up Band transforma o parque num jogo: dá pra coletar moedas."),
+        (2860, (0.5, 0.35, 1.0), "02", "TÓQUIO", "Sumô de pertinho", "Apresentação ao vivo, com direito a foto ao lado dos lutadores no final."),
+        (2989, (0.5, 0.25, 1.0), "03", "TÓQUIO", "Café com bichinhos", "Hamsters, porquinhos, corujas e pintinhos pertinho das crianças."),
+        (4363, (0.25, 0.48, 1.35), "04", "EXPERIÊNCIA CULTURAL", "Aula de samurai", "Traje tradicional, espada e um mestre ensinando os movimentos."),
+        (4186, (0.5, 0.4, 1.0), "05", "NARA", "Cervos de Nara", "Os biscoitinhos são vendidos no parque: os cervos vêm até você."),
+        (3750, (0.5, 0.3, 1.0), "06", "KYOTO", "Yukata em Fushimi Inari", "Dá pra alugar o yukata e passear entre os milhares de portais vermelhos."),
+        (3453, (0.5, 0.4, 1.0), "07", "HAKONE", "Noite de ryokan", "Hospedagem tradicional japonesa, com jantar servido e todo mundo de yukata."),
     ]
-    for i, (num, (fx, fy, z), idx, tit, leg) in enumerate(itens):
+    for i, (num, (fx, fy, z), idx, cid, tit, info) in enumerate(itens):
         im = recorte(foto(num), fx, fy, z).convert("RGBA")
         gradiente(im, "baixo", 0.35, 0.5)
         gradiente(im, "cima", 0.14, 0.40)
-        cartao_item(im, idx, tit, leg)
-        contador(im, i + 2, N)
+        cartao_item(im, idx, cid, tit, info)
         salvar(im, pasta, i + 2)
     # 9 CTA
     im = recorte(foto(5471), 0.5, 0.45, 1.0).convert("RGBA")
@@ -321,7 +318,6 @@ def criancas():
     texto(im, (96, 1068), "Comenta a palavra e conheça o", SANS(34), INK)
     texto(im, (96, 1114), "guia completo do Japão.", SANS(34), INK)
     pilula(im, (96, 1190), "COMENTA  GUIA", SANS_B(34), RED, WHITE, esp=4, pad=(40, 20))
-    contador(im, 9, N)
     salvar(im, pasta, 9)
 
 if __name__ == "__main__":
