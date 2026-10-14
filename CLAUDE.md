@@ -165,3 +165,10 @@ HyperFrames = HTML/CSS/GSAP renderizado quadro a quadro (determinístico). Licen
 - **No ffmpeg o alfa do WebM só vem com `-c:v libvpx-vp9` antes do `-i` do overlay** (`compor.sh`). Sem isso o fundo do overlay aparece.
 - **Variáveis:** `render --variables '{"titulo":"..."}'` / `--batch` permite um template por tipo de motion e dados por episódio (base para o pipeline por configuração).
 - Números nos gráficos: só os que ela fala; o teste usa "EXEMPLO ILUSTRATIVO" porque os valores são fictícios.
+
+## Ordem da pós-produção (definida pela editora, depois que os cortes estão aprovados)
+1. **Legendas dinâmicas de destaque:** só nas palavras e frases-chave (entrada animada, estilo do padrão: Rubik Black amarela, Playfair itálico + ouro, etc.).
+2. **Motions explicativos** onde o conteúdo precisa ser mostrado (lista, gráfico, comparação, contador…), sem cobrir o rosto.
+3. **Legenda base por último, no vídeo todo:** cobre apenas as palavras que NÃO estão num destaque e sai da frente (some ou muda de altura) quando há destaque ou motion na tela.
+- Cada etapa é uma **camada separada** (overlay transparente ou ASS) para ela poder trocar uma sem refazer as outras. Mostrar prévia ao fim de cada etapa e só seguir após o ok.
+- Uma única lista de intervalos ocupados (destaques + motions) alimenta a etapa 3, em vez de ajustar legenda na mão. Checar com a transcrição: **toda palavra falada aparece uma vez** (destaque OU base), nenhuma duplicada nem faltando.
