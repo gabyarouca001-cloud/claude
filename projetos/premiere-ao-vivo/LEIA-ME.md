@@ -14,6 +14,18 @@ Li o README e o SECURITY.md; **não li o código-fonte nem rodei**. Teste primei
 4. Abra o Premiere, abra a cópia do projeto com uma sequência ativa e vá em **Janela > Extensões > MCP for Adobe Premiere Pro**. Deve aparecer "Running".
 5. No Claude Desktop, mande: `Verifique minha conexão com o Premiere usando verify_premiere_connection. Não faça nenhuma alteração.`
 
+
+## Caminho para quem já usa o Claude Code no PC (Windows) — o recomendado para a editora
+1. Cópia do projeto (Arquivo > Salvar como). Só mexer nela.
+2. Node.js 20.19+ (`node -v`; se faltar: `winget install OpenJS.NodeJS.LTS`).
+3. No Claude Code: `/plugin marketplace add leancoderkavy/premiere-pro-mcp` e depois `/plugin install premiere-pro@premiere-pro-mcp`.
+   (É o procedimento do README do projeto. Um plugin de terceiros pode trazer comandos e hooks: leia o que o Claude Code mostrar antes de aceitar.)
+4. No PowerShell: `npx -y premiere-pro-mcp@1.24.0 --install-cep` (instala o conector dentro do Premiere e liga o modo de depuração dele).
+5. Abra o Premiere com a cópia, abra a sequência e confira **Janela > Extensões > MCP for Adobe Premiere Pro** = "Running". Inicie uma **nova** sessão do Claude Code (de preferência dentro da pasta do repositório clonado, para ele ler o CLAUDE.md).
+6. Opcional: `npx -y premiere-pro-mcp@1.24.0 --doctor` (checa só a instalação).
+7. Primeira mensagem: `Use verify_premiere_connection para checar a conexão com o Premiere. Não faça nenhuma alteração.`
+Se algo falhar, copie a mensagem de erro inteira.
+
 ## Primeiros testes (um por vez, sempre na cópia)
 1. Só leitura: "Liste as sequências e as trilhas da sequência ativa, sem alterar nada."
 2. Marcadores: "Coloque marcadores com nome nos pontos [tempos] da sequência ativa." (reversível com Ctrl+Z)
