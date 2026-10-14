@@ -172,3 +172,8 @@ HyperFrames = HTML/CSS/GSAP renderizado quadro a quadro (determinístico). Licen
 3. **Legenda base por último, no vídeo todo:** cobre apenas as palavras que NÃO estão num destaque e sai da frente (some ou muda de altura) quando há destaque ou motion na tela.
 - Cada etapa é uma **camada separada** (overlay transparente ou ASS) para ela poder trocar uma sem refazer as outras. Mostrar prévia ao fim de cada etapa e só seguir após o ok.
 - Uma única lista de intervalos ocupados (destaques + motions) alimenta a etapa 3, em vez de ajustar legenda na mão. Checar com a transcrição: **toda palavra falada aparece uma vez** (destaque OU base), nenhuma duplicada nem faltando.
+
+## Painel visual de edição (artifact "Timeline DEEP") — `projetos/motion/timeline/`
+Timeline em faixas (Destaques, Motions, Legenda base, Vídeo) para a editora acompanhar e mexer: arrastar/esticar blocos, trocar cor/posição/texto, dividir cortes, desfazer, "Pedir render".
+Estado no `db` do artifact (modelo em `LEIA-ME.md`): **antes de continuar a edição, ler `clips/*`, `projeto/log` e `pedidos/*`** para pegar o que ela mudou; só então renderizar. Escrever com `if_version`; deixar recado em `projeto/meta.nota`; marcar o pedido `feito`.
+O painel mostra o PLANO; o render final continua no pipeline e passa pelo `verificar.py`.

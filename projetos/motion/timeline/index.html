@@ -1,0 +1,681 @@
+<title>Timeline DEEP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800;900&family=Playfair+Display:ital,wght@1,500;1,700&family=Rubik:wght@600;900&display=swap">
+<style>
+  /* Layout: editor escuro de vídeo. Palco 16:9 à esquerda, inspetor à direita, faixas da timeline embaixo.
+     Visual único (editor), cor de destaque = amarelo manteiga do padrão DEEP. */
+  :root {
+    color-scheme: dark;
+    --bg: #0c0c0f;
+    --panel: #15151a;
+    --panel2: #1c1c23;
+    --line: #2b2b34;
+    --fg: #ececf1;
+    --mut: #9494a3;
+    --accent: #fcedc0;
+    --accent-ink: #1c1810;
+    --gold: #f1ce0b;
+    --t-video: #3b3946;
+    --t-dest: #f1ce0b;
+    --t-motion: #fcedc0;
+    --t-base: #b9b2a2;
+    --danger: #ff8a7a;
+    --ui: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --serif: "Playfair Display", Georgia, serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { background: var(--bg); color: var(--fg); font-family: var(--ui); }
+  body { padding-inline: 16px; padding-block: 12px; }
+  button, input, select, textarea { font: inherit; color: inherit; }
+  button { cursor: pointer; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  #app { display: flex; flex-direction: column; gap: 12px; max-width: 1500px; margin: 0 auto; }
+  header { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; }
+  .brand { font-family: var(--serif); font-style: italic; font-size: 24px; letter-spacing: .01em; }
+  .brand b { font-family: var(--ui); font-style: normal; font-weight: 900; font-size: 13px; letter-spacing: .22em; color: var(--accent); margin-left: 8px; }
+  .sync { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; color: var(--mut); margin-left: auto; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--mut); }
+  .sync[data-s="ok"] .dot { background: var(--accent); }
+  .sync[data-s="saving"] .dot { background: var(--gold); }
+  .sync[data-s="off"] .dot { background: var(--danger); }
+  #nota { flex-basis: 100%; font-size: 13px; color: var(--accent); background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px; }
+
+  main { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 12px; align-items: start; }
+  @media (max-width: 920px) { main { grid-template-columns: minmax(0, 1fr); } }
+
+  .stagebox { background: #000; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; position: relative; aspect-ratio: 16 / 9; width: min(100%, calc(44vh * 16 / 9)); min-width: min(100%, 320px); margin-inline: auto; }
+  #stage { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 0 0; overflow: hidden; background: #000; }
+  #vid { position: absolute; inset: 0; width: 1920px; height: 1080px; object-fit: cover; }
+  .z { position: absolute; inset: 0; }
+  .chip { position: absolute; left: 10px; top: 10px; z-index: 5; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--mut); background: rgba(12,12,15,.7); padding: 4px 8px; border-radius: 6px; pointer-events: none; }
+
+  .bar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 10px; }
+  .btn { background: var(--panel2); border: 1px solid var(--line); border-radius: 8px; padding: 7px 12px; font-size: 13px; font-weight: 500; }
+  .btn:hover { border-color: var(--mut); }
+  .btn.pri { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); font-weight: 600; }
+  .btn:disabled { opacity: .4; cursor: default; }
+  .tc { font-variant-numeric: tabular-nums; font-size: 14px; letter-spacing: .04em; min-width: 150px; }
+  .tc span { color: var(--mut); }
+  .spacer { flex: 1; }
+  .zoom { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--mut); }
+  .zoom input { width: 110px; accent-color: var(--accent); }
+  .menu { position: relative; }
+  .menu > div { position: absolute; z-index: 20; top: calc(100% + 4px); left: 0; background: var(--panel2); border: 1px solid var(--line); border-radius: 8px; min-width: 190px; padding: 4px; box-shadow: 0 10px 30px rgba(0,0,0,.5); }
+  .menu button { display: block; width: 100%; text-align: left; background: none; border: 0; padding: 8px 10px; border-radius: 6px; font-size: 13px; }
+  .menu button:hover { background: var(--line); }
+
+  aside { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 14px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+  aside h2 { margin: 0; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--mut); font-weight: 600; }
+  aside h3 { margin: 0; font-size: 16px; font-weight: 600; }
+  .field { display: grid; gap: 4px; font-size: 12px; color: var(--mut); }
+  .field input[type="text"], .field input[type="number"], .field select, .field textarea { width: 100%; background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 7px 9px; color: var(--fg); font-size: 13px; }
+  .field input[type="range"] { width: 100%; accent-color: var(--accent); }
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .val { color: var(--fg); font-variant-numeric: tabular-nums; float: right; }
+  .sw { display: flex; gap: 8px; align-items: center; }
+  .sw button { width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--line); padding: 0; }
+  .sw button[aria-pressed="true"] { border-color: var(--fg); }
+  .sw input[type="color"] { width: 36px; height: 28px; border: 0; background: none; padding: 0; }
+  .vazio { color: var(--mut); font-size: 13px; line-height: 1.5; }
+  .reqs { display: grid; gap: 6px; font-size: 12px; color: var(--mut); }
+  .reqs div { display: flex; justify-content: space-between; gap: 8px; border-top: 1px solid var(--line); padding-top: 6px; }
+  .reqs b { color: var(--fg); font-weight: 500; }
+  .reqs .feito { color: var(--accent); }
+
+  /* timeline */
+  #tlwrap { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; overflow-x: auto; overflow-y: hidden; position: relative; }
+  #tl { position: relative; min-width: 100%; }
+  .ruler { height: 28px; position: sticky; top: 0; background: var(--panel); border-bottom: 1px solid var(--line); margin-left: 104px; cursor: ew-resize; }
+  .tick { position: absolute; top: 0; height: 100%; border-left: 1px solid var(--line); font-size: 10px; color: var(--mut); padding: 9px 0 0 4px; font-variant-numeric: tabular-nums; pointer-events: none; }
+  .tick.m { border-left-color: #3b3b46; height: 55%; top: 45%; padding: 0; }
+  .track { position: relative; border-bottom: 1px solid var(--line); }
+  .tname { position: sticky; left: 0; z-index: 4; width: 104px; height: 100%; background: var(--panel); border-right: 1px solid var(--line); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--mut); padding: 10px 10px; display: flex; align-items: flex-start; float: left; }
+  .lane { position: absolute; left: 104px; right: 0; }
+  .clip { position: absolute; height: 34px; border-radius: 6px; font-size: 12px; font-weight: 600; display: flex; align-items: center; padding: 0 10px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; cursor: grab; user-select: none; touch-action: none; border: 1px solid rgba(0,0,0,.35); color: var(--accent-ink); }
+  .clip[data-tr="video"] { background: var(--t-video); color: var(--fg); border-color: #55536a; }
+  .clip[data-tr="dest"] { background: var(--t-dest); }
+  .clip[data-tr="motion"] { background: var(--t-motion); }
+  .clip[data-tr="base"] { background: var(--t-base); }
+  .clip.sel { outline: 2px solid #fff; outline-offset: 1px; z-index: 3; }
+  .clip .h { position: absolute; top: 0; bottom: 0; width: 9px; cursor: ew-resize; }
+  .clip .h.l { left: 0; } .clip .h.r { right: 0; }
+  .clip .h::after { content: ""; position: absolute; top: 8px; bottom: 8px; left: 3px; width: 3px; border-radius: 2px; background: rgba(0,0,0,.35); }
+  .clip[data-tr="video"] .h::after { background: rgba(255,255,255,.4); }
+  .play { position: absolute; top: 0; bottom: 0; width: 0; z-index: 8; pointer-events: none; }
+  .play::before { content: ""; position: absolute; left: -1px; top: 0; bottom: 0; width: 2px; background: var(--danger); }
+  .play::after { content: ""; position: absolute; left: -6px; top: 0; border: 6px solid transparent; border-top: 9px solid var(--danger); }
+  .empty { padding: 30px 20px 30px 124px; color: var(--mut); font-size: 14px; }
+  .hint { font-size: 12px; color: var(--mut); line-height: 1.5; }
+  .hint kbd { background: var(--panel2); border: 1px solid var(--line); border-radius: 4px; padding: 0 5px; font-family: var(--ui); font-size: 11px; }
+
+  /* ===== palco (base 1920x1080) ===== */
+  .mo { position: absolute; inset: 0; width: 1920px; height: 1080px; color: #fff; font-family: var(--ui); transform-origin: 960px 540px; }
+  .mo .sh { text-shadow: 0 4px 22px rgba(0,0,0,.55); }
+  .mo .a { position: absolute; }
+  .lettering .echo { left: 0; right: 0; top: 150px; text-align: center; font-weight: 900; font-size: 760px; line-height: 1; letter-spacing: -.04em; opacity: 0; }
+  .lettering .l1 { left: 0; right: 0; top: 500px; text-align: center; font-family: "Playfair Display", serif; font-style: italic; font-weight: 500; font-size: 92px; line-height: 1.1; }
+  .lettering .l1 .w { display: inline-block; margin: 0 .14em; }
+  .lettering .l2mask { left: 0; right: 0; top: 614px; height: 220px; overflow: hidden; text-align: center; }
+  .lettering .l2 { display: block; font-weight: 900; font-size: 188px; line-height: 200px; color: var(--y); letter-spacing: -.02em; white-space: nowrap; }
+  .lettering .l2 .c { display: inline-block; }
+  .lettering .ul { left: 410px; top: 838px; }
+  .pessoas .grid { left: 140px; top: 200px; width: 880px; height: 360px; }
+  .pessoas .p { position: absolute; width: 120px; height: 150px; }
+  .pessoas .p svg { position: absolute; inset: 0; }
+  .pessoas .p .y { opacity: 0; }
+  .pessoas .cnt { left: 140px; top: 600px; font-weight: 900; font-size: 250px; line-height: 1; color: var(--y); letter-spacing: -.04em; }
+  .pessoas .ca { left: 720px; top: 668px; font-family: "Playfair Display", serif; font-style: italic; font-weight: 500; font-size: 70px; white-space: nowrap; }
+  .pessoas .cb { left: 720px; top: 760px; font-weight: 900; font-size: 52px; letter-spacing: .04em; color: var(--y); white-space: nowrap; }
+  .pessoas .cap { left: 120px; top: 928px; display: flex; gap: 22px; }
+  .pessoas .cap .bar { width: 8px; background: var(--y); border-radius: 4px; }
+  .pessoas .cap .k { font-weight: 800; font-size: 22px; letter-spacing: .22em; color: var(--y); }
+  .pessoas .cap .t { font-weight: 500; font-size: 44px; margin-top: 4px; }
+  .grafico .gt { left: 140px; top: 140px; font-family: "Playfair Display", serif; font-style: italic; font-weight: 500; font-size: 62px; white-space: nowrap; }
+  .grafico .gn { left: 140px; top: 220px; font-weight: 900; font-size: 190px; line-height: 1; color: var(--y); letter-spacing: -.04em; }
+  .grafico .gk { left: 150px; top: 430px; font-weight: 800; font-size: 26px; letter-spacing: .2em; color: rgba(255,255,255,.7); }
+  .grafico .ch { left: 120px; top: 480px; }
+  .leg .box { left: 0; right: 0; top: 780px; text-align: center; white-space: nowrap; }
+  .leg.rubik .box { font-family: "Rubik", sans-serif; font-weight: 600; font-size: 84px; }
+  .leg.rubik.base .box { font-size: 64px; }
+  .leg.playfair .box { font-family: "Playfair Display", serif; font-style: italic; font-weight: 500; font-size: 104px; }
+  .leg .w { display: inline-block; margin: 0 .16em; text-shadow: 0 4px 18px rgba(0,0,0,.6); }
+  .leg.rubik .w.key { font-weight: 900; color: var(--y); text-shadow: 0 0 28px color-mix(in srgb, var(--y) 55%, transparent), 0 4px 18px rgba(0,0,0,.6); }
+  .leg.playfair .w.key { font-weight: 700; color: var(--y); text-shadow: 0 0 26px color-mix(in srgb, var(--y) 50%, transparent), 0 4px 18px rgba(0,0,0,.6); }
+</style>
+
+<div id="app">
+  <header>
+    <div class="brand">Timeline<b>DEEP</b></div>
+    <div class="sync" id="sync" data-s="off"><span class="dot"></span><span id="synctxt">Conectando…</span></div>
+    <div id="nota" hidden></div>
+  </header>
+
+  <main>
+    <section>
+      <div class="stagebox" id="sbox">
+        <div class="chip">Prévia leve · 360p</div>
+        <div id="stage">
+          <video id="vid" playsinline preload="auto"></video>
+          <div class="z" id="z-motion"></div>
+          <div class="z" id="z-dest"></div>
+          <div class="z" id="z-base"></div>
+        </div>
+      </div>
+      <div class="bar">
+        <button class="btn pri" id="bplay" aria-label="Tocar ou pausar">▶ Tocar</button>
+        <div class="tc" id="tc">0:00.00 <span>/ 0:00.00</span></div>
+        <button class="btn" id="bsplit" title="Dividir o corte no cursor (S)">Dividir</button>
+        <div class="menu">
+          <button class="btn" id="badd">+ Adicionar ▾</button>
+          <div id="addmenu" hidden>
+            <button data-add="lettering">Lettering principal</button>
+            <button data-add="pessoas">Motion: pessoas e número</button>
+            <button data-add="grafico">Motion: gráfico</button>
+            <button data-add="dest">Destaque (palavra-chave)</button>
+            <button data-add="base">Legenda base</button>
+          </div>
+        </div>
+        <button class="btn" id="bundo">Desfazer</button>
+        <span class="spacer"></span>
+        <label class="zoom">Zoom <input type="range" id="zoom" min="24" max="220" value="70" aria-label="Zoom da timeline"></label>
+      </div>
+    </section>
+
+    <aside>
+      <h2>Selecionado</h2>
+      <div id="insp"><p class="vazio">Clique em um bloco da timeline para mexer nele: arrastar muda o tempo, as bordas mudam a duração, e aqui você troca cor, posição e texto.</p></div>
+      <h2>Pedir render ao Claude</h2>
+      <div class="field"><label for="notaPedido">Recado (opcional)</label><textarea id="notaPedido" rows="2" placeholder="Ex.: pode renderizar a prévia 720p"></textarea></div>
+      <button class="btn pri" id="bped">Pedir render</button>
+      <div class="reqs" id="reqs"></div>
+    </aside>
+  </main>
+
+  <div id="tlwrap"><div id="tl"></div></div>
+  <p class="hint"><kbd>Espaço</kbd> toca · <kbd>S</kbd> divide o vídeo no cursor · <kbd>Del</kbd> apaga · <kbd>Ctrl</kbd>+<kbd>Z</kbd> desfaz · <kbd>←</kbd><kbd>→</kbd> andam um quadro. A faixa de vídeo é magnética: ao soltar um corte, os outros se encaixam sem buracos. Esta tela mostra o plano; o render final sai do pipeline do Claude.</p>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+(() => {
+  "use strict";
+  const $ = (s, r = document) => r.querySelector(s);
+  const FPS = 25, FR = 1 / FPS;
+  const TRACKS = [
+    { id: "dest", nome: "Destaques" },
+    { id: "motion", nome: "Motions" },
+    { id: "base", nome: "Legenda base" },
+    { id: "video", nome: "Vídeo" },
+  ];
+  const TR_OF = { lettering: "motion", pessoas: "motion", grafico: "motion", dest: "dest", base: "base" };
+  const KIND_NOME = { lettering: "Lettering", pessoas: "Pessoas e número", grafico: "Gráfico", dest: "Destaque", base: "Legenda" };
+  const DEFAULTS = {
+    lettering: { dur: 3.6, cor: "#FCEDC0", l1: "30% dos criadores", l2: "NÃO MONETIZAM", echo: "30%" },
+    pessoas: { dur: 4.9, cor: "#FCEDC0", num: 30, rotA: "dos criadores", rotB: "NÃO MONETIZAM", capK: "CAPÍTULO 02", capT: "Monetização" },
+    grafico: { dur: 4.4, cor: "#FCEDC0", titulo: "Alcance ao longo dos meses", fim: 340, rot: "EXEMPLO ILUSTRATIVO" },
+    dest: { dur: 2.4, cor: "#F1CE0B", text: "isso muda *tudo*", estilo: "playfair" },
+    base: { dur: 1.6, cor: "#FCEDC0", text: "e é aqui que", estilo: "rubik" },
+  };
+  const CONTENT_KEYS = ["kind", "l1", "l2", "echo", "num", "rotA", "rotB", "capK", "capT", "titulo", "fim", "rot", "text", "estilo"];
+
+  let db = null, canWrite = true, user = null;
+  const clips = new Map();
+  let sel = null, playing = false, t = 0, pps = 70, drag = null;
+  const undoStack = [];
+  const inflight = new Map();
+  let logItens = [], inspFor = null, fieldBefore = null;
+
+  const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const num = (v, d = 0) => (Number.isFinite(+v) ? +v : d);
+  const round = (v, p = 100) => Math.round(v * p) / p;
+  const uid = () => "c" + Date.now().toString(36) + Math.random().toString(36).slice(2, 5);
+  const fmt = (x) => { x = Math.max(0, x); const m = Math.floor(x / 60); return m + ":" + (x - m * 60).toFixed(2).padStart(5, "0"); };
+  const list = () => Array.from(clips.values());
+  const total = () => Math.max(1, ...list().map((c) => c.start + c.dur));
+  const clone = (o) => JSON.parse(JSON.stringify(o));
+
+  // ---------------- sincronização ----------------
+  function setSync(s, txt) { const e = $("#sync"); e.dataset.s = s; $("#synctxt").textContent = txt; }
+  function onErr(e) { console.warn("db", e); setSync("off", "Não salvou: " + (e && e.code ? e.code : "erro")); }
+  function strip(c) { const o = { ...c }; delete o.id; return o; }
+  function write(id) {
+    if (!db || !canWrite) return;
+    const c = clips.get(id);
+    const ref = db.doc("clips/" + id);
+    setSync("saving", "Salvando…");
+    inflight.set(id, (inflight.get(id) || 0) + 1);
+    const prev = (write._c = write._c || new Map()).get(id) || Promise.resolve();
+    const p = prev.then(() => (c ? ref.set(strip(c)) : ref.delete())).catch(onErr).then(() => {
+      inflight.set(id, inflight.get(id) - 1);
+      if ([...inflight.values()].every((n) => n <= 0)) setSync("ok", "Sincronizado");
+    });
+    write._c.set(id, p);
+  }
+  let logTimer = 0;
+  function logChange(txt) {
+    logItens.push({ t: new Date().toISOString(), txt });
+    logItens = logItens.slice(-40);
+    clearTimeout(logTimer);
+    logTimer = setTimeout(() => { if (db && canWrite) db.doc("projeto/log").set({ itens: logItens }).catch(onErr); }, 600);
+  }
+
+  // ---------------- desfazer ----------------
+  const serialize = () => JSON.stringify(list().sort((a, b) => a.id.localeCompare(b.id)));
+  function pushUndo(snap) { undoStack.push(snap ?? serialize()); if (undoStack.length > 40) undoStack.shift(); $("#bundo").disabled = false; }
+  function undo() {
+    const s = undoStack.pop(); $("#bundo").disabled = !undoStack.length;
+    if (!s) return;
+    const back = new Map(JSON.parse(s).map((c) => [c.id, c]));
+    for (const id of [...clips.keys()]) if (!back.has(id)) { clips.delete(id); dropRT(id); write(id); }
+    for (const [id, c] of back) { if (JSON.stringify(clips.get(id)) !== JSON.stringify(c)) { clips.set(id, c); dropRT(id); write(id); } }
+    if (sel && !clips.has(sel)) sel = null;
+    logChange("desfez a última alteração");
+    refresh();
+  }
+
+  // ---------------- vídeo magnético ----------------
+  function repackVideo() {
+    const v = list().filter((c) => c.track === "video").sort((a, b) => a.start - b.start || a.ord - b.ord);
+    let x = 0;
+    for (const c of v) { const ns = round(x); if (ns !== c.start) { c.start = ns; write(c.id); } x += c.dur; }
+  }
+
+  // ---------------- motions (DOM + GSAP) ----------------
+  const rts = new Map();
+  function dropRT(id) { const r = rts.get(id); if (r) { r.tl.kill(); r.el.remove(); rts.delete(id); } }
+  const sigOf = (c) => JSON.stringify(CONTENT_KEYS.map((k) => c[k]));
+  const words = (txt) => esc(txt).split(/\s+/).filter(Boolean).map((w) => `<span class="w">${w}</span>`).join("");
+  const letters = (txt) => [...txt].map((ch) => `<span class="c">${ch === " " ? "&nbsp;" : esc(ch)}</span>`).join("");
+  const PERSON = (fill, cls) => `<svg class="${cls}" width="120" height="150" viewBox="0 0 120 150"><circle cx="60" cy="36" r="30" style="fill:${fill}"/><path d="M8 148 C8 98 34 78 60 78 C86 78 112 98 112 148 Z" style="fill:${fill}"/></svg>`;
+  const div = (cls) => { const e = document.createElement("div"); e.className = cls; return e; };
+
+  function mkLettering(c) {
+    const el = div("mo lettering");
+    el.innerHTML = `<div class="a echo">${esc(c.echo)}</div><div class="a l1 sh">${words(c.l1)}</div><div class="a l2mask"><span class="l2 sh">${letters(c.l2)}</span></div>
+      <svg class="a ul" width="1100" height="20" viewBox="0 0 1100 20"><path d="M4 12 C 300 2, 700 18, 1096 8" fill="none" style="stroke:var(--y)" stroke-width="7" stroke-linecap="round" pathLength="1"/></svg>`;
+    const q = gsap.utils.selector(el), tl = gsap.timeline({ paused: true });
+    tl.fromTo(q(".echo"), { opacity: 0, scale: 1.18 }, { opacity: 0.07, scale: 1, duration: 1.1, ease: "power3.out" }, 0);
+    tl.fromTo(q(".l1 .w"), { y: 54, opacity: 0, filter: "blur(10px)" }, { y: 0, opacity: 1, filter: "blur(0px)", duration: 0.7, ease: "power3.out", stagger: 0.13 }, 0.1);
+    tl.fromTo(q(".l2 .c"), { yPercent: 115 }, { yPercent: 0, duration: 0.6, ease: "expo.out", stagger: 0.035 }, 0.55);
+    tl.fromTo(q(".ul path"), { strokeDasharray: 1, strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.7, ease: "power2.inOut" }, 1.25);
+    tl.to(q(".l1,.l2mask,.ul"), { y: -34, opacity: 0, duration: 0.38, ease: "power2.in", stagger: 0.04 }, 3.1);
+    tl.to(q(".echo"), { opacity: 0, scale: 1.06, duration: 0.45, ease: "power2.in" }, 3.1);
+    return { el, tl, base: 3.6 };
+  }
+
+  function mkPessoas(c) {
+    const el = div("mo pessoas");
+    let g = "";
+    for (let i = 0; i < 10; i++) g += `<div class="p" data-i="${i}" style="left:${(i % 5) * 176}px;top:${Math.floor(i / 5) * 180}px">${PERSON("#fff", "w")}${PERSON("var(--y)", "y")}</div>`;
+    el.innerHTML = `<div class="a grid">${g}</div><div class="a cnt sh">0%</div><div class="a ca sh">${esc(c.rotA)}</div><div class="a cb sh">${esc(c.rotB)}</div>
+      <div class="a cap"><div class="bar"></div><div><div class="k">${esc(c.capK)}</div><div class="t">${esc(c.capT)}</div></div></div>`;
+    const q = gsap.utils.selector(el), tl = gsap.timeline({ paused: true });
+    const alvoN = Math.max(1, Math.min(10, Math.round(num(c.num, 30) / 10)));
+    const hi = [1, 4, 8, 2, 6, 9, 0, 3, 5, 7].slice(0, alvoN);
+    const P = q(".p"), HI = P.filter((_, i) => hi.includes(i)), LO = P.filter((_, i) => !hi.includes(i));
+    tl.fromTo(P, { scale: 0, opacity: 0, transformOrigin: "50% 100%" }, { scale: 1, opacity: 0.32, duration: 0.5, ease: "back.out(1.8)", stagger: 0.06 }, 0.15);
+    if (LO.length) tl.to(LO, { opacity: 0.12, duration: 0.5, ease: "power2.out" }, 1.35);
+    tl.to(HI, { opacity: 1, scale: 1.1, duration: 0.5, ease: "back.out(2)", stagger: 0.12 }, 1.35);
+    HI.forEach((p) => tl.to(p.querySelector(".y"), { opacity: 1, duration: 0.45, ease: "none" }, 1.35));
+    const cnt = q(".cnt")[0], o = { v: 0 }, alvo = num(c.num, 30);
+    tl.fromTo(q(".cnt"), { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 1.4);
+    tl.fromTo(o, { v: 0 }, { v: alvo, duration: 1.1, ease: "power2.out", onUpdate: () => (cnt.textContent = Math.round(o.v) + "%") }, 1.4);
+    tl.fromTo(q(".ca"), { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 1.95);
+    tl.fromTo(q(".cb"), { opacity: 0, x: -70 }, { opacity: 1, x: 0, duration: 0.7, ease: "expo.out" }, 2.2);
+    tl.fromTo(q(".cap"), { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" }, 0.6);
+    tl.to(q(".grid,.cnt,.ca,.cb,.cap"), { opacity: 0, y: -24, duration: 0.4, ease: "power2.in", stagger: 0.03 }, 4.4);
+    return { el, tl, base: 4.9 };
+  }
+
+  function bezierPts(pts) {
+    const segs = [];
+    for (let i = 0; i < pts.length - 1; i++) {
+      const p0 = pts[Math.max(i - 1, 0)], p1 = pts[i], p2 = pts[i + 1], p3 = pts[Math.min(i + 2, pts.length - 1)];
+      segs.push([p1, [p1[0] + (p2[0] - p0[0]) / 6, p1[1] + (p2[1] - p0[1]) / 6], [p2[0] - (p3[0] - p1[0]) / 6, p2[1] - (p3[1] - p1[1]) / 6], p2]);
+    }
+    const dense = [];
+    for (const [a, b, c, d] of segs) for (let k = 0; k < 40; k++) {
+      const u = k / 40, v = 1 - u;
+      dense.push([v * v * v * a[0] + 3 * v * v * u * b[0] + 3 * v * u * u * c[0] + u * u * u * d[0], v * v * v * a[1] + 3 * v * v * u * b[1] + 3 * v * u * u * c[1] + u * u * u * d[1]]);
+    }
+    dense.push(pts[pts.length - 1]);
+    const cum = [0];
+    for (let i = 1; i < dense.length; i++) cum.push(cum[i - 1] + Math.hypot(dense[i][0] - dense[i - 1][0], dense[i][1] - dense[i - 1][1]));
+    const L = cum[cum.length - 1];
+    const at = (p) => { const target = p * L; let lo = 0, hi = cum.length - 1; while (hi - lo > 1) { const m = (lo + hi) >> 1; if (cum[m] <= target) lo = m; else hi = m; } return dense[lo]; };
+    let d = `M${pts[0][0]} ${pts[0][1]}`;
+    for (const [, b, c, e] of segs) d += ` C${b[0]} ${b[1]},${c[0]} ${c[1]},${e[0]} ${e[1]}`;
+    return { d, at };
+  }
+
+  function mkGrafico(c) {
+    const el = div("mo grafico"), W = 940, H = 520, pad = 36, dados = [10, 16, 14, 26, 38, 62];
+    const pts = dados.map((v, i) => [pad + (i * (W - 2 * pad)) / (dados.length - 1), H - pad - (v / 70) * (H - 2 * pad)]);
+    const { d, at } = bezierPts(pts);
+    let grade = "";
+    for (let k = 0; k < 5; k++) { const y = pad + (k * (H - 2 * pad)) / 4; grade += `<line x1="${pad}" x2="${W - pad}" y1="${y}" y2="${y}" stroke="rgba(255,255,255,.14)" stroke-width="2"/>`; }
+    const last = pts[pts.length - 1];
+    el.innerHTML = `<div class="a gt sh">${esc(c.titulo)}</div><div class="a gn sh">+0%</div><div class="a gk">${esc(c.rot)}</div>
+      <svg class="a ch" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">${grade}
+        <path class="ar" d="${d} L${last[0]} ${H - pad} L${pts[0][0]} ${H - pad} Z" style="fill:var(--y)" fill-opacity="0.13" opacity="0"/>
+        <path class="ln" d="${d}" fill="none" style="stroke:var(--y)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" pathLength="1"/>
+        <circle class="ha" r="26" style="fill:var(--y)" fill-opacity="0.25" opacity="0"/><circle class="pt" r="14" style="fill:var(--y)" opacity="0"/></svg>`;
+    const q = gsap.utils.selector(el), tl = gsap.timeline({ paused: true });
+    const gn = q(".gn")[0], pt = q(".pt")[0], ha = q(".ha")[0], o = { p: 0 }, fim = num(c.fim, 340);
+    const mover = () => { const a = at(o.p); pt.setAttribute("cx", a[0]); pt.setAttribute("cy", a[1]); ha.setAttribute("cx", a[0]); ha.setAttribute("cy", a[1]); gn.textContent = "+" + Math.round(o.p * fim) + "%"; };
+    tl.fromTo(q(".gt"), { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 0.1);
+    tl.fromTo(q(".gn,.gk"), { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out", stagger: 0.1 }, 0.25);
+    tl.fromTo(q("line"), { opacity: 0 }, { opacity: 1, duration: 0.5, stagger: 0.06 }, 0.2);
+    tl.fromTo(q(".ln"), { strokeDasharray: 1, strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 2.3, ease: "power2.inOut" }, 0.65);
+    tl.fromTo([pt, ha], { opacity: 0 }, { opacity: 1, duration: 0.2 }, 0.65);
+    tl.fromTo(o, { p: 0 }, { p: 1, duration: 2.3, ease: "power2.inOut", onUpdate: mover }, 0.65);
+    tl.fromTo(q(".ar"), { opacity: 0 }, { opacity: 1, duration: 0.8, ease: "power2.out" }, 2.1);
+    tl.fromTo(ha, { attr: { r: 26 }, opacity: 1 }, { attr: { r: 44 }, opacity: 0, duration: 0.7, ease: "power2.out", immediateRender: false }, 2.95);
+    tl.to(q(".gt,.gn,.gk,.ch"), { opacity: 0, y: -24, duration: 0.4, ease: "power2.in", stagger: 0.03 }, 4.0);
+    return { el, tl, base: 4.4 };
+  }
+
+  function mkLeg(c) {
+    const el = div("mo leg " + (c.estilo === "playfair" ? "playfair" : "rubik") + (c.kind === "base" ? " base" : ""));
+    const ws = String(c.text || "").split(/\s+/).filter(Boolean);
+    const html = ws.map((w) => (/^\*.*\*$/.test(w) ? `<span class="w key">${esc(w.slice(1, -1))}</span>` : `<span class="w">${esc(w)}</span>`)).join("");
+    el.innerHTML = `<div class="a box">${html}</div>`;
+    const q = gsap.utils.selector(el), tl = gsap.timeline({ paused: true }), n = Math.max(1, ws.length), base = n * 0.3 + 1.2;
+    tl.fromTo(q(".w"), { opacity: 0, y: 24, scale: 0.82 }, { opacity: 1, y: 0, scale: 1, duration: 0.32, ease: "back.out(2.1)", stagger: 0.26 }, 0.05);
+    if (q(".w.key").length) tl.to(q(".w.key"), { scale: 1.1, duration: 0.22, ease: "power2.out" }, 0.05 + n * 0.26);
+    tl.to(q(".box"), { opacity: 0, y: -14, duration: 0.25, ease: "power2.in" }, base - 0.3);
+    return { el, tl, base };
+  }
+
+  function getRT(c) {
+    let r = rts.get(c.id);
+    const sig = sigOf(c);
+    if (r && r.sig !== sig) { dropRT(c.id); r = null; }
+    if (!r) {
+      const mk = c.kind === "lettering" ? mkLettering : c.kind === "pessoas" ? mkPessoas : c.kind === "grafico" ? mkGrafico : mkLeg;
+      r = mk(c); r.sig = sig;
+      $("#z-" + c.track).appendChild(r.el);
+      rts.set(c.id, r);
+    }
+    return r;
+  }
+
+  // ---------------- palco ----------------
+  function fitStage() { const w = $("#sbox").clientWidth; $("#stage").style.transform = `scale(${w / 1920})`; }
+  function drawFx() {
+    const live = new Set();
+    for (const c of list()) {
+      if (c.track === "video") continue;
+      live.add(c.id);
+      const r = getRT(c), on = t >= c.start && t < c.start + c.dur - 0.0001;
+      r.el.style.display = on ? "block" : "none";
+      if (!on) continue;
+      r.tl.time(Math.min(((t - c.start) / c.dur) * r.base, r.base - 0.0005));
+      r.el.style.setProperty("--y", c.cor || "#FCEDC0");
+      r.el.style.transform = `translate(${num(c.x)}px,${num(c.y)}px) scale(${num(c.scale, 1)})`;
+    }
+    for (const id of [...rts.keys()]) if (!live.has(id)) dropRT(id);
+  }
+  function syncVideo() {
+    const v = $("#vid"), vc = list().find((c) => c.track === "video" && t >= c.start && t < c.start + c.dur - 0.0001);
+    if (!vc || !vc.asset) { v.style.visibility = "hidden"; if (!v.paused) v.pause(); return; }
+    v.style.visibility = "visible";
+    const src = "/_blob/" + vc.asset, want = (vc.in || 0) + (t - vc.start);
+    if (v.dataset.src !== src) { v.dataset.src = src; v.src = src; }
+    try {
+      if (!playing) { if (Math.abs(v.currentTime - want) > 0.03) v.currentTime = want; if (!v.paused) v.pause(); }
+      else { if (v.paused) v.play().catch(() => {}); if (Math.abs(v.currentTime - want) > 0.25) v.currentTime = want; }
+    } catch (e) { /* vídeo ainda não carregou */ }
+  }
+  function draw() {
+    drawFx(); syncVideo();
+    $("#tc").innerHTML = `${fmt(t)} <span>/ ${fmt(total())}</span>`;
+    const ph = $("#ph"); if (ph) ph.style.left = 104 + t * pps + "px";
+  }
+  let raf = 0, last = 0;
+  function tick(now) {
+    if (!playing) return;
+    t += (now - last) / 1000; last = now;
+    if (t >= total()) { t = total(); pause(); }
+    draw(); if (playing) raf = requestAnimationFrame(tick);
+  }
+  function play() { if (t >= total() - 0.02) t = 0; playing = true; $("#vid").muted = false; $("#bplay").textContent = "❚❚ Pausar"; last = performance.now(); raf = requestAnimationFrame(tick); }
+  function pause() { playing = false; cancelAnimationFrame(raf); $("#bplay").textContent = "▶ Tocar"; $("#vid").pause(); draw(); }
+  function seek(x) { t = Math.max(0, Math.min(total(), x)); draw(); }
+
+  // ---------------- timeline ----------------
+  function lanesOf(arr) {
+    const ends = [], out = new Map();
+    for (const c of arr.sort((a, b) => a.start - b.start)) {
+      let k = ends.findIndex((e) => e <= c.start + 0.0001);
+      if (k < 0) { k = ends.length; ends.push(0); }
+      ends[k] = c.start + c.dur; out.set(c.id, k);
+    }
+    return { lane: out, n: Math.max(1, ends.length) };
+  }
+  function label(c) {
+    if (c.track === "video") return "Corte · fonte " + fmt(c.in || 0).slice(0, -3);
+    if (c.kind === "dest" || c.kind === "base") return String(c.text || "").replace(/\*/g, "");
+    return KIND_NOME[c.kind] || c.kind;
+  }
+  function buildTimeline() {
+    const wrap = $("#tl"), len = total() + 3;
+    wrap.style.width = Math.max(len * pps + 124, wrap.parentElement.clientWidth) + "px";
+    let h = `<div class="ruler" id="ruler">`;
+    const step = pps >= 100 ? 0.5 : pps >= 50 ? 1 : 2;
+    for (let s = 0; s <= len; s += step) h += `<div class="tick" style="left:${s * pps}px">${Number.isInteger(s) ? fmt(s).slice(0, -3) : ""}</div>`;
+    h += "</div>";
+    if (!clips.size) h += `<div class="empty">Timeline vazia. Peça ao Claude para montar o episódio, ou use “+ Adicionar”.</div>`;
+    for (const tr of TRACKS) {
+      const arr = list().filter((c) => c.track === tr.id), { lane, n } = lanesOf(arr);
+      const th = n * 40 + 8;
+      h += `<div class="track" style="height:${th}px"><div class="tname">${tr.nome}</div><div class="lane" style="top:0;height:${th}px">`;
+      for (const c of arr) {
+        h += `<div class="clip${c.id === sel ? " sel" : ""}" data-id="${esc(c.id)}" data-tr="${tr.id}" style="left:${c.start * pps}px;width:${Math.max(8, c.dur * pps)}px;top:${4 + lane.get(c.id) * 40}px" title="${esc(label(c))}"><span class="h l" data-h="l"></span>${esc(label(c))}<span class="h r" data-h="r"></span></div>`;
+      }
+      h += "</div></div>";
+    }
+    h += `<div class="play" id="ph" style="left:${104 + t * pps}px"></div>`;
+    wrap.innerHTML = h;
+  }
+
+  function edgesFor(id) {
+    const e = [0, t];
+    for (const c of list()) if (c.id !== id) { e.push(c.start, c.start + c.dur); }
+    return e;
+  }
+  function snap(v, edges) { const th = 8 / pps; let best = v, bd = th; for (const e of edges) { const d = Math.abs(e - v); if (d < bd) { bd = d; best = e; } } return best; }
+
+  function onDown(e) {
+    const el = e.target.closest(".clip"); if (!el || e.button !== 0) return;
+    const c = clips.get(el.dataset.id); if (!c) return;
+    select(c.id, true);
+    drag = { id: c.id, mode: e.target.dataset.h || "move", x0: e.clientX, orig: { ...c }, before: serialize(), moved: false, el: $(`.clip[data-id="${CSS.escape(c.id)}"]`) };
+    drag.el.setPointerCapture(e.pointerId);
+  }
+  function onMove(e) {
+    if (!drag) return;
+    const c = clips.get(drag.id), o = drag.orig, dx = (e.clientX - drag.x0) / pps;
+    if (Math.abs(e.clientX - drag.x0) > 2) drag.moved = true;
+    if (!drag.moved) return;
+    const edges = edgesFor(c.id);
+    if (drag.mode === "move") {
+      let s = Math.max(0, o.start + dx);
+      if (c.track !== "video") { const a = snap(s, edges), b = snap(s + o.dur, edges) - o.dur; s = Math.abs(a - s) <= Math.abs(b - s) ? a : b; }
+      c.start = round(Math.max(0, s));
+    } else if (drag.mode === "r") {
+      let d = Math.max(0.3, o.dur + dx);
+      if (c.track === "video") d = Math.min(d, (c.srcDur || 9999) - (c.in || 0)); else d = snap(o.start + d, edges) - o.start;
+      c.dur = round(Math.max(0.3, d));
+    } else {
+      let ds = dx;
+      if (c.track === "video") ds = Math.max(-(o.in || 0), Math.min(o.dur - 0.3, ds));
+      else ds = snap(o.start + ds, edges) - o.start;
+      ds = Math.max(-o.start, Math.min(o.dur - 0.3, ds));
+      c.start = round(o.start + ds); c.dur = round(o.dur - ds);
+      if (c.track === "video") c.in = round((o.in || 0) + ds);
+    }
+    Object.assign(drag.el.style, { left: c.start * pps + "px", width: Math.max(8, c.dur * pps) + "px" });
+    draw(); renderInspector();
+  }
+  function onUp() {
+    if (!drag) return;
+    const c = clips.get(drag.id), moved = drag.moved, before = drag.before;
+    drag = null;
+    if (!moved) { refresh(); return; }
+    pushUndo(before);
+    if (c.track === "video") repackVideo();
+    write(c.id);
+    logChange(`${label(c)} → início ${fmt(c.start)}, duração ${fmt(c.dur)}`);
+    refresh();
+  }
+
+  // ---------------- inspetor ----------------
+  function select(id, keepScroll) { sel = id; renderInspector(); if (!keepScroll) buildTimeline(); else for (const e of document.querySelectorAll(".clip")) e.classList.toggle("sel", e.dataset.id === id); }
+  const sw = (cor) => ["#FCEDC0", "#F1CE0B", "#FFFFFF"].map((k) => `<button type="button" data-cor="${k}" style="background:${k}" aria-label="Cor ${k}" aria-pressed="${String(cor).toUpperCase() === k}"></button>`).join("");
+  function fld(id, f, rot, val, type = "text") { return `<div class="field"><label for="f-${f}">${rot}</label><input id="f-${f}" data-f="${f}" type="${type}" value="${esc(val)}"></div>`; }
+  function rng(f, rot, min, max, step, val, unit = "") { return `<div class="field"><label for="f-${f}">${rot}<span class="val">${round(val)}${unit}</span></label><input id="f-${f}" data-f="${f}" data-r="1" type="range" min="${min}" max="${max}" step="${step}" value="${val}"></div>`; }
+  function renderInspector() {
+    const box = $("#insp"), c = sel && clips.get(sel);
+    if (!c) { inspFor = null; box.innerHTML = `<p class="vazio">Clique em um bloco da timeline para mexer nele: arrastar muda o tempo, as bordas mudam a duração, e aqui você troca cor, posição e texto.</p>`; return; }
+    if (inspFor === sel && document.activeElement && box.contains(document.activeElement) && drag === null && document.activeElement.dataset.f) return;
+    inspFor = sel;
+    let h = `<h3>${esc(label(c))}</h3>`;
+    h += `<div class="row2">${c.track === "video" ? `<div class="field"><label>Início</label><input type="text" value="${fmt(c.start)}" disabled></div>` : fld(c.id, "start", "Início (s)", round(c.start), "number")}${fld(c.id, "dur", "Duração (s)", round(c.dur), "number")}</div>`;
+    if (c.track === "video") h += fld(c.id, "in", "Começa em (s da fonte)", round(c.in || 0), "number");
+    else {
+      h += rng("x", "Posição horizontal", -900, 900, 5, num(c.x), " px") + rng("y", "Posição vertical", -500, 500, 5, num(c.y), " px") + rng("scale", "Tamanho", 0.5, 1.6, 0.05, num(c.scale, 1), "×");
+      h += `<div class="field"><span>Cor de destaque</span><div class="sw">${sw(c.cor)}<input type="color" data-f="cor" value="${esc(c.cor || "#FCEDC0")}" aria-label="Escolher outra cor"></div></div>`;
+    }
+    if (c.kind === "lettering") h += fld(c.id, "l1", "Linha de cima", c.l1) + fld(c.id, "l2", "Linha de baixo (ênfase)", c.l2) + fld(c.id, "echo", "Eco ao fundo", c.echo);
+    if (c.kind === "pessoas") h += fld(c.id, "num", "Percentual", c.num, "number") + fld(c.id, "rotA", "Texto", c.rotA) + fld(c.id, "rotB", "Ênfase", c.rotB) + fld(c.id, "capK", "Capítulo", c.capK) + fld(c.id, "capT", "Título do capítulo", c.capT);
+    if (c.kind === "grafico") h += fld(c.id, "titulo", "Título", c.titulo) + fld(c.id, "fim", "Número final (%)", c.fim, "number") + fld(c.id, "rot", "Rótulo", c.rot);
+    if (c.kind === "dest" || c.kind === "base") {
+      h += fld(c.id, "text", "Texto (use *palavra* para a chave)", c.text);
+      h += `<div class="field"><label for="f-estilo">Estilo</label><select id="f-estilo" data-f="estilo"><option value="rubik"${c.estilo === "rubik" ? " selected" : ""}>Rubik</option><option value="playfair"${c.estilo === "playfair" ? " selected" : ""}>Playfair itálico</option></select></div>`;
+    }
+    h += `<div class="bar" style="margin:0"><button class="btn" data-act="dup">Duplicar</button><button class="btn" data-act="del" style="color:var(--danger)">Apagar</button></div>`;
+    box.innerHTML = h;
+  }
+  function onField(e) {
+    const f = e.target.dataset.f, c = sel && clips.get(sel); if (!f || !c) return;
+    let v = e.target.value;
+    if (e.target.type === "number" || e.target.dataset.r) v = num(v);
+    if (e.type === "input" && !e.target.dataset.r && e.target.type !== "color") return;
+    if (fieldBefore === null) fieldBefore = serialize();
+    if (e.type === "change") { pushUndo(fieldBefore); fieldBefore = null; }
+    c[f] = v;
+    if (f === "dur") c.dur = Math.max(0.3, round(v));
+    if (f === "start") c.start = Math.max(0, round(v));
+    if (f === "in" || (f === "dur" && c.track === "video")) { c.in = Math.max(0, round(c.in || 0)); if (c.srcDur) c.dur = Math.min(c.dur, c.srcDur - c.in); }
+    if (e.target.dataset.r) { const val = e.target.closest(".field").querySelector(".val"); if (val) val.textContent = round(v) + (f === "scale" ? "×" : " px"); }
+    draw();
+    if (e.type === "change") {
+      if (c.track === "video") repackVideo();
+      write(c.id); logChange(`${label(c)}: ${f} = ${v}`); refresh();
+    }
+  }
+
+  // ---------------- ações ----------------
+  function addClip(kind) {
+    pushUndo();
+    const d = { ...DEFAULTS[kind] }, id = uid();
+    clips.set(id, { id, track: TR_OF[kind], kind, start: round(t), x: 0, y: 0, scale: 1, ...d });
+    write(id); logChange(`adicionou ${KIND_NOME[kind]} em ${fmt(t)}`); select(id); refresh();
+  }
+  function split() {
+    const c = (sel && clips.get(sel) && clips.get(sel).track === "video" && clips.get(sel)) || list().find((x) => x.track === "video" && t > x.start + 0.1 && t < x.start + x.dur - 0.1);
+    if (!c || t <= c.start + 0.1 || t >= c.start + c.dur - 0.1) return;
+    pushUndo();
+    const cut = round(t - c.start), id = uid();
+    clips.set(id, { ...c, id, start: round(t), dur: round(c.dur - cut), in: round((c.in || 0) + cut), ord: (c.ord || 0) + 0.5 });
+    c.dur = cut; write(c.id); write(id); repackVideo();
+    logChange(`dividiu o vídeo em ${fmt(t)}`); select(id); refresh();
+  }
+  function remove() { const c = sel && clips.get(sel); if (!c) return; pushUndo(); clips.delete(c.id); dropRT(c.id); write(c.id); if (c.track === "video") repackVideo(); logChange(`apagou ${label(c)}`); sel = null; refresh(); }
+  function dup() { const c = sel && clips.get(sel); if (!c) return; pushUndo(); const id = uid(); clips.set(id, { ...c, id, start: round(c.start + c.dur), ord: (c.ord || 0) + 0.5 }); write(id); if (c.track === "video") repackVideo(); select(id); refresh(); }
+
+  function refresh() { buildTimeline(); renderInspector(); draw(); }
+
+  // ---------------- pedidos de render ----------------
+  async function pedir() {
+    if (!db || !canWrite) return;
+    const id = "p" + Date.now().toString(36);
+    $("#bped").disabled = true;
+    try {
+      await db.doc("pedidos/" + id).set({ at: new Date().toISOString(), status: "pedido", nota: $("#notaPedido").value.slice(0, 400), resumo: `${clips.size} blocos, ${fmt(total())}` });
+      $("#notaPedido").value = "";
+    } catch (e) { onErr(e); }
+    $("#bped").disabled = false;
+  }
+  function renderReqs(docs) {
+    $("#reqs").innerHTML = docs.length ? docs.map((d) => { const x = d.data(); return `<div><span><b>${esc(x.resumo || "")}</b><br>${esc((x.nota || "").slice(0, 60))}</span><span class="${x.status === "feito" ? "feito" : ""}">${esc(x.status === "feito" ? "feito" : "aguardando")}</span></div>`; }).join("") : `<span>Nenhum pedido ainda.</span>`;
+  }
+
+  // ---------------- eventos ----------------
+  function bind() {
+    const tlw = $("#tl");
+    tlw.addEventListener("pointerdown", (e) => {
+      if (e.target.closest("#ruler")) { const sc = () => { const r = $("#ruler").getBoundingClientRect(); seek((e.clientX - r.left) / pps); }; sc(); const mv = (ev) => { const r = $("#ruler").getBoundingClientRect(); seek((ev.clientX - r.left) / pps); }; const up = () => { removeEventListener("pointermove", mv); removeEventListener("pointerup", up); }; addEventListener("pointermove", mv); addEventListener("pointerup", up); return; }
+      if (!e.target.closest(".clip") && !e.target.closest(".tname")) { sel = null; refresh(); return; }
+      onDown(e);
+    });
+    tlw.addEventListener("pointermove", onMove);
+    tlw.addEventListener("pointerup", onUp);
+    tlw.addEventListener("pointercancel", onUp);
+    $("#bplay").onclick = () => (playing ? pause() : play());
+    $("#bsplit").onclick = split;
+    $("#bundo").onclick = undo; $("#bundo").disabled = true;
+    $("#bped").onclick = pedir;
+    $("#badd").onclick = (e) => { e.stopPropagation(); $("#addmenu").hidden = !$("#addmenu").hidden; };
+    $("#addmenu").onclick = (e) => { const k = e.target.dataset.add; if (k) { $("#addmenu").hidden = true; addClip(k); } };
+    document.addEventListener("click", (e) => { if (!e.target.closest(".menu")) $("#addmenu").hidden = true; });
+    $("#zoom").oninput = (e) => { pps = +e.target.value; buildTimeline(); draw(); };
+    const insp = $("#insp");
+    insp.addEventListener("input", onField); insp.addEventListener("change", onField);
+    insp.addEventListener("click", (e) => {
+      const b = e.target.closest("[data-cor]"), a = e.target.dataset.act, c = sel && clips.get(sel);
+      if (b && c) { pushUndo(); c.cor = b.dataset.cor; write(c.id); logChange(`${label(c)}: cor ${c.cor}`); renderInspector(); draw(); }
+      if (a === "del") remove(); if (a === "dup") dup();
+    });
+    addEventListener("keydown", (e) => {
+      if (e.target.closest("input,textarea,select")) return;
+      if (e.code === "Space") { e.preventDefault(); playing ? pause() : play(); }
+      else if (e.key === "s" || e.key === "S") split();
+      else if (e.key === "Delete" || e.key === "Backspace") remove();
+      else if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "z") { e.preventDefault(); undo(); }
+      else if (e.key === "ArrowLeft") seek(t - FR); else if (e.key === "ArrowRight") seek(t + FR);
+    });
+    for (const ev of ["loadedmetadata", "canplay"]) $("#vid").addEventListener(ev, () => { if (!playing) syncVideo(); });
+    new ResizeObserver(fitStage).observe($("#sbox"));
+    fitStage();
+  }
+
+  // ---------------- boot ----------------
+  async function boot() {
+    bind(); refresh();
+    const claude = window.claude;
+    db = claude ? await claude.use("db") : null;
+    try { user = claude ? await claude.use("user") : null; } catch (e) { user = null; }
+    if (user && typeof user.can === "function") { const w = user.can("data.write"); if (w === false) canWrite = false; }
+    if (!db) { setSync("off", "Entre na sua conta para sincronizar"); return; }
+    setSync("ok", canWrite ? "Sincronizado" : "Somente leitura");
+    $("#bped").disabled = !canWrite;
+    db.collection("clips").onSnapshot((snap) => {
+      for (const ch of snap.docChanges()) {
+        const id = ch.doc.id;
+        if (inflight.get(id) > 0 || (drag && drag.id === id)) continue;
+        if (ch.type === "removed") { clips.delete(id); dropRT(id); if (sel === id) sel = null; }
+        else { const d = ch.doc.data(); if (d) { const prev = clips.get(id); if (!prev || JSON.stringify(strip(prev)) !== JSON.stringify(d)) { clips.set(id, { ...d, id }); } } }
+      }
+      if (!drag) refresh();
+    }, onErr);
+    db.doc("projeto/meta").onSnapshot((s) => { const d = s.exists && s.data(); const n = $("#nota"); if (d && d.nota) { n.hidden = false; n.textContent = "Claude: " + d.nota; } else n.hidden = true; }, onErr);
+    db.doc("projeto/log").get().then((s) => { if (s.exists) logItens = (s.data().itens || []).slice(-40); }).catch(() => {});
+    db.collection("pedidos").orderBy("at", "desc").limit(3).onSnapshot((s) => renderReqs(s.docs), onErr);
+  }
+  boot();
+})();
+</script>
