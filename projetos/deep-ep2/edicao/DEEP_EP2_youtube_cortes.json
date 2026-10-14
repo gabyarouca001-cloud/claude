@@ -1,0 +1,422 @@
+{
+ "sequencia": "DEEP EP2 YouTube - cortes do Claude",
+ "fps": 30,
+ "largura": 3840,
+ "altura": 2160,
+ "cortes": [
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/inicio_editora.mp4",
+   "inicio": 0,
+   "fim": 9.68,
+   "nota": "ABERTURA DA EDITORA + VINHETA"
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take1.mp4",
+   "inicio": 14.9,
+   "fim": 19.3,
+   "nota": "TÍTULO: pensou em alguém? / GUARDA ESSE NOME | FALA: Você pensou em alguém? Então guarda esse nome!"
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take1.mp4",
+   "inicio": 23.467,
+   "fim": 28.667,
+   "nota": "CAPÍTULO: O QUE A GENTE ESTÁ PROCURANDO | FALA: eu comecei a pensar isso a partir de uma mudança que aconteceu em mim."
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take1.mp4",
+   "inicio": 29.033,
+   "fim": 36.7,
+   "nota": "TÍTULO: procurar em outros lugares: / SUBSTACK, PODCASTS | FALA: porque eu comecei a procurar em outros lugares, outras redes sociais, por exemplo, substeques, podcasts."
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take1.mp4",
+   "inicio": 40.0,
+   "fim": 62.967,
+   "nota": "LISTA: eu queria… (acompanhar uma ideia, entender um raciocínio, sentir que algo ficou) | FALA: um tipo de conversa que eu estava sentindo falta de encontrar aqui, porque eu queria ter tempo para acompanhar uma ideia, para entender melhor o raciocínio de a"
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take1.mp4",
+   "inicio": 76.633,
+   "fim": 83.833,
+   "nota": "FALA: E essa busca me fez pensar também no que eu realmente queria produzir,"
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take1.mp4",
+   "inicio": 84.267,
+   "fim": 93.166,
+   "nota": "TÍTULO: outras, eu fazia questão de / PROCURAR | FALA: porque eu trabalho com internet, mas eu também estou aqui do outro lado, consumindo um pouco de tudo isso. E foi aí que eu comecei a perceber que algumas pessoa"
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take1.mp4",
+   "inicio": 93.267,
+   "fim": 93.6,
+   "nota": "FALA: porque eu trabalho com internet, mas eu também estou aqui do outro lado, consumindo um pouco de tudo isso. E foi aí que eu comecei a perceber que algumas pessoa"
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take1.mp4",
+   "inicio": 94.467,
+   "fim": 102.1,
+   "nota": "FALA: porque eu trabalho com internet, mas eu também estou aqui do outro lado, consumindo um pouco de tudo isso. E foi aí que eu comecei a perceber que algumas pessoa"
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take1.mp4",
+   "inicio": 102.53,
+   "fim": 120.6,
+   "nota": "FALA: porque eu trabalho com internet, mas eu também estou aqui do outro lado, consumindo um pouco de tudo isso. E foi aí que eu comecei a perceber que algumas pessoa"
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take1.mp4",
+   "inicio": 148.4,
+   "fim": 184.233,
+   "nota": "LISTA: tem muita gente procurando… (espaço pra aprender, profundidade, referências, se abastecer) | FALA: E conversando com amigas, eu pude perceber que essa busca vai além de algo que eu estou sentindo, porque tem muita gente também procurando mais espaço para apre"
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take1.mp4",
+   "inicio": 183.267,
+   "fim": 210.167,
+   "nota": "TÍTULO: essas duas vontades estão / SE ENCONTRANDO | FORMATOS: vídeo curto, podcast, texto, comunidade | FALA: E a minha leitura disso é que essas duas vontades, elas estão se encontrando, porque você pode descobrir alguém num vídeo curto, por exemplo, e querer continuar"
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take1.mp4",
+   "inicio": 218.867,
+   "fim": 226.6,
+   "nota": "FALA: Então, um pode despertar o interesse, o outro pode dar espaço para desenvolver uma ideia, por exemplo,"
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take1.mp4",
+   "inicio": 226.967,
+   "fim": 232.8,
+   "nota": "FALA: e isso ajuda a explicar essa busca por outros lugares,"
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take1.mp4",
+   "inicio": 265.1,
+   "fim": 274.367,
+   "nota": "TÍTULO: escolher com quem / APROFUNDAR | FALA: A gente também quer poder escolher em que assuntos ficar e com quem se aprofundar sobre isso."
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take1.mp4",
+   "inicio": 278.5,
+   "fim": 304.7,
+   "nota": "CAPÍTULO: DESCOBRIR × COMPREENDER | TÍTULO: 10 vídeos, / 10 OPINIÕES | FALA: E tem uma diferença importantíssima entre descobrir um assunto e conseguir compreendê -lo. Porque você pode passar por 10 vídeos sobre o mesmo tema e terminar c"
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take1.mp4",
+   "inicio": 305.333,
+   "fim": 309.967,
+   "nota": "TÍTULO: o que falta é / CONTEXTO | FALA: Porque às vezes, acho que muitas vezes, o que falta é contexto."
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take1.mp4",
+   "inicio": 310.633,
+   "fim": 325.8,
+   "nota": "FALA: O que aconteceu antes? Quais são as dúvidas que surgiram no caminho? Onde aquela explicação deixou, por exemplo, de funcionar? E aí eu fui atrás de pesquisas at"
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take1.mp4",
+   "inicio": 371.1,
+   "fim": 400.233,
+   "nota": "PESQUISA: por que as pessoas ouvem podcasts de notícias (profundidade, aprendizado, compreensão) | TÍTULO: não precisa ser longo / PRA SER BOM | FALA: E eu encontrei uma sobre podcasts, mais especificamente de notícias, que encontraram justamente essa busca por mais profundidade, por aprendizado, compreensão e"
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take1.mp4",
+   "inicio": 416.2,
+   "fim": 426.967,
+   "nota": "FALA: significa que algumas conversas precisam de espaço para mostrar o caminho, inclusive as possíveis contradições."
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take1.mp4",
+   "inicio": 426.0,
+   "fim": 479.767,
+   "nota": "VERSUS: CONCLUSÃO × RACIOCÍNIO | LISTA: tem hora de… (descobrir, se divertir, permanecer num assunto) | FALA: Para quem cria, também existe uma escolha. Como desenvolver uma ideia quando o formato pede que você chegue muito rápido ao ponto final? Um corte pode apresenta"
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take2.mp4",
+   "inicio": 0.0,
+   "fim": 6.667,
+   "nota": "CAPÍTULO: FATURAR × CONSTRUIR | FALA: E foi dessa vontade de fazer algo diferente que nasceu o Deep"
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take2.mp4",
+   "inicio": 18.0,
+   "fim": 38.733,
+   "nota": "TÍTULO: o que você fatura / × O QUE VOCÊ CONSTRÓI | TÍTULO: mais de / 4 MILHÕES | FALA: e isso tem tudo a ver com a pergunta que eu deixei no primeiro episódio, qual é a diferença entre o que você fatura e o que você constrói. Lembra que no primeir"
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take2.mp4",
+   "inicio": 39.433,
+   "fim": 52.933,
+   "nota": "FALA: Para quem entra nesse mercado, conseguir ganhar dinheiro, digamos assim, pode ser a primeira grande conquista, com a primeira campanha que vem, com o primeiro c"
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take2.mp4",
+   "inicio": 74.467,
+   "fim": 101.667,
+   "nota": "TÍTULO: como fazer esse trabalho / CONTINUAR? | TÍTULO: o faturamento de hoje não garante / O PRÓXIMO MÊS | FALA: mas depois aparece outra pergunta. Como fazer esse trabalho continuar? Porque o faturamento de hoje não garante necessariamente o próximo mês. E com tanta gente"
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take2.mp4",
+   "inicio": 102.4,
+   "fim": 119.035,
+   "nota": "TIJOLOS: construir envolve… (TRABALHO, RELAÇÃO, MOTIVO) | FALA: E é aí que a conversa sobre construção ganha realmente importância, porque envolve o trabalho que você desenvolve, a relação que você cria com quem te acompanha"
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take2.mp4",
+   "inicio": 125.703,
+   "fim": 130.8,
+   "nota": "FALA: e o motivo que você dá para as pessoas quererem voltar para te assistir."
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take2.mp4",
+   "inicio": 146.267,
+   "fim": 159.8,
+   "nota": "LISTA: uma campanha tem… (entrega, prazo, pagamento) | TÍTULO: entre uma campanha e outra, / POR QUE FICAR? | FALA: Lembrando que uma campanha envolve muito trabalho, entrega, prazo de pagamento e, sim, com certeza, isso pode sustentar uma empresa e fazer parte de uma carreir"
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take2.mp4",
+   "inicio": 160.267,
+   "fim": 163.333,
+   "nota": "FALA: Lembrando que uma campanha envolve muito trabalho, entrega, prazo de pagamento e, sim, com certeza, isso pode sustentar uma empresa e fazer parte de uma carreir"
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take2.mp4",
+   "inicio": 166.033,
+   "fim": 166.4,
+   "nota": "FALA: Lembrando que uma campanha envolve muito trabalho, entrega, prazo de pagamento e, sim, com certeza, isso pode sustentar uma empresa e fazer parte de uma carreir"
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take2.mp4",
+   "inicio": 166.5,
+   "fim": 174.633,
+   "nota": "FALA: Lembrando que uma campanha envolve muito trabalho, entrega, prazo de pagamento e, sim, com certeza, isso pode sustentar uma empresa e fazer parte de uma carreir"
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take2.mp4",
+   "inicio": 175.433,
+   "fim": 180.967,
+   "nota": "FALA: Essa pergunta começou a ganhar uma importância tão grande para mim"
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take2.mp4",
+   "inicio": 208.45,
+   "fim": 222.667,
+   "nota": "CITAÇÃO: que tipo de conversa eu quero ter? / POR QUE ALGUÉM ESCOLHERIA VOLTAR? | FALA: o que eu quero desenvolver ao longo do tempo, que tipo de conversa eu quero ter, porque alguém escolheria voltar ou procurar o meu conteúdo."
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take2.mp4",
+   "inicio": 230.7,
+   "fim": 231.969,
+   "nota": "CAPÍTULO: MAIS CAMINHOS, A MESMA DEPENDÊNCIA | FALA: hoje, existem"
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take2.mp4",
+   "inicio": 238.636,
+   "fim": 256.433,
+   "nota": "APP: programas, produtos, assinaturas, comunidades, vendas, comissões, parcerias | FALA: mais caminhos para transformar conteúdo em trabalho, como programas, produtos, assinaturas, comunidades. As plataformas também criam ferramentas para vender, re"
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take2.mp4",
+   "inicio": 256.933,
+   "fim": 257.467,
+   "nota": "FALA: só que"
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take2.mp4",
+   "inicio": 269.333,
+   "fim": 284.869,
+   "nota": "FALA: ter mais possibilidades de receita dentro de um aplicativo não elimina a sua dependência dele, porque você continua sujeito às mudanças na distribuição."
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take2.mp4",
+   "inicio": 293.403,
+   "fim": 296.8,
+   "nota": "FALA: nos formatos, nas regras que você tem que seguir"
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take2.mp4",
+   "inicio": 296.333,
+   "fim": 307.367,
+   "nota": "TÍTULO: não depender de / APARECER NO FEED | FALA: e eu realmente não queria que toda a possibilidade de encontrar o meu conteúdo dependesse dele aparecer no feed de alguém,"
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take2.mp4",
+   "inicio": 325.6,
+   "fim": 333.467,
+   "nota": "TÍTULO: outro caminho: / NEWSLETTER | FALA: Foi dessa vontade que, além do Deep, eu também criei uma newsletter, eu criei um guia,"
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take2.mp4",
+   "inicio": 347.1,
+   "fim": 359.0,
+   "nota": "LISTA: em todo lugar… (e-mail: disputa atenção, podcast: fica na metade, assinatura: cancelada) | FALA: E estou tentando cada vez mais abrir outros caminhos para continuar a conversa que a gente tem por aqui."
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take2.mp4",
+   "inicio": 359.733,
+   "fim": 379.567,
+   "nota": "TÍTULO: mudar de lugar, sozinho, / NÃO RESOLVE | FALA: Só que, vamos lá, mudar de lugar sozinho também não resolve, porque até no e -mail nos dias de hoje existe uma disputa por atenção. Num podcast, você também pod"
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take2.mp4",
+   "inicio": 380.167,
+   "fim": 382.933,
+   "nota": "TÍTULO: estar em vários lugares / TEM UM CUSTO | FALA: e estar em vários lugares"
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take2.mp4",
+   "inicio": 387.733,
+   "fim": 389.367,
+   "nota": "FALA: também tem um gosto."
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take2.mp4",
+   "inicio": 393.667,
+   "fim": 412.167,
+   "nota": "FALA: Imagina que cada canal novo exige produzir mais, responder mais, manter uma frequência e eu posso acabar criando uma rotina com tudo isso que eu mesma não vou c"
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take2.mp4",
+   "inicio": 455.4,
+   "fim": 469.6,
+   "nota": "CITAÇÃO: o que a pessoa vai encontrar ali que justifique / ACOMPANHAR POR ESSE CAMINHO? | FALA: Então, antes de abrir outro espaço, tem uma pergunta. O que a pessoa vai encontrar ali que justifique acompanhar também por aquele caminho?"
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take2.mp4",
+   "inicio": 468.333,
+   "fim": 503.65,
+   "nota": "TÍTULO: cada formato precisa ter uma / FUNÇÃO | TÍTULO: perfil em outro app / ≠ CANAL DE CONTATO | FALA: um podcast pode dar espaço a uma conversa mais completa, uma newsletter pode reunir referências, organizar uma ideia e permitir que o leitor volte a ela. Enfim,"
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take2.mp4",
+   "inicio": 507.3,
+   "fim": 509.4,
+   "nota": "FALA: Uma lista de e -mails, por exemplo,"
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take2.mp4",
+   "inicio": 518.04,
+   "fim": 534.9,
+   "nota": "FALA: pode permitir continuar esse contato mesmo que você troque a ferramenta de envio, respeitando, obviamente, a escolha de quem se inscreveu, mas ela não garante q"
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take3.mp4",
+   "inicio": 0.0,
+   "fim": 20.467,
+   "nota": "TÍTULO: a atenção continua sendo / ESCOLHA DO OUTRO | FALA: Você ganha uma possibilidade de contato. A atenção continua sendo escolha da outra pessoa. Por isso, diversificar envolve pensar tanto na continuidade do trabal"
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take3.mp4",
+   "inicio": 21.9,
+   "fim": 34.933,
+   "nota": "CAPÍTULO: O QUE É CONSTRUIR | FALA: A pessoa precisa encontrar um motivo para continuar, por isso, quando eu penso no DIP, a pergunta vai além de onde publicar."
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take3.mp4",
+   "inicio": 40.5,
+   "fim": 48.567,
+   "nota": "CITAÇÃO: o que eu estou entregando que merece fazer parte da / ROTINA DE ALGUÉM? | FALA: A pergunta é, o que eu estou entregando que merece fazer parte da rotina de alguém?"
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take3.mp4",
+   "inicio": 81.0,
+   "fim": 87.733,
+   "nota": "FALA: para mim é aí que construir começa a ficar mais concreto"
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take3.mp4",
+   "inicio": 87.6,
+   "fim": 108.267,
+   "nota": "TÍTULO: uma proposta / RECONHECÍVEL | FALA: porque é desenvolver um trabalho que tem uma proposta reconhecível e conseguir sustentá -la nas próximas entregas. É a pessoa saber porque quer acompanhar você,"
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take3.mp4",
+   "inicio": 108.4,
+   "fim": 118.267,
+   "nota": "FALA: Olha, eu ainda tô construindo isso, sabe? A newsletter, digamos que é uma escolha dentre muitas outras."
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take3.mp4",
+   "inicio": 121.7,
+   "fim": 125.533,
+   "nota": "FALA: que faz parte desse processo."
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take3.mp4",
+   "inicio": 124.733,
+   "fim": 131.8,
+   "nota": "FALA: e com certeza ela vem e ela traz um compromisso com a próxima edição."
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take3.mp4",
+   "inicio": 138.15,
+   "fim": 142.933,
+   "nota": "TÍTULO: lembra do / NOME? | FALA: Então, lembra do nome que você pensou no começo do episódio?"
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take3.mp4",
+   "inicio": 157.333,
+   "fim": 166.7,
+   "nota": "LISTA: você procuraria essa pessoa… (pelo conhecimento, pelo humor, pelo jeito de contar) | FALA: Talvez você procure essa pessoa pelo conhecimento, pelo humor, pelo jeito que ela tem de contar uma história."
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take3.mp4",
+   "inicio": 177.867,
+   "fim": 188.233,
+   "nota": "FALA: existe um motivo pelo qual você iria atrás dela em outro lugar. E é esse motivo que eu estou tentando construir também."
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take3.mp4",
+   "inicio": 188.867,
+   "fim": 205.467,
+   "nota": "TÍTULO: o faturamento mostra / QUANTO ENTROU | TIJOLOS: o que você constrói aparece… (TRABALHO, REPUTAÇÃO, MOTIVOS) | FALA: Porque, gente, o faturamento mostra, obviamente, quanto entrou. Mas o que você constrói aparece também no trabalho que consegue sustentar, na reputação que form"
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take3.mp4",
+   "inicio": 215.467,
+   "fim": 220.9,
+   "nota": "FALA: e nos motivos que você dá para alguém continuar voltando."
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take3.mp4",
+   "inicio": 221.467,
+   "fim": 227.93,
+   "nota": "FALA: só que essa relação ela está entrando numa fase digamos que mais complexa"
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take3.mp4",
+   "inicio": 234.2,
+   "fim": 237.167,
+   "nota": "FALA: porque com mais ferramentas para produzir conteúdo,"
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take3.mp4",
+   "inicio": 238.403,
+   "fim": 244.633,
+   "nota": "FALA: mais facilidade para vender e mais gente disputando a nossa atenção."
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take3.mp4",
+   "inicio": 246.8,
+   "fim": 254.033,
+   "nota": "FALA: E aí, como nós vamos conseguir"
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take3.mp4",
+   "inicio": 263.333,
+   "fim": 264.9,
+   "nota": "TÍTULO: como decidir / EM QUEM CONFIAR? | FALA: decidir em quem confiar?"
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take3.mp4",
+   "inicio": 265.6,
+   "fim": 269.667,
+   "nota": "PRÓXIMO EPISÓDIO | FALA: E é sobre isso que a gente vai conversar no último episódio."
+  },
+  {
+   "arquivo": "D:/Videos/Samara/DEEP 2/take3.mp4",
+   "inicio": 270.7,
+   "fim": 271.2,
+   "nota": "FALA: Tchau!"
+  }
+ ]
+}

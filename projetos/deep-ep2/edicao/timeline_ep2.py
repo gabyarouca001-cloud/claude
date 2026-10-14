@@ -45,8 +45,8 @@ def carregar():
     return M, ns["INS"]
 
 
-def main():
-    M, INS = carregar()
+def estimar(M, INS):
+    """Início estimado (s, vídeo final) e índice do trecho de cada inserção."""
     tot = sum(t["fim"] - t["ini"] for t in M)
     k = (TOTAL - OFF) / tot
     cum, x = [], 0.0
@@ -75,9 +75,9 @@ def main():
         hint = ins[2]
         i, fp, sc = casa(ins[1], hint - 20, hint + 45)
         t0 = None if i is None else OFF + cum[i] + min(fp, 1) * (M[i]["fim"] - M[i]["ini"]) * k
-        est.append([hint, t0, sc])
+        est.append([hint, t0, sc, i if sc >= 0.8 else None])
     # frases que não casaram bem: tempo-guia + desvio típico dos vizinhos que casaram
-    bons = sorted((h, t0 - h) for h, t0, sc in est if sc >= 0.8 and t0 is not None)
+    bons = sorted((h, t0 - h) for h, t0, sc, _ in est if sc >= 0.8 and t0 is not None)
     hs, ds = [b[0] for b in bons], [b[1] for b in bons]
     for e in est:
         if e[2] < 0.8 or e[1] is None:
@@ -91,6 +91,18 @@ def main():
         folga = 0.8 * min(INS[i][2] - INS[i - 1][2], 8.0)
         inicio[i] = max(inicio[i], inicio[i - 1] + max(0.4, folga))
 
+    idx = []
+    for e, t0 in zip(est, inicio):
+        if e[3] is not None:
+            idx.append(e[3])
+        else:
+            idx.append(max(j for j in range(len(M)) if OFF + cum[j] <= t0))
+    return inicio, idx, k
+
+
+def main():
+    M, INS = carregar()
+    inicio, _, k = estimar(M, INS)
     docs = {}
     # ---- vídeo: abertura + cortes (blocos contíguos da mesma fonte)
     docs["v000"] = dict(track="video", kind="video", start=0.0, dur=OFF, **{"in": 0.0}, fonte="inicio_editora",
