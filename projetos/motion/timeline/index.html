@@ -1,4 +1,4 @@
-<title>Timeline DEEP</title>
+<title>Timeline DEEP EP2</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800;900&family=Playfair+Display:ital,wght@1,500;1,700&family=Rubik:wght@600;900&display=swap">
@@ -46,7 +46,7 @@
   @media (max-width: 920px) { main { grid-template-columns: minmax(0, 1fr); } }
 
   .stagebox { background: #000; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; position: relative; aspect-ratio: 16 / 9; width: min(100%, calc(44vh * 16 / 9)); min-width: min(100%, 320px); margin-inline: auto; }
-  #stage { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 0 0; overflow: hidden; background: #000; }
+  #stage { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 0 0; overflow: hidden; background: radial-gradient(1100px 900px at 78% 45%, #24242b 0%, #111114 60%, #0b0b0d 100%); }
   #vid { position: absolute; inset: 0; width: 1920px; height: 1080px; object-fit: cover; }
   .z { position: absolute; inset: 0; }
   .chip { position: absolute; left: 10px; top: 10px; z-index: 5; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--mut); background: rgba(12,12,15,.7); padding: 4px 8px; border-radius: 6px; pointer-events: none; }
@@ -62,7 +62,7 @@
   .zoom { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--mut); }
   .zoom input { width: 110px; accent-color: var(--accent); }
   .menu { position: relative; }
-  .menu > div { position: absolute; z-index: 20; top: calc(100% + 4px); left: 0; background: var(--panel2); border: 1px solid var(--line); border-radius: 8px; min-width: 190px; padding: 4px; box-shadow: 0 10px 30px rgba(0,0,0,.5); }
+  .menu > div { max-height: 60vh; overflow-y: auto; position: absolute; z-index: 20; top: calc(100% + 4px); left: 0; background: var(--panel2); border: 1px solid var(--line); border-radius: 8px; min-width: 190px; padding: 4px; box-shadow: 0 10px 30px rgba(0,0,0,.5); }
   .menu button { display: block; width: 100%; text-align: left; background: none; border: 0; padding: 8px 10px; border-radius: 6px; font-size: 13px; }
   .menu button:hover { background: var(--line); }
 
@@ -143,11 +143,31 @@
   .leg .w { display: inline-block; margin: 0 .16em; text-shadow: 0 4px 18px rgba(0,0,0,.6); }
   .leg.rubik .w.key { font-weight: 900; color: var(--y); text-shadow: 0 0 28px color-mix(in srgb, var(--y) 55%, transparent), 0 4px 18px rgba(0,0,0,.6); }
   .leg.playfair .w.key { font-weight: 700; color: var(--y); text-shadow: 0 0 26px color-mix(in srgb, var(--y) 50%, transparent), 0 4px 18px rgba(0,0,0,.6); }
+
+  #fala { position: absolute; left: 160px; right: 160px; top: 36px; max-height: 176px; overflow: hidden; text-align: center; font-family: var(--ui); font-weight: 500; font-size: 32px; line-height: 1.25; color: rgba(255,255,255,.5); }
+  #fala small { display: block; font-size: 18px; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: 12px; font-weight: 600; }
+  .capitulo .cap { left: 120px; top: 928px; display: flex; gap: 22px; }
+  .capitulo .bar { width: 8px; background: var(--y); border-radius: 4px; }
+  .capitulo .k { font-weight: 800; font-size: 22px; letter-spacing: .22em; color: var(--y); }
+  .capitulo .t { font-weight: 500; font-size: 44px; margin-top: 4px; white-space: nowrap; }
+  .lista .tt, .tijolos .tt { left: 140px; font-family: "Playfair Display", serif; font-style: italic; font-weight: 500; font-size: 62px; white-space: nowrap; }
+  .lista .it { position: absolute; left: 140px; display: flex; align-items: center; gap: 26px; font-weight: 800; white-space: nowrap; }
+  .lista .it i { display: block; width: 64px; height: 8px; border-radius: 4px; background: var(--y); flex: none; }
+  .tijolos .br { position: absolute; left: 140px; min-width: 700px; height: 84px; border-radius: 14px; background: var(--y); color: #1b1810; font-weight: 900; font-size: 46px; letter-spacing: .04em; display: flex; align-items: center; padding: 0 40px; white-space: nowrap; }
+  .citacao .l1 { left: 160px; right: 160px; top: 300px; text-align: center; font-family: "Playfair Display", serif; font-style: italic; font-weight: 500; font-size: 70px; line-height: 1.2; }
+  .citacao .l2 { left: 160px; right: 160px; top: 520px; text-align: center; font-weight: 900; font-size: 108px; line-height: 1.06; color: var(--y); letter-spacing: -.01em; }
+  .versus .l1 { left: 0; right: 0; top: 330px; text-align: center; font-family: "Playfair Display", serif; font-style: italic; font-weight: 500; font-size: 76px; }
+  .versus .e, .versus .d { top: 520px; width: 760px; text-align: center; font-weight: 900; font-size: 110px; letter-spacing: -.01em; }
+  .versus .e { left: 140px; } .versus .d { left: 1020px; color: var(--y); }
+  .versus .ln { left: 958px; top: 520px; width: 4px; height: 130px; background: rgba(255,255,255,.3); }
+  .proximo .px { left: 120px; top: 90px; display: flex; gap: 18px; align-items: center; }
+  .proximo .bar { width: 8px; height: 44px; background: var(--y); border-radius: 4px; }
+  .proximo .k { font-weight: 800; font-size: 28px; letter-spacing: .24em; color: var(--y); white-space: nowrap; }
 </style>
 
 <div id="app">
   <header>
-    <div class="brand">Timeline<b>DEEP</b></div>
+    <div class="brand">Timeline<b>DEEP · EP2</b></div>
     <div class="sync" id="sync" data-s="off"><span class="dot"></span><span id="synctxt">Conectando…</span></div>
     <div id="nota" hidden></div>
   </header>
@@ -155,9 +175,10 @@
   <main>
     <section>
       <div class="stagebox" id="sbox">
-        <div class="chip">Prévia leve · 360p</div>
+        <div class="chip" id="chip">Prévia leve · 360p</div>
         <div id="stage">
           <video id="vid" playsinline preload="auto"></video>
+          <div id="fala" hidden></div>
           <div class="z" id="z-motion"></div>
           <div class="z" id="z-dest"></div>
           <div class="z" id="z-base"></div>
@@ -171,15 +192,21 @@
           <button class="btn" id="badd">+ Adicionar ▾</button>
           <div id="addmenu" hidden>
             <button data-add="lettering">Lettering principal</button>
+            <button data-add="capitulo">Capítulo</button>
+            <button data-add="lista">Lista</button>
+            <button data-add="tijolos">Tijolos (empilhar)</button>
+            <button data-add="citacao">Citação</button>
+            <button data-add="versus">Versus (A × B)</button>
             <button data-add="pessoas">Motion: pessoas e número</button>
             <button data-add="grafico">Motion: gráfico</button>
+            <button data-add="proximo">Próximo episódio</button>
             <button data-add="dest">Destaque (palavra-chave)</button>
             <button data-add="base">Legenda base</button>
           </div>
         </div>
         <button class="btn" id="bundo">Desfazer</button>
         <span class="spacer"></span>
-        <label class="zoom">Zoom <input type="range" id="zoom" min="24" max="220" value="70" aria-label="Zoom da timeline"></label>
+        <label class="zoom">Zoom <input type="range" id="zoom" min="3" max="220" value="70" aria-label="Zoom da timeline"></label>
       </div>
     </section>
 
@@ -209,16 +236,22 @@
     { id: "base", nome: "Legenda base" },
     { id: "video", nome: "Vídeo" },
   ];
-  const TR_OF = { lettering: "motion", pessoas: "motion", grafico: "motion", dest: "dest", base: "base" };
-  const KIND_NOME = { lettering: "Lettering", pessoas: "Pessoas e número", grafico: "Gráfico", dest: "Destaque", base: "Legenda" };
+  const TR_OF = { lettering: "motion", pessoas: "motion", grafico: "motion", capitulo: "motion", lista: "motion", tijolos: "motion", citacao: "motion", versus: "motion", proximo: "motion", dest: "dest", base: "base" };
+  const KIND_NOME = { lettering: "Lettering", pessoas: "Pessoas e número", grafico: "Gráfico", capitulo: "Capítulo", lista: "Lista", tijolos: "Tijolos", citacao: "Citação", versus: "Versus", proximo: "Próximo episódio", dest: "Destaque", base: "Legenda" };
   const DEFAULTS = {
     lettering: { dur: 3.6, cor: "#FCEDC0", l1: "30% dos criadores", l2: "NÃO MONETIZAM", echo: "30%" },
     pessoas: { dur: 4.9, cor: "#FCEDC0", num: 30, rotA: "dos criadores", rotB: "NÃO MONETIZAM", capK: "CAPÍTULO 02", capT: "Monetização" },
     grafico: { dur: 4.4, cor: "#FCEDC0", titulo: "Alcance ao longo dos meses", fim: 340, rot: "EXEMPLO ILUSTRATIVO" },
+    capitulo: { dur: 3.6, cor: "#FCEDC0", capK: "CAPÍTULO", capT: "Título do capítulo" },
+    lista: { dur: 6, cor: "#FCEDC0", titulo: "eu queria…", itens: ["primeiro item", "segundo item", "terceiro item"] },
+    tijolos: { dur: 6, cor: "#FCEDC0", titulo: "construir envolve…", itens: ["TRABALHO", "RELAÇÃO", "MOTIVO"] },
+    citacao: { dur: 5, cor: "#FCEDC0", l1: "que tipo de conversa eu quero ter?", l2: "POR QUE ALGUÉM ESCOLHERIA VOLTAR?" },
+    versus: { dur: 5, cor: "#FCEDC0", l1: "um corte mostra a conclusão;", esq: "CONCLUSÃO", dir: "RACIOCÍNIO" },
+    proximo: { dur: 8, cor: "#FCEDC0" },
     dest: { dur: 2.4, cor: "#F1CE0B", text: "isso muda *tudo*", estilo: "playfair" },
     base: { dur: 1.6, cor: "#FCEDC0", text: "e é aqui que", estilo: "rubik" },
   };
-  const CONTENT_KEYS = ["kind", "l1", "l2", "echo", "num", "rotA", "rotB", "capK", "capT", "titulo", "fim", "rot", "text", "estilo"];
+  const CONTENT_KEYS = ["kind", "itens", "esq", "dir", "rotulo", "nota", "l1", "l2", "echo", "num", "rotA", "rotB", "capK", "capT", "titulo", "fim", "rot", "text", "estilo"];
 
   let db = null, canWrite = true, user = null;
   const clips = new Map();
@@ -302,7 +335,7 @@
     tl.fromTo(q(".ul path"), { strokeDasharray: 1, strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.7, ease: "power2.inOut" }, 1.25);
     tl.to(q(".l1,.l2mask,.ul"), { y: -34, opacity: 0, duration: 0.38, ease: "power2.in", stagger: 0.04 }, 3.1);
     tl.to(q(".echo"), { opacity: 0, scale: 1.06, duration: 0.45, ease: "power2.in" }, 3.1);
-    return { el, tl, base: 3.6 };
+    return { el, tl, base: 3.6, out: 3.1 };
   }
 
   function mkPessoas(c) {
@@ -326,7 +359,7 @@
     tl.fromTo(q(".cb"), { opacity: 0, x: -70 }, { opacity: 1, x: 0, duration: 0.7, ease: "expo.out" }, 2.2);
     tl.fromTo(q(".cap"), { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" }, 0.6);
     tl.to(q(".grid,.cnt,.ca,.cb,.cap"), { opacity: 0, y: -24, duration: 0.4, ease: "power2.in", stagger: 0.03 }, 4.4);
-    return { el, tl, base: 4.9 };
+    return { el, tl, base: 4.9, out: 4.4 };
   }
 
   function bezierPts(pts) {
@@ -374,7 +407,7 @@
     tl.fromTo(q(".ar"), { opacity: 0 }, { opacity: 1, duration: 0.8, ease: "power2.out" }, 2.1);
     tl.fromTo(ha, { attr: { r: 26 }, opacity: 1 }, { attr: { r: 44 }, opacity: 0, duration: 0.7, ease: "power2.out", immediateRender: false }, 2.95);
     tl.to(q(".gt,.gn,.gk,.ch"), { opacity: 0, y: -24, duration: 0.4, ease: "power2.in", stagger: 0.03 }, 4.0);
-    return { el, tl, base: 4.4 };
+    return { el, tl, base: 4.4, out: 4.0 };
   }
 
   function mkLeg(c) {
@@ -386,7 +419,76 @@
     tl.fromTo(q(".w"), { opacity: 0, y: 24, scale: 0.82 }, { opacity: 1, y: 0, scale: 1, duration: 0.32, ease: "back.out(2.1)", stagger: 0.26 }, 0.05);
     if (q(".w.key").length) tl.to(q(".w.key"), { scale: 1.1, duration: 0.22, ease: "power2.out" }, 0.05 + n * 0.26);
     tl.to(q(".box"), { opacity: 0, y: -14, duration: 0.25, ease: "power2.in" }, base - 0.3);
-    return { el, tl, base };
+    return { el, tl, base, out: base - 0.3 };
+  }
+
+
+  const lines = (a) => (Array.isArray(a) ? a : []).map((x) => String(x));
+  function mkCapitulo(c) {
+    const el = div("mo capitulo");
+    el.innerHTML = `<div class="a cap"><div class="bar"></div><div><div class="k">${esc(c.capK)}</div><div class="t">${esc(c.capT)}</div></div></div>`;
+    const q = gsap.utils.selector(el), tl = gsap.timeline({ paused: true });
+    tl.fromTo(q(".bar"), { scaleY: 0, transformOrigin: "50% 0%" }, { scaleY: 1, duration: 0.5, ease: "power3.out" }, 0);
+    tl.fromTo(q(".k"), { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.2);
+    tl.fromTo(q(".t"), { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" }, 0.3);
+    tl.to(q(".cap"), { opacity: 0, x: -30, duration: 0.4, ease: "power2.in" }, 3.1);
+    return { el, tl, base: 3.6, out: 3.1 };
+  }
+  function mkLista(c) {
+    const el = div("mo lista"), its = lines(c.itens), n = Math.max(1, its.length), step = n > 5 ? 84 : 96, fs = n > 5 ? 48 : 56;
+    el.innerHTML = `<div class="a tt sh" style="top:230px">${esc(c.titulo)}</div>` + its.map((t, i) => `<div class="it sh" style="top:${330 + i * step}px;font-size:${fs}px"><i></i>${esc(t)}</div>`).join("");
+    const q = gsap.utils.selector(el), tl = gsap.timeline({ paused: true }), out = 0.6 + n * 0.9 + 1.2;
+    tl.fromTo(q(".tt"), { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0);
+    its.forEach((_, i) => tl.fromTo(q(".it")[i], { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.5 + i * 0.9));
+    tl.to(q(".tt,.it"), { opacity: 0, y: -20, duration: 0.4, ease: "power2.in", stagger: 0.03 }, out);
+    return { el, tl, base: out + 0.6, out };
+  }
+  function mkTijolos(c) {
+    const el = div("mo tijolos"), its = lines(c.itens), n = Math.max(1, its.length), top0 = 816 - (n - 1) * 96;
+    el.innerHTML = `<div class="a tt sh" style="top:${Math.max(150, top0 - 100)}px">${esc(c.titulo)}</div>` + its.map((t, i) => `<div class="br sh" style="top:${816 - i * 96}px">${esc(t)}</div>`).join("");
+    const q = gsap.utils.selector(el), tl = gsap.timeline({ paused: true }), out = 0.7 + n * 0.9 + 1.2;
+    tl.fromTo(q(".tt"), { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0);
+    its.forEach((_, i) => tl.fromTo(q(".br")[i], { opacity: 0, y: -240 }, { opacity: 1, y: 0, duration: 0.55, ease: "bounce.out" }, 0.6 + i * 0.9));
+    tl.to(q(".tt,.br"), { opacity: 0, y: -20, duration: 0.4, ease: "power2.in" }, out);
+    return { el, tl, base: out + 0.6, out };
+  }
+  function mkCitacao(c) {
+    const el = div("mo citacao");
+    el.innerHTML = `<div class="a l1 sh">${esc(c.l1)}</div><div class="a l2 sh">${esc(c.l2)}</div>`;
+    const q = gsap.utils.selector(el), tl = gsap.timeline({ paused: true });
+    tl.fromTo(q(".l1"), { opacity: 0, y: 30, filter: "blur(10px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.7, ease: "power3.out" }, 0);
+    tl.fromTo(q(".l2"), { opacity: 0, y: 44 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out" }, 0.6);
+    tl.to(q(".l1,.l2"), { opacity: 0, y: -26, duration: 0.45, ease: "power2.in", stagger: 0.04 }, 4.4);
+    return { el, tl, base: 5, out: 4.4 };
+  }
+  function mkVersus(c) {
+    const el = div("mo versus");
+    el.innerHTML = `<div class="a l1 sh">${esc(c.l1)}</div><div class="a e sh">${esc(c.esq)}</div><div class="a ln"></div><div class="a d sh">${esc(c.dir)}</div>`;
+    const q = gsap.utils.selector(el), tl = gsap.timeline({ paused: true });
+    tl.fromTo(q(".l1"), { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0);
+    tl.fromTo(q(".e"), { opacity: 0, x: -80 }, { opacity: 1, x: 0, duration: 0.6, ease: "expo.out" }, 0.5);
+    tl.fromTo(q(".ln"), { scaleY: 0 }, { scaleY: 1, duration: 0.4, ease: "power2.out" }, 1.0);
+    tl.fromTo(q(".d"), { opacity: 0, x: 80 }, { opacity: 1, x: 0, duration: 0.6, ease: "expo.out" }, 1.4);
+    tl.to(q(".l1,.e,.ln,.d"), { opacity: 0, y: -20, duration: 0.4, ease: "power2.in" }, 4.6);
+    return { el, tl, base: 5.1, out: 4.6 };
+  }
+  function mkProximo() {
+    const el = div("mo proximo");
+    el.innerHTML = `<div class="a px"><div class="bar"></div><div class="k">PRÓXIMO EPISÓDIO</div></div>`;
+    const q = gsap.utils.selector(el), tl = gsap.timeline({ paused: true });
+    tl.fromTo(q(".bar"), { scaleY: 0, transformOrigin: "50% 0%" }, { scaleY: 1, duration: 0.4, ease: "power3.out" }, 0);
+    tl.fromTo(q(".k"), { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" }, 0.2);
+    tl.to(q(".px"), { opacity: 0, duration: 0.4 }, 2.6);
+    return { el, tl, base: 3, out: 2.6 };
+  }
+  const MK = { lettering: mkLettering, pessoas: mkPessoas, grafico: mkGrafico, capitulo: mkCapitulo, lista: mkLista, tijolos: mkTijolos, citacao: mkCitacao, versus: mkVersus, proximo: mkProximo };
+  // animação toca na velocidade natural; se o bloco for mais longo, segura o último quadro antes da saída
+  function mapT(rel, dur, r) {
+    if (dur < r.base) return (rel / dur) * r.base;
+    const tail = r.base - r.out, tailStart = dur - tail;
+    if (rel < r.out) return rel;
+    if (rel < tailStart) return r.out;
+    return r.out + (rel - tailStart);
   }
 
   function getRT(c) {
@@ -394,7 +496,7 @@
     const sig = sigOf(c);
     if (r && r.sig !== sig) { dropRT(c.id); r = null; }
     if (!r) {
-      const mk = c.kind === "lettering" ? mkLettering : c.kind === "pessoas" ? mkPessoas : c.kind === "grafico" ? mkGrafico : mkLeg;
+      const mk = MK[c.kind] || mkLeg;
       r = mk(c); r.sig = sig;
       $("#z-" + c.track).appendChild(r.el);
       rts.set(c.id, r);
@@ -412,15 +514,24 @@
       const r = getRT(c), on = t >= c.start && t < c.start + c.dur - 0.0001;
       r.el.style.display = on ? "block" : "none";
       if (!on) continue;
-      r.tl.time(Math.min(((t - c.start) / c.dur) * r.base, r.base - 0.0005));
+      r.tl.time(Math.min(mapT(t - c.start, c.dur, r), r.base - 0.0005));
       r.el.style.setProperty("--y", c.cor || "#FCEDC0");
       r.el.style.transform = `translate(${num(c.x)}px,${num(c.y)}px) scale(${num(c.scale, 1)})`;
     }
     for (const id of [...rts.keys()]) if (!live.has(id)) dropRT(id);
   }
   function syncVideo() {
-    const v = $("#vid"), vc = list().find((c) => c.track === "video" && t >= c.start && t < c.start + c.dur - 0.0001);
-    if (!vc || !vc.asset) { v.style.visibility = "hidden"; if (!v.paused) v.pause(); return; }
+    const v = $("#vid"), f = $("#fala"), vc = list().find((c) => c.track === "video" && t >= c.start && t < c.start + c.dur - 0.0001);
+    const chip = $("#chip");
+    if (!vc) { v.style.visibility = "hidden"; f.hidden = true; if (!v.paused) v.pause(); return; }
+    if (!vc.asset) {
+      v.style.visibility = "hidden"; if (!v.paused) v.pause();
+      const key = vc.id + "|" + vc.in; f.hidden = false;
+      if (f.dataset.k !== key) { f.dataset.k = key; f.innerHTML = `<small>${esc(vc.fonte || "")} · da fonte em ${fmt(vc.in || 0)}</small>${esc(vc.texto || "")}`; }
+      chip.textContent = "Sem vídeo anexado · mostrando a fala de cada corte";
+      return;
+    }
+    f.hidden = true; chip.textContent = "Prévia leve · 360p";
     v.style.visibility = "visible";
     const src = "/_blob/" + vc.asset, want = (vc.in || 0) + (t - vc.start);
     if (v.dataset.src !== src) { v.dataset.src = src; v.src = src; }
@@ -449,23 +560,28 @@
   function lanesOf(arr) {
     const ends = [], out = new Map();
     for (const c of arr.sort((a, b) => a.start - b.start)) {
-      let k = ends.findIndex((e) => e <= c.start + 0.0001);
+      let k = ends.findIndex((e) => e <= c.start + 0.03);
       if (k < 0) { k = ends.length; ends.push(0); }
       ends[k] = c.start + c.dur; out.set(c.id, k);
     }
     return { lane: out, n: Math.max(1, ends.length) };
   }
   function label(c) {
-    if (c.track === "video") return "Corte · fonte " + fmt(c.in || 0).slice(0, -3);
+    if (c.track === "video") return c.texto ? c.texto : "Corte · fonte " + fmt(c.in || 0).slice(0, -3);
     if (c.kind === "dest" || c.kind === "base") return String(c.text || "").replace(/\*/g, "");
+    if (c.kind === "lettering") return c.l2 || "Lettering";
+    if (c.kind === "capitulo") return "Capítulo · " + (c.capT || "");
+    if (c.kind === "lista" || c.kind === "tijolos") return (c.rotulo ? c.rotulo[0].toUpperCase() + c.rotulo.slice(1) : KIND_NOME[c.kind]) + " · " + (c.titulo || "");
+    if (c.kind === "citacao") return "Citação · " + (c.l2 || "");
+    if (c.kind === "versus") return (c.esq || "") + " × " + (c.dir || "");
     return KIND_NOME[c.kind] || c.kind;
   }
   function buildTimeline() {
     const wrap = $("#tl"), len = total() + 3;
     wrap.style.width = Math.max(len * pps + 124, wrap.parentElement.clientWidth) + "px";
     let h = `<div class="ruler" id="ruler">`;
-    const step = pps >= 100 ? 0.5 : pps >= 50 ? 1 : 2;
-    for (let s = 0; s <= len; s += step) h += `<div class="tick" style="left:${s * pps}px">${Number.isInteger(s) ? fmt(s).slice(0, -3) : ""}</div>`;
+    const step = [0.5, 1, 2, 5, 10, 15, 30, 60, 120].find((x) => x * pps >= 64) || 120;
+    for (let s = 0; s <= len; s += step) h += `<div class="tick" style="left:${s * pps}px">${fmt(s).slice(0, step < 1 ? undefined : -3)}</div>`;
     h += "</div>";
     if (!clips.size) h += `<div class="empty">Timeline vazia. Peça ao Claude para montar o episódio, ou use “+ Adicionar”.</div>`;
     for (const tr of TRACKS) {
@@ -536,6 +652,7 @@
   function select(id, keepScroll) { sel = id; renderInspector(); if (!keepScroll) buildTimeline(); else for (const e of document.querySelectorAll(".clip")) e.classList.toggle("sel", e.dataset.id === id); }
   const sw = (cor) => ["#FCEDC0", "#F1CE0B", "#FFFFFF"].map((k) => `<button type="button" data-cor="${k}" style="background:${k}" aria-label="Cor ${k}" aria-pressed="${String(cor).toUpperCase() === k}"></button>`).join("");
   function fld(id, f, rot, val, type = "text") { return `<div class="field"><label for="f-${f}">${rot}</label><input id="f-${f}" data-f="${f}" type="${type}" value="${esc(val)}"></div>`; }
+  function area(f, rot, val) { return `<div class="field"><label for="f-${f}">${rot}</label><textarea id="f-${f}" data-f="${f}" rows="${Math.min(8, Math.max(3, val.split("\n").length))}">${esc(val)}</textarea></div>`; }
   function rng(f, rot, min, max, step, val, unit = "") { return `<div class="field"><label for="f-${f}">${rot}<span class="val">${round(val)}${unit}</span></label><input id="f-${f}" data-f="${f}" data-r="1" type="range" min="${min}" max="${max}" step="${step}" value="${val}"></div>`; }
   function renderInspector() {
     const box = $("#insp"), c = sel && clips.get(sel);
@@ -544,18 +661,23 @@
     inspFor = sel;
     let h = `<h3>${esc(label(c))}</h3>`;
     h += `<div class="row2">${c.track === "video" ? `<div class="field"><label>Início</label><input type="text" value="${fmt(c.start)}" disabled></div>` : fld(c.id, "start", "Início (s)", round(c.start), "number")}${fld(c.id, "dur", "Duração (s)", round(c.dur), "number")}</div>`;
-    if (c.track === "video") h += fld(c.id, "in", "Começa em (s da fonte)", round(c.in || 0), "number");
+    if (c.track === "video") h += fld(c.id, "in", "Começa em (s da fonte)", round(c.in || 0), "number") + (c.texto ? `<div class="field"><span>Fala deste corte · ${esc(c.fonte || "")}</span><p class="vazio" style="margin:0">${esc(c.texto)}</p></div>` : "");
     else {
       h += rng("x", "Posição horizontal", -900, 900, 5, num(c.x), " px") + rng("y", "Posição vertical", -500, 500, 5, num(c.y), " px") + rng("scale", "Tamanho", 0.5, 1.6, 0.05, num(c.scale, 1), "×");
       h += `<div class="field"><span>Cor de destaque</span><div class="sw">${sw(c.cor)}<input type="color" data-f="cor" value="${esc(c.cor || "#FCEDC0")}" aria-label="Escolher outra cor"></div></div>`;
     }
     if (c.kind === "lettering") h += fld(c.id, "l1", "Linha de cima", c.l1) + fld(c.id, "l2", "Linha de baixo (ênfase)", c.l2) + fld(c.id, "echo", "Eco ao fundo", c.echo);
+    if (c.kind === "capitulo") h += fld(c.id, "capK", "Rótulo", c.capK) + fld(c.id, "capT", "Título do capítulo", c.capT);
+    if (c.kind === "lista" || c.kind === "tijolos") h += fld(c.id, "titulo", "Título", c.titulo) + area("itens", "Itens (um por linha)", lines(c.itens).join("\n"));
+    if (c.kind === "citacao") h += fld(c.id, "l1", "Frase (serifa)", c.l1) + fld(c.id, "l2", "Ênfase", c.l2);
+    if (c.kind === "versus") h += fld(c.id, "l1", "Frase (serifa)", c.l1) + fld(c.id, "esq", "Lado A", c.esq) + fld(c.id, "dir", "Lado B", c.dir);
     if (c.kind === "pessoas") h += fld(c.id, "num", "Percentual", c.num, "number") + fld(c.id, "rotA", "Texto", c.rotA) + fld(c.id, "rotB", "Ênfase", c.rotB) + fld(c.id, "capK", "Capítulo", c.capK) + fld(c.id, "capT", "Título do capítulo", c.capT);
     if (c.kind === "grafico") h += fld(c.id, "titulo", "Título", c.titulo) + fld(c.id, "fim", "Número final (%)", c.fim, "number") + fld(c.id, "rot", "Rótulo", c.rot);
     if (c.kind === "dest" || c.kind === "base") {
       h += fld(c.id, "text", "Texto (use *palavra* para a chave)", c.text);
       h += `<div class="field"><label for="f-estilo">Estilo</label><select id="f-estilo" data-f="estilo"><option value="rubik"${c.estilo === "rubik" ? " selected" : ""}>Rubik</option><option value="playfair"${c.estilo === "playfair" ? " selected" : ""}>Playfair itálico</option></select></div>`;
     }
+    if (c.nota) h += `<p class="hint">${esc(c.nota)}</p>`;
     h += `<div class="bar" style="margin:0"><button class="btn" data-act="dup">Duplicar</button><button class="btn" data-act="del" style="color:var(--danger)">Apagar</button></div>`;
     box.innerHTML = h;
   }
@@ -563,6 +685,7 @@
     const f = e.target.dataset.f, c = sel && clips.get(sel); if (!f || !c) return;
     let v = e.target.value;
     if (e.target.type === "number" || e.target.dataset.r) v = num(v);
+    if (f === "itens") v = String(v).split("\n").map((x) => x.trim()).filter(Boolean);
     if (e.type === "input" && !e.target.dataset.r && e.target.type !== "color") return;
     if (fieldBefore === null) fieldBefore = serialize();
     if (e.type === "change") { pushUndo(fieldBefore); fieldBefore = null; }
@@ -672,7 +795,7 @@
       }
       if (!drag) refresh();
     }, onErr);
-    db.doc("projeto/meta").onSnapshot((s) => { const d = s.exists && s.data(); const n = $("#nota"); if (d && d.nota) { n.hidden = false; n.textContent = "Claude: " + d.nota; } else n.hidden = true; }, onErr);
+    db.doc("projeto/meta").onSnapshot((s) => { const d = s.exists && s.data(); const n = $("#nota"); if (d && d.pps && !boot.pps) { boot.pps = 1; pps = +d.pps; $("#zoom").value = pps; buildTimeline(); draw(); } if (d && d.nota) { n.hidden = false; n.textContent = "Claude: " + d.nota; } else n.hidden = true; }, onErr);
     db.doc("projeto/log").get().then((s) => { if (s.exists) logItens = (s.data().itens || []).slice(-40); }).catch(() => {});
     db.collection("pedidos").orderBy("at", "desc").limit(3).onSnapshot((s) => renderReqs(s.docs), onErr);
   }
