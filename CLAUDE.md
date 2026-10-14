@@ -12,6 +12,9 @@ Referência completa do episódio 1 em `projetos/deep-influencer/` (roteiro, scr
 4. Perguntar/confirmar **até onde ela já editou**: só cortar a parte bruta e só inserir elementos a partir do ponto que ela indicar. Nunca mexer no que ela já editou (inclusive cortes).
 5. Mostrar a **lista de retakes/cortes** com tempos antes de renderizar.
 6. Gerar **prévia em 720p < 30 MB** (2 passes, ~430 kbps) para aprovação. **Só renderizar o 4K depois da aprovação.**
+   **Antes de mostrar qualquer prévia ou 4K, rodar** `python3 ferramentas/verificar.py <video> --plano plano.json --falas voz_16k.wav`
+   (mede LUFS/true peak, pretos, congelados, estalo em cada corte, erros de fala; gera folha de quadros e `relatorio.md`).
+   Só apresentar se não houver ✘; os ⚠ e os "não verificado" (escuta, texto cortado, rosto coberto) vão **declarados** na mensagem — nunca dizer "ouvi/assisti" sem ter feito.
 7. Entregar o 4K (ver "Entrega").
 8. Fazer **título, descrição com capítulos, tags, comentário fixado e thumb** (`projetos/<episodio>/publicacao/`).
 
@@ -148,3 +151,17 @@ Scripts em `projetos/deep-ep3/` (rodar em `/home/user/work/deep3`):
   Ecos translúcidos o OCR não vê → lista `ECOS` manual. Conferir com folha de quadros a cada 1,5 s.
 - Texto da legenda: transcrição em janela longa (fiel) + "pra"/"tá" da transcrição em pedaços; conferir palavras
   que a janela longa engole (ex.: "recebendo").
+
+## Motion graphics explicativos e lettering (HyperFrames) — base em `projetos/motion/`
+Pedido da editora: animações **complexas, limpas e bem animadas** que mostram exatamente o que está sendo dito, com lettering e legenda melhores que o ASS simples.
+HyperFrames = HTML/CSS/GSAP renderizado quadro a quadro (determinístico). Licença Apache-2.0; o ASS continua para textos simples.
+- **Fluxo:** `./baixar_fontes.sh` → escrever `index.html` no padrão (amarelo `#FCEDC0`, Playfair itálico + Inter Black, Rubik nas legendas) → `npx --yes hyperframes@0.8.155 check` (0 erros) →
+  `snapshot --at ...` e **olhar a folha** → `./renderizar.sh demo previa` (MP4 escuro p/ aprovar) → aprovado: `./renderizar.sh demo overlay` (WebM **transparente**) → `./compor.sh video.mp4 overlay.webm saida.mp4 <inicio_s>`.
+- **Ambiente:** Node 22 + Chromium do Playwright já existem. Apontar `PRODUCER_HEADLESS_SHELL_PATH=/opt/pw-browsers/chromium_headless_shell-*/chrome-linux/headless_shell` (os scripts já fazem). Não rodar `playwright install`.
+- **Medido aqui:** 16,4 s em 1080p/25 fps → MP4 em 33 s, overlay WebM em 52 s (≈ 2–3× o tempo do vídeo). 4K ainda não medido: usar `--workers` e renderizar o overlay em 1080p + `scale` na composição se pesar.
+- **Composição:** o overlay deve ter `data-width/height` do vídeo; texto nunca sobre o rosto (informação à esquerda, rosto à direita); GSAP carrega do jsdelivr (precisa de rede no render).
+- **Armadilhas do lint:** não animar `letterSpacing`/`width`/`top` (só `x`,`y`,`scale`,`opacity`,`filter`); `fromTo` repetido no mesmo seletor exige `immediateRender:false` nos seguintes; não usar `tl.set` para esconder no 0 (usar opacity no CSS + tween);
+  não pôr CSS `transform` + tween na mesma propriedade; fontes só com `@font-face` local. Aviso `nested_structure_needs_subcomposition` é só organização da timeline.
+- **No ffmpeg o alfa do WebM só vem com `-c:v libvpx-vp9` antes do `-i` do overlay** (`compor.sh`). Sem isso o fundo do overlay aparece.
+- **Variáveis:** `render --variables '{"titulo":"..."}'` / `--batch` permite um template por tipo de motion e dados por episódio (base para o pipeline por configuração).
+- Números nos gráficos: só os que ela fala; o teste usa "EXEMPLO ILUSTRATIVO" porque os valores são fictícios.

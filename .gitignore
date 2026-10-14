@@ -21,3 +21,7 @@ entregas/*.jpg
 entregas/*.png
 entregas/thumbs_ep2/
 verificacao_*/
+projetos/motion/demo/assets/fonts/*.ttf
+projetos/motion/demo/renders/
+projetos/motion/demo/.hyperframes/
+projetos/motion/.overlay_tmp/
